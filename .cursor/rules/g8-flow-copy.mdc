@@ -1,0 +1,41 @@
+---
+description: G8 Flow copy — Hormozi-style, humanized, revenue-first messaging
+globs: "**/*.{tsx,ts,jsx,js,mdx,md}"
+alwaysApply: false
+---
+
+# G8 Flow — Copy
+
+## Voice
+
+- Model: **Alex Hormozi** — clear offers, value stacking, specific outcomes, no fluff, direct “you” language.
+- Fully humanize: short sentences, concrete verbs, no corporate AI filler.
+- Every block answers: how does this grow **their** business revenue / leads / profit?
+
+## Do
+
+- Lead with outcome → proof → offer → CTA
+- Name the pain (site that looks fine but doesn’t sell) then the gain
+- Use numbers when real client data exists; never invent metrics
+- CTAs = action + outcome (“Book a call”, “See how it pays for itself”)
+
+## Don’t
+
+- Keyword-stuff H1 with “websites, apps, SaaS”
+- Generic “passionate developer / cutting-edge solutions”
+- Feature lists without money/time outcome
+- Fake urgency, fake testimonials, or unverifiable stats
+
+## Section copy jobs
+
+| Section | Job |
+|---------|-----|
+| Hero | One promise + who it’s for + 2 CTAs |
+| Process | Reduce fear of working with you |
+| Work | Proof via named sites + results |
+| Testimonials | Peer proof under active portrait |
+| Pricing | Choose a plan that funds growth |
+| CTA | One next step, low friction |
+| Footer | Trust + contact + legal |
+
+Language: follow the user’s chosen locale (ask if unset). Keep EN and SR as separate deliberate choices — do not mix casually.

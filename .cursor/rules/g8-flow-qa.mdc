@@ -1,0 +1,34 @@
+---
+description: Filtered UX/SEO/launch QA for G8 Flow portfolio (from Plerdy checklists)
+alwaysApply: true
+---
+
+# G8 Flow — QA (apply what fits; skip what doesn’t)
+
+Sources filtered for a freelancer service portfolio (not ecommerce, not local-service map packs, not SaaS onboarding unless added later). Full notes: `docs/g8-flow/qa-checklists.md`.
+
+## Always apply
+
+- Hero: clear value H1, supporting line, dominant visual, **2 CTAs**, trust near CTAs
+- Benefits = outcomes; process = 3–5 linear steps
+- Proof: case results + named testimonials with photos
+- Pricing: max 3 plans, highlight one, CTA on each
+- One primary conversion goal sitewide (e.g. book call) + soft secondary
+- Mobile: 44px targets, readable type, no hover-only actions
+- Perf: LCP/CLS/INP budgets; WebP/AVIF; lazy non-critical; font-display swap; particle FX must not tank mobile
+- SEO: unique title/meta, one H1, logical H2s, OG image, alt text, sitemap/robots at launch
+- A11y: contrast on navy/blue, focus states, carousel keyboard support, reduced-motion fallback for hero particles
+- Launch: HTTPS, 404, analytics events on CTAs, privacy/terms in footer, no lorem/placeholders
+
+## Skip / de-emphasize
+
+- Ecommerce cart/checkout, product schema, shipping
+- Local SEO (GMB, NAP, service-area pages) unless user asks
+- Fake countdown / scarcity badges
+- Heavy competitor comparison tables
+- Multi-language hreflang until i18n is in scope
+- Blog content machinery on v1 homepage
+
+## Conflict rule
+
+If a checklist item conflicts with G8 brand, section architecture, or Hormozi copy rules — **G8 rules win**.

@@ -1,0 +1,53 @@
+---
+description: G8 Flow homepage — fixed 7-section architecture and reference sites
+alwaysApply: true
+---
+
+# G8 Flow — Page architecture
+
+Single marketing homepage. Sections in this order only unless the user reorders.
+
+## S1 — Hero (sales + SEO, Hormozi voice)
+
+- Outcome-led H1 (never stuff “websites / apps / SaaS” as the H1 keyword dump). Aim: site that earns for the business.
+- Short supporting line; whole site copy shows how work grows client revenue.
+- Exactly **2 CTA buttons**.
+- Personal photo → scroll-driven dissolve into glowing white particles/stars (GSAP ScrollTrigger + Canvas/WebGL), particles carry into S2 and reform as a 3D object filling empty S2 space.
+- Refs: originkit dot-image-reveal, particles.casberry, premium Apple/Awwwards motion, 60fps, mobile-safe, lazy-load heavy FX.
+
+## S2 — Process (“The Flux way” pattern)
+
+- Inspiration: Flux Academy “The Flux way” — clear path from project start → launch.
+- Adapt to G8 Flow delivery steps (not Flux course marketing).
+
+## S3 — Featured work
+
+- Inspiration: https://konvo.pk/ “Picture” section energy.
+- Left: site name + logo. Right: idea + business outcomes achieved.
+- Media: autoplay scroll-through of the live site (not Konvo’s video).
+- Cases: (1) https://busystrong90.com/ (2) https://lenkolino.shop/ (3) https://thrivewithmarina.vercel.app/
+
+## S4 — Testimonials (coverflow)
+
+- Base: Originkit Coverflow / Smooth3DSlideshow (`docs/g8-flow/references/coverflow-testimonials.tsx`).
+- When a face is active, show **name + humanized review** below (not only title on card).
+- `showTitle` can be false on cards if name/quote live under the stage.
+
+## S5 — Pricing (3 plans)
+
+- Three clear plans; each states business-value outcomes (revenue/leads/clarity), not feature dumps.
+- Highlight one recommended plan.
+
+## S6 — CTA band
+
+- Match prior site visual language; optional inspiration from Flowninja-style CTA sections.
+- One primary action; optional secondary.
+
+## S7 — Footer
+
+- Layout inspiration: https://capsules.moyra.co/
+- Restyle with G8 Flow colors; brand **G8 Flow**.
+
+## Frontend design constraints
+
+Follow the user’s frontend design user-rules (hero budget, no hero cards/overlays, one job per section, real visual anchors, intentional motion 2–3×).

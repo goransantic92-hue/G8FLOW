@@ -1,0 +1,47 @@
+---
+description: G8 Flow brand — colors, typography, visual identity for the portfolio
+alwaysApply: true
+---
+
+# G8 Flow — Brand
+
+Brand name / logo / credentials: **G8 Flow**.
+
+## Colors (strict usage mix)
+
+| Token | Hex | Site usage |
+|-------|-----|------------|
+| `--g8-navy` | `#08163C` | ~60% — primary surfaces, hero fields, deep backgrounds |
+| `--g8-blue` | `#15389B` | ~30% — accents, links, secondary fills, CTAs (with navy) |
+| `--g8-forest` | `#264238` | ~10% — rare accent / grounding / secondary detail |
+
+Use a navy→blue gradient (`#08163C` → `#15389B`) as the dominant atmospheric field. Do not invent purple/indigo AI-default themes. Do not use cream+terracotta or newspaper layouts.
+
+## Typography (Flux scale; Satoshi substitute)
+
+Source site: https://www.flux-academy.com/ — Flux uses **Britti Sans** (commercial). This project uses **Satoshi** unless Britti is licensed later. Details: `docs/g8-flow/content/typography.md`.
+
+- Family: `Satoshi`, fallbacks `Helvetica Neue, Helvetica, Arial, sans-serif`
+- Body: ~1rem, line-height ~1.5, letter-spacing ~0.03rem
+- H1 desktop ~4.5rem / lh ~4.8rem; large desktop ~5.5rem; tablet ~3.5rem; mobile ~2.75rem
+- H2 desktop ~4rem; H3 ~3.5rem; H4 ~3rem; H5 ~2rem; H6 ~1.5rem
+- Headings: weight 600; sentence case OK when Hormozi clarity needs it
+- Do not use Inter/Roboto as the brand face
+
+## Visual direction
+
+- Premium, futuristic, Awwwards / Apple-adjacent motion — not noisy
+- Full-bleed hero media; no inset hero cards; no floating promo chips on hero imagery
+- One composition per first viewport; brand/name is a hero-level signal
+- Prefer expressive type (Britti) over Inter/Roboto/system defaults
+- Atmosphere via navy/blue gradient + imagery; avoid flat single-color pages
+---
+
+## Assets & content
+
+- Hero portrait: `public/images/goran-hero.png`
+- Copy/pricing/legal/i18n: `docs/g8-flow/content/`
+
+## Stack defaults (when building)
+
+Next.js 15, React, TypeScript, Tailwind CSS, GSAP + ScrollTrigger, Canvas/WebGL for particle hero. Prefer existing Figma / Webflow / GSAP Cursor skills when relevant.

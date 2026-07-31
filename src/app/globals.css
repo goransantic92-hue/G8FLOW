@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Loominaire";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Loominaire-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Qurova";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/Qurova-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Qurova";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Qurova-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Qurova";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Qurova-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Qurova";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Qurova-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Qurova";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Qurova-Bold.otf") format("opentype");
+}
+
+:root {
+  --g8-navy: #08163c;
+  --g8-blue: #15389b;
+  --g8-forest: #264238;
+  --g8-ink: #e8eefc;
+  --font-logo: "Loominaire", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Qurova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --background: var(--g8-navy);
+  --foreground: var(--g8-ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-g8-navy: var(--g8-navy);
+  --color-g8-blue: var(--g8-blue);
+  --color-g8-forest: var(--g8-forest);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--g8-navy);
+  color: var(--g8-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

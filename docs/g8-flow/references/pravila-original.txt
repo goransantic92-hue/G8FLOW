@@ -1,0 +1,77 @@
+*tipografija  i velicina fonta razmake itd, sve vezano za tipografiju  koristiti istu kao sa sajta https://www.flux-academy.com/
+boje koristiti: 1. gradient #08163C 60% iskoriscenosti na sajtu i #15389B, 2. boja #15389B 30% iskoriscenosti na sajtu, 2. boja #264238 10% iskoriscenosti
+instaliraj  sve potrebne mcp ili pravila za ui/ux dizajn kao i skilove. 
+
+* prodji sledece chekliste i povedi racuna da ta pravila primenis pri izradi sadrzaja i sajta. saljem ti linkove, koristi internet kako bi mogao da ih otvaras:  https://www.plerdy.com/local-service-website-money-leak-checklist/  ;  https://www.plerdy.com/startup-website-money-leak-checklist/  ;  https://www.plerdy.com/landing-page-money-leak-checklist/ ;  https://www.plerdy.com/usability-testing-website-checklist/ ;  https://www.plerdy.com/seo-checklist/  ; https://www.plerdy.com/landing-page-checklist/ ; https://www.plerdy.com/website-launch-checklist/ ;  https://www.plerdy.com/website-content-checklist/. Ono sta se kosi sa pravila nasim prvobitnim ti nemoj da primenjujes i stvari koje nisu u skladu sa ovakvim tipom mog sajta isto ne mroas da primenis, procenices sam sta je logicno primeniti i sta nije.
+ i
+* prva sekcija tekst koji prodaje tj seo jak za nekog frilensera koji nudi usluge pravljenja sajtova i aplikacija i saas, samo te reci u H1 ne spominji nego nesto tipa, dopusite vasem sajtu da vam zaradjuje na tu foru, ne mora to, za copy koristi sva pravila i model pisanja Alexa Hormozia, i sve humanizuj. ceo tekst na sajtu da bude takav da ciljnoj grupi pokazem na koji nacin  bih im doprineo zaradi njihovog biznisa , dalje, da sadrzi 2 cta btn  , salje da ima sliku moju koju ti saljem , od te slike ces napraviti animaciju (mozes da koristis platforme sa free promtovima kao sto su https://www.originkit.dev/components/dot-image-reveal,, https://particles.casberry.in/,  ili nesto tipa ovako :
+Create a premium hero section animation.
+
+Technology:
+- Next.js 15
+- React
+- TypeScript
+- Tailwind CSS
+- GSAP ScrollTrigger
+- Three.js / Canvas particles
+
+Requirements:
+
+Create a hero section with my personal image.
+
+When the user scrolls from Hero to the next section:
+
+1. Detect scroll progress using GSAP ScrollTrigger.
+
+2. Transform the image into thousands of small white particles.
+
+3. The particles should look like:
+- glowing pixels
+- tiny stars
+- dust particles
+
+4. The animation:
+- starts with the original image visible
+- image slowly breaks apart
+- pixels separate from the image
+- particles move outward naturally
+- particles fade away
+- next section appears smoothly
+
+Visual style:
+- futuristic
+- premium
+- Apple / Awwwards style
+- smooth 60fps animation
+
+Add:
+- subtle glow
+- depth effect
+- smooth easing
+- responsive mobile support
+
+Optimize performance:
+- use WebGL or Canvas
+- avoid heavy DOM elements
+- lazy load effects
+
+
+u sustini da se pri skrolu da dole slika :rasprsi u sitne piksele, i da ti pikseli ili kao zvezdice sitne prate do druge sekcije koje ce se pretvoriti u  neki 3D objekat koji ce popuniti prazan prostor u  2. sekciji..
+
+
+* 2. sekcija  sa sajta flux-academy.com koristi sekciju The Flux way za inspiracaiju ili ksroz iskoripiraj ideju za flow kako ide postupak od pocetka projekta do lansiranja projekta
+
+
+
+* 3. sekcija Sa sajta https://konvo.pk/ iz sekcije Picture  preuzeces animaciju i inspiraciju da mi napravis moju sekciju za futured wokrs tj sa zajtove koje sam uradio,
+samo sto ce umesto ovakvog videa na tom mestu ici autoplay skroll kroz odredjeni sajt , sa leve strance ice inaziv sajta i logo iznad a sa deesne strane bice tekst ideja  i sta smo postigli sa odredjenim sajtovm
+1. sajt ce biti https://busystrong90.com/ ; 2. https://lenkolino.shop/ i 3. https://thrivewithmarina.vercel.app/
+
+* 4. sekcija sa sajta  https://www.originkit.dev/components/coverflowgallery koristi promt : iz fajla promt testimonials koji ti saljem,  za testimonialse, samo uredi da kad se pojavi odredjena slika da se ispod nje pojavi ime osobe i recenzija tekst, taj tekst humanizuj.
+
+
+* 5. sekcija ce biti sekcija sa 3 izbora plANA sa cenama, u tim planovima jasno navedi sta bi dobili koje vrednosti tako da ih privuce u smislu da znaju da bi doprineli zaradi svom biznisu.
+
+* 6. sekcija CTA sekcija na osnovu predjasnjeg  izgleda sajta i mozes da koristis inspiraciju sa sajta flowninja za cta sekciju.
+
+* 7. footer napravi po izgldeu sa sajta https://capsules.moyra.co/, samo ces koristiti  model naseg sajta sa nasim bojama. a ime tj moj logo i credentials ce se zvati : G8 Flow

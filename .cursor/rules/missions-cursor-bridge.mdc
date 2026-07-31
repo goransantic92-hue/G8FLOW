@@ -1,0 +1,23 @@
+---
+description: Bridge — Claude Missions MD in this repo adapted for Cursor + G8 Flow portfolio
+alwaysApply: true
+---
+
+# Missions ↔ Cursor (this portfolio)
+
+This repo includes Claude Missions markdown (`AGENTS.md`, `claude-missions/`). Treat it as the **execution system**; treat `.cursor/rules/g8-flow-*.mdc` as the **product design truth**.
+
+## Adaptations for Cursor
+
+- Prefer Cursor Agent + `.cursor/rules` + `.cursor/skills` over Claude Code slash commands when working in Cursor.
+- Orchestrator still must not silently invent credentials; keep secrets in `.env` only.
+- Workers / implementers writing UI **must** follow G8 Flow brand, sections, copy, and QA rules.
+- Version freshness (search before pinning packages) still applies for Next, GSAP, Three, Tailwind.
+- MCP-first for external services; for design use Figma / Webflow MCP when available; for motion use GSAP skills.
+- GetLayers builds: load `.cursor/skills/getlayers/SKILL.md` before any `getlayers_*` tool (Cursor adaptation of the official skill; raw copy also at `.claude/skills/getlayers/SKILL.md`).
+
+## Do not
+
+- Let mission scaffolding overwrite G8 section order or brand tokens
+- Ship UI that passes assertions but violates hero / typography / color rules
+- Ask the user to run setup commands you can run yourself in the agent shell

@@ -84,11 +84,45 @@ img{display:block;max-width:100%}
 .word-reveal.is-in .word{transform:translateY(0);opacity:1}
 
 /* Header */
-.header{position:absolute;inset-inline:0;top:0;z-index:50;opacity:0;transform:translateY(-14px);transition:opacity .7s cubic-bezier(.22,1,.36,1) .15s,transform .7s cubic-bezier(.22,1,.36,1) .15s}
+.header{
+  position:fixed;
+  inset-inline:0;
+  top:0;
+  z-index:100;
+  opacity:0;
+  transform:translateY(-14px);
+  color:#fff;
+  background:transparent;
+  -webkit-backdrop-filter:blur(0);
+  backdrop-filter:blur(0);
+  box-shadow:none;
+  transition:
+    opacity .7s cubic-bezier(.22,1,.36,1) .15s,
+    transform .7s cubic-bezier(.22,1,.36,1) .15s,
+    background-color .35s ease,
+    color .35s ease,
+    box-shadow .35s ease,
+    backdrop-filter .35s ease,
+    -webkit-backdrop-filter .35s ease;
+}
 .header.is-ready{opacity:1;transform:none}
+.header[data-theme="dark"]{
+  color:#fff;
+  background:rgba(8,22,60,.22);
+  -webkit-backdrop-filter:blur(14px) saturate(1.15);
+  backdrop-filter:blur(14px) saturate(1.15);
+  box-shadow:0 1px 0 rgba(255,255,255,.08);
+}
+.header[data-theme="light"]{
+  color:#08163C;
+  background:rgba(248,248,248,.78);
+  -webkit-backdrop-filter:blur(16px) saturate(1.2);
+  backdrop-filter:blur(16px) saturate(1.2);
+  box-shadow:0 1px 0 rgba(8,22,60,.08);
+}
 .header__inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.25rem}
 @media(min-width:640px){.header__inner{padding:1.5rem 2rem}}
-.brand{display:inline-flex;align-items:center;gap:0;will-change:transform;color:#fff;background:transparent;border:0;padding:0;cursor:pointer}
+.brand{display:inline-flex;align-items:center;gap:0;will-change:transform;color:inherit;background:transparent;border:0;padding:0;cursor:pointer}
 .brand__logo{
   display:block;
   font-family:'Gebuk',sans-serif;
@@ -101,7 +135,7 @@ img{display:block;max-width:100%}
 }
 .footer__brand-name .brand__logo{font-size:clamp(1.85rem, 3.4vw, 2.35rem)}
 .nav-menu .brand__logo{font-size:clamp(1.85rem, 5vw, 2.4rem)}
-.header__nav{display:none;gap:2rem;font-size:.875rem;font-weight:500;align-items:center;color:rgba(255,255,255,.85)}
+.header__nav{display:none;gap:2rem;font-size:.875rem;font-weight:500;align-items:center;color:inherit}
 @media(min-width:1024px){.header__nav{display:flex}}
 .header__nav > li{position:relative}
 .header__nav button,.header__nav-link{will-change:transform,opacity;color:inherit;text-decoration:none}
@@ -114,11 +148,24 @@ img{display:block;max-width:100%}
 .nav-drop a{display:block;padding:.625rem .75rem;border-radius:.75rem;font-size:.8125rem;font-weight:500;color:rgba(17,17,17,.7);transition:background .2s,color .2s}
 .nav-drop a:hover{background:#f1f0ee;color:#111}
 .header__right{display:flex;align-items:center;gap:.75rem}
-.menu-btn{border:1px solid rgba(230,229,226,.8);background:rgba(255,255,255,.4);backdrop-filter:blur(4px);border-radius:.875rem;transition:background .3s}
-.menu-btn:hover{background:rgba(255,255,255,.7)}
+.menu-btn{
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.14);
+  color:inherit;
+  backdrop-filter:blur(4px);
+  border-radius:.875rem;
+  transition:background .3s,border-color .3s,color .3s;
+}
+.menu-btn:hover{background:rgba(255,255,255,.28)}
+.header[data-theme="light"] .menu-btn{
+  border-color:rgba(8,22,60,.18);
+  background:rgba(255,255,255,.55);
+}
+.header[data-theme="light"] .menu-btn:hover{background:rgba(255,255,255,.85)}
 .menu-btn__inner{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;will-change:transform}
 .menu-btn__label{display:none}
 @media(min-width:640px){.menu-btn__label{display:inline}}
+html{scroll-padding-top:5.5rem}
 
 /* Hero */
 .hero-scroll-track{position:relative}
@@ -643,14 +690,15 @@ img{display:block;max-width:100%}
 @media(min-width:640px){.portfolio__h2{font-size:3rem}}
 
 .coverflow{
-  --cf-w:880px;
-  --cf-h:560px;
+  /* Stage matches ~2.2:1 screen recordings + browser chrome so cover shows full width */
+  --cf-w:960px;
+  --cf-h:480px;
   --cf-radius:18px;
   --cf-ease:cubic-bezier(0.22, 1, 0.36, 1);
   --cf-dur:0.8s;
   position:relative;
   width:100%;
-  min-height:clamp(360px, 62vw, 620px);
+  min-height:clamp(280px, 52vw, 520px);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -662,7 +710,7 @@ img{display:block;max-width:100%}
 .coverflow__stage{
   position:relative;
   width:min(var(--cf-w), 94vw);
-  height:calc(min(var(--cf-w), 94vw) * 560 / 880);
+  height:calc(min(var(--cf-w), 94vw) * 480 / 960);
   max-width:var(--cf-w);
   max-height:var(--cf-h);
   transform-style:preserve-3d;
@@ -757,13 +805,13 @@ img{display:block;max-width:100%}
   inset:0;
   width:100%;
   height:100%;
+  /* Fill card width like cover; stage aspect matches recordings so sides aren't cropped */
   object-fit:cover;
   object-position:top center;
   display:block;
   pointer-events:none;
   user-select:none;
   background:#0a0a0a;
-  /* Keep scroll footage crisp */
   image-rendering:auto;
   -webkit-backface-visibility:hidden;
   backface-visibility:hidden;
@@ -1293,7 +1341,7 @@ html.lenis,html.lenis body{height:auto}
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="header" id="header">
+<header class="header" id="header" data-theme="dark">
   <div class="shell header__inner">
     <button class="brand" type="button" data-scroll="home" aria-label="G8 Flow home">
       <span class="brand__logo">G8 Flow</span>
@@ -1320,7 +1368,7 @@ html.lenis,html.lenis body{height:auto}
 
 <main id="main">
   <div class="hero-scroll-track">
-  <section class="hero" id="home">
+  <section class="hero" id="home" data-nav-theme="dark">
     <div class="liquid" id="liquid">
       <div class="liquid__field" aria-hidden="true"></div>
       <img class="liquid__img" id="liquidBase" alt="" decoding="async" fetchpriority="high"
@@ -1355,7 +1403,7 @@ html.lenis,html.lenis body{height:auto}
   </section>
   </div>
 
-  <section class="process" id="process">
+  <section class="process" id="process" data-nav-theme="light">
     <div class="process-track" id="processTrack">
       <div class="process-sticky">
         <header class="process__head">
@@ -1408,7 +1456,7 @@ html.lenis,html.lenis body{height:auto}
     </div>
   </section>
 
-  <section class="portfolio" id="works">
+  <section class="portfolio" id="works" data-nav-theme="light">
     <div class="portfolio-track" id="portfolioTrack">
       <div class="portfolio-sticky">
         <div class="shell portfolio__inner">
@@ -1432,7 +1480,7 @@ html.lenis,html.lenis body{height:auto}
   <div class="closing">
     <div class="closing__field" aria-hidden="true"></div>
     <div class="closing__vignette" aria-hidden="true"></div>
-  <section class="about" id="about" aria-label="About me">
+  <section class="about" id="about" aria-label="About me" data-nav-theme="dark">
     <div class="about__inner">
       <div class="about__glass reveal" data-reveal data-io>
         <p class="about__eyebrow">About me</p>
@@ -1471,7 +1519,7 @@ html.lenis,html.lenis body{height:auto}
     </div>
   </section>
 
-  <div class="ticker" aria-label="Site offers">
+  <div class="ticker" aria-label="Site offers" data-nav-theme="light">
     <div class="ticker__track">
       <div class="ticker__group">
         <span class="ticker__item">Your site should make you money — not just look expensive <span class="ticker__dot" aria-hidden="true"></span></span>
@@ -1500,7 +1548,7 @@ html.lenis,html.lenis body{height:auto}
   <div id="privacy" class="sr-only"></div>
   <div id="terms" class="sr-only"></div>
 
-<footer class="footer">
+<footer class="footer" data-nav-theme="dark">
   <div class="shell footer__inner">
     <div class="footer__cta">
       <h2 class="footer__h2" data-lines data-io data-line-stagger="100">
@@ -1668,15 +1716,48 @@ function scrollToId(id){
   if (!el) return;
   scrollEnabled = false;
   setTimeout(() => {
-    const top = el.getBoundingClientRect().top + window.pageYOffset;
+    const header = document.getElementById('header');
+    const offset = header ? header.offsetHeight : 0;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
     if (typeof lenis.scrollTo === 'function') {
-      lenis.scrollTo(top, { immediate: false });
+      lenis.scrollTo(Math.max(0, top), { immediate: false });
     } else {
-      window.scrollTo({ top, behavior: 'smooth' });
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
     }
     setTimeout(() => { scrollEnabled = true; }, 100);
   }, 50);
 }
+
+/* Sticky header theme follows section under the bar */
+(function initHeaderTheme(){
+  const header = document.getElementById('header');
+  if (!header) return;
+  const zones = () => [...document.querySelectorAll('[data-nav-theme]')];
+  let rafId = 0;
+  function apply(){
+    rafId = 0;
+    const probe = Math.max(8, header.offsetHeight * 0.55);
+    let theme = 'dark';
+    for (const zone of zones()) {
+      const r = zone.getBoundingClientRect();
+      if (r.top <= probe && r.bottom > probe) {
+        theme = zone.getAttribute('data-nav-theme') || 'dark';
+        break;
+      }
+    }
+    if (header.getAttribute('data-theme') !== theme) {
+      header.setAttribute('data-theme', theme);
+    }
+  }
+  function schedule(){
+    if (rafId) return;
+    rafId = requestAnimationFrame(apply);
+  }
+  if (typeof lenis?.on === 'function') lenis.on('scroll', schedule);
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule);
+  apply();
+})();
 
 let ready = false;
 const onReady = [];
@@ -1987,25 +2068,22 @@ setReady();
       title: 'BusyStrong90',
       href: 'https://busystrong90.com/',
       host: 'busystrong90.com',
-      poster: './assets/works/busystrong90.jpg',
-      mp4: './assets/works/videos/busystrong90.mp4',
-      webm: './assets/works/videos/busystrong90.webm',
+      poster: './assets/works/busystrong90.jpg?v=2',
+      mp4: './assets/works/videos/busystrong90.mp4?v=2',
     },
     {
       title: 'Lenkolino',
       href: 'https://www.lenkolino.shop/',
       host: 'lenkolino.shop',
-      poster: './assets/works/lenkolino.jpg',
-      mp4: './assets/works/videos/lenkolino.mp4',
-      webm: './assets/works/videos/lenkolino.webm',
+      poster: './assets/works/lenkolino.jpg?v=2',
+      mp4: './assets/works/videos/lenkolino.mp4?v=2',
     },
     {
       title: 'Thrivewithmarina',
       href: 'https://thrivewithmarina.vercel.app/',
       host: 'thrivewithmarina.vercel.app',
-      poster: './assets/works/thrivewithmarina.jpg',
-      mp4: './assets/works/videos/thrivewithmarina.mp4',
-      webm: './assets/works/videos/thrivewithmarina.webm',
+      poster: './assets/works/thrivewithmarina.jpg?v=2',
+      mp4: './assets/works/videos/thrivewithmarina.mp4?v=2',
     },
   ];
 
@@ -2029,7 +2107,6 @@ setReady();
         <div class="browser-mock__screen">
           <video class="coverflow__media" muted playsinline preload="auto" poster="${s.poster}">
             <source src="${s.mp4}" type="video/mp4" />
-            <source src="${s.webm}" type="video/webm" />
           </video>
           <p class="coverflow__title">${s.title}</p>
         </div>

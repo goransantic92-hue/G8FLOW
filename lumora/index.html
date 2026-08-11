@@ -120,14 +120,15 @@ img{display:block;max-width:100%}
   backdrop-filter:blur(16px) saturate(1.2);
   box-shadow:0 1px 0 rgba(8,22,60,.08);
 }
-.header__inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.25rem}
-@media(min-width:640px){.header__inner{padding:1.5rem 2rem}}
+.header__inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:.7rem 1.25rem}
+@media(min-width:640px){.header__inner{padding:.85rem 2rem}}
+@media(min-width:1024px){.header__inner{padding:.65rem 2rem}}
 .brand{display:inline-flex;align-items:center;gap:0;will-change:transform;color:inherit;background:transparent;border:0;padding:0;cursor:pointer}
 .brand__logo{
   display:block;
   font-family:'Gebuk',sans-serif;
   font-weight:400;
-  font-size:clamp(1.65rem, 3.2vw, 2.15rem);
+  font-size:clamp(1.45rem, 2.8vw, 1.85rem);
   line-height:1;
   letter-spacing:.02em;
   color:inherit;
@@ -165,11 +166,22 @@ img{display:block;max-width:100%}
 .menu-btn__inner{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;will-change:transform}
 .menu-btn__label{display:none}
 @media(min-width:640px){.menu-btn__label{display:inline}}
-html{scroll-padding-top:5.5rem}
+html{scroll-padding-top:4.25rem}
 
 /* Hero */
 .hero-scroll-track{position:relative}
-.hero{position:relative;isolation:isolate;overflow:hidden;border-radius:0 0 2rem 2rem;background:var(--hero-bg);background-color:var(--hero-mid)}
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  border-radius:0 0 2rem 2rem;
+  background:var(--hero-bg);
+  background-color:var(--hero-mid);
+  min-height:100svh;
+}
+@media(min-width:1024px){
+  .hero{min-height:118lvh}
+}
 @media (hover:none),(pointer:coarse){
   .hero-scroll-track{height:175svh}
   .hero{position:sticky;top:0;height:100svh}
@@ -186,7 +198,7 @@ html{scroll-padding-top:5.5rem}
 }
 #liquidBase{mix-blend-mode:soft-light;opacity:.94}
 @media(min-width:1024px){
-  .liquid__img,.liquid__canvas,.liquid__clear{object-position:center 42%}
+  .liquid__img,.liquid__canvas,.liquid__clear{object-position:center 58%}
 }
 .liquid__canvas{
   pointer-events:none;
@@ -273,8 +285,8 @@ html{scroll-padding-top:5.5rem}
 @media(min-width:640px){.hero__content{padding-left:2rem;padding-right:2rem}}
 @media(min-width:1024px){
   .hero__content{
-    min-height:100lvh;
-    padding:7rem 2rem 6rem;
+    min-height:118lvh;
+    padding:6rem 2rem 7rem;
   }
 }
 .hero__left{
@@ -1798,16 +1810,16 @@ setReady();
   afterImg.src = CLEAR_SRC; // trail / reveal image
 
   function drawFit(img, target, tw, th){
-    // Match CSS object-fit: contain + object-position (center / desktop center 42%)
+    // Match CSS object-fit: contain + object-position (center / desktop center 58%)
     const tctx = target.getContext('2d');
     const ir = img.naturalWidth / img.naturalHeight;
     const cr = tw / th;
     let dw, dh, dx, dy;
     if (ir > cr){ dw = tw; dh = tw / ir; dx = 0; dy = (th - dh) / 2; }
     else { dh = th; dw = th * ir; dx = (tw - dw) / 2; dy = 0; }
-    // Desktop: nudge toward object-position y ≈ 42% (CSS: center 42%)
+    // Desktop: nudge toward object-position y ≈ 58% (CSS: center 58%)
     if (matchMedia('(min-width: 1024px)').matches && dh < th) {
-      const posY = 0.42;
+      const posY = 0.58;
       dy = (th - dh) * posY;
     }
     tctx.clearRect(0, 0, tw, th);

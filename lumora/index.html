@@ -1239,7 +1239,9 @@ html.lenis,html.lenis body{height:auto}
 .nav-menu[hidden],.modal[hidden]{display:none!important}
 
 /* Nav menu */
-.nav-menu{position:fixed;inset:0;z-index:115;display:flex;flex-direction:column;background:#0a0a0a;color:#fff;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .5s cubic-bezier(.22,1,.36,1),visibility .5s}
+.nav-menu{position:fixed;inset:0;z-index:115;display:flex;flex-direction:column;background:var(--hero-bg);background-color:var(--hero-mid);color:#fff;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .5s cubic-bezier(.22,1,.36,1),visibility .5s}
+.nav-menu::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 140% 110% at 50% 42%, transparent 50%, rgba(8,22,60,.15) 100%);opacity:.45}
+.nav-menu__top,.nav-menu__nav,.nav-menu__bottom{position:relative;z-index:1}
 .nav-menu.is-open{opacity:1;pointer-events:auto;visibility:visible}
 .nav-menu__top{display:flex;align-items:center;justify-content:space-between;padding:1.25rem}
 @media(min-width:640px){.nav-menu__top{padding:1.5rem 2rem}}
@@ -1322,9 +1324,9 @@ html.lenis,html.lenis body{height:auto}
     <div class="liquid" id="liquid">
       <div class="liquid__field" aria-hidden="true"></div>
       <img class="liquid__img" id="liquidBase" alt="" decoding="async" fetchpriority="high"
-        src="./assets/hero/portfolio-base.jpg" />
+        src="./assets/hero/portfolio-base.jpg?v=3" />
       <img class="liquid__clear" id="liquidClear" alt="" decoding="async"
-        src="./assets/hero/portfolio-clear.jpg" />
+        src="./assets/hero/portfolio-clear.jpg?v=3" />
       <canvas class="liquid__canvas" id="liquidCanvas" aria-hidden="true"></canvas>
     </div>
     <div class="hero__vignette" aria-hidden="true"></div>
@@ -1593,8 +1595,8 @@ html.lenis,html.lenis body{height:auto}
 <script type="module">
 import Lenis from 'lenis';
 
-const BASE_SRC = './assets/hero/portfolio-base.jpg';   // always-shown base (blue silhouette)
-const CLEAR_SRC = './assets/hero/portfolio-clear.jpg'; // brush-revealed clear portrait
+const BASE_SRC = './assets/hero/portfolio-base.jpg?v=3';   // always-shown base (blue silhouette)
+const CLEAR_SRC = './assets/hero/portfolio-clear.jpg?v=3'; // brush-revealed clear portrait
 const CALENDLY_URL = 'https://calendly.com/goransantic/30min';
 
 const ICONS = {

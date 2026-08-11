@@ -1807,6 +1807,8 @@ function startScroll(){
 function scrollToId(id){
   const el = document.getElementById(id);
   if (!el) return;
+  // Ensure Lenis/page scroll is unlocked (e.g. after closing the menu)
+  if (!scrollEnabled || lenis?.isStopped) startScroll();
   scrollEnabled = false;
   setTimeout(() => {
     const header = document.getElementById('header');
@@ -2755,8 +2757,13 @@ document.addEventListener('click', (e) => {
     e.preventDefault();
     const id = scrollBtn.getAttribute('data-scroll');
     if (!id) return;
-    if (menuOpen) closeMenu();
-    setTimeout(() => scrollToId(id), menuOpen ? 200 : 0);
+    const fromMenu = menuOpen;
+    if (fromMenu) closeMenu();
+    // Wait for menu close + startScroll unlock before scrolling
+    setTimeout(() => {
+      startScroll();
+      scrollToId(id);
+    }, fromMenu ? 450 : 0);
   }
 });
 

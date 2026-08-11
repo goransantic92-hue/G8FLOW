@@ -1395,6 +1395,8 @@ html.lenis,html.lenis body{height:auto}
 .nav-menu__label{color:rgba(255,255,255,.7);transition:color .3s}
 .nav-menu__item:hover .nav-menu__idx{color:#cf8047}
 .nav-menu__item:hover .nav-menu__label{color:#fff}
+.nav-menu__item.is-current .nav-menu__idx{color:#6b93ff}
+.nav-menu__item.is-current .nav-menu__label{color:#fff}
 .nav-menu__bottom{display:flex;flex-direction:column;gap:.75rem;border-top:1px solid rgba(255,255,255,.1);padding:1.5rem 1.25rem;font-size:.75rem;text-transform:uppercase;letter-spacing:.025em;color:rgba(255,255,255,.45)}
 @media(min-width:640px){.nav-menu__bottom{flex-direction:row;justify-content:space-between;padding-left:2rem;padding-right:2rem;align-items:center}}
 .nav-menu__cta{color:rgba(255,255,255,.7);text-align:left}
@@ -1440,9 +1442,9 @@ html.lenis,html.lenis body{height:auto}
     <nav aria-label="Primary">
       <ul class="header__nav">
         <li><button type="button" data-scroll="home" aria-current="page">Home</button></li>
+        <li><button type="button" data-scroll="process">Process</button></li>
         <li><button type="button" data-scroll="works">Work</button></li>
         <li><button type="button" data-scroll="about">About</button></li>
-        <li><button type="button" data-scroll="process">Process</button></li>
         <li><a class="header__nav-link" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">Contact</a></li>
       </ul>
     </nav>
@@ -1808,13 +1810,28 @@ function scrollToId(id){
   scrollEnabled = false;
   setTimeout(() => {
     const header = document.getElementById('header');
-    const offset = header ? header.offsetHeight : 0;
-    const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    const offset = header ? header.offsetHeight + 8 : 8;
+    let top = 0;
+    if (id !== 'home') {
+      top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    }
     if (typeof lenis.scrollTo === 'function') {
       lenis.scrollTo(Math.max(0, top), { immediate: false });
     } else {
       window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
     }
+    // Update active nav immediately on click
+    document.querySelectorAll('.header__nav [data-scroll]').forEach(btn => {
+      const match = btn.getAttribute('data-scroll') === id;
+      if (match) btn.setAttribute('aria-current', 'page');
+      else btn.removeAttribute('aria-current');
+    });
+    document.querySelectorAll('.nav-menu__item[data-scroll]').forEach(btn => {
+      const match = btn.getAttribute('data-scroll') === id;
+      btn.classList.toggle('is-current', match);
+      if (match) btn.setAttribute('aria-current', 'page');
+      else btn.removeAttribute('aria-current');
+    });
     setTimeout(() => { scrollEnabled = true; }, 100);
   }, 50);
 }
@@ -2425,9 +2442,9 @@ setReady();
 /* Nav menu items */
 const NAV_ITEMS = [
   { label:'Home', scroll:'home' },
+  { label:'Process', scroll:'process' },
   { label:'Work', scroll:'works' },
   { label:'About', scroll:'about' },
-  { label:'Process', scroll:'process' },
   { label:'Contact', href: CALENDLY_URL },
 ];
 document.getElementById('navMenuList').innerHTML = NAV_ITEMS.map((item,i) => `
@@ -2439,6 +2456,51 @@ document.getElementById('navMenuList').innerHTML = NAV_ITEMS.map((item,i) => `
         <span class="nav-menu__idx">0${i}</span><span class="nav-menu__label">${item.label}</span>
       </button>`}
   </li>`).join('');
+
+/* Keep header + menu active state in sync with visible section */
+(function initNavActive(){
+  const SECTION_IDS = ['home', 'process', 'works', 'about'];
+  const headerBtns = [...document.querySelectorAll('.header__nav [data-scroll]')];
+  function setCurrent(id){
+    headerBtns.forEach(btn => {
+      const match = btn.getAttribute('data-scroll') === id;
+      if (match) btn.setAttribute('aria-current', 'page');
+      else btn.removeAttribute('aria-current');
+    });
+    document.querySelectorAll('.nav-menu__item[data-scroll]').forEach(btn => {
+      const match = btn.getAttribute('data-scroll') === id;
+      btn.classList.toggle('is-current', match);
+      if (match) btn.setAttribute('aria-current', 'page');
+      else btn.removeAttribute('aria-current');
+    });
+  }
+  function update(){
+    const header = document.getElementById('header');
+    const probe = (header?.offsetHeight || 64) + 24;
+    let current = 'home';
+    for (const id of SECTION_IDS) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      const r = el.getBoundingClientRect();
+      if (r.top <= probe && r.bottom > probe) {
+        current = id;
+        break;
+      }
+      // sticky tall track: if we've entered this section, keep it until next starts
+      if (r.top <= probe) current = id;
+    }
+    setCurrent(current);
+  }
+  let raf = 0;
+  function schedule(){
+    if (raf) return;
+    raf = requestAnimationFrame(() => { raf = 0; update(); });
+  }
+  if (typeof lenis?.on === 'function') lenis.on('scroll', schedule);
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule);
+  update();
+})();
 
 /* Reveals */
 function kickHeroReveals(){
@@ -2690,6 +2752,7 @@ document.addEventListener('click', (e) => {
     return;
   }
   if (scrollBtn) {
+    e.preventDefault();
     const id = scrollBtn.getAttribute('data-scroll');
     if (!id) return;
     if (menuOpen) closeMenu();

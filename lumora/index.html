@@ -12,6 +12,13 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;-webkit-font-smoothing:antialiased}
+@font-face{
+  font-family:'Gebuk';
+  src:url('./assets/fonts/gebuk/Gebuk-Regular.ttf') format('truetype');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
 body{background:#ffffff;color:#111111;font-family:'Onest',sans-serif;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
@@ -81,17 +88,19 @@ img{display:block;max-width:100%}
 .header.is-ready{opacity:1;transform:none}
 .header__inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.25rem}
 @media(min-width:640px){.header__inner{padding:1.5rem 2rem}}
-.brand{display:inline-flex;align-items:center;gap:0;font-size:1.125rem;font-weight:600;letter-spacing:-.01em;will-change:transform;color:#fff;background:transparent;border:0;padding:0;cursor:pointer}
+.brand{display:inline-flex;align-items:center;gap:0;will-change:transform;color:#fff;background:transparent;border:0;padding:0;cursor:pointer}
 .brand__logo{
   display:block;
-  width:clamp(3.75rem, 10vw, 5rem);
-  height:auto;
-  aspect-ratio:640 / 484;
-  object-fit:contain;
-  object-position:left center;
+  font-family:'Gebuk',sans-serif;
+  font-weight:400;
+  font-size:clamp(1.65rem, 3.2vw, 2.15rem);
+  line-height:1;
+  letter-spacing:.02em;
+  color:inherit;
+  white-space:nowrap;
 }
-.footer__brand-name .brand__logo{width:clamp(4.25rem, 11vw, 5.75rem)}
-.nav-menu .brand__logo{width:clamp(4rem, 12vw, 5.25rem)}
+.footer__brand-name .brand__logo{font-size:clamp(1.85rem, 3.4vw, 2.35rem)}
+.nav-menu .brand__logo{font-size:clamp(1.85rem, 5vw, 2.4rem)}
 .header__nav{display:none;gap:2rem;font-size:.875rem;font-weight:500;align-items:center;color:rgba(255,255,255,.85)}
 @media(min-width:1024px){.header__nav{display:flex}}
 .header__nav > li{position:relative}
@@ -1147,6 +1156,8 @@ img{display:block;max-width:100%}
 @media(min-width:640px){.footer__h2{font-size:3rem}}
 @media(min-width:768px){.footer__h2{font-size:3.75rem}}
 .footer__cols{
+  position:relative;
+  z-index:1;
   display:grid;
   grid-template-columns:1fr;
   gap:2.5rem;
@@ -1160,33 +1171,56 @@ img{display:block;max-width:100%}
 .footer__col{display:flex;flex-direction:column;align-items:flex-start;gap:.55rem}
 .footer__col a,.footer__legal a,.footer__contact{display:inline-flex;font-size:.875rem;opacity:.7;will-change:transform,opacity;margin-bottom:0;color:#fff;text-decoration:none}
 .footer__col a:hover,.footer__contact:hover,.footer__legal a:hover{opacity:1}
-.footer__legal{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:1rem;border-top:1px solid rgba(255,255,255,.12);padding-top:2rem;font-size:.75rem;color:rgba(255,255,255,.45)}
+.footer__body{
+  position:relative;
+  isolation:isolate;
+  padding-bottom:clamp(4rem, 12vw, 10rem);
+}
+.footer__legal{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  border-top:1px solid rgba(255,255,255,.12);
+  padding-top:2rem;
+  font-size:.75rem;
+  color:rgba(255,255,255,.45);
+}
 @media(min-width:640px){.footer__legal{flex-direction:row}}
 .footer__legal-links{display:flex;gap:1.5rem}
 .footer__legal-links a{opacity:.7}
 .footer__watermark{
   position:absolute;
-  inset-inline:0;
-  bottom:-2.5rem;
+  top:0;
+  left:50%;
   z-index:0;
+  width:max-content;
+  max-width:none;
+  margin:0;
+  padding:0;
   text-align:center;
   pointer-events:none;
   user-select:none;
   font-weight:700;
-  line-height:.85;
+  line-height:1;
   letter-spacing:-.05em;
-  font-size:clamp(8rem, 32vw, 24rem);
+  font-size:clamp(8rem, 28vw, 22rem);
   color:rgba(255,255,255,.07);
+  white-space:nowrap;
+  /* Cap ink on CTA bottom border; horizontally centered */
+  transform:translate(-50%, -0.045em);
 }
 @media (max-width:640px){
   .footer__watermark{
-    bottom:1rem;
     font-size:19vw;
     letter-spacing:-.02em;
-    line-height:1;
-    white-space:nowrap;
+    transform:translate(-50%, -0.04em);
   }
-  .footer__inner{padding-bottom:6rem}
+  .footer__body{padding-bottom:5rem}
+  .footer__inner{padding-bottom:2.5rem}
 }
 .footer .pill--light .pill__inner{
   background:#fff;
@@ -1260,7 +1294,7 @@ html.lenis,html.lenis body{height:auto}
 <header class="header" id="header">
   <div class="shell header__inner">
     <button class="brand" type="button" data-scroll="home" aria-label="G8 Flow home">
-      <img class="brand__logo" src="./assets/brand/g8flow-logo-white.svg" width="80" height="61" alt="" decoding="async" />
+      <span class="brand__logo">G8 Flow</span>
     </button>
     <nav aria-label="Primary">
       <ul class="header__nav">
@@ -1475,34 +1509,36 @@ html.lenis,html.lenis body{height:auto}
         <span class="pill__inner">Book a call<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
       </a>
     </div>
-    <div class="footer__cols">
-      <div>
-        <div class="footer__brand-name"><img class="brand__logo" src="./assets/brand/g8flow-logo-white.svg" width="92" height="70" alt="G8 Flow" decoding="async" /></div>
-        <p class="footer__tagline">Sites that sell. Clear offers, clean builds, and a path from visit to booked call.</p>
+    <div class="footer__body">
+      <div class="footer__watermark" aria-hidden="true">G8FLOW</div>
+      <div class="footer__cols">
+        <div>
+          <div class="footer__brand-name"><span class="brand__logo">G8 Flow</span></div>
+          <p class="footer__tagline">Sites that sell. Clear offers, clean builds, and a path from visit to booked call.</p>
+        </div>
+        <div class="footer__col">
+          <div class="footer__col-title">Explore</div>
+          <a href="#process" data-scroll="process">Process</a>
+          <a href="#works" data-scroll="works">Work</a>
+          <a href="#about" data-scroll="about">About</a>
+        </div>
+        <div class="footer__col">
+          <div class="footer__col-title">Start</div>
+          <a href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer" class="footer__contact">Book a call</a>
+          <a href="#works" data-scroll="works">See the work</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+        </div>
       </div>
-      <div class="footer__col">
-        <div class="footer__col-title">Explore</div>
-        <a href="#process" data-scroll="process">Process</a>
-        <a href="#works" data-scroll="works">Work</a>
-        <a href="#about" data-scroll="about">About</a>
-      </div>
-      <div class="footer__col">
-        <div class="footer__col-title">Start</div>
-        <a href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer" class="footer__contact">Book a call</a>
-        <a href="#works" data-scroll="works">See the work</a>
-        <a href="#privacy">Privacy</a>
-        <a href="#terms">Terms</a>
-      </div>
-    </div>
-    <div class="footer__legal">
-      <span>© 2026 G8 Flow. All rights reserved.</span>
-      <div class="footer__legal-links">
-        <a href="#privacy">Privacy</a>
-        <a href="#terms">Terms</a>
+      <div class="footer__legal">
+        <span>© 2026 G8 Flow. All rights reserved.</span>
+        <div class="footer__legal-links">
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+        </div>
       </div>
     </div>
   </div>
-  <div class="footer__watermark" aria-hidden="true">G8FLOW</div>
 </footer>
   </div>
 </main>
@@ -1510,7 +1546,7 @@ html.lenis,html.lenis body{height:auto}
 <div class="nav-menu" id="navMenu" hidden aria-hidden="true">
   <div class="shell nav-menu__top">
     <div class="brand" style="color:#fff">
-      <img class="brand__logo" src="./assets/brand/g8flow-logo-white.svg" width="84" height="64" alt="G8 Flow" decoding="async" />
+      <span class="brand__logo">G8 Flow</span>
     </div>
     <button class="nav-menu__close" type="button" id="closeMenu"><span class="icon" style="font-size:.875rem" data-icon="x"></span> Close</button>
   </div>

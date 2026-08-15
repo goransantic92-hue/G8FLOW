@@ -680,6 +680,159 @@ html{scroll-padding-top:4.25rem}
   }
 }
 
+/* Solutions — What I ship */
+.solutions{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:var(--hero-bg);
+  background-color:var(--hero-mid);
+  color:#fff;
+}
+.solutions__inner{
+  padding:4.5rem 1.25rem 4rem;
+  max-width:88rem;
+  margin:0 auto;
+}
+@media(min-width:640px){.solutions__inner{padding-inline:2rem}}
+@media(min-width:1024px){.solutions__inner{padding:5.5rem 2rem 5rem}}
+.solutions__head{max-width:40rem;margin-bottom:1.75rem}
+.solutions__eyebrow{
+  margin:0 0 .65rem;
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+}
+.solutions__h2{
+  margin:0 0 .6rem;
+  font-size:clamp(2.25rem, 1.4rem + 3vw, 3.75rem);
+  font-weight:600;
+  letter-spacing:-.03em;
+  line-height:1.05;
+}
+.solutions__lead{
+  margin:0;
+  font-size:clamp(.95rem, .85rem + .3vw, 1.125rem);
+  line-height:1.5;
+  color:rgba(255,255,255,.68);
+}
+.solutions__rule{
+  height:14px;
+  margin:0 0 0;
+  border-bottom:1px solid rgba(255,255,255,.18);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.28) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, transparent 1px 5px);
+  background-size:100% 8px, 100% 4px;
+  background-position:left bottom, left bottom;
+  background-repeat:repeat-x;
+}
+.solutions__grid{
+  display:grid;
+  grid-template-columns:1fr;
+  min-height:clamp(22rem, 52vh, 32rem);
+}
+@media(min-width:900px){
+  .solutions__grid{grid-template-columns:repeat(3, minmax(0, 1fr))}
+}
+.solutions__card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  gap:.65rem;
+  min-height:22rem;
+  padding:1.5rem 1.25rem 1.6rem;
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  isolation:isolate;
+}
+@media(min-width:900px){
+  .solutions__card{
+    min-height:28rem;
+    padding:2rem 1.5rem 1.85rem;
+    border-bottom:0;
+    border-right:1px solid rgba(255,255,255,.12);
+  }
+  .solutions__card:last-child{border-right:0}
+}
+.solutions__media{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background-size:cover;
+  background-position:center top;
+  opacity:0;
+  transform:scale(1.04);
+  transition:opacity .45s ease, transform .6s ease;
+  pointer-events:none;
+}
+.solutions__media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(8,22,60,.35) 0%, rgba(8,22,60,.82) 100%);
+}
+.solutions__kicker,.solutions__title,.solutions__panel{position:relative;z-index:1}
+.solutions__kicker{
+  margin:0;
+  font-size:.6875rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+}
+.solutions__title{
+  margin:0;
+  font-size:clamp(1.25rem, 1rem + 1vw, 1.65rem);
+  font-weight:600;
+  letter-spacing:-.02em;
+  line-height:1.2;
+}
+.solutions__panel{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:1rem;
+  max-width:22rem;
+}
+.solutions__text{
+  margin:0;
+  font-size:.875rem;
+  line-height:1.5;
+  color:rgba(255,255,255,.72);
+}
+.solutions .pill--light .pill__inner{
+  background:#fff;
+  color:#08163C;
+}
+.solutions .pill--light .pill__badge{
+  background:#15389B;
+  color:#fff;
+}
+@media (hover:hover) and (pointer:fine){
+  .solutions__panel{
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity .35s ease, transform .35s ease;
+  }
+  .solutions__card:hover .solutions__panel,
+  .solutions__card:focus-within .solutions__panel{
+    opacity:1;
+    transform:none;
+  }
+  .solutions__card:hover .solutions__media,
+  .solutions__card:focus-within .solutions__media{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+@media (hover:none),(pointer:coarse){
+  .solutions__media{opacity:.55;transform:none}
+}
+
 /* Portfolio — Selected Work + Coverflow */
 .portfolio{
   --pf-bg:#f8f8f8;
@@ -699,12 +852,13 @@ html{scroll-padding-top:4.25rem}
   min-height:100svh;
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  padding:3.5rem 0 3.5rem;
+  justify-content:flex-start;
+  padding:5.5rem 0 2.5rem;
 }
 @media(min-width:900px){
   .portfolio-sticky{
-    padding:5rem 0 4rem;
+    justify-content:center;
+    padding:5rem 0 3rem;
   }
 }
 .portfolio__inner{
@@ -722,7 +876,7 @@ html{scroll-padding-top:4.25rem}
   align-items:center;
   text-align:center;
   width:100%;
-  margin-bottom:clamp(2rem, 4vh, 3rem);
+  margin-bottom:clamp(1.25rem, 3vh, 2.25rem);
 }
 .portfolio__h2{
   font-size:2.25rem;
@@ -743,7 +897,7 @@ html{scroll-padding-top:4.25rem}
   --cf-dur:0.8s;
   position:relative;
   width:100%;
-  min-height:clamp(280px, 52vw, 520px);
+  min-height:clamp(240px, 42vw, 420px);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -892,14 +1046,14 @@ html{scroll-padding-top:4.25rem}
 .phone-mock__island,.phone-mock__home{display:none}
 @media (max-width:899px){
   .coverflow{
-    --cf-w:272px;
-    --cf-h:560px;
+    --cf-w:240px;
+    --cf-h:460px;
     --cf-radius:2.15rem;
-    min-height:clamp(480px, 78svh, 640px);
+    min-height:clamp(360px, 52svh, 480px);
   }
   .coverflow__stage{
-    width:min(var(--cf-w), 68vw);
-    height:calc(min(var(--cf-w), 68vw) * 560 / 272);
+    width:min(var(--cf-w), 62vw);
+    height:calc(min(var(--cf-w), 62vw) * 460 / 240);
     max-width:var(--cf-w);
     max-height:var(--cf-h);
   }
@@ -955,6 +1109,67 @@ html{scroll-padding-top:4.25rem}
   }
   .coverflow__dim{border-radius:var(--cf-radius)}
 }
+.portfolio__case{
+  width:min(44rem, 100%);
+  margin-top:clamp(1.1rem, 2.4vh, 1.75rem);
+  text-align:center;
+  color:var(--pf-ink);
+}
+.portfolio__case-meta{
+  margin:0 0 .65rem;
+  font-size:.6875rem;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--pf-muted);
+}
+.portfolio__case-copy{
+  margin:0 auto .85rem;
+  max-width:40rem;
+  font-size:clamp(.875rem, .8rem + .25vw, 1rem);
+  line-height:1.55;
+  color:rgba(8,22,60,.78);
+}
+.portfolio__case-stats{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:.5rem;
+  margin:0 0 .9rem;
+  padding:.85rem 0;
+  border-top:1px solid rgba(8,22,60,.1);
+  border-bottom:1px solid rgba(8,22,60,.1);
+}
+.portfolio__case-stat{
+  display:flex;
+  flex-direction:column;
+  gap:.2rem;
+  min-width:0;
+}
+.portfolio__case-stat-num{
+  font-size:clamp(1.15rem, 1rem + 1vw, 1.65rem);
+  font-weight:700;
+  letter-spacing:-.03em;
+  line-height:1.1;
+  color:var(--pf-ink);
+}
+.portfolio__case-stat-label{
+  font-size:.6875rem;
+  font-weight:500;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--pf-muted);
+  line-height:1.3;
+}
+.portfolio__case-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  font-size:.8125rem;
+  font-weight:600;
+  color:#15389B;
+  text-decoration:none;
+}
+.portfolio__case-link:hover{text-decoration:underline}
 @media (prefers-reduced-motion:reduce){
   .portfolio-track{height:auto}
   .portfolio-sticky{position:relative;min-height:0;padding:4.5rem 0 5rem}
@@ -962,7 +1177,147 @@ html{scroll-padding-top:4.25rem}
   .coverflow__dim{transition:none!important}
 }
 
-/* Closing band — About + Footer share one continuous background */
+/* Industries accordion */
+.industries{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:var(--hero-bg);
+  background-color:var(--hero-mid);
+  color:#fff;
+}
+.industries__inner{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2.5rem;
+  max-width:88rem;
+  margin:0 auto;
+  padding:4.5rem 1.25rem 4.5rem;
+  box-sizing:border-box;
+}
+@media(min-width:640px){.industries__inner{padding-inline:2rem}}
+@media(min-width:1024px){
+  .industries__inner{
+    grid-template-columns:minmax(0, .92fr) minmax(0, 1.08fr);
+    gap:clamp(2.5rem, 5vw, 5rem);
+    align-items:start;
+    padding:6rem 2rem 5.5rem;
+  }
+}
+.industries__intro{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:1.25rem;
+}
+@media(min-width:1024px){
+  .industries__intro{position:sticky;top:5.5rem}
+}
+.industries__eyebrow{
+  margin:0;
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+}
+.industries__h2{
+  margin:0;
+  max-width:16ch;
+  font-size:clamp(2rem, 1.3rem + 2.4vw, 3.25rem);
+  font-weight:600;
+  letter-spacing:-.03em;
+  line-height:1.12;
+}
+.industries .pill--light .pill__inner{background:#fff;color:#08163C}
+.industries .pill--light .pill__badge{background:#15389B;color:#fff}
+.industries__list{border-top:1px solid rgba(255,255,255,.14)}
+.industries__item{border-bottom:1px solid rgba(255,255,255,.14)}
+.industries__btn{
+  width:100%;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:.85rem;
+  padding:1.05rem 0;
+  text-align:left;
+  color:#fff;
+}
+.industries__plus{
+  width:1.5rem;
+  height:1.5rem;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;
+  font-size:.95rem;
+  line-height:1;
+  color:rgba(255,255,255,.8);
+}
+.industries__item.is-open .industries__plus{background:rgba(255,255,255,.1)}
+.industries__name{
+  font-size:clamp(1.05rem, .9rem + .5vw, 1.25rem);
+  font-weight:500;
+  letter-spacing:-.01em;
+}
+.industries__count{
+  font-size:.75rem;
+  font-weight:500;
+  color:#6b93ff;
+  letter-spacing:.04em;
+}
+.industries__panel{
+  display:none;
+  padding:0 0 1.25rem 2.35rem;
+}
+.industries__item.is-open .industries__panel{display:block}
+.industries__points{
+  margin:0 0 1rem;
+  padding:0;
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:.4rem;
+}
+.industries__points li{
+  position:relative;
+  padding-left:1rem;
+  font-size:.875rem;
+  line-height:1.45;
+  color:rgba(255,255,255,.68);
+}
+.industries__points li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.7em;
+  width:.45rem;
+  height:1px;
+  background:rgba(255,255,255,.4);
+}
+.industries__work-label{
+  margin:0 0 .5rem;
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.42);
+}
+.industries__tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.industries__tag{
+  display:inline-flex;
+  align-items:center;
+  padding:.35rem .7rem;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  font-size:.75rem;
+  font-weight:500;
+  color:#fff;
+  background:rgba(8,22,60,.35);
+}
+.industries__tag:hover{border-color:rgba(255,255,255,.5)}
+
+/* Closing band — Footer + ticker */
 .closing{
   position:relative;
   isolation:isolate;
@@ -991,7 +1346,10 @@ html{scroll-padding-top:4.25rem}
 .about{
   position:relative;
   z-index:2;
-  background:transparent;
+  isolation:isolate;
+  overflow:hidden;
+  background:var(--hero-bg);
+  background-color:var(--hero-mid);
   color:#fff;
 }
 .about__inner{
@@ -1463,9 +1821,9 @@ html.lenis,html.lenis body{height:auto}
     <nav aria-label="Primary">
       <ul class="header__nav">
         <li><button type="button" data-scroll="home" aria-current="page">Home</button></li>
-        <li><button type="button" data-scroll="process">Process</button></li>
-        <li><button type="button" data-scroll="works">Work</button></li>
         <li><button type="button" data-scroll="about">About</button></li>
+        <li><button type="button" data-scroll="solutions">Services</button></li>
+        <li><button type="button" data-scroll="works">Work</button></li>
         <li><a class="header__nav-link" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">Contact</a></li>
       </ul>
     </nav>
@@ -1520,83 +1878,6 @@ html.lenis,html.lenis body{height:auto}
   </section>
   </div>
 
-  <section class="process" id="process" data-nav-theme="light">
-    <div class="process-track" id="processTrack">
-      <div class="process-sticky">
-        <header class="process__head">
-          <p class="process__eyebrow">How it works</p>
-          <h2 class="process__title">From idea to launch</h2>
-        </header>
-
-        <div class="process__stage">
-          <div class="process__rail" aria-hidden="true">
-            <div class="process__rail-fill" id="processRailFill"></div>
-            <div class="process__rail-dots" id="processRailDots">
-              <div class="process__rail-dot" data-rail-dot="0"><span class="icon" data-icon="check"></span></div>
-              <div class="process__rail-dot" data-rail-dot="1"><span class="icon" data-icon="check"></span></div>
-              <div class="process__rail-dot" data-rail-dot="2"><span class="icon" data-icon="check"></span></div>
-              <div class="process__rail-dot" data-rail-dot="3"><span class="icon" data-icon="check"></span></div>
-            </div>
-          </div>
-          <ol class="process__grid" id="processGrid">
-            <li class="process-card" data-process-step="0">
-              <div class="process-card__body">
-                <span class="process-card__icon icon" data-icon="bulb"></span>
-                <h3 class="process-card__title">Idea</h3>
-                <p class="process-card__text">I meet with you to learn your offer, goals, and what the site needs to sell.</p>
-              </div>
-            </li>
-            <li class="process-card" data-process-step="1">
-              <div class="process-card__body">
-                <span class="process-card__icon icon" data-icon="design"></span>
-                <h3 class="process-card__title">Design</h3>
-                <p class="process-card__text">I design a clear mockup of the pages and flows — so you see the site before build.</p>
-              </div>
-            </li>
-            <li class="process-card" data-process-step="2">
-              <div class="process-card__body">
-                <span class="process-card__icon icon" data-icon="code"></span>
-                <h3 class="process-card__title">Web Dev</h3>
-                <p class="process-card__text">I build it clean and fast — responsive, SEO-ready, and set up to convert.</p>
-              </div>
-            </li>
-            <li class="process-card is-launch" data-process-step="3">
-              <div class="process-card__body">
-                <span class="process-card__icon icon" data-icon="trophy"></span>
-                <h3 class="process-card__title">Launch</h3>
-                <p class="process-card__text">I ship, hand off, and make sure you know how to run and grow it.</p>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="portfolio" id="works" data-nav-theme="light">
-    <div class="portfolio-track" id="portfolioTrack">
-      <div class="portfolio-sticky">
-        <div class="shell portfolio__inner">
-          <header class="portfolio__head">
-            <div class="reveal" data-reveal data-io>
-              <span class="eyebrow eyebrow--dark eyebrow--pill"><span class="eyebrow__dot"></span>Portfolio</span>
-            </div>
-            <h2 class="portfolio__h2" data-lines data-io data-delay="120">
-              <span class="line-clip"><span>Selected Work</span></span>
-            </h2>
-          </header>
-
-          <div class="coverflow" id="coverflow" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Selected work gallery">
-            <div class="coverflow__stage" id="coverflowStage"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="closing">
-    <div class="closing__field" aria-hidden="true"></div>
-    <div class="closing__vignette" aria-hidden="true"></div>
   <section class="about" id="about" aria-label="About me" data-nav-theme="dark">
     <div class="about__inner">
       <div class="about__glass reveal" data-reveal data-io>
@@ -1636,6 +1917,220 @@ html.lenis,html.lenis body{height:auto}
     </div>
   </section>
 
+  <section class="solutions" id="solutions" data-nav-theme="dark">
+    <div class="shell solutions__inner">
+      <header class="solutions__head">
+        <p class="solutions__eyebrow">What I do</p>
+        <h2 class="solutions__h2">What I ship</h2>
+        <p class="solutions__lead">Offer sites, shops, and personal brands — same job every time: make the next step impossible to miss.</p>
+      </header>
+      <div class="solutions__rule" aria-hidden="true"></div>
+      <div class="solutions__grid">
+        <article class="solutions__card">
+          <div class="solutions__media" style="background-image:url('./assets/works/busystrong90.jpg')"></div>
+          <p class="solutions__kicker">01 Offer sites</p>
+          <h3 class="solutions__title">Sites that sell the offer</h3>
+          <div class="solutions__panel">
+            <p class="solutions__text">If they land and don’t know who it’s for, what they get, or what to do next — the site is decoration. I build the path from stranger to booked call or buy.</p>
+            <button class="pill pill--light pill--arrow" type="button" data-scroll="works">
+              <span class="pill__inner">See work<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+            </button>
+          </div>
+        </article>
+        <article class="solutions__card">
+          <div class="solutions__media" style="background-image:url('./assets/works/lenkolino.jpg')"></div>
+          <p class="solutions__kicker">02 Shops</p>
+          <h3 class="solutions__title">Shops people actually buy from</h3>
+          <div class="solutions__panel">
+            <p class="solutions__text">Pretty product photos don’t pay you. I set the story, the trust, and a short path to checkout — so buying doesn’t feel like extra work.</p>
+            <button class="pill pill--light pill--arrow" type="button" data-scroll="works">
+              <span class="pill__inner">See work<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+            </button>
+          </div>
+        </article>
+        <article class="solutions__card">
+          <div class="solutions__media" style="background-image:url('./assets/works/thrivewithmarina.jpg')"></div>
+          <p class="solutions__kicker">03 Personal brands</p>
+          <h3 class="solutions__title">Sites that book the session</h3>
+          <div class="solutions__panel">
+            <p class="solutions__text">Authority without a next step is a pretty bio. I make who you are, what the work is, and how to book obvious in one scroll.</p>
+            <button class="pill pill--light pill--arrow" type="button" data-scroll="works">
+              <span class="pill__inner">See work<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+            </button>
+          </div>
+        </article>
+      </div>
+      <div class="solutions__rule" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="portfolio" id="works" data-nav-theme="light">
+    <div class="portfolio-track" id="portfolioTrack">
+      <div class="portfolio-sticky">
+        <div class="shell portfolio__inner">
+          <header class="portfolio__head">
+            <div class="reveal" data-reveal data-io>
+              <span class="eyebrow eyebrow--dark eyebrow--pill"><span class="eyebrow__dot"></span>Portfolio</span>
+            </div>
+            <h2 class="portfolio__h2" data-lines data-io data-delay="120">
+              <span class="line-clip"><span>Selected Work</span></span>
+            </h2>
+          </header>
+
+          <div class="coverflow" id="coverflow" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Selected work gallery">
+            <div class="coverflow__stage" id="coverflowStage"></div>
+          </div>
+          <div class="portfolio__case" id="portfolioCase" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="industries" id="industries" data-nav-theme="dark">
+    <div class="industries__inner">
+      <div class="industries__intro">
+        <p class="industries__eyebrow">Industries I work with</p>
+        <h2 class="industries__h2">Different industries, different rules. I’ve already built inside these.</h2>
+        <a class="pill pill--light pill--arrow" href="https://calendly.com/goransantic/30min">
+          <span class="pill__inner">Let's work together<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+        </a>
+      </div>
+      <div class="industries__list" id="industriesList">
+        <article class="industries__item is-open">
+          <button class="industries__btn" type="button" aria-expanded="true">
+            <span class="industries__plus" aria-hidden="true">−</span>
+            <span class="industries__name">E-commerce &amp; Retail</span>
+            <span class="industries__count">01</span>
+          </button>
+          <div class="industries__panel">
+            <ul class="industries__points">
+              <li>Product story that makes the buy feel obvious</li>
+              <li>Short path to cart — no buried checkout</li>
+              <li>Trust on the page before they pay</li>
+            </ul>
+            <p class="industries__work-label">Selected work</p>
+            <div class="industries__tags">
+              <button class="industries__tag" type="button" data-scroll="works">Lenkolino</button>
+            </div>
+          </div>
+        </article>
+        <article class="industries__item">
+          <button class="industries__btn" type="button" aria-expanded="false">
+            <span class="industries__plus" aria-hidden="true">+</span>
+            <span class="industries__name">Construction &amp; Real Estate</span>
+            <span class="industries__count">00</span>
+          </button>
+          <div class="industries__panel">
+            <ul class="industries__points">
+              <li>Projects that look real, not a PDF dump</li>
+              <li>One next step: inquiry, viewing, or quote</li>
+              <li>Clear offer per listing — not a maze of pages</li>
+            </ul>
+          </div>
+        </article>
+        <article class="industries__item">
+          <button class="industries__btn" type="button" aria-expanded="false">
+            <span class="industries__plus" aria-hidden="true">+</span>
+            <span class="industries__name">Hospitality &amp; Tourism</span>
+            <span class="industries__count">00</span>
+          </button>
+          <div class="industries__panel">
+            <ul class="industries__points">
+              <li>Book the stay without a phone tag</li>
+              <li>Offer, rooms, and proof in one scroll</li>
+              <li>CTA that matches the trip, not a generic contact form</li>
+            </ul>
+          </div>
+        </article>
+        <article class="industries__item">
+          <button class="industries__btn" type="button" aria-expanded="false">
+            <span class="industries__plus" aria-hidden="true">+</span>
+            <span class="industries__name">Manufacturing &amp; Industry</span>
+            <span class="industries__count">00</span>
+          </button>
+          <div class="industries__panel">
+            <ul class="industries__points">
+              <li>What you make, who it’s for, how to buy — in that order</li>
+              <li>Specs without killing the sale</li>
+              <li>A quote request that sales can actually use</li>
+            </ul>
+          </div>
+        </article>
+        <article class="industries__item">
+          <button class="industries__btn" type="button" aria-expanded="false">
+            <span class="industries__plus" aria-hidden="true">+</span>
+            <span class="industries__name">Healthcare &amp; Wellness</span>
+            <span class="industries__count">01</span>
+          </button>
+          <div class="industries__panel">
+            <ul class="industries__points">
+              <li>Who it’s for and what the session is — before they bounce</li>
+              <li>Book the intro call on the page, not “email us”</li>
+              <li>Trust without sounding like a hospital brochure</li>
+            </ul>
+            <p class="industries__work-label">Selected work</p>
+            <div class="industries__tags">
+              <button class="industries__tag" type="button" data-scroll="works">Marina Savić</button>
+            </div>
+          </div>
+        </article>
+        <article class="industries__item">
+          <button class="industries__btn" type="button" aria-expanded="false">
+            <span class="industries__plus" aria-hidden="true">+</span>
+            <span class="industries__name">Creative, Photography &amp; Media</span>
+            <span class="industries__count">01</span>
+          </button>
+          <div class="industries__panel">
+            <ul class="industries__points">
+              <li>Work that sells, not a gallery that only looks expensive</li>
+              <li>Packages and prints with a real checkout</li>
+              <li>One path from “I like this” to paid</li>
+            </ul>
+            <p class="industries__work-label">Selected work</p>
+            <div class="industries__tags">
+              <button class="industries__tag" type="button" data-scroll="works">Lenkolino</button>
+            </div>
+          </div>
+        </article>
+        <article class="industries__item">
+          <button class="industries__btn" type="button" aria-expanded="false">
+            <span class="industries__plus" aria-hidden="true">+</span>
+            <span class="industries__name">Sports, Fitness &amp; Community</span>
+            <span class="industries__count">01</span>
+          </button>
+          <div class="industries__panel">
+            <ul class="industries__points">
+              <li>Who the program is for in one line</li>
+              <li>The path (90 days, not “about us”)</li>
+              <li>Buy or apply on the site — not a buried DM</li>
+            </ul>
+            <p class="industries__work-label">Selected work</p>
+            <div class="industries__tags">
+              <button class="industries__tag" type="button" data-scroll="works">Busy Strong 90</button>
+            </div>
+          </div>
+        </article>
+        <article class="industries__item">
+          <button class="industries__btn" type="button" aria-expanded="false">
+            <span class="industries__plus" aria-hidden="true">+</span>
+            <span class="industries__name">Legal &amp; Advokatura</span>
+            <span class="industries__count">00</span>
+          </button>
+          <div class="industries__panel">
+            <ul class="industries__points">
+              <li>Do you take my case — answered before they call</li>
+              <li>Practice areas without a wall of Latin</li>
+              <li>One next step: book a consult, not “contact the office”</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="closing">
+    <div class="closing__field" aria-hidden="true"></div>
+    <div class="closing__vignette" aria-hidden="true"></div>
   <div class="ticker" aria-label="Site offers" data-nav-theme="light">
     <div class="ticker__track">
       <div class="ticker__group">
@@ -1685,9 +2180,9 @@ html.lenis,html.lenis body{height:auto}
         </div>
         <div class="footer__col">
           <div class="footer__col-title">Explore</div>
-          <a href="#process" data-scroll="process">Process</a>
-          <a href="#works" data-scroll="works">Work</a>
           <a href="#about" data-scroll="about">About</a>
+          <a href="#solutions" data-scroll="solutions">Services</a>
+          <a href="#works" data-scroll="works">Work</a>
         </div>
         <div class="footer__col">
           <div class="footer__col-title">Start</div>
@@ -1826,6 +2321,8 @@ function startScroll(){
   html.style.removeProperty('position');
   html.style.removeProperty('overflow');
   html.style.removeProperty('height');
+  document.body.style.removeProperty('overflow');
+  document.body.style.removeProperty('position');
 }
 
 function scrollToId(id){
@@ -2206,24 +2703,48 @@ setReady();
       posterMobile: './assets/works/busystrong90-mobile.jpg?v=2',
       mp4: './assets/works/videos/busystrong90.mp4?v=2',
       mp4Mobile: './assets/works/videos/mobile/busystrong90.mp4?v=2',
+      client: 'Busy Strong 90',
+      services: 'Offer site · sales path',
+      copy: 'The program was strong. The site was not — visitors could not tell who it was for, what 90 days looked like, or where to buy. I rebuilt it as a coach-on-a-call: problem, promise, path, then one purchase step. Scope was a full offer site with copy, mobile layout, and a live sales path — not a brochure.',
+      stats: [
+        { num: '4 wks', label: 'Build time' },
+        { num: '€2.4k', label: 'Investment' },
+        { num: 'Live', label: 'Online sales' },
+      ],
     },
     {
       title: 'Lenkolino',
       href: 'https://www.lenkolino.shop/',
       host: 'lenkolino.shop',
+      client: 'Leniwood / Lenkolino',
+      services: 'Shop · checkout',
       poster: './assets/works/lenkolino.jpg?v=2',
       posterMobile: './assets/works/lenkolino-mobile.jpg?v=2',
       mp4: './assets/works/videos/lenkolino.mp4?v=2',
       mp4Mobile: './assets/works/videos/mobile/lenkolino.mp4?v=2',
+      copy: 'The photography brand had work worth buying and a site that made buying feel like extra work. I shipped a shop with clear product story, trust up front, and a short path to checkout. Scope was merchandising + cart, not a gallery with a buried contact form — priced as a Growth-range build with a fixed launch window.',
+      stats: [
+        { num: '5 wks', label: 'Build time' },
+        { num: '€3.2k', label: 'Investment' },
+        { num: 'Live', label: 'Online sales' },
+      ],
     },
     {
       title: 'Thrivewithmarina',
       href: 'https://thrivewithmarina.vercel.app/',
       host: 'thrivewithmarina.vercel.app',
+      client: 'Marina Savić',
+      services: 'Personal brand · booking',
       poster: './assets/works/thrivewithmarina.jpg?v=2',
       posterMobile: './assets/works/thrivewithmarina-mobile.jpg?v=2',
       mp4: './assets/works/videos/thrivewithmarina.mp4?v=2',
       mp4Mobile: './assets/works/videos/mobile/thrivewithmarina.mp4?v=2',
+      copy: 'Marina had the practice. Strangers landing on the old presence could not see the offer or book a session in one scroll. I built a portrait-led site that answers who she is, what the work is, and the next step — a 30-minute intro on the calendar. Scope was a Launch-range personal brand site: copy, structure, and booking wired before launch.',
+      stats: [
+        { num: '3 wks', label: 'Build time' },
+        { num: '€1.9k', label: 'Investment' },
+        { num: 'Live', label: 'Session booking' },
+      ],
     },
   ];
 
@@ -2260,6 +2781,7 @@ setReady();
   if (isMobileInit) root.classList.add('is-phone');
 
   const cards = [...stage.querySelectorAll('[data-cf-i]')];
+  const caseRoot = document.getElementById('portfolioCase');
   const n = cards.length;
   let active = 0;
   let locked = false;
@@ -2341,6 +2863,24 @@ setReady();
         `translate(-50%, -50%) translateX(${tx}px) translateZ(${tz}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${sc})`;
     });
     syncVideos(opts);
+    renderCase();
+  }
+
+  function renderCase(){
+    const s = SLIDES[active];
+    if (!caseRoot || !s) return;
+    const stats = (s.stats || []).map((st) => `
+      <div class="portfolio__case-stat">
+        <span class="portfolio__case-stat-num">${st.num}</span>
+        <span class="portfolio__case-stat-label">${st.label}</span>
+      </div>
+    `).join('');
+    caseRoot.innerHTML = `
+      <p class="portfolio__case-meta">${s.client} · ${s.services}</p>
+      <p class="portfolio__case-copy">${s.copy}</p>
+      <div class="portfolio__case-stats">${stats}</div>
+      <a class="portfolio__case-link" href="${s.href}" target="_blank" rel="noopener noreferrer">Visit live site →</a>
+    `;
   }
 
   function setActive(i, { fromScroll = false } = {}){
@@ -2465,12 +3005,35 @@ setReady();
   addEventListener('resize', updateFromScroll, { passive: true });
 })();
 
+(function initIndustries(){
+  const list = document.getElementById('industriesList');
+  if (!list) return;
+  list.querySelectorAll('.industries__btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.industries__item');
+      const open = item.classList.contains('is-open');
+      list.querySelectorAll('.industries__item').forEach((el) => {
+        el.classList.remove('is-open');
+        el.querySelector('.industries__btn')?.setAttribute('aria-expanded', 'false');
+        const plus = el.querySelector('.industries__plus');
+        if (plus) plus.textContent = '+';
+      });
+      if (!open) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        const plus = item.querySelector('.industries__plus');
+        if (plus) plus.textContent = '−';
+      }
+    });
+  });
+})();
+
 /* Nav menu items */
 const NAV_ITEMS = [
   { label:'Home', scroll:'home' },
-  { label:'Process', scroll:'process' },
-  { label:'Work', scroll:'works' },
   { label:'About', scroll:'about' },
+  { label:'Services', scroll:'solutions' },
+  { label:'Work', scroll:'works' },
   { label:'Contact', href: CALENDLY_URL },
 ];
 document.getElementById('navMenuList').innerHTML = NAV_ITEMS.map((item,i) => `
@@ -2485,7 +3048,7 @@ document.getElementById('navMenuList').innerHTML = NAV_ITEMS.map((item,i) => `
 
 /* Keep header + menu active state in sync with visible section */
 (function initNavActive(){
-  const SECTION_IDS = ['home', 'process', 'works', 'about'];
+  const SECTION_IDS = ['home', 'about', 'solutions', 'works', 'industries'];
   const headerBtns = [...document.querySelectorAll('.header__nav [data-scroll]')];
   function setCurrent(id){
     headerBtns.forEach(btn => {
@@ -2759,19 +3322,50 @@ function closeMenu(keepLock){
 
 function openCalendlyPopup(url){
   const src = url || CALENDLY_URL;
-  if (window.Calendly?.initPopupWidget) {
-    stopScroll();
-    window.Calendly.initPopupWidget({ url: src });
+  if (!window.Calendly?.initPopupWidget) {
+    window.open(src, '_blank', 'noopener,noreferrer');
     return;
   }
-  window.open(src, '_blank', 'noopener,noreferrer');
+  stopScroll();
+  window.Calendly.initPopupWidget({ url: src });
+  watchCalendlyOverlay();
+}
+
+function unlockAfterCalendly(){
+  if (!menuOpen && !modalOpen) startScroll();
+}
+
+function watchCalendlyOverlay(){
+  const started = Date.now();
+  const tick = () => {
+    const overlay = document.querySelector('.calendly-overlay');
+    if (overlay) {
+      const obs = new MutationObserver(() => {
+        if (!document.querySelector('.calendly-overlay')) {
+          obs.disconnect();
+          unlockAfterCalendly();
+        }
+      });
+      obs.observe(document.body, { childList: true, subtree: true });
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target.closest('.calendly-popup-close')) {
+          setTimeout(unlockAfterCalendly, 50);
+        }
+      });
+      return;
+    }
+    if (Date.now() - started < 2000) requestAnimationFrame(tick);
+    else unlockAfterCalendly();
+  };
+  requestAnimationFrame(tick);
 }
 
 addEventListener('message', (e) => {
-  if (e.origin !== 'https://calendly.com') return;
-  const type = e.data?.event;
-  if (type === 'calendly.popup_closed' || type === 'calendly.event_scheduled') {
-    if (!menuOpen && !modalOpen) startScroll();
+  const origin = String(e.origin || '');
+  const type = (typeof e.data === 'object' && e.data?.event) || (typeof e.data === 'string' ? e.data : '');
+  if (!origin.includes('calendly.com')) return;
+  if (typeof type === 'string' && (type === 'calendly.popup_closed' || type === 'calendly.event_scheduled' || type.includes('popup_closed'))) {
+    unlockAfterCalendly();
   }
 });
 

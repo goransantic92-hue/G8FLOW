@@ -771,7 +771,7 @@ html{scroll-padding-top:4.25rem}
   transition:opacity .45s ease, transform .6s ease;
   pointer-events:none;
 }
-.solutions__media--phone{background-size:contain;background-position:center 42%}
+.solutions__media--phone{background-size:cover;background-position:center center}
 .solutions__media::after{
   content:"";
   position:absolute;
@@ -808,8 +808,8 @@ html{scroll-padding-top:4.25rem}
   line-height:1.5;
   color:rgba(8,22,60,.68);
 }
-.solutions .pill--dark .pill__inner{background:#08163C;color:#fff}
-.solutions .pill--dark .pill__badge{background:#fff;color:#08163C}
+.solutions .pill--light .pill__inner{background:#fff;color:#08163C}
+.solutions .pill--light .pill__badge{background:#15389B;color:#fff}
 @media (hover:hover) and (pointer:fine){
   .solutions__panel{
     opacity:0;
@@ -1212,7 +1212,7 @@ html{scroll-padding-top:4.25rem}
     grid-template-columns:minmax(0, .92fr) minmax(0, 1.08fr);
     gap:clamp(2.5rem, 5vw, 5rem);
     align-items:start;
-    padding:0 2rem;
+    padding:6rem 2rem 5.5rem;
   }
 }
 .industries__intro{
@@ -1222,13 +1222,7 @@ html{scroll-padding-top:4.25rem}
   gap:1.25rem;
 }
 @media(min-width:1024px){
-  .industries__intro{
-    position:sticky;
-    top:5.5rem;
-    min-height:calc(100svh - 5.5rem);
-    justify-content:center;
-    padding:4rem 0 5rem;
-  }
+  .industries__intro{position:sticky;top:5.5rem}
 }
 .industries__eyebrow{
   margin:0;
@@ -1249,23 +1243,14 @@ html{scroll-padding-top:4.25rem}
 .industries .pill--light .pill__inner{background:#fff;color:#08163C}
 .industries .pill--light .pill__badge{background:#15389B;color:#fff}
 .industries__list{border-top:1px solid rgba(255,255,255,.14)}
-.industries__item{
-  border-bottom:1px solid rgba(255,255,255,.14);
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-@media(min-width:1024px){
-  .industries__item{min-height:100svh;padding:2.5rem 0}
-}
+.industries__item{border-bottom:1px solid rgba(255,255,255,.14)}
 .industries__btn{
   width:100%;
   display:grid;
-  grid-template-columns:auto 1fr auto;
+  grid-template-columns:auto 1fr;
   align-items:center;
-  gap:.85rem;
-  padding:1.05rem 0;
+  gap:.75rem;
+  padding:.7rem 0;
   text-align:left;
   color:#fff;
 }
@@ -1282,19 +1267,14 @@ html{scroll-padding-top:4.25rem}
 }
 .industries__item.is-open .industries__plus{background:rgba(255,255,255,.1)}
 .industries__name{
-  font-size:clamp(1.05rem, .9rem + .5vw, 1.25rem);
+  font-size:27px;
   font-weight:500;
   letter-spacing:-.01em;
-}
-.industries__count{
-  font-size:.75rem;
-  font-weight:500;
-  color:#6b93ff;
-  letter-spacing:.04em;
+  line-height:1.2;
 }
 .industries__panel{
   display:none;
-  padding:0 0 1.25rem 2.35rem;
+  padding:0 0 .85rem 2.25rem;
 }
 .industries__item.is-open .industries__panel{display:block}
 .industries__points{
@@ -1343,8 +1323,7 @@ html{scroll-padding-top:4.25rem}
 }
 .industries__tag:hover{border-color:rgba(255,255,255,.5)}
 @media (prefers-reduced-motion:reduce){
-  .industries__intro{position:relative;top:auto;min-height:0;padding:0}
-  .industries__item{min-height:0;padding:0}
+  .industries__intro{position:relative;top:auto}
 }
 
 /* Closing band — Footer + ticker */
@@ -1984,9 +1963,9 @@ html.lenis,html.lenis body{height:auto}
           <h3 class="solutions__title">Fast and responsive websites</h3>
           <div class="solutions__panel">
             <p class="solutions__text">In our team, developers work alongside designers. This is crucial in creating a fast and responsive website that would excite the audience.</p>
-            <button class="pill pill--dark pill--arrow" type="button" data-scroll="works">
-              <span class="pill__inner">Explore<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
-            </button>
+            <a class="pill pill--light pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">
+              <span class="pill__inner">Let's build<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+            </a>
           </div>
         </article>
         <article class="solutions__card">
@@ -1995,9 +1974,9 @@ html.lenis,html.lenis body{height:auto}
           <h3 class="solutions__title">Perfectly suited mobile apps</h3>
           <div class="solutions__panel">
             <p class="solutions__text">No template solutions. Every mobile app goes through audience research and prototype testing.</p>
-            <button class="pill pill--dark pill--arrow" type="button" data-scroll="works">
-              <span class="pill__inner">Explore<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
-            </button>
+            <a class="pill pill--light pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">
+              <span class="pill__inner">Let's build<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+            </a>
           </div>
         </article>
       </div>
@@ -2019,7 +1998,6 @@ html.lenis,html.lenis body{height:auto}
           <button class="industries__btn" type="button" aria-expanded="true">
             <span class="industries__plus" aria-hidden="true">−</span>
             <span class="industries__name">E-commerce &amp; Retail</span>
-            <span class="industries__count">01</span>
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
@@ -2040,7 +2018,6 @@ html.lenis,html.lenis body{height:auto}
           <button class="industries__btn" type="button" aria-expanded="false">
             <span class="industries__plus" aria-hidden="true">+</span>
             <span class="industries__name">Construction &amp; Real Estate</span>
-            <span class="industries__count">00</span>
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
@@ -2056,7 +2033,6 @@ html.lenis,html.lenis body{height:auto}
           <button class="industries__btn" type="button" aria-expanded="false">
             <span class="industries__plus" aria-hidden="true">+</span>
             <span class="industries__name">Hospitality &amp; Tourism</span>
-            <span class="industries__count">00</span>
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
@@ -2073,7 +2049,6 @@ html.lenis,html.lenis body{height:auto}
           <button class="industries__btn" type="button" aria-expanded="false">
             <span class="industries__plus" aria-hidden="true">+</span>
             <span class="industries__name">Manufacturing &amp; Industry</span>
-            <span class="industries__count">00</span>
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
@@ -2089,7 +2064,6 @@ html.lenis,html.lenis body{height:auto}
           <button class="industries__btn" type="button" aria-expanded="false">
             <span class="industries__plus" aria-hidden="true">+</span>
             <span class="industries__name">Healthcare &amp; Wellness</span>
-            <span class="industries__count">01</span>
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
@@ -2108,7 +2082,6 @@ html.lenis,html.lenis body{height:auto}
           <button class="industries__btn" type="button" aria-expanded="false">
             <span class="industries__plus" aria-hidden="true">+</span>
             <span class="industries__name">Creative, Photography &amp; Media</span>
-            <span class="industries__count">00</span>
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
@@ -2124,7 +2097,6 @@ html.lenis,html.lenis body{height:auto}
           <button class="industries__btn" type="button" aria-expanded="false">
             <span class="industries__plus" aria-hidden="true">+</span>
             <span class="industries__name">Sports, Fitness &amp; Community</span>
-            <span class="industries__count">01</span>
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
@@ -2143,7 +2115,6 @@ html.lenis,html.lenis body{height:auto}
           <button class="industries__btn" type="button" aria-expanded="false">
             <span class="industries__plus" aria-hidden="true">+</span>
             <span class="industries__name">Legal &amp; Advokatura</span>
-            <span class="industries__count">00</span>
           </button>
           <div class="industries__panel">
             <ul class="industries__points">

@@ -680,144 +680,185 @@ html{scroll-padding-top:4.25rem}
   }
 }
 
-/* Solutions — What I ship */
+/* Solutions — What I do (sticky left, scrolling cards) */
 .solutions{
   position:relative;
   isolation:isolate;
-  overflow:hidden;
-  background:var(--hero-bg);
-  background-color:var(--hero-mid);
-  color:#fff;
+  overflow:visible;
+  background:#f8fbf8;
+  color:#08163C;
 }
 .solutions__inner{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2rem;
   padding:4.5rem 1.25rem 4rem;
   max-width:88rem;
   margin:0 auto;
+  box-sizing:border-box;
 }
 @media(min-width:640px){.solutions__inner{padding-inline:2rem}}
-@media(min-width:1024px){.solutions__inner{padding:5.5rem 2rem 5rem}}
-.solutions__head{max-width:40rem;margin-bottom:1.75rem}
+@media(min-width:1024px){
+  .solutions__inner{
+    grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+    gap:clamp(2rem, 4vw, 4.5rem);
+    align-items:start;
+    padding:0 2rem;
+  }
+}
+.solutions__sticky{
+  padding-bottom:.5rem;
+}
+@media(min-width:1024px){
+  .solutions__sticky{
+    position:sticky;
+    top:5.75rem;
+    min-height:calc(100svh - 5.75rem);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:4rem 0 5rem;
+  }
+}
 .solutions__eyebrow{
-  margin:0 0 .65rem;
+  margin:0 0 .85rem;
   font-size:.75rem;
   font-weight:600;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:rgba(255,255,255,.55);
+  color:rgba(8,22,60,.5);
 }
 .solutions__h2{
-  margin:0 0 .6rem;
-  font-size:clamp(2.25rem, 1.4rem + 3vw, 3.75rem);
-  font-weight:600;
-  letter-spacing:-.03em;
-  line-height:1.05;
-}
-.solutions__lead{
   margin:0;
-  font-size:clamp(.95rem, .85rem + .3vw, 1.125rem);
-  line-height:1.5;
-  color:rgba(255,255,255,.68);
+  max-width:9ch;
+  font-size:clamp(2.75rem, 1.6rem + 4vw, 5.25rem);
+  font-weight:600;
+  letter-spacing:-.04em;
+  line-height:.98;
+}
+.solutions__rail{
+  min-width:0;
 }
 .solutions__rule{
   height:14px;
-  margin:0 0 0;
-  border-bottom:1px solid rgba(255,255,255,.18);
+  margin:0;
+  border-bottom:1px solid rgba(8,22,60,.16);
   background-image:
-    repeating-linear-gradient(90deg, rgba(255,255,255,.28) 0 1px, transparent 1px 10px),
-    repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, transparent 1px 5px);
+    repeating-linear-gradient(90deg, rgba(8,22,60,.28) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(90deg, rgba(8,22,60,.12) 0 1px, transparent 1px 5px);
   background-size:100% 8px, 100% 4px;
   background-position:left bottom, left bottom;
   background-repeat:repeat-x;
-}
-.solutions__grid{
-  display:grid;
-  grid-template-columns:1fr;
-  min-height:clamp(22rem, 52vh, 32rem);
-}
-@media(min-width:900px){
-  .solutions__grid{grid-template-columns:repeat(3, minmax(0, 1fr))}
 }
 .solutions__card{
   position:relative;
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
-  gap:.65rem;
-  min-height:22rem;
-  padding:1.5rem 1.25rem 1.6rem;
+  min-height:min(78svh, 36rem);
+  padding:1.75rem 1.15rem 1.7rem;
   overflow:hidden;
-  border-bottom:1px solid rgba(255,255,255,.12);
   isolation:isolate;
+  color:#08163C;
+  border-bottom:1px solid rgba(8,22,60,.12);
 }
-@media(min-width:900px){
+@media(min-width:1024px){
   .solutions__card{
-    min-height:28rem;
-    padding:2rem 1.5rem 1.85rem;
-    border-bottom:0;
-    border-right:1px solid rgba(255,255,255,.12);
+    min-height:100svh;
+    padding:2.25rem 1.75rem 2.4rem;
   }
-  .solutions__card:last-child{border-right:0}
 }
 .solutions__media{
   position:absolute;
   inset:0;
   z-index:0;
   background-size:cover;
-  background-position:center top;
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-color:#0b1224;
   opacity:0;
   transform:scale(1.04);
   transition:opacity .45s ease, transform .6s ease;
   pointer-events:none;
 }
+.solutions__media--phone{background-size:contain;background-position:center 42%}
 .solutions__media::after{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(180deg, rgba(8,22,60,.35) 0%, rgba(8,22,60,.82) 100%);
+  background:linear-gradient(180deg, rgba(8,22,60,.18) 0%, rgba(8,22,60,.8) 100%);
 }
-.solutions__kicker,.solutions__title,.solutions__panel{position:relative;z-index:1}
+.solutions__card-row{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:.85rem 1.15rem;
+  align-items:end;
+}
+.solutions__num{
+  margin:0;
+  padding-bottom:.2rem;
+  font-size:clamp(1.05rem, .9rem + .4vw, 1.25rem);
+  font-weight:600;
+  letter-spacing:.04em;
+  color:rgba(8,22,60,.42);
+}
+.solutions__card-copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:.7rem;
+}
 .solutions__kicker{
   margin:0;
-  font-size:.6875rem;
+  font-size:.8125rem;
   font-weight:600;
-  letter-spacing:.12em;
+  letter-spacing:.14em;
   text-transform:uppercase;
-  color:rgba(255,255,255,.5);
+  color:rgba(8,22,60,.48);
 }
 .solutions__title{
   margin:0;
-  font-size:clamp(1.25rem, 1rem + 1vw, 1.65rem);
+  max-width:14ch;
+  font-size:clamp(2rem, 1.2rem + 2.6vw, 3.35rem);
   font-weight:600;
-  letter-spacing:-.02em;
-  line-height:1.2;
+  letter-spacing:-.035em;
+  line-height:1.08;
 }
 .solutions__panel{
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  gap:1rem;
-  max-width:22rem;
+  gap:1.1rem;
+  max-width:28rem;
 }
 .solutions__text{
   margin:0;
-  font-size:.875rem;
-  line-height:1.5;
-  color:rgba(255,255,255,.72);
+  font-size:clamp(1rem, .92rem + .35vw, 1.2rem);
+  line-height:1.55;
+  letter-spacing:.01em;
+  color:rgba(8,22,60,.68);
 }
-.solutions .pill--light .pill__inner{
-  background:#fff;
-  color:#08163C;
-}
-.solutions .pill--light .pill__badge{
-  background:#15389B;
-  color:#fff;
-}
+.solutions .pill--dark .pill__inner{background:#08163C;color:#fff}
+.solutions .pill--dark .pill__badge{background:#fff;color:#08163C}
 @media (hover:hover) and (pointer:fine){
   .solutions__panel{
     opacity:0;
-    transform:translateY(10px);
-    transition:opacity .35s ease, transform .35s ease;
+    transform:translateY(12px);
+    transition:opacity .35s ease, transform .35s ease, color .35s ease;
   }
+  .solutions__card:hover,
+  .solutions__card:focus-within{
+    color:#fff;
+  }
+  .solutions__card:hover .solutions__num,
+  .solutions__card:focus-within .solutions__num,
+  .solutions__card:hover .solutions__kicker,
+  .solutions__card:focus-within .solutions__kicker{color:rgba(255,255,255,.7)}
+  .solutions__card:hover .solutions__text,
+  .solutions__card:focus-within .solutions__text{color:rgba(255,255,255,.82)}
   .solutions__card:hover .solutions__panel,
   .solutions__card:focus-within .solutions__panel{
     opacity:1;
@@ -830,7 +871,14 @@ html{scroll-padding-top:4.25rem}
   }
 }
 @media (hover:none),(pointer:coarse){
-  .solutions__media{opacity:.55;transform:none}
+  .solutions__media{opacity:.7;transform:none}
+  .solutions__card{color:#fff}
+  .solutions__num,.solutions__kicker{color:rgba(255,255,255,.7)}
+  .solutions__text{color:rgba(255,255,255,.82)}
+}
+@media (prefers-reduced-motion:reduce){
+  .solutions__sticky{position:relative;top:auto;min-height:0;padding:3rem 0 1rem}
+  .solutions__card{min-height:22rem}
 }
 
 /* Portfolio — Selected Work + Coverflow */
@@ -842,23 +890,25 @@ html{scroll-padding-top:4.25rem}
   color:var(--pf-ink);
   background:var(--pf-bg);
 }
-.portfolio-track{position:relative;height:250svh}
+.portfolio-track{position:relative;height:320svh}
 @media(min-width:900px){
-  .portfolio-track{height:280vh}
+  .portfolio-track{height:380vh}
 }
 .portfolio-sticky{
   position:sticky;
   top:0;
   min-height:100svh;
+  overflow:visible;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
-  padding:5.5rem 0 2.5rem;
+  padding:5.5rem 0 3rem;
 }
 @media(min-width:900px){
   .portfolio-sticky{
-    justify-content:center;
-    padding:5rem 0 3rem;
+    justify-content:flex-start;
+    min-height:100svh;
+    padding:5.75rem 0 2.5rem;
   }
 }
 .portfolio__inner{
@@ -1821,9 +1871,9 @@ html.lenis,html.lenis body{height:auto}
     <nav aria-label="Primary">
       <ul class="header__nav">
         <li><button type="button" data-scroll="home" aria-current="page">Home</button></li>
+        <li><button type="button" data-scroll="works">Work</button></li>
         <li><button type="button" data-scroll="about">About</button></li>
         <li><button type="button" data-scroll="solutions">Services</button></li>
-        <li><button type="button" data-scroll="works">Work</button></li>
         <li><a class="header__nav-link" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">Contact</a></li>
       </ul>
     </nav>
@@ -1878,6 +1928,28 @@ html.lenis,html.lenis body{height:auto}
   </section>
   </div>
 
+  <section class="portfolio" id="works" data-nav-theme="light">
+    <div class="portfolio-track" id="portfolioTrack">
+      <div class="portfolio-sticky">
+        <div class="shell portfolio__inner">
+          <header class="portfolio__head">
+            <div class="reveal" data-reveal data-io>
+              <span class="eyebrow eyebrow--dark eyebrow--pill"><span class="eyebrow__dot"></span>Portfolio</span>
+            </div>
+            <h2 class="portfolio__h2" data-lines data-io data-delay="120">
+              <span class="line-clip"><span>Selected Work</span></span>
+            </h2>
+          </header>
+
+          <div class="coverflow" id="coverflow" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Selected work gallery">
+            <div class="coverflow__stage" id="coverflowStage"></div>
+          </div>
+          <div class="portfolio__case" id="portfolioCase" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="about" id="about" aria-label="About me" data-nav-theme="dark">
     <div class="about__inner">
       <div class="about__glass reveal" data-reveal data-io>
@@ -1917,71 +1989,47 @@ html.lenis,html.lenis body{height:auto}
     </div>
   </section>
 
-  <section class="solutions" id="solutions" data-nav-theme="dark">
+  <section class="solutions" id="solutions" data-nav-theme="light">
     <div class="shell solutions__inner">
-      <header class="solutions__head">
+      <header class="solutions__sticky">
         <p class="solutions__eyebrow">What I do</p>
         <h2 class="solutions__h2">What I ship</h2>
-        <p class="solutions__lead">Offer sites, shops, and personal brands — same job every time: make the next step impossible to miss.</p>
       </header>
-      <div class="solutions__rule" aria-hidden="true"></div>
-      <div class="solutions__grid">
+      <div class="solutions__rail">
+        <div class="solutions__rule" aria-hidden="true"></div>
         <article class="solutions__card">
-          <div class="solutions__media" style="background-image:url('./assets/works/busystrong90.jpg')"></div>
-          <p class="solutions__kicker">01 Offer sites</p>
-          <h3 class="solutions__title">Sites that sell the offer</h3>
-          <div class="solutions__panel">
-            <p class="solutions__text">If they land and don’t know who it’s for, what they get, or what to do next — the site is decoration. I build the path from stranger to booked call or buy.</p>
-            <button class="pill pill--light pill--arrow" type="button" data-scroll="works">
-              <span class="pill__inner">See work<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
-            </button>
-          </div>
-        </article>
-        <article class="solutions__card">
-          <div class="solutions__media" style="background-image:url('./assets/works/lenkolino.jpg')"></div>
-          <p class="solutions__kicker">02 Shops</p>
-          <h3 class="solutions__title">Shops people actually buy from</h3>
-          <div class="solutions__panel">
-            <p class="solutions__text">Pretty product photos don’t pay you. I set the story, the trust, and a short path to checkout — so buying doesn’t feel like extra work.</p>
-            <button class="pill pill--light pill--arrow" type="button" data-scroll="works">
-              <span class="pill__inner">See work<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
-            </button>
-          </div>
-        </article>
-        <article class="solutions__card">
-          <div class="solutions__media" style="background-image:url('./assets/works/thrivewithmarina.jpg')"></div>
-          <p class="solutions__kicker">03 Personal brands</p>
-          <h3 class="solutions__title">Sites that book the session</h3>
-          <div class="solutions__panel">
-            <p class="solutions__text">Authority without a next step is a pretty bio. I make who you are, what the work is, and how to book obvious in one scroll.</p>
-            <button class="pill pill--light pill--arrow" type="button" data-scroll="works">
-              <span class="pill__inner">See work<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
-            </button>
-          </div>
-        </article>
-      </div>
-      <div class="solutions__rule" aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <section class="portfolio" id="works" data-nav-theme="light">
-    <div class="portfolio-track" id="portfolioTrack">
-      <div class="portfolio-sticky">
-        <div class="shell portfolio__inner">
-          <header class="portfolio__head">
-            <div class="reveal" data-reveal data-io>
-              <span class="eyebrow eyebrow--dark eyebrow--pill"><span class="eyebrow__dot"></span>Portfolio</span>
+          <div class="solutions__media" style="background-image:url('./assets/solutions/site-laptop.jpg')"></div>
+          <div class="solutions__card-row">
+            <p class="solutions__num">01</p>
+            <div class="solutions__card-copy">
+              <p class="solutions__kicker">Websites &amp; platforms</p>
+              <h3 class="solutions__title">Fast, responsive sites</h3>
+              <div class="solutions__panel">
+                <p class="solutions__text">Design and code sit in the same pass. That’s how you get a fast, responsive site that lands with the people who see it — not a pretty file that dies in the browser.</p>
+                <button class="pill pill--dark pill--arrow" type="button" data-scroll="works">
+                  <span class="pill__inner">Explore<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+                </button>
+              </div>
             </div>
-            <h2 class="portfolio__h2" data-lines data-io data-delay="120">
-              <span class="line-clip"><span>Selected Work</span></span>
-            </h2>
-          </header>
-
-          <div class="coverflow" id="coverflow" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Selected work gallery">
-            <div class="coverflow__stage" id="coverflowStage"></div>
           </div>
-          <div class="portfolio__case" id="portfolioCase" aria-live="polite"></div>
-        </div>
+        </article>
+        <article class="solutions__card">
+          <div class="solutions__media solutions__media--phone" style="background-image:url('./assets/solutions/app-phone.png')"></div>
+          <div class="solutions__card-row">
+            <p class="solutions__num">02</p>
+            <div class="solutions__card-copy">
+              <p class="solutions__kicker">Mobile apps</p>
+              <h3 class="solutions__title">Custom mobile apps</h3>
+              <div class="solutions__panel">
+                <p class="solutions__text">No template apps. Each one goes through who it’s for, then a prototype, then a product people will actually open.</p>
+                <button class="pill pill--dark pill--arrow" type="button" data-scroll="works">
+                  <span class="pill__inner">Explore<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <div class="solutions__rule" aria-hidden="true"></div>
       </div>
     </div>
   </section>
@@ -2180,9 +2228,9 @@ html.lenis,html.lenis body{height:auto}
         </div>
         <div class="footer__col">
           <div class="footer__col-title">Explore</div>
+          <a href="#works" data-scroll="works">Work</a>
           <a href="#about" data-scroll="about">About</a>
           <a href="#solutions" data-scroll="solutions">Services</a>
-          <a href="#works" data-scroll="works">Work</a>
         </div>
         <div class="footer__col">
           <div class="footer__col-title">Start</div>
@@ -3031,9 +3079,9 @@ setReady();
 /* Nav menu items */
 const NAV_ITEMS = [
   { label:'Home', scroll:'home' },
+  { label:'Work', scroll:'works' },
   { label:'About', scroll:'about' },
   { label:'Services', scroll:'solutions' },
-  { label:'Work', scroll:'works' },
   { label:'Contact', href: CALENDLY_URL },
 ];
 document.getElementById('navMenuList').innerHTML = NAV_ITEMS.map((item,i) => `
@@ -3048,7 +3096,7 @@ document.getElementById('navMenuList').innerHTML = NAV_ITEMS.map((item,i) => `
 
 /* Keep header + menu active state in sync with visible section */
 (function initNavActive(){
-  const SECTION_IDS = ['home', 'about', 'solutions', 'works', 'industries'];
+  const SECTION_IDS = ['home', 'works', 'about', 'solutions', 'industries'];
   const headerBtns = [...document.querySelectorAll('.header__nav [data-scroll]')];
   function setCurrent(id){
     headerBtns.forEach(btn => {

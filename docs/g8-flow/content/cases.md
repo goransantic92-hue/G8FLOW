@@ -18,7 +18,7 @@ Each case: left = name + logo; right = idea + what we set out to achieve. Media 
 
 ## 2. Lenkolino — https://lenkolino.shop/
 
-**Idea:** Shop that must feel trustworthy and easy to buy from — product story without friction in the path to cart.
+**Idea:** Kids’ room décor shop (handmade balloons, birth cards, personalised gifts) that must feel trustworthy and easy to buy from — product story without friction in the path to cart.
 
 **What we built toward:** Clean merchandising hierarchy, confident product storytelling, and a checkout path that doesn’t make people think twice. Brand warmth up front; buying ease underneath.
 

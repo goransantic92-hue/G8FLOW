@@ -680,48 +680,24 @@ html{scroll-padding-top:4.25rem}
   }
 }
 
-/* Solutions — What I do (sticky left, scrolling cards) */
+/* Solutions — What I do (Digantix card row) */
 .solutions{
   position:relative;
   isolation:isolate;
-  overflow:visible;
+  overflow:hidden;
   background:#f8fbf8;
   color:#08163C;
 }
 .solutions__inner{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:2rem;
   padding:4.5rem 1.25rem 4rem;
   max-width:88rem;
   margin:0 auto;
-  box-sizing:border-box;
 }
 @media(min-width:640px){.solutions__inner{padding-inline:2rem}}
-@media(min-width:1024px){
-  .solutions__inner{
-    grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
-    gap:clamp(2rem, 4vw, 4.5rem);
-    align-items:start;
-    padding:0 2rem;
-  }
-}
-.solutions__sticky{
-  padding-bottom:.5rem;
-}
-@media(min-width:1024px){
-  .solutions__sticky{
-    position:sticky;
-    top:5.75rem;
-    min-height:calc(100svh - 5.75rem);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:4rem 0 5rem;
-  }
-}
+@media(min-width:1024px){.solutions__inner{padding:5.5rem 2rem 5rem}}
+.solutions__head{max-width:42rem;margin-bottom:1.75rem}
 .solutions__eyebrow{
-  margin:0 0 .85rem;
+  margin:0 0 .65rem;
   font-size:.75rem;
   font-weight:600;
   letter-spacing:.14em;
@@ -729,15 +705,17 @@ html{scroll-padding-top:4.25rem}
   color:rgba(8,22,60,.5);
 }
 .solutions__h2{
-  margin:0;
-  max-width:9ch;
-  font-size:clamp(2.75rem, 1.6rem + 4vw, 5.25rem);
+  margin:0 0 .6rem;
+  font-size:clamp(2.25rem, 1.4rem + 3vw, 3.75rem);
   font-weight:600;
-  letter-spacing:-.04em;
-  line-height:.98;
+  letter-spacing:-.03em;
+  line-height:1.05;
 }
-.solutions__rail{
-  min-width:0;
+.solutions__lead{
+  margin:0;
+  font-size:clamp(.95rem, .85rem + .3vw, 1.125rem);
+  line-height:1.5;
+  color:rgba(8,22,60,.62);
 }
 .solutions__rule{
   height:14px;
@@ -750,23 +728,35 @@ html{scroll-padding-top:4.25rem}
   background-position:left bottom, left bottom;
   background-repeat:repeat-x;
 }
+.solutions__grid{
+  display:grid;
+  grid-template-columns:1fr;
+  min-height:clamp(22rem, 52vh, 32rem);
+}
+@media(min-width:900px){
+  .solutions__grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+}
 .solutions__card{
   position:relative;
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
-  min-height:min(78svh, 36rem);
-  padding:1.75rem 1.15rem 1.7rem;
+  gap:.7rem;
+  min-height:22rem;
+  padding:1.5rem 1.25rem 1.6rem;
   overflow:hidden;
+  border-bottom:1px solid rgba(8,22,60,.12);
   isolation:isolate;
   color:#08163C;
-  border-bottom:1px solid rgba(8,22,60,.12);
 }
-@media(min-width:1024px){
+@media(min-width:900px){
   .solutions__card{
-    min-height:100svh;
-    padding:2.25rem 1.75rem 2.4rem;
+    min-height:30rem;
+    padding:2rem 1.75rem 1.85rem;
+    border-bottom:0;
+    border-right:1px solid rgba(8,22,60,.12);
   }
+  .solutions__card:last-child{border-right:0}
 }
 .solutions__media{
   position:absolute;
@@ -788,57 +778,34 @@ html{scroll-padding-top:4.25rem}
   inset:0;
   background:linear-gradient(180deg, rgba(8,22,60,.18) 0%, rgba(8,22,60,.8) 100%);
 }
-.solutions__card-row{
-  position:relative;
-  z-index:1;
-  display:grid;
-  grid-template-columns:auto minmax(0,1fr);
-  gap:.85rem 1.15rem;
-  align-items:end;
-}
-.solutions__num{
-  margin:0;
-  padding-bottom:.2rem;
-  font-size:clamp(1.05rem, .9rem + .4vw, 1.25rem);
-  font-weight:600;
-  letter-spacing:.04em;
-  color:rgba(8,22,60,.42);
-}
-.solutions__card-copy{
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:.7rem;
-}
+.solutions__kicker,.solutions__title,.solutions__panel{position:relative;z-index:1}
 .solutions__kicker{
   margin:0;
-  font-size:.8125rem;
+  font-size:.75rem;
   font-weight:600;
-  letter-spacing:.14em;
+  letter-spacing:.12em;
   text-transform:uppercase;
   color:rgba(8,22,60,.48);
 }
 .solutions__title{
   margin:0;
-  max-width:14ch;
-  font-size:clamp(2rem, 1.2rem + 2.6vw, 3.35rem);
+  max-width:16ch;
+  font-size:clamp(1.45rem, 1.05rem + 1.4vw, 2rem);
   font-weight:600;
-  letter-spacing:-.035em;
-  line-height:1.08;
+  letter-spacing:-.03em;
+  line-height:1.15;
 }
 .solutions__panel{
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  gap:1.1rem;
-  max-width:28rem;
+  gap:1rem;
+  max-width:24rem;
 }
 .solutions__text{
   margin:0;
-  font-size:clamp(1rem, .92rem + .35vw, 1.2rem);
-  line-height:1.55;
-  letter-spacing:.01em;
+  font-size:.9375rem;
+  line-height:1.5;
   color:rgba(8,22,60,.68);
 }
 .solutions .pill--dark .pill__inner{background:#08163C;color:#fff}
@@ -846,15 +813,13 @@ html{scroll-padding-top:4.25rem}
 @media (hover:hover) and (pointer:fine){
   .solutions__panel{
     opacity:0;
-    transform:translateY(12px);
+    transform:translateY(10px);
     transition:opacity .35s ease, transform .35s ease, color .35s ease;
   }
   .solutions__card:hover,
   .solutions__card:focus-within{
     color:#fff;
   }
-  .solutions__card:hover .solutions__num,
-  .solutions__card:focus-within .solutions__num,
   .solutions__card:hover .solutions__kicker,
   .solutions__card:focus-within .solutions__kicker{color:rgba(255,255,255,.7)}
   .solutions__card:hover .solutions__text,
@@ -873,12 +838,8 @@ html{scroll-padding-top:4.25rem}
 @media (hover:none),(pointer:coarse){
   .solutions__media{opacity:.7;transform:none}
   .solutions__card{color:#fff}
-  .solutions__num,.solutions__kicker{color:rgba(255,255,255,.7)}
+  .solutions__kicker{color:rgba(255,255,255,.7)}
   .solutions__text{color:rgba(255,255,255,.82)}
-}
-@media (prefers-reduced-motion:reduce){
-  .solutions__sticky{position:relative;top:auto;min-height:0;padding:3rem 0 1rem}
-  .solutions__card{min-height:22rem}
 }
 
 /* Portfolio — Selected Work + Coverflow */
@@ -890,9 +851,9 @@ html{scroll-padding-top:4.25rem}
   color:var(--pf-ink);
   background:var(--pf-bg);
 }
-.portfolio-track{position:relative;height:320svh}
+.portfolio-track{position:relative;height:calc(320svh + 10vh)}
 @media(min-width:900px){
-  .portfolio-track{height:380vh}
+  .portfolio-track{height:calc(380vh + 10vh)}
 }
 .portfolio-sticky{
   position:sticky;
@@ -1231,7 +1192,7 @@ html{scroll-padding-top:4.25rem}
 .industries{
   position:relative;
   isolation:isolate;
-  overflow:hidden;
+  overflow:visible;
   background:var(--hero-bg);
   background-color:var(--hero-mid);
   color:#fff;
@@ -1251,7 +1212,7 @@ html{scroll-padding-top:4.25rem}
     grid-template-columns:minmax(0, .92fr) minmax(0, 1.08fr);
     gap:clamp(2.5rem, 5vw, 5rem);
     align-items:start;
-    padding:6rem 2rem 5.5rem;
+    padding:0 2rem;
   }
 }
 .industries__intro{
@@ -1261,7 +1222,13 @@ html{scroll-padding-top:4.25rem}
   gap:1.25rem;
 }
 @media(min-width:1024px){
-  .industries__intro{position:sticky;top:5.5rem}
+  .industries__intro{
+    position:sticky;
+    top:5.5rem;
+    min-height:calc(100svh - 5.5rem);
+    justify-content:center;
+    padding:4rem 0 5rem;
+  }
 }
 .industries__eyebrow{
   margin:0;
@@ -1282,7 +1249,16 @@ html{scroll-padding-top:4.25rem}
 .industries .pill--light .pill__inner{background:#fff;color:#08163C}
 .industries .pill--light .pill__badge{background:#15389B;color:#fff}
 .industries__list{border-top:1px solid rgba(255,255,255,.14)}
-.industries__item{border-bottom:1px solid rgba(255,255,255,.14)}
+.industries__item{
+  border-bottom:1px solid rgba(255,255,255,.14);
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+@media(min-width:1024px){
+  .industries__item{min-height:100svh;padding:2.5rem 0}
+}
 .industries__btn{
   width:100%;
   display:grid;
@@ -1366,6 +1342,10 @@ html{scroll-padding-top:4.25rem}
   background:rgba(8,22,60,.35);
 }
 .industries__tag:hover{border-color:rgba(255,255,255,.5)}
+@media (prefers-reduced-motion:reduce){
+  .industries__intro{position:relative;top:auto;min-height:0;padding:0}
+  .industries__item{min-height:0;padding:0}
+}
 
 /* Closing band — Footer + ticker */
 .closing{
@@ -1991,46 +1971,37 @@ html.lenis,html.lenis body{height:auto}
 
   <section class="solutions" id="solutions" data-nav-theme="light">
     <div class="shell solutions__inner">
-      <header class="solutions__sticky">
+      <header class="solutions__head">
         <p class="solutions__eyebrow">What I do</p>
-        <h2 class="solutions__h2">What I ship</h2>
+        <h2 class="solutions__h2">Our solutions</h2>
+        <p class="solutions__lead">Comprehensive digital solutions tailored to your needs</p>
       </header>
-      <div class="solutions__rail">
-        <div class="solutions__rule" aria-hidden="true"></div>
+      <div class="solutions__rule" aria-hidden="true"></div>
+      <div class="solutions__grid">
         <article class="solutions__card">
           <div class="solutions__media" style="background-image:url('./assets/solutions/site-laptop.jpg')"></div>
-          <div class="solutions__card-row">
-            <p class="solutions__num">01</p>
-            <div class="solutions__card-copy">
-              <p class="solutions__kicker">Websites &amp; platforms</p>
-              <h3 class="solutions__title">Fast, responsive sites</h3>
-              <div class="solutions__panel">
-                <p class="solutions__text">Design and code sit in the same pass. That’s how you get a fast, responsive site that lands with the people who see it — not a pretty file that dies in the browser.</p>
-                <button class="pill pill--dark pill--arrow" type="button" data-scroll="works">
-                  <span class="pill__inner">Explore<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
-                </button>
-              </div>
-            </div>
+          <p class="solutions__kicker">01 Websites and platforms</p>
+          <h3 class="solutions__title">Fast and responsive websites</h3>
+          <div class="solutions__panel">
+            <p class="solutions__text">In our team, developers work alongside designers. This is crucial in creating a fast and responsive website that would excite the audience.</p>
+            <button class="pill pill--dark pill--arrow" type="button" data-scroll="works">
+              <span class="pill__inner">Explore<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+            </button>
           </div>
         </article>
         <article class="solutions__card">
           <div class="solutions__media solutions__media--phone" style="background-image:url('./assets/solutions/app-phone.png')"></div>
-          <div class="solutions__card-row">
-            <p class="solutions__num">02</p>
-            <div class="solutions__card-copy">
-              <p class="solutions__kicker">Mobile apps</p>
-              <h3 class="solutions__title">Custom mobile apps</h3>
-              <div class="solutions__panel">
-                <p class="solutions__text">No template apps. Each one goes through who it’s for, then a prototype, then a product people will actually open.</p>
-                <button class="pill pill--dark pill--arrow" type="button" data-scroll="works">
-                  <span class="pill__inner">Explore<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
-                </button>
-              </div>
-            </div>
+          <p class="solutions__kicker">02 Mobile applications</p>
+          <h3 class="solutions__title">Perfectly suited mobile apps</h3>
+          <div class="solutions__panel">
+            <p class="solutions__text">No template solutions. Every mobile app goes through audience research and prototype testing.</p>
+            <button class="pill pill--dark pill--arrow" type="button" data-scroll="works">
+              <span class="pill__inner">Explore<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+            </button>
           </div>
         </article>
-        <div class="solutions__rule" aria-hidden="true"></div>
       </div>
+      <div class="solutions__rule" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -2052,9 +2023,12 @@ html.lenis,html.lenis body{height:auto}
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
-              <li>Product story that makes the buy feel obvious</li>
-              <li>Short path to cart — no buried checkout</li>
-              <li>Trust on the page before they pay</li>
+              <li>Online stores with local payment solutions</li>
+              <li>Catalogs with thousands of products</li>
+              <li>Custom 3D product configurators</li>
+              <li>Payment, shipping, and invoicing integrations</li>
+              <li>Stock sync with warehouse and ERP</li>
+              <li>Product photography and store content</li>
             </ul>
             <p class="industries__work-label">Selected work</p>
             <div class="industries__tags">
@@ -2070,9 +2044,11 @@ html.lenis,html.lenis body{height:auto}
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
-              <li>Projects that look real, not a PDF dump</li>
-              <li>One next step: inquiry, viewing, or quote</li>
-              <li>Clear offer per listing — not a maze of pages</li>
+              <li>Presentation sites for investors and builders</li>
+              <li>Generative 3D configurators that produce a buildable baseline</li>
+              <li>CRM for leads, quotes, and project flow</li>
+              <li>Quote and document automation</li>
+              <li>Property galleries and virtual walkthroughs</li>
             </ul>
           </div>
         </article>
@@ -2084,9 +2060,12 @@ html.lenis,html.lenis body{height:auto}
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
-              <li>Book the stay without a phone tag</li>
-              <li>Offer, rooms, and proof in one scroll</li>
-              <li>CTA that matches the trip, not a generic contact form</li>
+              <li>Sites for hotels, restaurants, and resorts</li>
+              <li>Booking and inquiry flows</li>
+              <li>Visual identity and brand language</li>
+              <li>Cinematic video and location photography</li>
+              <li>3D walkthroughs of rooms and the property</li>
+              <li>Local SEO and Google Business presence</li>
             </ul>
           </div>
         </article>
@@ -2098,9 +2077,11 @@ html.lenis,html.lenis body{height:auto}
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
-              <li>What you make, who it’s for, how to buy — in that order</li>
-              <li>Specs without killing the sale</li>
-              <li>A quote request that sales can actually use</li>
+              <li>Company sites and product catalogs</li>
+              <li>Branding, print, and packaging</li>
+              <li>Product photography on the factory floor</li>
+              <li>B2B inquiries and RFQ flows</li>
+              <li>3D configurators for made-to-order products</li>
             </ul>
           </div>
         </article>
@@ -2112,9 +2093,10 @@ html.lenis,html.lenis body{height:auto}
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
-              <li>Who it’s for and what the session is — before they bounce</li>
-              <li>Book the intro call on the page, not “email us”</li>
-              <li>Trust without sounding like a hospital brochure</li>
+              <li>Apps for entering and tracking medical data</li>
+              <li>Role-based access and change history</li>
+              <li>Internal tools built around clinical workflow</li>
+              <li>Data protection by design</li>
             </ul>
             <p class="industries__work-label">Selected work</p>
             <div class="industries__tags">
@@ -2126,18 +2108,16 @@ html.lenis,html.lenis body{height:auto}
           <button class="industries__btn" type="button" aria-expanded="false">
             <span class="industries__plus" aria-hidden="true">+</span>
             <span class="industries__name">Creative, Photography &amp; Media</span>
-            <span class="industries__count">01</span>
+            <span class="industries__count">00</span>
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
-              <li>Work that sells, not a gallery that only looks expensive</li>
-              <li>Packages and prints with a real checkout</li>
-              <li>One path from “I like this” to paid</li>
+              <li>Portfolio platforms with demanding galleries</li>
+              <li>Image delivery and performance optimization</li>
+              <li>Motion design and brand animation</li>
+              <li>Multilingual presence across markets</li>
+              <li>Development for studios and agencies, under their name</li>
             </ul>
-            <p class="industries__work-label">Selected work</p>
-            <div class="industries__tags">
-              <button class="industries__tag" type="button" data-scroll="works">Lenkolino</button>
-            </div>
           </div>
         </article>
         <article class="industries__item">
@@ -2148,9 +2128,10 @@ html.lenis,html.lenis body{height:auto}
           </button>
           <div class="industries__panel">
             <ul class="industries__points">
-              <li>Who the program is for in one line</li>
-              <li>The path (90 days, not “about us”)</li>
-              <li>Buy or apply on the site — not a buried DM</li>
+              <li>Mobile apps for iOS and Android</li>
+              <li>Court and field booking and schedules</li>
+              <li>Profiles, social features, and player matching</li>
+              <li>MVP scope and a production-ready core</li>
             </ul>
             <p class="industries__work-label">Selected work</p>
             <div class="industries__tags">
@@ -2770,7 +2751,7 @@ setReady();
       posterMobile: './assets/works/lenkolino-mobile.jpg?v=2',
       mp4: './assets/works/videos/lenkolino.mp4?v=2',
       mp4Mobile: './assets/works/videos/mobile/lenkolino.mp4?v=2',
-      copy: 'The photography brand had work worth buying and a site that made buying feel like extra work. I shipped a shop with clear product story, trust up front, and a short path to checkout. Scope was merchandising + cart, not a gallery with a buried contact form — priced as a Growth-range build with a fixed launch window.',
+      copy: 'Lenkolino is décor for kids’ rooms — handmade balloons, birth cards, personalised gifts — with a site that made buying feel like extra work. I shipped a shop with a clear product story, trust up front, and a short path to checkout. Scope was merchandising + cart, not a pretty catalog with a buried form — priced as a Growth-range build with a fixed launch window.',
       stats: [
         { num: '5 wks', label: 'Build time' },
         { num: '€3.2k', label: 'Investment' },

@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lumora — Independent Design & Engineering Studio</title>
-<meta name="description" content="Lumora is an independent studio crafting brands, products, and the systems that connect them — bold ideas, shipped with quiet precision." />
-<meta name="theme-color" content="#0a0a0a" />
+<title>G8 Flow — Sites that grow revenue</title>
+<meta name="description" content="G8 Flow builds websites that sell — clear offers, clear paths, and the one next step that turns traffic into calls." />
+<meta name="theme-color" content="#08163C" />
+<link rel="icon" href="./assets/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="./assets/brand/favicon.ico" sizes="any" />
+<link rel="icon" href="./assets/brand/favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="./assets/brand/apple-touch-icon.png" />
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
+<script src="https://assets.calendly.com/assets/external/widget.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -322,6 +328,20 @@ html{scroll-padding-top:4.25rem}
     line-height:1;
   }
   .hero__h1 .line-clip{white-space:nowrap}
+}
+.hero__lead{
+  margin:0;
+  max-width:38rem;
+  align-self:center;
+  font-size:clamp(1rem, .85rem + .45vw, 1.25rem);
+  font-weight:500;
+  line-height:1.45;
+  letter-spacing:.02em;
+  color:rgba(255,255,255,.78);
+  text-align:center;
+}
+@media(min-width:1024px){
+  .hero__lead{font-size:1.25rem;max-width:42rem}
 }
 .hero__ctas{
   display:flex;
@@ -1376,6 +1396,7 @@ html.lenis,html.lenis body{height:auto}
 
 /* Overlays must honor [hidden] even with display:flex */
 .nav-menu[hidden],.modal[hidden]{display:none!important}
+.calendly-overlay{z-index:200!important}
 
 /* Nav menu */
 .nav-menu{position:fixed;inset:0;z-index:115;display:flex;flex-direction:column;background:var(--hero-bg);background-color:var(--hero-mid);color:#fff;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .5s cubic-bezier(.22,1,.36,1),visibility .5s}
@@ -1479,6 +1500,9 @@ html.lenis,html.lenis body{height:auto}
           <span class="line-clip"><span>Make your website</span></span>
           <span class="line-clip"><span>grow your revenue</span></span>
         </h1>
+        <p class="hero__lead reveal" data-reveal data-delay="380">
+          Most sites look expensive and sell nothing. I make the offer obvious, the path clear, and the next step impossible to miss.
+        </p>
         <div class="hero__ctas reveal" data-reveal data-delay="450">
           <a class="pill pill--dark pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer" data-reveal-portrait>
             <span class="pill__inner">Let's Talk<span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
@@ -2733,12 +2757,39 @@ function closeMenu(keepLock){
   }, 400);
 }
 
+function openCalendlyPopup(url){
+  const src = url || CALENDLY_URL;
+  if (window.Calendly?.initPopupWidget) {
+    stopScroll();
+    window.Calendly.initPopupWidget({ url: src });
+    return;
+  }
+  window.open(src, '_blank', 'noopener,noreferrer');
+}
+
+addEventListener('message', (e) => {
+  if (e.origin !== 'https://calendly.com') return;
+  const type = e.data?.event;
+  if (type === 'calendly.popup_closed' || type === 'calendly.event_scheduled') {
+    if (!menuOpen && !modalOpen) startScroll();
+  }
+});
+
 document.getElementById('openMenu').addEventListener('click', openMenu);
 document.getElementById('closeMenu').addEventListener('click', () => closeMenu());
 document.getElementById('closeModal').addEventListener('click', closeModal);
 document.getElementById('successClose').addEventListener('click', closeModal);
 
 document.addEventListener('click', (e) => {
+  const calendlyLink = e.target.closest('a[href*="calendly.com"]');
+  if (calendlyLink) {
+    e.preventDefault();
+    const url = calendlyLink.getAttribute('href') || CALENDLY_URL;
+    const fromMenu = menuOpen;
+    if (fromMenu) closeMenu(true);
+    setTimeout(() => openCalendlyPopup(url), fromMenu ? 420 : 0);
+    return;
+  }
   const openMod = e.target.closest('[data-open-modal]');
   const openFromMenu = e.target.closest('[data-open-modal-from-menu]');
   const scrollBtn = e.target.closest('[data-scroll]');

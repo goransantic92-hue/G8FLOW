@@ -1,0 +1,13 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="G8">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08163C"/>
+      <stop offset="28%" stop-color="#091a81"/>
+      <stop offset="58%" stop-color="#15389B"/>
+      <stop offset="82%" stop-color="#0a1d72"/>
+      <stop offset="100%" stop-color="#08163C"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="url(#g)"/>
+  <text x="32" y="34" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Gebuk, Helvetica Neue, Arial, sans-serif" font-size="30" font-weight="400" letter-spacing="0.02em">G8</text>
+</svg>

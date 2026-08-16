@@ -1062,21 +1062,34 @@ html{scroll-padding-top:4.25rem}
   .portfolio{padding-top:4.35rem}
   .portfolio-sticky{
     top:3.85rem;
+    height:calc(100svh - 3.85rem);
     min-height:calc(100svh - 3.85rem);
-    padding:0 0 1rem;
-    justify-content:flex-start;
+    max-height:calc(100svh - 3.85rem);
+    padding:0.35rem 0 calc(.7rem + env(safe-area-inset-bottom, 0px));
+    box-sizing:border-box;
+    justify-content:stretch;
+  }
+  .portfolio__inner{
+    flex:1;
+    min-height:0;
+    height:100%;
+    justify-content:space-between;
+    padding-bottom:0;
   }
   .coverflow{
-    --cf-w:168px;
-    --cf-h:320px;
-    --cf-radius:1.85rem;
+    --cf-w:230px;
+    --cf-h:440px;
+    --cf-radius:2rem;
+    flex:1 1 auto;
     min-height:0;
+    width:100%;
   }
   .coverflow__stage{
-    width:min(var(--cf-w), 46vw);
-    height:calc(min(var(--cf-w), 46vw) * 320 / 168);
-    max-width:var(--cf-w);
-    max-height:var(--cf-h);
+    aspect-ratio:230 / 440;
+    height:100%;
+    width:auto;
+    max-height:100%;
+    max-width:min(var(--cf-w), 62vw);
   }
   .browser-mock{
     border-radius:var(--cf-radius);
@@ -1192,7 +1205,11 @@ html{scroll-padding-top:4.25rem}
 }
 .portfolio__case-link:hover{text-decoration:underline}
 @media (max-width:899px){
-  .portfolio__case{margin-top:.7rem}
+  .portfolio__case{
+    flex:0 0 auto;
+    margin-top:.55rem;
+    padding-bottom:.1rem;
+  }
   .portfolio__case-meta{margin:0 0 .35rem;font-size:.625rem}
   .portfolio__case-copy{
     margin:0 auto .45rem;
@@ -2912,7 +2929,7 @@ setReady();
         `translate(-50%, -50%) translateX(${tx}px) translateZ(${tz}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${sc})`;
     });
     pauseInactive();
-    if (desktop.matches) playActive(opts);
+    playActive(opts);
     renderCase();
   }
 
@@ -2979,7 +2996,6 @@ setReady();
     const i = Math.min(n - 1, Math.floor(scaled >= n ? n - 1 : scaled));
     const local = Math.min(1, Math.max(0, scaled - i));
     setActive(i, { fromScroll: true });
-    if (inView && !desktop.matches) scrubActive(local);
   }
 
   function onScroll(){
@@ -3006,10 +3022,8 @@ setReady();
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => {
       inView = en.isIntersecting;
-      if (inView) {
-        if (desktop.matches) playActive({ restart: true });
-        else updateFromScroll();
-      } else pauseInactive();
+      if (inView) playActive({ restart: true });
+      else pauseInactive();
     });
   }, { threshold: 0.15 });
   io.observe(section);

@@ -2383,28 +2383,6 @@ html.lenis,html.lenis body{height:auto}
 .faq__icon{flex-shrink:0;color:#a9c2ff}
 .faq__panel{display:none;padding:0 0 1rem;font-size:.98rem;line-height:1.55;color:rgba(255,255,255,.78)}
 .faq__item.is-open .faq__panel{display:block}
-.ticker{
-  display:flex;
-  align-items:center;
-  gap:.5rem;
-}
-.ticker__pause{
-  flex-shrink:0;
-  z-index:4;
-  min-height:44px;
-  min-width:44px;
-  margin-inline:.75rem;
-  padding:.35rem .8rem;
-  border-radius:999px;
-  border:1px solid rgba(8,22,60,.18);
-  background:#fff;
-  color:#08163C;
-  font-size:.72rem;
-  font-weight:700;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-}
-.ticker.is-paused .ticker__track,.ticker__track.is-paused{animation-play-state:paused}
 .nav-menu__close{min-height:44px}
 
 </style>
@@ -2922,7 +2900,6 @@ html.lenis,html.lenis body{height:auto}
   </section>
 
   <div class="ticker" aria-label="Site offers" data-nav-theme="light">
-    <button class="ticker__pause" type="button" id="tickerPause" aria-pressed="false">Pause</button>
     <div class="ticker__track" id="tickerTrack">
       <div class="ticker__group">
         <span class="ticker__item">Your site should make you money — not just look expensive <span class="ticker__dot" aria-hidden="true"></span></span>
@@ -4735,25 +4712,6 @@ addEventListener('keydown', (e) => {
         if (icon) icon.textContent = '−';
       }
     });
-  });
-})();
-
-(function initTickerPause(){
-  const ticker = document.querySelector('.ticker');
-  const btn = document.getElementById('tickerPause');
-  const track = document.getElementById('tickerTrack');
-  if (!ticker || !btn) return;
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) {
-    ticker.classList.add('is-paused');
-    btn.hidden = true;
-    return;
-  }
-  btn.addEventListener('click', () => {
-    const paused = ticker.classList.toggle('is-paused');
-    track?.classList.toggle('is-paused', paused);
-    btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
-    btn.textContent = paused ? 'Play' : 'Pause';
   });
 })();
 

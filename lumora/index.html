@@ -2826,8 +2826,12 @@ html.lenis,html.lenis body{height:auto}
               <label class="quote-opt"><input type="checkbox" name="appMod" value="auth"> Auth</label>
               <label class="quote-opt"><input type="checkbox" name="appMod" value="profiles"> Profiles</label>
               <label class="quote-opt"><input type="checkbox" name="appMod" value="pay"> Payments</label>
+              <label class="quote-opt"><input type="checkbox" name="appMod" value="book"> Booking</label>
+              <label class="quote-opt"><input type="checkbox" name="appMod" value="chat"> Chat / bot</label>
               <label class="quote-opt"><input type="checkbox" name="appMod" value="admin"> Admin</label>
-              <label class="quote-opt"><input type="checkbox" name="appMod" value="push"> Notifications</label>
+              <label class="quote-opt"><input type="checkbox" name="appMod" value="push"> Push</label>
+              <label class="quote-opt"><input type="checkbox" name="appMod" value="maps"> Maps</label>
+              <label class="quote-opt"><input type="checkbox" name="appMod" value="video"> Live video</label>
               <label class="quote-opt"><input type="checkbox" name="appMod" value="offline"> Offline</label>
             </div>
           </div>
@@ -3963,7 +3967,7 @@ setReady();
   const SITE_EXTRA = { ecom: 1.22, member: 1.16, book: 1.14 };
   const APP_PLAT = { ios: 900, android: 900, pwa: 700 };
   const APP_SCREENS = { '5-8': 1, '9-15': 1.32, '16-25': 1.65, '26+': 2.05 };
-  const APP_MOD = { auth: 350, profiles: 225, pay: 550, admin: 400, push: 275, offline: 350 };
+  const APP_MOD = { auth: 350, profiles: 225, pay: 550, book: 500, chat: 650, admin: 400, push: 275, offline: 350, maps: 400, video: 700 };
   const SITE_CAP = 3500;
   const APP_CAP = 8000;
 
@@ -4047,6 +4051,11 @@ setReady();
       if (plats.includes('pwa')) care += 10;
       if (mods.includes('pay')) care += 25;
       if (mods.includes('push')) care += 12;
+      if (mods.includes('book')) care += 15;
+      if (mods.includes('chat')) care += 22;
+      if (mods.includes('maps')) care += 12;
+      if (mods.includes('video')) care += 25;
+      if (mods.includes('offline')) care += 10;
     }
     return {
       build,

@@ -2109,6 +2109,14 @@ html{scroll-padding-top:4.25rem}
   background:transparent;
   color:#fff;
 }
+.footer::before{
+  content:"";
+  display:block;
+  height:1px;
+  transform:scaleY(.5);
+  transform-origin:top;
+  background:rgba(248,251,248,.35);
+}
 .footer__inner{position:relative;z-index:10;padding:2.5rem 1.25rem 2.5rem}
 @media(min-width:640px){.footer__inner{padding-left:2rem;padding-right:2rem}}
 @media(min-width:1024px){.footer__inner{padding-top:3rem}}

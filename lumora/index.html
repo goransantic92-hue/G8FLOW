@@ -1237,7 +1237,7 @@ html{scroll-padding-top:4.25rem}
 .feedback{
   position:relative;
   isolation:isolate;
-  overflow:hidden;
+  overflow:visible;
   background:var(--hero-bg);
   background-color:var(--hero-mid);
   color:#fff;
@@ -1351,19 +1351,14 @@ html{scroll-padding-top:4.25rem}
   color:rgba(244,251,244,.72);
 }
 @media (max-width:899px){
-  .feedback-track{height:auto;padding:5.5rem 1.25rem 4rem}
-  .feedback-sticky{position:relative;height:auto;margin-bottom:1.75rem}
+  .feedback-track{height:420vh}
   .feedback__title{font-size:clamp(2.1rem, 10vw, 3.25rem)}
-  .feedback-float{position:relative;display:flex;flex-direction:column;gap:1.1rem}
   .feedback-card{
-    position:relative;
-    top:auto;
-    left:auto;
-    width:100%;
+    left:5%;
+    width:min(28.5rem, 90vw);
     min-height:0;
-    opacity:1;
-    transform:none;
   }
+  .feedback-card--wide{width:min(32.5rem, 90vw)}
 }
 @media (prefers-reduced-motion:reduce){
   .feedback-track{height:auto;padding:5rem 1.5rem}
@@ -3533,8 +3528,7 @@ setReady();
   const cards = [...document.querySelectorAll('[data-fb]')];
   if (!cards.length) return;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const stacked = matchMedia('(max-width: 899px)');
-  if (reduced || stacked.matches) {
+  if (reduced) {
     cards.forEach(c => c.classList.add('is-in'));
     return;
   }
@@ -3542,7 +3536,7 @@ setReady();
     entries.forEach(en => {
       if (en.isIntersecting) en.target.classList.add('is-in');
     });
-  }, { threshold: 0.28, rootMargin: '0px 0px -12% 0px' });
+  }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
   cards.forEach(c => io.observe(c));
 })();
 

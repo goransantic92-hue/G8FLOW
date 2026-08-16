@@ -120,7 +120,24 @@ img{display:block;max-width:100%}
   --line:#e6e5e2;--surface:#f1f0ee;--surface-2:#e3e2df;--accent:#b15f2c;--accent-from:#cf8047;--accent-to:#97501f;
   --hero-from:#08163C;--hero-mid:#091a81;--hero-to:#15389B;
   --hero-bg:linear-gradient(118deg,var(--hero-from) 0%,#0a1d72 28%,var(--hero-to) 58%,#0a1d72 82%,var(--hero-from) 100%);
+  --g8-vignette:radial-gradient(ellipse 140% 110% at 50% 42%, transparent 50%, rgba(8,22,60,.0675) 100%);
   --radius-control:0.875rem;--text-watermark:26rem;--container-shell:88rem;
+}
+
+/* One footer field from “What I can build” through the footer */
+.g8-band{
+  background-color:var(--hero-mid);
+  background-image:var(--g8-vignette),var(--hero-bg);
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+.g8-band .industries,
+.g8-band .quote,
+.g8-band .feedback,
+.g8-band .faq,
+.g8-band .closing{
+  background:transparent;
+  background-image:none;
 }
 
 .shell{max-width:88rem;margin-inline:auto;width:100%}
@@ -1332,8 +1349,6 @@ html{scroll-padding-top:4.25rem}
   position:relative;
   isolation:isolate;
   overflow:visible;
-  background:var(--hero-bg);
-  background-color:var(--hero-mid);
   color:#fff;
 }
 .feedback-track{
@@ -1495,8 +1510,6 @@ html{scroll-padding-top:4.25rem}
   position:relative;
   isolation:isolate;
   overflow:visible;
-  background:var(--hero-bg);
-  background-color:var(--hero-mid);
   color:#fff;
 }
 .industries__inner{
@@ -1632,8 +1645,6 @@ html{scroll-padding-top:4.25rem}
 /* Quote calculator */
 .quote{
   position:relative;
-  background:var(--hero-bg);
-  background-color:var(--hero-mid);
   color:#fff;
 }
 .quote__inner{
@@ -1818,24 +1829,7 @@ html{scroll-padding-top:4.25rem}
   position:relative;
   isolation:isolate;
   overflow:clip;
-  background:var(--hero-bg);
-  background-color:var(--hero-mid);
   color:#fff;
-}
-.closing__field{
-  position:absolute;
-  inset:0;
-  z-index:0;
-  background:var(--hero-bg);
-  pointer-events:none;
-}
-.closing__vignette{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:radial-gradient(ellipse 140% 110% at 50% 42%, transparent 50%, rgba(8,22,60,.15) 100%);
-  opacity:.45;
 }
 
 /* About Me */
@@ -2317,8 +2311,6 @@ html.lenis,html.lenis body{height:auto}
 }
 .plan .pill__inner{min-height:44px}
 .faq{
-  background:var(--hero-bg);
-  background-color:var(--hero-mid);
   color:#fff;
 }
 .faq__inner{
@@ -2591,6 +2583,7 @@ html.lenis,html.lenis body{height:auto}
     </div>
   </section>
 
+  <div class="g8-band">
   <section class="industries" id="industries" data-nav-theme="dark">
     <div class="industries__inner">
       <div class="industries__intro">
@@ -2930,8 +2923,6 @@ html.lenis,html.lenis body{height:auto}
   </section>
 
   <div class="closing">
-    <div class="closing__field" aria-hidden="true"></div>
-    <div class="closing__vignette" aria-hidden="true"></div>
   <div class="ticker" aria-label="Site offers" data-nav-theme="light">
     <button class="ticker__pause" type="button" id="tickerPause" aria-pressed="false">Pause</button>
     <div class="ticker__track" id="tickerTrack">
@@ -3005,6 +2996,7 @@ html.lenis,html.lenis body{height:auto}
     </div>
   </div>
 </footer>
+  </div>
   </div>
 </main>
 

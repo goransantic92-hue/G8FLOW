@@ -357,12 +357,9 @@ html{scroll-padding-top:4.25rem}
 .liquid__field{position:absolute;inset:0;z-index:0;background:transparent;pointer-events:none}
 .liquid__img,.liquid__canvas,.liquid__clear{
   position:absolute;inset:0;z-index:1;width:100%;height:100%;
-  object-fit:contain;object-position:center center;
+  object-fit:cover;object-position:center center;
 }
 #liquidBase{mix-blend-mode:soft-light;opacity:.94}
-@media(min-width:1024px){
-  .liquid__img,.liquid__canvas,.liquid__clear{object-position:center 58%}
-}
 .liquid__canvas{
   pointer-events:none;
   mix-blend-mode:normal;
@@ -2500,9 +2497,9 @@ html.lenis,html.lenis body{height:auto}
     <div class="liquid" id="liquid">
       <div class="liquid__field" aria-hidden="true"></div>
       <img class="liquid__img" id="liquidBase" alt="" decoding="async" fetchpriority="high"
-        src="./assets/hero/portfolio-base.jpg?v=3" />
+        src="./assets/hero/portfolio-base.jpg?v=4" />
       <img class="liquid__clear" id="liquidClear" alt="" decoding="async"
-        src="./assets/hero/portfolio-clear.jpg?v=3" />
+        src="./assets/hero/portfolio-clear.jpg?v=4" />
       <canvas class="liquid__canvas" id="liquidCanvas" aria-hidden="true"></canvas>
     </div>
     <div class="hero__vignette" aria-hidden="true"></div>
@@ -3121,8 +3118,8 @@ html.lenis,html.lenis body{height:auto}
 <script type="module">
 import Lenis from 'lenis';
 
-const BASE_SRC = './assets/hero/portfolio-base.jpg?v=3';   // always-shown base (blue silhouette)
-const CLEAR_SRC = './assets/hero/portfolio-clear.jpg?v=3'; // brush-revealed clear portrait
+const BASE_SRC = './assets/hero/portfolio-base.jpg?v=4';   // always-shown base (blue silhouette)
+const CLEAR_SRC = './assets/hero/portfolio-clear.jpg?v=4'; // brush-revealed clear portrait
 const CALENDLY_URL = 'https://calendly.com/goransantic/30min';
 const CONTACT_EMAIL = 'goransantic92@gmail.com';
 function t(key, vars){
@@ -3343,16 +3340,15 @@ setReady();
   afterImg.src = CLEAR_SRC; // trail / reveal image
 
   function drawFit(img, target, tw, th){
-    // Match CSS object-fit: contain + object-position (center / desktop center 58%)
+    // Match CSS object-fit: cover + object-position: center
     const tctx = target.getContext('2d');
     const ir = img.naturalWidth / img.naturalHeight;
     const cr = tw / th;
-    let dw, dh, dx, dy;
-    if (ir > cr){ dw = tw; dh = tw / ir; dx = 0; dy = (th - dh) / 2; }
-    else { dh = th; dw = th * ir; dx = (tw - dw) / 2; dy = 0; }
-    if (matchMedia('(min-width: 1024px)').matches && dh < th) {
-      dy = (th - dh) * 0.58;
-    }
+    let dw, dh;
+    if (ir < cr){ dw = tw; dh = tw / ir; }
+    else { dh = th; dw = th * ir; }
+    const dx = (tw - dw) * 0.5;
+    const dy = (th - dh) * 0.5;
     tctx.clearRect(0, 0, tw, th);
     tctx.drawImage(img, dx, dy, dw, dh);
   }

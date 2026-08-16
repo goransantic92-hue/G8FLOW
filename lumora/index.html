@@ -43,7 +43,7 @@
         "@type": "OfferCatalog",
         "name": "Website and app builds",
         "itemListElement": [
-          { "@type": "Offer", "name": "Launch", "description": "A one-offer site with a clear path to buy or book.", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "800", "maxPrice": "2200", "priceCurrency": "EUR" } },
+          { "@type": "Offer", "name": "Launch", "description": "A one-offer site with a clear path to buy or book.", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "440", "maxPrice": "2200", "priceCurrency": "EUR" } },
           { "@type": "Offer", "name": "Growth", "description": "Shop, booking, or a longer path that converts.", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "2200", "maxPrice": "3500", "priceCurrency": "EUR" } },
           { "@type": "Offer", "name": "Custom", "description": "Apps and scoped builds — book a call." }
         ]
@@ -2745,7 +2745,7 @@ html.lenis,html.lenis body{height:auto}
       <div class="plans" aria-label="Build ranges">
         <article class="plan">
           <h3 class="plan__name">Launch</h3>
-          <p class="plan__price">€800–2.2k</p>
+          <p class="plan__price">€440–2.2k</p>
           <p class="plan__copy">One offer. One path. A site that can sell or book — not a brochure that looks expensive.</p>
           <button class="pill pill--outline pill--arrow" type="button" data-scroll="quoteCard">
             <span class="pill__inner">See the number<span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
@@ -3552,7 +3552,7 @@ setReady();
       copyMobile: 'They couldn’t tell who it was for or where to buy. I rebuilt the path: problem, promise, one purchase step.',
       stats: [
         { num: '4 weeks', label: 'Build time' },
-        { num: '€800–2.2k', label: 'Launch range' },
+        { num: '€440–2.2k', label: 'Launch range' },
         { num: 'Live', label: 'Online sales' },
       ],
     },
@@ -3588,7 +3588,7 @@ setReady();
       copyMobile: 'They couldn’t see the offer or book. One scroll: who she is, the work, a 30-minute intro.',
       stats: [
         { num: '3 weeks', label: 'Build time' },
-        { num: '€800–2.2k', label: 'Launch range' },
+        { num: '€440–2.2k', label: 'Launch range' },
         { num: 'Live', label: 'Session booking' },
       ],
     },
@@ -3958,7 +3958,7 @@ setReady();
   const form = document.getElementById('quoteForm');
   let kind = 'site';
 
-  const SITE_PAGES = { '1': 750, '3-6': 1441, '7-12': 2250, '13+': 3100 };
+  const SITE_PAGES = { '1': 440, '3-6': 1441, '7-12': 2250, '13+': 3100 };
   const SITE_CMS = { none: 1, cms: 1.18, shop: 1.42 };
   const SITE_EXTRA = { ecom: 1.22, member: 1.16, book: 1.14 };
   const APP_PLAT = { ios: 900, android: 900, pwa: 700 };
@@ -3999,7 +3999,15 @@ setReady();
       const cms = radio('siteCms') || 'none';
       const extras = checked('siteExtra');
       let build = SITE_PAGES[pages] || 0;
-      if (build) {
+      let exact = false;
+      if (pages === '1' && cms === 'none') {
+        build = extras.includes('book') ? 600 : 440;
+        extras.forEach(k => {
+          if (k === 'book') return;
+          build *= SITE_EXTRA[k] || 1;
+        });
+        exact = extras.every(k => k === 'book');
+      } else if (build) {
         build *= SITE_CMS[cms] || 1;
         extras.forEach(k => { build *= SITE_EXTRA[k] || 1; });
       }
@@ -4018,6 +4026,7 @@ setReady();
         build,
         care,
         cap: SITE_CAP,
+        exact,
         summary: `Website · pages ${pages || '—'} · CMS ${cms} · extras ${extras.join(', ') || 'none'}`,
       };
     }
@@ -4049,7 +4058,7 @@ setReady();
 
   function render(){
     const raw = compute();
-    const build = snapEight(raw.build);
+    const build = raw.exact ? Math.round(raw.build) : snapEight(raw.build);
     const { care, cap, summary } = raw;
     const over = build > cap;
     bar.classList.toggle('quote-bar__over', over);

@@ -43,8 +43,8 @@
         "@type": "OfferCatalog",
         "name": "Website and app builds",
         "itemListElement": [
-          { "@type": "Offer", "name": "Launch", "description": "A one-offer site with a clear path to buy or book.", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "1800", "maxPrice": "2500", "priceCurrency": "EUR" } },
-          { "@type": "Offer", "name": "Growth", "description": "Shop, booking, or a longer path that converts.", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "2800", "maxPrice": "3500", "priceCurrency": "EUR" } },
+          { "@type": "Offer", "name": "Launch", "description": "A one-offer site with a clear path to buy or book.", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "800", "maxPrice": "2200", "priceCurrency": "EUR" } },
+          { "@type": "Offer", "name": "Growth", "description": "Shop, booking, or a longer path that converts.", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "2200", "maxPrice": "3500", "priceCurrency": "EUR" } },
           { "@type": "Offer", "name": "Custom", "description": "Apps and scoped builds — book a call." }
         ]
       }
@@ -60,7 +60,7 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "How long does a site take?", "acceptedAnswer": { "@type": "Answer", "text": "Launch-range sites usually ship in 3–4 calendar weeks. Growth-range (shop, booking, longer path) is about 5 weeks. The clock starts after the call, when the offer and pages are clear — not after a vague “we should do a website.”" } },
+        { "@type": "Question", "name": "How long does a site take?", "acceptedAnswer": { "@type": "Answer", "text": "Launch-range sites usually ship in 3–4 weeks. Growth-range (shop, booking, longer path) is about 5 weeks. The clock starts after the call, when the offer and pages are clear — not after a vague “we should do a website.”" } },
         { "@type": "Question", "name": "What’s included in the build?", "acceptedAnswer": { "@type": "Answer", "text": "Copy structure, design, mobile layout, the one conversion path, and launch. You get a site that can take money or bookings — not a moodboard. Extra systems (CMS, shop, membership) are what you check in the calculator." } },
         { "@type": "Question", "name": "What is monthly care?", "acceptedAnswer": { "@type": "Answer", "text": "Care is hosting, updates, and keeping the path working after launch. The calculator shows a monthly number next to the build. You can skip it and host it yourself; most people don’t, because a dead plugin costs more than care." } },
         { "@type": "Question", "name": "Who is this for?", "acceptedAnswer": { "@type": "Answer", "text": "Owners who already sell something — coaching, a shop, a practice — and whose current site looks fine but doesn’t convert. If you need a logo contest or a 40-page brochure, this isn’t it." } },
@@ -98,14 +98,14 @@ html{font-size:16px;-webkit-font-smoothing:antialiased}
   font-style:normal;
   font-display:swap;
 }
-body{background:#ffffff;color:#111111;font-family:'Onest',sans-serif;overflow-x:hidden}
+body{background:#f8fbf8;color:#111111;font-family:'Onest',sans-serif;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 ul{list-style:none}
 img{display:block;max-width:100%}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 :focus-visible{outline:2px solid #15389B;outline-offset:3px}
-.header :focus-visible,.hero :focus-visible,.about :focus-visible,.industries :focus-visible,.feedback :focus-visible,.footer :focus-visible,.nav-menu :focus-visible,.closing :focus-visible,.process-card :focus-visible{
+.header :focus-visible,.hero :focus-visible,.about :focus-visible,.industries :focus-visible,.feedback :focus-visible,.footer :focus-visible,.nav-menu :focus-visible,.closing :focus-visible,.process-card :focus-visible,.faq :focus-visible{
   outline-color:#9bb6ff;
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -116,7 +116,7 @@ img{display:block;max-width:100%}
 @media (max-width:640px){html{font-size:4.444444vw}}
 
 :root{
-  --background:#ffffff;--foreground:#111111;--ink:#0a0a0a;--muted:#8d8d8d;--subtle:#b6b6b6;
+  --background:#f8fbf8;--foreground:#111111;--ink:#0a0a0a;--muted:#8d8d8d;--subtle:#b6b6b6;
   --line:#e6e5e2;--surface:#f1f0ee;--surface-2:#e3e2df;--accent:#b15f2c;--accent-from:#cf8047;--accent-to:#97501f;
   --hero-from:#08163C;--hero-mid:#091a81;--hero-to:#15389B;
   --hero-bg:linear-gradient(118deg,var(--hero-from) 0%,#0a1d72 28%,var(--hero-to) 58%,#0a1d72 82%,var(--hero-from) 100%);
@@ -197,7 +197,7 @@ img{display:block;max-width:100%}
 }
 .header[data-theme="light"]{
   color:#08163C;
-  background:rgba(248,248,248,.78);
+  background:rgba(248,251,248,.78);
   -webkit-backdrop-filter:blur(16px) saturate(1.2);
   backdrop-filter:blur(16px) saturate(1.2);
   box-shadow:0 1px 0 rgba(8,22,60,.08);
@@ -463,7 +463,7 @@ html{scroll-padding-top:4.25rem}
 
 /* Process — S2 */
 .process{
-  --process-bg:#f8f8f8;
+  --process-bg:#f8fbf8;
   --process-ink:#08163C;
   --process-accent:#15389B;
   --process-muted:rgba(8,22,60,.72);
@@ -921,7 +921,7 @@ html{scroll-padding-top:4.25rem}
 
 /* Portfolio — Selected Work + Coverflow */
 .portfolio{
-  --pf-bg:#f8f8f8;
+  --pf-bg:#f8fbf8;
   --pf-ink:#08163C;
   --pf-muted:rgba(8,22,60,.72);
   position:relative;
@@ -1632,8 +1632,9 @@ html{scroll-padding-top:4.25rem}
 /* Quote calculator */
 .quote{
   position:relative;
-  background:#f8fbf8;
-  color:#08163C;
+  background:var(--hero-bg);
+  background-color:var(--hero-mid);
+  color:#fff;
 }
 .quote__inner{
   max-width:72rem;
@@ -1648,7 +1649,7 @@ html{scroll-padding-top:4.25rem}
   font-weight:600;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:rgba(8,22,60,.72);
+  color:rgba(255,255,255,.62);
 }
 .quote__h2{
   margin:0 0 .55rem;
@@ -1656,21 +1657,23 @@ html{scroll-padding-top:4.25rem}
   font-weight:600;
   letter-spacing:-.03em;
   line-height:1.08;
+  color:#fff;
 }
 .quote__lead{
   margin:0 0 1.75rem;
   max-width:38rem;
   font-size:1.05rem;
   line-height:1.5;
-  color:rgba(8,22,60,.62);
+  color:rgba(255,255,255,.75);
 }
 .quote-card{
   max-width:52rem;
   margin-inline:auto;
-  background:#fff;
-  border:1px solid rgba(8,22,60,.12);
+  background:#f8fbf8;
+  color:#08163C;
+  border:1px solid rgba(255,255,255,.14);
   border-radius:1.5rem;
-  box-shadow:0 18px 50px rgba(8,22,60,.06);
+  box-shadow:0 18px 50px rgba(8,22,60,.28);
   overflow:hidden;
 }
 .quote-kind{
@@ -1736,7 +1739,7 @@ html{scroll-padding-top:4.25rem}
   gap:1rem;
   padding:1.15rem 1.25rem 1.25rem;
   border-top:1px solid rgba(8,22,60,.1);
-  background:#f4f7f4;
+  background:rgba(8,22,60,.04);
 }
 @media(min-width:640px){.quote-bar{padding-inline:1.6rem}}
 .quote-bar__k{
@@ -1753,6 +1756,7 @@ html{scroll-padding-top:4.25rem}
   font-weight:700;
   letter-spacing:-.03em;
   line-height:1.1;
+  color:#08163C;
 }
 .quote-bar__care{
   margin:.25rem 0 0;
@@ -1950,7 +1954,7 @@ html{scroll-padding-top:4.25rem}
   position:relative;
   z-index:3;
   overflow:hidden;
-  background:#f8f8f8;
+  background:#f8fbf8;
   color:#08163C;
   border-block:1px solid rgba(8,22,60,.06);
   padding-block:1.1rem;
@@ -2270,15 +2274,16 @@ html.lenis,html.lenis body{height:auto}
 .plan{
   position:relative;
   padding:1.35rem 1.25rem 1.3rem;
-  border:1px solid rgba(8,22,60,.12);
+  border:1px solid rgba(255,255,255,.14);
   border-radius:1.35rem;
-  background:#fff;
+  background:#f8fbf8;
   color:#08163C;
+  box-shadow:0 18px 50px rgba(8,22,60,.22);
 }
 .plan--rec{
-  border-color:#15389B;
-  background:linear-gradient(180deg,#fff 0%,#f3f6ff 100%);
-  box-shadow:0 14px 36px rgba(21,56,155,.1);
+  border-color:#6b93ff;
+  background:linear-gradient(180deg,#f8fbf8 0%,#eef2ff 100%);
+  box-shadow:0 18px 50px rgba(21,56,155,.28);
 }
 .plan__badge{
   display:inline-flex;
@@ -2312,8 +2317,9 @@ html.lenis,html.lenis body{height:auto}
 }
 .plan .pill__inner{min-height:44px}
 .faq{
-  background:#f8fbf8;
-  color:#08163C;
+  background:var(--hero-bg);
+  background-color:var(--hero-mid);
+  color:#fff;
 }
 .faq__inner{
   max-width:52rem;
@@ -2327,16 +2333,17 @@ html.lenis,html.lenis body{height:auto}
   font-weight:600;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:rgba(8,22,60,.72);
+  color:rgba(255,255,255,.62);
 }
 .faq__h2{
   margin:0 0 1.5rem;
   font-size:clamp(2rem, 1.2rem + 2vw, 3rem);
   font-weight:600;
   letter-spacing:-.03em;
+  color:#fff;
 }
-.faq__item{border-bottom:1px solid rgba(8,22,60,.12)}
-.faq__item:first-child{border-top:1px solid rgba(8,22,60,.12)}
+.faq__item{border-bottom:1px solid rgba(255,255,255,.12)}
+.faq__item:first-child{border-top:1px solid rgba(255,255,255,.12)}
 .faq__btn{
   width:100%;
   display:flex;
@@ -2348,10 +2355,10 @@ html.lenis,html.lenis body{height:auto}
   text-align:left;
   font-size:1.05rem;
   font-weight:600;
-  color:#08163C;
+  color:#fff;
 }
-.faq__icon{flex-shrink:0;color:#15389B}
-.faq__panel{display:none;padding:0 0 1rem;font-size:.98rem;line-height:1.55;color:rgba(8,22,60,.78)}
+.faq__icon{flex-shrink:0;color:#a9c2ff}
+.faq__panel{display:none;padding:0 0 1rem;font-size:.98rem;line-height:1.55;color:rgba(255,255,255,.78)}
 .faq__item.is-open .faq__panel{display:block}
 .ticker{
   display:flex;
@@ -2703,7 +2710,7 @@ html.lenis,html.lenis body{height:auto}
     </div>
   </section>
 
-  <section class="quote" id="pricing" data-nav-theme="light">
+  <section class="quote" id="pricing" data-nav-theme="dark">
     <div class="quote__inner">
       <p class="quote__eyebrow">Packages &amp; pricing</p>
       <h2 class="quote__h2">Pick what you need. See what it costs.</h2>
@@ -2712,7 +2719,7 @@ html.lenis,html.lenis body{height:auto}
       <div class="plans" aria-label="Build ranges">
         <article class="plan">
           <h3 class="plan__name">Launch</h3>
-          <p class="plan__price">€1.8–2.5k</p>
+          <p class="plan__price">€800–2.2k</p>
           <p class="plan__copy">One offer. One path. A site that can sell or book — not a brochure that looks expensive.</p>
           <button class="pill pill--outline pill--arrow" type="button" data-scroll="quoteCard">
             <span class="pill__inner">See the number<span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
@@ -2721,7 +2728,7 @@ html.lenis,html.lenis body{height:auto}
         <article class="plan plan--rec">
           <p class="plan__badge">Recommended</p>
           <h3 class="plan__name">Growth</h3>
-          <p class="plan__price">€2.8–3.5k</p>
+          <p class="plan__price">€2.2–3.5k</p>
           <p class="plan__copy">Shop, booking, or a longer path. Same job: they get it, then they buy.</p>
           <button class="pill pill--dark pill--arrow" type="button" data-scroll="quoteCard">
             <span class="pill__inner">Build this<span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
@@ -2885,14 +2892,14 @@ html.lenis,html.lenis body{height:auto}
   </section>
 
 
-  <section class="faq" id="faq" data-nav-theme="light">
+  <section class="faq" id="faq" data-nav-theme="dark">
     <div class="faq__inner">
       <p class="faq__eyebrow">Before you book</p>
       <h2 class="faq__h2">Straight answers.</h2>
       <div class="faq__list">
         <div class="faq__item is-open">
           <button class="faq__btn" type="button" aria-expanded="true" aria-controls="faq-a1" id="faq-q1">How long does a site take? <span class="faq__icon" aria-hidden="true">−</span></button>
-          <div class="faq__panel" id="faq-a1" role="region" aria-labelledby="faq-q1"><p>Launch-range sites usually ship in 3–4 calendar weeks. Growth-range (shop, booking, longer path) is about 5 weeks. The clock starts after the call, when the offer and pages are clear — not after a vague “we should do a website.”</p></div>
+          <div class="faq__panel" id="faq-a1" role="region" aria-labelledby="faq-q1"><p>Launch-range sites usually ship in 3–4 weeks. Growth-range (shop, booking, longer path) is about 5 weeks. The clock starts after the call, when the offer and pages are clear — not after a vague “we should do a website.”</p></div>
         </div>
         <div class="faq__item">
           <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">What’s included in the build? <span class="faq__icon" aria-hidden="true">+</span></button>
@@ -3520,8 +3527,8 @@ setReady();
       copy: 'The program was strong. The site was not — visitors could not tell who it was for, what 90 days looked like, or where to buy. I rebuilt it as a coach-on-a-call: problem, promise, path, then one purchase step. Scope was a full offer site with copy, mobile layout, and a live sales path — not a brochure.',
       copyMobile: 'They couldn’t tell who it was for or where to buy. I rebuilt the path: problem, promise, one purchase step.',
       stats: [
-        { num: '4 CW', label: 'Build time' },
-        { num: '€1.8–2.5k', label: 'Launch range' },
+        { num: '4 weeks', label: 'Build time' },
+        { num: '€800–2.2k', label: 'Launch range' },
         { num: 'Live', label: 'Online sales' },
       ],
     },
@@ -3538,8 +3545,8 @@ setReady();
       copy: 'Lenkolino is décor for kids’ rooms — handmade balloons, birth cards, personalised gifts — with a site that made buying feel like extra work. I shipped a shop with a clear product story, trust up front, and a short path to checkout. Scope was merchandising + cart, not a pretty catalog with a buried form — priced as a Growth-range build with a fixed launch window.',
       copyMobile: 'Kids’ room décor shop. Clear product story, trust up front, short path to checkout.',
       stats: [
-        { num: '5 CW', label: 'Build time' },
-        { num: '€2.8–3.5k', label: 'Growth range' },
+        { num: '5 weeks', label: 'Build time' },
+        { num: '€2.2–3.5k', label: 'Growth range' },
         { num: 'Live', label: 'Online sales' },
       ],
     },
@@ -3556,8 +3563,8 @@ setReady();
       copy: 'Marina had the practice. Strangers landing on the old presence could not see the offer or book a session in one scroll. I built a portrait-led site that answers who she is, what the work is, and the next step — a 30-minute intro on the calendar. Scope was a Launch-range personal brand site: copy, structure, and booking wired before launch.',
       copyMobile: 'They couldn’t see the offer or book. One scroll: who she is, the work, a 30-minute intro.',
       stats: [
-        { num: '3 CW', label: 'Build time' },
-        { num: '€1.8–2.5k', label: 'Launch range' },
+        { num: '3 weeks', label: 'Build time' },
+        { num: '€800–2.2k', label: 'Launch range' },
         { num: 'Live', label: 'Session booking' },
       ],
     },

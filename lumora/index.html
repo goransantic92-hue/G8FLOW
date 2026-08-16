@@ -12,6 +12,8 @@
 <link rel="apple-touch-icon" href="./assets/brand/apple-touch-icon.png" />
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
 <script src="https://assets.calendly.com/assets/external/widget.js" defer></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1198,12 +1200,29 @@ html{scroll-padding-top:4.25rem}
   display:inline-flex;
   align-items:center;
   gap:.35rem;
+  padding:.35rem .25rem;
   font-size:.8125rem;
   font-weight:600;
   color:#15389B;
-  text-decoration:none;
+  text-decoration:underline;
+  text-underline-offset:.2em;
 }
-.portfolio__case-link:hover{text-decoration:underline}
+.portfolio__case-link:hover{color:#08163C}
+/* The pinned stage is exactly one viewport tall, so this link grows its target
+   with padding rather than min-height — min-height clipped it on short screens. */
+@media (hover:none){
+  .portfolio__case-link{padding-block:.55rem}
+}
+@media (min-width:900px) and (max-height:900px){
+  .portfolio__case{margin-top:.8rem}
+  .portfolio__case-copy{margin-bottom:.6rem}
+  .portfolio__case-stats{padding:.6rem 0;margin-bottom:.55rem}
+  /* Stage keeps its 2:1 ratio; it just scales down so the copy still fits. */
+  .coverflow{--cf-w:840px;--cf-h:420px}
+}
+@media (min-width:900px) and (max-height:800px){
+  .coverflow{--cf-w:740px;--cf-h:370px}
+}
 @media (max-width:899px){
   .portfolio__case{
     flex:0 0 auto;
@@ -1219,8 +1238,8 @@ html{scroll-padding-top:4.25rem}
   }
   .portfolio__case-stats{
     gap:.35rem;
-    margin:0 0 .5rem;
-    padding:.5rem 0;
+    margin:0 0 .4rem;
+    padding:.4rem 0;
   }
   .portfolio__case-stat-num{font-size:1.05rem}
   .portfolio__case-stat-label{font-size:.6rem}
@@ -1244,7 +1263,7 @@ html{scroll-padding-top:4.25rem}
 }
 .feedback-track{
   position:relative;
-  height:480vh;
+  height:360vh;
 }
 .feedback-sticky{
   position:sticky;
@@ -1338,6 +1357,20 @@ html{scroll-padding-top:4.25rem}
 .feedback-card__who img.feedback-card__photo--milos{
   object-position:38% 12%;
 }
+.feedback-card__mono{
+  width:3.15rem;
+  height:3.15rem;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  background:rgba(244,251,244,.14);
+  border:1px solid rgba(244,251,244,.28);
+  font-size:.95rem;
+  font-weight:700;
+  letter-spacing:.02em;
+  color:#f4fbf4;
+}
 .feedback-card__name{
   display:block;
   font-size:1.05rem;
@@ -1352,14 +1385,28 @@ html{scroll-padding-top:4.25rem}
   color:rgba(244,251,244,.72);
 }
 @media (max-width:899px){
-  .feedback-track{height:420vh}
+  /* Percentage offsets can't know how tall a card grows, so on narrow screens
+     the cards run in normal flow with a fixed rhythm instead of overlapping. */
+  .feedback-track{height:auto}
   .feedback__title{font-size:clamp(2.1rem, 10vw, 3.25rem)}
+  .feedback-float{
+    position:relative;
+    inset:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:32vh;
+    padding:0 5vw 30vh;
+  }
   .feedback-card{
-    left:5%;
-    width:min(28.5rem, 90vw);
+    position:relative;
+    top:auto;
+    left:auto;
+    width:100%;
+    max-width:28.5rem;
     min-height:0;
   }
-  .feedback-card--wide{width:min(32.5rem, 90vw)}
+  .feedback-card--wide{width:100%;max-width:30rem}
 }
 @media (prefers-reduced-motion:reduce){
   .feedback-track{height:auto;padding:5rem 1.5rem}
@@ -1653,12 +1700,13 @@ html{scroll-padding-top:4.25rem}
   .quote-form__fields{grid-template-columns:1fr 1fr}
   .quote-form__fields textarea,.quote-form__fields .quote-form__full{grid-column:1 / -1}
 }
-.quote-form label{display:flex;flex-direction:column;gap:.3rem;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(8,22,60,.5)}
+.quote-form label{display:flex;flex-direction:column;gap:.3rem;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(8,22,60,.72)}
 .quote-form input,.quote-form textarea{
   padding:.7rem .8rem;
-  border:1px solid rgba(8,22,60,.16);
+  border:1px solid rgba(8,22,60,.24);
+  border-radius:.75rem;
   font:inherit;
-  font-size:.9rem;
+  font-size:1rem;
   font-weight:400;
   letter-spacing:0;
   text-transform:none;
@@ -1666,9 +1714,21 @@ html{scroll-padding-top:4.25rem}
   background:#fff;
 }
 .quote-form textarea{min-height:5.5rem;resize:vertical}
-.quote-form__ok{display:none;margin:0;font-size:.95rem;color:#264238}
+.quote-form__hp{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;margin:-1px;padding:0}
+.quote-form__ok{display:none;margin:0;font-size:.95rem;line-height:1.6;color:#264238}
+.quote-form__ok a{color:#15389B;font-weight:600;text-decoration:underline}
 .quote-form.is-sent .quote-form__fields{display:none}
 .quote-form.is-sent .quote-form__ok{display:block}
+.quote-form__error{
+  display:none;
+  margin:.7rem 0 0;
+  font-size:.875rem;
+  line-height:1.5;
+  color:#8c2f14;
+}
+.quote-form__error a{color:#8c2f14;font-weight:600;text-decoration:underline}
+.quote-form.is-error .quote-form__error{display:block}
+.quote-form button[disabled]{opacity:.6;cursor:progress}
 
 /* Closing band — Footer + ticker */
 .closing{
@@ -2074,7 +2134,7 @@ html.lenis,html.lenis body{height:auto}
 .lenis.lenis-stopped{overflow:clip}
 
 /* Overlays must honor [hidden] even with display:flex */
-.nav-menu[hidden],.modal[hidden]{display:none!important}
+.nav-menu[hidden]{display:none!important}
 .calendly-overlay{z-index:200!important}
 
 /* Nav menu */
@@ -2101,33 +2161,6 @@ html.lenis,html.lenis body{height:auto}
 @media(min-width:640px){.nav-menu__bottom{flex-direction:row;justify-content:space-between;padding-left:2rem;padding-right:2rem;align-items:center}}
 .nav-menu__cta{color:rgba(255,255,255,.7);text-align:left}
 .nav-menu__cta:hover{color:#fff;text-decoration:underline}
-
-/* Modal */
-.modal{position:fixed;inset:0;z-index:110;display:flex;align-items:flex-end;justify-content:center;padding:1rem;background:rgba(17,17,17,.3);backdrop-filter:blur(16px);opacity:0;pointer-events:none;visibility:hidden;transition:opacity .45s cubic-bezier(.22,1,.36,1),visibility .45s}
-@media(min-width:640px){.modal{align-items:center}}
-.modal.is-open{opacity:1;pointer-events:auto;visibility:visible}
-.modal__panel{position:relative;width:100%;max-width:32rem;overflow:hidden;border-radius:2rem;background:#fff;padding:1.5rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.25),0 0 0 1px #e6e5e2;transform:translateY(28px);transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .45s}
-@media(min-width:640px){.modal__panel{padding:2rem}}
-.modal.is-open .modal__panel{transform:translateY(0)}
-.modal__close{position:absolute;right:1rem;top:1rem;width:2.25rem;height:2.25rem;display:grid;place-items:center;border-radius:9999px;background:#f1f0ee;color:rgba(17,17,17,.6);transition:background .2s,color .2s}
-.modal__close:hover{background:#e3e2df;color:#111}
-.modal__head{margin-bottom:1.5rem}
-.modal__eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:500;color:rgba(17,17,17,.6);margin-bottom:.375rem}
-.modal__eyebrow-dot{width:.375rem;height:.375rem;border-radius:9999px;background:#b15f2c}
-.modal__title{font-size:1.5rem;font-weight:600;letter-spacing:-.01em}
-@media(min-width:640px){.modal__title{font-size:1.875rem}}
-.modal__form{display:flex;flex-direction:column;gap:1rem}
-.modal__field{display:flex;flex-direction:column;gap:.35rem}
-.modal__field span{font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.025em;color:rgba(17,17,17,.5)}
-.modal__field input,.modal__field textarea{width:100%;border:1px solid #e6e5e2;background:rgba(241,240,238,.5);border-radius:.875rem;padding:.75rem 1rem;font-size:.875rem;font-family:inherit;outline:none;transition:border-color .2s,background .2s;resize:none;color:#111}
-.modal__field input:focus,.modal__field textarea:focus{border-color:rgba(17,17,17,.3);background:#fff}
-.modal__foot{margin-top:.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.modal__note{font-size:.75rem;color:rgba(17,17,17,.45)}
-.modal__success{display:none;flex-direction:column;align-items:center;text-align:center;padding-block:2rem;gap:1rem}
-.modal.is-success .modal__form-wrap{display:none}
-.modal.is-success .modal__success{display:flex}
-.modal__success-badge{width:3.5rem;height:3.5rem;display:grid;place-items:center;border-radius:9999px;background:#0a0a0a;color:#cf8047;font-size:1.5rem}
-.modal__success p{max-width:32ch;font-size:.875rem;color:rgba(17,17,17,.6)}
 
 </style>
 </head>
@@ -2402,8 +2435,6 @@ html.lenis,html.lenis body{height:auto}
     </div>
   </section>
 
-  </section>
-
   <section class="quote" id="pricing" data-nav-theme="light">
     <div class="quote__inner">
       <p class="quote__eyebrow">Packages &amp; pricing</p>
@@ -2479,18 +2510,20 @@ html.lenis,html.lenis body{height:auto}
             <p class="quote-bar__note">Estimate only. Final quote after a 30-minute call.</p>
           </div>
         </div>
-        <form class="quote-form" id="quoteForm">
+        <form class="quote-form" id="quoteForm" novalidate>
           <div class="quote-form__fields">
             <label>Your name <input name="name" type="text" required autocomplete="name"></label>
-            <label>Email <input name="email" type="email" required autocomplete="email"></label>
+            <label>Email <input name="email" type="email" required autocomplete="email" inputmode="email"></label>
             <label>Budget <input name="budget" type="text" placeholder="e.g. €3k–€5k"></label>
             <label class="quote-form__full">About the project <textarea name="notes" placeholder="What should this make people do?"></textarea></label>
             <input type="hidden" name="estimate" id="quoteEstimateField">
-            <button class="pill pill--dark pill--arrow quote-form__full" type="submit">
-              <span class="pill__inner">Send inquiry<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+            <label class="quote-form__hp" aria-hidden="true">Company <input name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"></label>
+            <button class="pill pill--dark pill--arrow quote-form__full" type="submit" id="quoteSubmit">
+              <span class="pill__inner"><span id="quoteSubmitLabel">Send inquiry</span><span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
             </button>
           </div>
-          <p class="quote-form__ok">Got it. I’ll read this and we’ll lock the number on the call.</p>
+          <p class="quote-form__ok" id="quoteOk" role="status">Got it — the inquiry is in my inbox and I reply within one business day.<br><a href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">Grab a 30-minute slot now</a> if you'd rather lock the number today.</p>
+          <p class="quote-form__error" id="quoteError" role="alert"></p>
         </form>
       </div>
     </div>
@@ -2502,31 +2535,19 @@ html.lenis,html.lenis body{height:auto}
         <h2 class="feedback__title">Client feedback</h2>
       </div>
       <div class="feedback-float">
-        <article class="feedback-card" data-fb style="--t:12%; --x:5%;">
+        <article class="feedback-card" data-fb style="--t:14%; --x:6%;">
           <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
           <h3 class="feedback-card__h">The site explains the offer before the call.</h3>
-          <p class="feedback-card__p">“We used to burn twenty minutes on every call just explaining what we do. Now the site does that before the first email — and people show up ready to buy.”</p>
+          <p class="feedback-card__p">“People used to land on the old page and still ask what the 90 days actually were. Now the site answers that, and the ones who reach out already know what they’re buying.”</p>
           <div class="feedback-card__who">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop" alt="" width="50" height="50">
+            <span class="feedback-card__mono" aria-hidden="true">BS</span>
             <div>
-              <span class="feedback-card__name">Elena Rossi</span>
-              <span class="feedback-card__role">Founder, brand studio</span>
+              <span class="feedback-card__name">Fitness coach, Serbia</span>
+              <span class="feedback-card__role">Busy Strong 90 · offer site</span>
             </div>
           </div>
         </article>
-        <article class="feedback-card" data-fb style="--t:24%; --x:56%;">
-          <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
-          <h3 class="feedback-card__h">I didn’t want pretty. I wanted the cart to move.</h3>
-          <p class="feedback-card__p">“Clearer offer and a faster path to checkout calmed me down — and more orders without cranking ad spend.”</p>
-          <div class="feedback-card__who">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop" alt="" width="50" height="50">
-            <div>
-              <span class="feedback-card__name">James Whitaker</span>
-              <span class="feedback-card__role">E-commerce owner</span>
-            </div>
-          </div>
-        </article>
-        <article class="feedback-card feedback-card--wide" data-fb style="--t:38%; --x:8%;">
+        <article class="feedback-card feedback-card--wide" data-fb style="--t:32%; --x:52%;">
           <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
           <h3 class="feedback-card__h">Pretty doesn’t pay my rent. Paying clients do.</h3>
           <p class="feedback-card__p">“I don’t get paid because the brand looks expensive. I get paid when busy people buy coaching and actually train. The website sells the outcome before they ever DM me. The app is where they show up, stay, and stop disappearing after week one. Together they plugged the leak — the people who used to ghost after a consult now pay, log in, and do the work. That’s the job. That’s what this did.”</p>
@@ -2538,39 +2559,27 @@ html.lenis,html.lenis body{height:auto}
             </div>
           </div>
         </article>
-        <article class="feedback-card" data-fb style="--t:54%; --x:54%;">
+        <article class="feedback-card" data-fb style="--t:54%; --x:8%;">
           <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
-          <h3 class="feedback-card__h">Fewer “interested.” More real bookings.</h3>
-          <p class="feedback-card__p">“My old site looked fine and sold nothing. The new one walks people straight to a booking.”</p>
+          <h3 class="feedback-card__h">Buying stopped feeling like extra work.</h3>
+          <p class="feedback-card__p">“Handmade pieces are hard enough to sell online without the site fighting you. Now the product story is up front and checkout is a short path instead of a maze.”</p>
           <div class="feedback-card__who">
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=160&h=160&fit=crop" alt="" width="50" height="50">
+            <span class="feedback-card__mono" aria-hidden="true">LK</span>
             <div>
-              <span class="feedback-card__name">Sophie Laurent</span>
-              <span class="feedback-card__role">Coach</span>
+              <span class="feedback-card__name">Shop owner, Serbia</span>
+              <span class="feedback-card__role">Lenkolino · shop &amp; checkout</span>
             </div>
           </div>
         </article>
-        <article class="feedback-card" data-fb style="--t:68%; --x:6%;">
+        <article class="feedback-card" data-fb style="--t:74%; --x:50%;">
           <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
-          <h3 class="feedback-card__h">Demo calls got shorter because the value was already clear.</h3>
-          <p class="feedback-card__p">“The landing stopped listing features and started selling the time teams get back.”</p>
+          <h3 class="feedback-card__h">Fewer “interested.” More booked sessions.</h3>
+          <p class="feedback-card__p">“Strangers used to land on my page and leave without knowing what I offer. One scroll now gets them to a 30-minute intro on my calendar.”</p>
           <div class="feedback-card__who">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=160&h=160&fit=crop" alt="" width="50" height="50">
+            <span class="feedback-card__mono" aria-hidden="true">TM</span>
             <div>
-              <span class="feedback-card__name">Daniel Park</span>
-              <span class="feedback-card__role">Product lead</span>
-            </div>
-          </div>
-        </article>
-        <article class="feedback-card" data-fb style="--t:82%; --x:52%;">
-          <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
-          <h3 class="feedback-card__h">A site that closes while we deliver.</h3>
-          <p class="feedback-card__p">“We needed a site that closes while we deliver. That’s what we got — no corporate waffle.”</p>
-          <div class="feedback-card__who">
-            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160&h=160&fit=crop" alt="" width="50" height="50">
-            <div>
-              <span class="feedback-card__name">Maya Chen</span>
-              <span class="feedback-card__role">Agency lead</span>
+              <span class="feedback-card__name">Wellness practitioner, Serbia</span>
+              <span class="feedback-card__role">Thrive with Marina · personal brand</span>
             </div>
           </div>
         </article>
@@ -2607,8 +2616,6 @@ html.lenis,html.lenis body{height:auto}
   </div>
 
   <div id="contact" class="sr-only" tabindex="-1">Contact</div>
-  <div id="privacy" class="sr-only"></div>
-  <div id="terms" class="sr-only"></div>
 
 <footer class="footer" data-nav-theme="dark">
   <div class="shell footer__inner">
@@ -2639,16 +2646,16 @@ html.lenis,html.lenis body{height:auto}
         <div class="footer__col">
           <div class="footer__col-title">Start</div>
           <a href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer" class="footer__contact">Book a call</a>
+          <a href="mailto:goransantic92@gmail.com" class="footer__contact">goransantic92@gmail.com</a>
           <a href="#works" data-scroll="works">See the work</a>
-          <a href="#privacy">Privacy</a>
-          <a href="#terms">Terms</a>
+          <a href="#pricing" data-scroll="pricing">Get an estimate</a>
         </div>
       </div>
       <div class="footer__legal">
         <span>© 2026 G8 Flow. All rights reserved.</span>
         <div class="footer__legal-links">
-          <a href="#privacy">Privacy</a>
-          <a href="#terms">Terms</a>
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
         </div>
       </div>
     </div>
@@ -2672,35 +2679,6 @@ html.lenis,html.lenis body{height:auto}
   </div>
 </div>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden aria-hidden="true">
-  <div class="modal__panel" id="modalPanel">
-    <button class="modal__close" type="button" id="closeModal" aria-label="Close"><span class="icon" data-icon="x"></span></button>
-    <div class="modal__form-wrap">
-      <div class="modal__head">
-        <div class="modal__eyebrow"><span class="modal__eyebrow-dot"></span>Start a project</div>
-        <h2 class="modal__title" id="modalTitle">Tell us what you're building.</h2>
-      </div>
-      <form class="modal__form" id="requestForm">
-        <label class="modal__field"><span>Name</span><input name="name" type="text" required placeholder="Your name" /></label>
-        <label class="modal__field"><span>Email</span><input name="email" type="email" required placeholder="you@company.com" /></label>
-        <label class="modal__field"><span>Project</span><textarea name="project" rows="4" required placeholder="A few words about your project, timeline, and budget."></textarea></label>
-        <div class="modal__foot">
-          <span class="modal__note">We reply within one business day.</span>
-          <button class="pill pill--dark pill--arrow" type="submit" id="submitBtn">
-            <span class="pill__inner"><span id="submitLabel">Send request</span><span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
-          </button>
-        </div>
-      </form>
-    </div>
-    <div class="modal__success">
-      <div class="modal__success-badge"><span class="icon" data-icon="logo"></span></div>
-      <h2 class="modal__title">Request received</h2>
-      <p>Thanks for reaching out — we'll get back to you within one business day.</p>
-      <button class="pill pill--dark pill--plain" type="button" id="successClose"><span class="pill__inner">Close</span></button>
-    </div>
-  </div>
-</div>
-
 <script type="importmap">
 { "imports": { "lenis": "https://unpkg.com/lenis@1.3.23/dist/lenis.mjs" } }
 </script>
@@ -2710,6 +2688,27 @@ import Lenis from 'lenis';
 const BASE_SRC = './assets/hero/portfolio-base.jpg?v=3';   // always-shown base (blue silhouette)
 const CLEAR_SRC = './assets/hero/portfolio-clear.jpg?v=3'; // brush-revealed clear portrait
 const CALENDLY_URL = 'https://calendly.com/goransantic/30min';
+const CONTACT_EMAIL = 'goransantic92@gmail.com';
+
+/* Analytics — Vercel Web Analytics custom events, safe when the script is blocked */
+function track(name, props){
+  try {
+    if (typeof window.va === 'function') window.va('event', { name, ...(props || {}) });
+  } catch {}
+}
+
+function mailtoInquiry(data){
+  const lines = [
+    `Name: ${data.name || ''}`,
+    `Email: ${data.email || ''}`,
+    `Budget: ${data.budget || '—'}`,
+    `Estimate: ${data.estimate || '—'}`,
+    '',
+    'About the project:',
+    data.notes || '',
+  ];
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('New inquiry — G8 Flow')}&body=${encodeURIComponent(lines.join('\n'))}`;
+}
 
 const ICONS = {
   logo: `<svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>`,
@@ -2745,16 +2744,31 @@ function applyAdaptiveGrid(){
 applyAdaptiveGrid();
 addEventListener('resize', applyAdaptiveGrid);
 
-/* Lenis */
+/* Lenis — skipped entirely when the visitor asked for less motion */
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.scrollTo(0, 0);
-const lenis = new Lenis({ smoothWheel: true });
-function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
-requestAnimationFrame(raf);
-if (typeof lenis.scrollTo === 'function') lenis.scrollTo(0, { immediate: true });
-addEventListener('pageshow', (e) => {
+const prefersReducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Stands in for Lenis so the rest of the page keeps one scroll API to talk to.
+function nativeScroller(){
+  return {
+    isStopped: false,
+    stop(){ this.isStopped = true; },
+    start(){ this.isStopped = false; },
+    scrollTo(top){ window.scrollTo(0, typeof top === 'number' ? top : 0); },
+    raf(){},
+  };
+}
+
+const lenis = prefersReducedMotion ? nativeScroller() : new Lenis({ smoothWheel: true });
+if (!prefersReducedMotion) {
+  const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+  requestAnimationFrame(raf);
+}
+lenis.scrollTo(0, { immediate: true });
+addEventListener('pageshow', () => {
   window.scrollTo(0, 0);
-  if (typeof lenis.scrollTo === 'function') lenis.scrollTo(0, { immediate: true });
+  lenis.scrollTo(0, { immediate: true });
 });
 
 let scrollEnabled = true;
@@ -3161,7 +3175,7 @@ setReady();
       copyMobile: 'They couldn’t tell who it was for or where to buy. I rebuilt the path: problem, promise, one purchase step.',
       stats: [
         { num: '4 CW', label: 'Build time' },
-        { num: '€2.150', label: 'Investment' },
+        { num: '€1.8–2.5k', label: 'Launch range' },
         { num: 'Live', label: 'Online sales' },
       ],
     },
@@ -3179,7 +3193,7 @@ setReady();
       copyMobile: 'Kids’ room décor shop. Clear product story, trust up front, short path to checkout.',
       stats: [
         { num: '5 CW', label: 'Build time' },
-        { num: '€3.050', label: 'Investment' },
+        { num: '€2.8–3.5k', label: 'Growth range' },
         { num: 'Live', label: 'Online sales' },
       ],
     },
@@ -3197,7 +3211,7 @@ setReady();
       copyMobile: 'They couldn’t see the offer or book. One scroll: who she is, the work, a 30-minute intro.',
       stats: [
         { num: '3 CW', label: 'Build time' },
-        { num: '€2.150', label: 'Investment' },
+        { num: '€1.8–2.5k', label: 'Launch range' },
         { num: 'Live', label: 'Session booking' },
       ],
     },
@@ -3223,7 +3237,7 @@ setReady();
           <div class="phone-mock__island"></div>
         </div>
         <div class="browser-mock__screen">
-          <video class="coverflow__media" muted playsinline preload="auto" poster="${isMobileInit ? s.posterMobile : s.poster}">
+          <video class="coverflow__media" muted playsinline preload="none" poster="${isMobileInit ? s.posterMobile : s.poster}">
             <source src="${isMobileInit ? s.mp4Mobile : s.mp4}" type="video/mp4" />
           </video>
           <p class="coverflow__title">${s.title}</p>
@@ -3259,8 +3273,11 @@ setReady();
       video.setAttribute('poster', nextPoster);
       if (source.getAttribute('src') !== nextSrc) {
         const wasActive = i === active && inView && !reduced && !video.paused;
+        const wasPrimed = video.dataset.primed === '1';
         source.setAttribute('src', nextSrc);
-        video.load();
+        delete video.dataset.primed;
+        if (wasPrimed || wasActive) primeVideo(i);
+        else video.load();
         if (wasActive) {
           const p = video.play();
           if (p?.catch) p.catch(() => {});
@@ -3273,6 +3290,17 @@ setReady();
   function lock(){
     locked = true;
     setTimeout(() => { locked = false; }, Math.max(50, MOVE_DUR * 1000));
+  }
+
+  // Videos ship with preload="none" so the homepage doesn't pull ~38 MB up
+  // front. We fetch one only once the section is close, and scrubbing needs
+  // metadata, so prime before it is on screen rather than on first scrub.
+  function primeVideo(i){
+    const video = cards[i]?.querySelector('video');
+    if (!video || video.dataset.primed === '1') return;
+    video.dataset.primed = '1';
+    video.preload = 'metadata';
+    video.load();
   }
 
   function pauseInactive(){
@@ -3354,6 +3382,9 @@ setReady();
       <p class="portfolio__case-meta">${s.client} · ${s.services}</p>
       <p class="portfolio__case-copy">${desktop.matches ? s.copy : (s.copyMobile || s.copy)}</p>
       <div class="portfolio__case-stats">${stats}</div>
+      <a class="portfolio__case-link" href="${s.href}" target="_blank" rel="noopener noreferrer" data-live-site="${s.host}">
+        Visit ${s.host} <span aria-hidden="true">↗</span>
+      </a>
     `;
   }
 
@@ -3362,6 +3393,7 @@ setReady();
     if (next === active) return;
     if (!fromScroll) lock();
     active = next;
+    primeVideo(active);
     layout({ restart: true });
   }
 
@@ -3435,6 +3467,15 @@ setReady();
   }, { threshold: 0.15 });
   io.observe(section);
 
+  const primeIo = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      primeVideo(active);
+      primeIo.disconnect();
+    });
+  }, { rootMargin: '150% 0px' });
+  primeIo.observe(section);
+
   if (reduced) {
     cards.forEach((c, i) => {
       c.style.transition = 'none';
@@ -3442,6 +3483,7 @@ setReady();
       c.style.transform = 'translate(-50%, -50%)';
       c.classList.toggle('is-active', i === 0);
     });
+    renderCase();
     return;
   }
 
@@ -3634,16 +3676,61 @@ setReady();
   card.addEventListener('change', render);
   render();
 
-  form?.addEventListener('submit', (e) => {
+  const submitBtn = document.getElementById('quoteSubmit');
+  const submitLabel = document.getElementById('quoteSubmitLabel');
+  const errorEl = document.getElementById('quoteError');
+  let sending = false;
+
+  function showError(html){
+    if (errorEl) errorEl.innerHTML = html;
+    form.classList.add('is-error');
+  }
+
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (sending) return;
     render();
-    form.classList.add('is-sent');
-    const url = typeof CALENDLY_URL === 'string' ? CALENDLY_URL : 'https://calendly.com/goransantic/30min';
-    if (window.Calendly?.initPopupWidget) {
-      window.Calendly.initPopupWidget({ url });
-    } else {
-      window.open(url, '_blank', 'noopener,noreferrer');
+    form.classList.remove('is-error');
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    const name = String(data.name || '').trim();
+    const email = String(data.email || '').trim();
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      showError('Add your name and a valid email so I can reply.');
+      form.querySelector(name ? 'input[name="email"]' : 'input[name="name"]')?.focus();
+      return;
     }
+
+    sending = true;
+    if (submitBtn) submitBtn.disabled = true;
+    if (submitLabel) submitLabel.textContent = 'Sending…';
+
+    const payload = { ...data, source: 'pricing-calculator', page: location.pathname };
+    let ok = false;
+    try {
+      const res = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      ok = res.ok;
+    } catch {
+      ok = false;
+    }
+
+    sending = false;
+    if (submitBtn) submitBtn.disabled = false;
+    if (submitLabel) submitLabel.textContent = 'Send inquiry';
+
+    if (ok) {
+      form.classList.add('is-sent');
+      track('inquiry_sent', { source: 'pricing-calculator', estimate: String(payload.estimate || '') });
+      document.getElementById('quoteOk')?.focus?.();
+      return;
+    }
+
+    track('inquiry_failed', { source: 'pricing-calculator' });
+    showError(`Send didn't go through. <a href="${mailtoInquiry(payload)}">Email it to me directly</a> or <a href="${CALENDLY_URL}" target="_blank" rel="noopener noreferrer">book a call</a>.`);
   });
 })();
 
@@ -3788,7 +3875,7 @@ document.querySelectorAll('[data-io]').forEach(el => io.observe(el));
   const mount = document.getElementById('aboutFlip');
   if (!mount) return;
 
-  const ABOUT_PORTRAIT = './assets/about/goran-portrait.png';
+  const ABOUT_PORTRAIT = './assets/about/goran-portrait.webp';
   const HALF_TURN = 180;
   const DEFAULT_ITEMS = [
     { image: { src: ABOUT_PORTRAIT }, focusY: 8 },
@@ -3889,35 +3976,10 @@ document.querySelectorAll('[data-io]').forEach(el => io.observe(el));
   render();
 })();
 
-/* ——— Modal + Nav ——— */
-const modal = document.getElementById('modal');
+/* ——— Nav ——— */
 const navMenu = document.getElementById('navMenu');
-let modalOpen = false;
 let menuOpen = false;
 
-function openModal(){
-  if (menuOpen) closeMenu(true);
-  modal.hidden = false;
-  modal.removeAttribute('aria-hidden');
-  modalOpen = true;
-  requestAnimationFrame(() => {
-    modal.classList.add('is-open');
-    document.getElementById('requestForm')?.querySelector('input')?.focus();
-  });
-  stopScroll();
-}
-function closeModal(){
-  modal.classList.remove('is-open');
-  modalOpen = false;
-  setTimeout(() => {
-    modal.hidden = true;
-    modal.setAttribute('aria-hidden', 'true');
-    modal.classList.remove('is-success');
-    document.getElementById('requestForm').reset();
-    document.getElementById('submitLabel').textContent = 'Send request';
-    if (!menuOpen) startScroll();
-  }, 300);
-}
 function openMenu(){
   navMenu.hidden = false;
   navMenu.removeAttribute('aria-hidden');
@@ -3937,7 +3999,7 @@ function closeMenu(keepLock){
   setTimeout(() => {
     navMenu.hidden = true;
     navMenu.setAttribute('aria-hidden', 'true');
-    if (!keepLock && !modalOpen) startScroll();
+    if (!keepLock) startScroll();
   }, 400);
 }
 
@@ -3953,7 +4015,7 @@ function openCalendlyPopup(url){
 }
 
 function unlockAfterCalendly(){
-  if (!menuOpen && !modalOpen) startScroll();
+  if (!menuOpen) startScroll();
 }
 
 function watchCalendlyOverlay(){
@@ -3992,33 +4054,33 @@ addEventListener('message', (e) => {
 
 document.getElementById('openMenu').addEventListener('click', openMenu);
 document.getElementById('closeMenu').addEventListener('click', () => closeMenu());
-document.getElementById('closeModal').addEventListener('click', closeModal);
-document.getElementById('successClose').addEventListener('click', closeModal);
+
+/* Where on the page a CTA lives, for analytics grouping */
+function ctaLocation(el){
+  if (el.closest('.nav-menu')) return 'mobile-menu';
+  if (el.closest('.header')) return 'header';
+  if (el.closest('.footer')) return 'footer';
+  if (el.closest('.quote')) return 'pricing';
+  if (el.closest('.hero')) return 'hero';
+  const section = el.closest('section[id]');
+  return section?.id || 'page';
+}
 
 document.addEventListener('click', (e) => {
+  const liveLink = e.target.closest('[data-live-site]');
+  if (liveLink) track('cta_visit_live_site', { site: liveLink.getAttribute('data-live-site') || '' });
+
   const calendlyLink = e.target.closest('a[href*="calendly.com"]');
   if (calendlyLink) {
     e.preventDefault();
     const url = calendlyLink.getAttribute('href') || CALENDLY_URL;
+    track('cta_book_call', { location: ctaLocation(calendlyLink) });
     const fromMenu = menuOpen;
     if (fromMenu) closeMenu(true);
     setTimeout(() => openCalendlyPopup(url), fromMenu ? 420 : 0);
     return;
   }
-  const openMod = e.target.closest('[data-open-modal]');
-  const openFromMenu = e.target.closest('[data-open-modal-from-menu]');
   const scrollBtn = e.target.closest('[data-scroll]');
-  if (openFromMenu) {
-    e.preventDefault();
-    closeMenu(true);
-    setTimeout(openModal, 200);
-    return;
-  }
-  if (openMod) {
-    e.preventDefault();
-    openModal();
-    return;
-  }
   if (scrollBtn) {
     e.preventDefault();
     const id = scrollBtn.getAttribute('data-scroll');
@@ -4033,22 +4095,8 @@ document.addEventListener('click', (e) => {
   }
 });
 
-modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-document.getElementById('modalPanel').addEventListener('click', e => e.stopPropagation());
-
 addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    if (modalOpen) closeModal();
-    else if (menuOpen) closeMenu();
-  }
-});
-
-document.getElementById('requestForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  document.getElementById('submitLabel').textContent = 'Sending…';
-  setTimeout(() => {
-    modal.classList.add('is-success');
-  }, 600);
+  if (e.key === 'Escape' && menuOpen) closeMenu();
 });
 
 /* ——— Spring helper (tension/friction, mass=1) ——— */
@@ -4203,8 +4251,7 @@ function trapFocus(e, root) {
 }
 
 addEventListener('keydown', (e) => {
-  if (modalOpen) trapFocus(e, modal);
-  else if (menuOpen) trapFocus(e, navMenu);
+  if (menuOpen) trapFocus(e, navMenu);
 });
 </script>
 </body>

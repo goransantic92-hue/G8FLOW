@@ -850,6 +850,7 @@ html{scroll-padding-top:4.25rem}
   position:relative;
   color:var(--pf-ink);
   background:var(--pf-bg);
+  padding-top:5.25rem;
 }
 .portfolio-track{position:relative;height:calc(320svh + 10vh)}
 @media(min-width:900px){
@@ -857,19 +858,19 @@ html{scroll-padding-top:4.25rem}
 }
 .portfolio-sticky{
   position:sticky;
-  top:0;
-  min-height:100svh;
+  top:4.25rem;
+  min-height:calc(100svh - 4.25rem);
   overflow:visible;
   display:flex;
   flex-direction:column;
   justify-content:flex-start;
-  padding:5.5rem 0 3rem;
+  padding:0 0 2.5rem;
 }
 @media(min-width:900px){
   .portfolio-sticky{
     justify-content:flex-start;
-    min-height:100svh;
-    padding:5.75rem 0 2.5rem;
+    min-height:calc(100svh - 4.25rem);
+    padding:0 0 2.5rem;
   }
 }
 .portfolio__inner{
@@ -887,7 +888,9 @@ html{scroll-padding-top:4.25rem}
   align-items:center;
   text-align:center;
   width:100%;
-  margin-bottom:clamp(1.25rem, 3vh, 2.25rem);
+  margin:0 auto clamp(1.25rem, 3vh, 2.25rem);
+  padding:0 1.25rem;
+  box-sizing:border-box;
 }
 .portfolio__h2{
   font-size:2.25rem;
@@ -1183,7 +1186,7 @@ html{scroll-padding-top:4.25rem}
 .portfolio__case-link:hover{text-decoration:underline}
 @media (prefers-reduced-motion:reduce){
   .portfolio-track{height:auto}
-  .portfolio-sticky{position:relative;min-height:0;padding:4.5rem 0 5rem}
+  .portfolio-sticky{position:relative;top:auto;min-height:0;padding:0 0 5rem}
   .coverflow__card{transition:none!important}
   .coverflow__dim{transition:none!important}
 }
@@ -1888,18 +1891,17 @@ html.lenis,html.lenis body{height:auto}
   </div>
 
   <section class="portfolio" id="works" data-nav-theme="light">
+    <header class="portfolio__head">
+      <div class="reveal" data-reveal data-io>
+        <span class="eyebrow eyebrow--dark eyebrow--pill"><span class="eyebrow__dot"></span>Portfolio</span>
+      </div>
+      <h2 class="portfolio__h2" data-lines data-io data-delay="120">
+        <span class="line-clip"><span>Selected Work</span></span>
+      </h2>
+    </header>
     <div class="portfolio-track" id="portfolioTrack">
       <div class="portfolio-sticky">
         <div class="shell portfolio__inner">
-          <header class="portfolio__head">
-            <div class="reveal" data-reveal data-io>
-              <span class="eyebrow eyebrow--dark eyebrow--pill"><span class="eyebrow__dot"></span>Portfolio</span>
-            </div>
-            <h2 class="portfolio__h2" data-lines data-io data-delay="120">
-              <span class="line-clip"><span>Selected Work</span></span>
-            </h2>
-          </header>
-
           <div class="coverflow" id="coverflow" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Selected work gallery">
             <div class="coverflow__stage" id="coverflowStage"></div>
           </div>
@@ -1958,7 +1960,7 @@ html.lenis,html.lenis body{height:auto}
       <div class="solutions__rule" aria-hidden="true"></div>
       <div class="solutions__grid">
         <article class="solutions__card">
-          <div class="solutions__media" style="background-image:url('./assets/solutions/site-laptop.jpg')"></div>
+          <div class="solutions__media" style="background-image:url('./assets/solutions/site-laptop.png')"></div>
           <p class="solutions__kicker">01 Websites and platforms</p>
           <h3 class="solutions__title">Fast and responsive websites</h3>
           <div class="solutions__panel">

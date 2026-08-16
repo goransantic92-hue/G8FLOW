@@ -349,7 +349,7 @@
     'nav.primary': 'Glavna navigacija',
     'nav.mobile': 'Meni',
     'nav.home': 'Početna',
-    'nav.work': 'Radovi',
+    'nav.work': 'Izabrani radovi',
     'nav.about': 'O meni',
     'nav.process': 'Kako radim',
     'nav.services': 'Šta radim',
@@ -379,7 +379,7 @@
     'cta.estimate': 'Traži procenu',
 
     'work.eyebrow': 'Radovi',
-    'work.h2': 'Šta sam pustio uživo',
+    'work.h2': 'Izabrani radovi',
     'work.gallery': 'Izabrani radovi',
     'work.pause': 'Zaustavi pregled',
     'work.play': 'Pusti pregled',

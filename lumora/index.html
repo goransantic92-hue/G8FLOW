@@ -1237,12 +1237,14 @@ html{scroll-padding-top:4.25rem}
 .feedback{
   position:relative;
   isolation:isolate;
-  background:#08163C;
+  overflow:hidden;
+  background:var(--hero-bg);
+  background-color:var(--hero-mid);
   color:#fff;
 }
 .feedback-track{
   position:relative;
-  height:420vh;
+  height:480vh;
 }
 .feedback-sticky{
   position:sticky;
@@ -1262,7 +1264,7 @@ html{scroll-padding-top:4.25rem}
   letter-spacing:-.04em;
   line-height:.92;
   text-transform:uppercase;
-  color:#fff;
+  color:#f4fbf4;
 }
 .feedback-float{
   position:absolute;
@@ -1273,14 +1275,21 @@ html{scroll-padding-top:4.25rem}
   position:absolute;
   top:var(--t);
   left:var(--x);
-  width:min(22.5rem, 86vw);
-  padding:1.35rem 1.35rem 1.2rem;
-  background:#101c42;
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 18px 50px rgba(0,0,0,.28);
+  width:min(28.5rem, 88vw);
+  min-height:17.5rem;
+  padding:1.85rem 1.85rem 1.55rem;
+  background:rgba(8,22,60,.28);
+  border:1px solid rgba(244,251,244,.22);
+  box-shadow:0 22px 56px rgba(0,0,0,.28);
+  backdrop-filter:blur(22px) saturate(1.25);
+  -webkit-backdrop-filter:blur(22px) saturate(1.25);
   opacity:0;
   transform:translateY(2.25rem);
   transition:opacity .55s ease, transform .55s ease;
+}
+.feedback-card--wide{
+  width:min(32.5rem, 90vw);
+  min-height:22rem;
 }
 .feedback-card.is-in{
   opacity:1;
@@ -1288,50 +1297,58 @@ html{scroll-padding-top:4.25rem}
 }
 .feedback-card__stars{
   display:flex;
-  gap:.15rem;
-  margin:0 0 .7rem;
-  color:#e24b4b;
-  font-size:.78rem;
-  letter-spacing:.08em;
+  gap:.18rem;
+  margin:0 0 .85rem;
+  color:#f4fbf4;
+  font-size:1.05rem;
+  letter-spacing:.1em;
   line-height:1;
 }
 .feedback-card__h{
-  margin:0 0 .55rem;
-  font-size:1.05rem;
+  margin:0 0 .7rem;
+  font-size:1.28rem;
   font-weight:700;
   letter-spacing:-.02em;
-  line-height:1.25;
+  line-height:1.28;
 }
 .feedback-card__p{
-  margin:0 0 1.1rem;
-  font-size:.875rem;
-  line-height:1.5;
-  color:rgba(255,255,255,.82);
+  margin:0 0 1.25rem;
+  font-size:1.02rem;
+  line-height:1.55;
+  color:rgba(244,251,244,.88);
+}
+.feedback-card--wide .feedback-card__p{
+  font-size:1.06rem;
+  line-height:1.58;
 }
 .feedback-card__who{
   display:flex;
   align-items:center;
-  gap:.7rem;
+  gap:.85rem;
 }
 .feedback-card__who img{
-  width:2.35rem;
-  height:2.35rem;
+  width:3.15rem;
+  height:3.15rem;
   border-radius:999px;
   object-fit:cover;
   background:#15389B;
+  flex-shrink:0;
+}
+.feedback-card__who img.feedback-card__photo--milos{
+  object-position:38% 12%;
 }
 .feedback-card__name{
   display:block;
-  font-size:.875rem;
+  font-size:1.05rem;
   font-weight:600;
-  color:#e24b4b;
+  color:#f4fbf4;
   line-height:1.2;
 }
 .feedback-card__role{
   display:block;
-  margin-top:.12rem;
-  font-size:.72rem;
-  color:rgba(255,255,255,.7);
+  margin-top:.18rem;
+  font-size:.82rem;
+  color:rgba(244,251,244,.72);
 }
 @media (max-width:899px){
   .feedback-track{height:auto;padding:5.5rem 1.25rem 4rem}
@@ -1343,6 +1360,7 @@ html{scroll-padding-top:4.25rem}
     top:auto;
     left:auto;
     width:100%;
+    min-height:0;
     opacity:1;
     transform:none;
   }
@@ -1491,6 +1509,168 @@ html{scroll-padding-top:4.25rem}
 @media (prefers-reduced-motion:reduce){
   .industries__intro{position:relative;top:auto}
 }
+
+/* Quote calculator */
+.quote{
+  position:relative;
+  background:#f8fbf8;
+  color:#08163C;
+}
+.quote__inner{
+  max-width:52rem;
+  margin:0 auto;
+  padding:4.5rem 1.25rem 4.5rem;
+  box-sizing:border-box;
+}
+@media(min-width:640px){.quote__inner{padding-inline:2rem}}
+.quote__eyebrow{
+  margin:0 0 .65rem;
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(8,22,60,.5);
+}
+.quote__h2{
+  margin:0 0 .55rem;
+  font-size:clamp(2.1rem, 1.3rem + 2.2vw, 3.4rem);
+  font-weight:600;
+  letter-spacing:-.03em;
+  line-height:1.08;
+}
+.quote__lead{
+  margin:0 0 1.75rem;
+  max-width:38rem;
+  font-size:1.05rem;
+  line-height:1.5;
+  color:rgba(8,22,60,.62);
+}
+.quote-card{
+  background:#fff;
+  border:1px solid rgba(8,22,60,.12);
+  box-shadow:0 18px 50px rgba(8,22,60,.06);
+  overflow:hidden;
+}
+.quote-kind{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-bottom:1px solid rgba(8,22,60,.1);
+}
+.quote-kind__btn{
+  padding:1rem 1.1rem;
+  font-size:.9rem;
+  font-weight:600;
+  color:rgba(8,22,60,.55);
+  background:transparent;
+  border-right:1px solid rgba(8,22,60,.1);
+}
+.quote-kind__btn:last-child{border-right:0}
+.quote-kind__btn.is-on{
+  color:#fff;
+  background:#08163C;
+}
+.quote-panel{padding:1.35rem 1.25rem 1.2rem}
+@media(min-width:640px){.quote-panel{padding:1.6rem 1.6rem 1.35rem}}
+.quote-panel[hidden]{display:none!important}
+.quote-q{margin:0 0 1.35rem}
+.quote-q:last-child{margin-bottom:0}
+.quote-q__label{
+  margin:0 0 .65rem;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(8,22,60,.48);
+}
+.quote-opts{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45rem;
+}
+.quote-opt{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  padding:.55rem .8rem;
+  border:1px solid rgba(8,22,60,.16);
+  font-size:.875rem;
+  font-weight:500;
+  cursor:pointer;
+  user-select:none;
+}
+.quote-opt:has(input:checked){
+  border-color:#15389B;
+  background:rgba(21,56,155,.08);
+  color:#08163C;
+}
+.quote-opt input{accent-color:#15389B}
+.quote-bar{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:1rem;
+  padding:1.15rem 1.25rem 1.25rem;
+  border-top:1px solid rgba(8,22,60,.1);
+  background:#f4f7f4;
+}
+@media(min-width:640px){.quote-bar{padding-inline:1.6rem}}
+.quote-bar__k{
+  margin:0 0 .2rem;
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(8,22,60,.48);
+}
+.quote-bar__build{
+  margin:0;
+  font-size:clamp(1.65rem, 1.2rem + 1.4vw, 2.25rem);
+  font-weight:700;
+  letter-spacing:-.03em;
+  line-height:1.1;
+}
+.quote-bar__care{
+  margin:.25rem 0 0;
+  font-size:.875rem;
+  color:rgba(8,22,60,.62);
+}
+.quote-bar__note{
+  margin:.35rem 0 0;
+  font-size:.75rem;
+  color:rgba(8,22,60,.5);
+  max-width:22rem;
+}
+.quote-bar__over .quote-bar__build{font-size:1.15rem;max-width:16rem;line-height:1.3}
+.quote-form{
+  padding:1.25rem 1.25rem 1.5rem;
+  border-top:1px solid rgba(8,22,60,.1);
+}
+.quote-form__fields{
+  display:grid;
+  gap:.7rem;
+}
+@media(min-width:640px){
+  .quote-form{padding-inline:1.6rem}
+  .quote-form__fields{grid-template-columns:1fr 1fr}
+  .quote-form__fields textarea,.quote-form__fields .quote-form__full{grid-column:1 / -1}
+}
+.quote-form label{display:flex;flex-direction:column;gap:.3rem;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(8,22,60,.5)}
+.quote-form input,.quote-form textarea{
+  padding:.7rem .8rem;
+  border:1px solid rgba(8,22,60,.16);
+  font:inherit;
+  font-size:.9rem;
+  font-weight:400;
+  letter-spacing:0;
+  text-transform:none;
+  color:#08163C;
+  background:#fff;
+}
+.quote-form textarea{min-height:5.5rem;resize:vertical}
+.quote-form__ok{display:none;margin:0;font-size:.95rem;color:#264238}
+.quote-form.is-sent .quote-form__fields{display:none}
+.quote-form.is-sent .quote-form__ok{display:block}
 
 /* Closing band — Footer + ticker */
 .closing{
@@ -1999,6 +2179,7 @@ html.lenis,html.lenis body{height:auto}
         <li><button type="button" data-scroll="works">Work</button></li>
         <li><button type="button" data-scroll="about">About</button></li>
         <li><button type="button" data-scroll="solutions">Services</button></li>
+        <li><button type="button" data-scroll="pricing">Pricing</button></li>
         <li><button type="button" data-scroll="feedback">Feedback</button></li>
         <li><a class="header__nav-link" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">Contact</a></li>
       </ul>
@@ -2091,8 +2272,8 @@ html.lenis,html.lenis body{height:auto}
             <span class="about__stat-label">Years of experience</span>
           </li>
           <li class="about__stat">
-            <span class="about__stat-num">3</span>
-            <span class="about__stat-label">Live sites</span>
+            <span class="about__stat-num">75%</span>
+            <span class="about__stat-label">Judge your business from the site — before they read a word</span>
           </li>
           <li class="about__stat">
             <span class="about__stat-num">0</span>
@@ -2128,7 +2309,7 @@ html.lenis,html.lenis body{height:auto}
           <p class="solutions__kicker">01 Websites and platforms</p>
           <h3 class="solutions__title">Fast and responsive websites</h3>
           <div class="solutions__panel">
-            <p class="solutions__text">We begin by understanding the problem, the users, and the business goals from start to finish.</p>
+            <p class="solutions__text">I begin by understanding the problem, the users, and the business goals from start to finish.</p>
             <a class="pill pill--light pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">
               <span class="pill__inner">Let's build<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
             </a>
@@ -2269,68 +2450,174 @@ html.lenis,html.lenis body{height:auto}
     </div>
   </section>
 
+  </section>
+
+  <section class="quote" id="pricing" data-nav-theme="light">
+    <div class="quote__inner">
+      <p class="quote__eyebrow">Packages &amp; pricing</p>
+      <h2 class="quote__h2">Pick what you need. See what it costs.</h2>
+      <p class="quote__lead">No fake packages. You check the work — the number moves. Build price + monthly care. Final number locks on a call.</p>
+      <div class="quote-card" id="quoteCard">
+        <div class="quote-kind" role="tablist" aria-label="Project type">
+          <button class="quote-kind__btn is-on" type="button" role="tab" aria-selected="true" data-quote-kind="site">Website</button>
+          <button class="quote-kind__btn" type="button" role="tab" aria-selected="false" data-quote-kind="app">App</button>
+        </div>
+        <div class="quote-panel" id="quoteSite" data-quote-panel="site">
+          <div class="quote-q">
+            <p class="quote-q__label">How many pages</p>
+            <div class="quote-opts">
+              <label class="quote-opt"><input type="radio" name="sitePages" value="1"> 1 page</label>
+              <label class="quote-opt"><input type="radio" name="sitePages" value="3-6"> 3–6</label>
+              <label class="quote-opt"><input type="radio" name="sitePages" value="7-12"> 7–12</label>
+              <label class="quote-opt"><input type="radio" name="sitePages" value="13+"> 13+</label>
+            </div>
+          </div>
+          <div class="quote-q">
+            <p class="quote-q__label">CMS</p>
+            <div class="quote-opts">
+              <label class="quote-opt"><input type="radio" name="siteCms" value="none" checked> No CMS</label>
+              <label class="quote-opt"><input type="radio" name="siteCms" value="cms"> CMS</label>
+              <label class="quote-opt"><input type="radio" name="siteCms" value="shop"> Shop (checkout)</label>
+            </div>
+          </div>
+          <div class="quote-q">
+            <p class="quote-q__label">Add-ons</p>
+            <div class="quote-opts">
+              <label class="quote-opt"><input type="checkbox" name="siteExtra" value="ecom"> E-commerce extras</label>
+              <label class="quote-opt"><input type="checkbox" name="siteExtra" value="member"> Membership</label>
+              <label class="quote-opt"><input type="checkbox" name="siteExtra" value="book"> Booking</label>
+            </div>
+          </div>
+        </div>
+        <div class="quote-panel" id="quoteApp" data-quote-panel="app" hidden>
+          <div class="quote-q">
+            <p class="quote-q__label">Platforms</p>
+            <div class="quote-opts">
+              <label class="quote-opt"><input type="checkbox" name="appPlat" value="ios"> iOS</label>
+              <label class="quote-opt"><input type="checkbox" name="appPlat" value="android"> Android</label>
+              <label class="quote-opt"><input type="checkbox" name="appPlat" value="pwa"> PWA / web app</label>
+            </div>
+          </div>
+          <div class="quote-q">
+            <p class="quote-q__label">Screens</p>
+            <div class="quote-opts">
+              <label class="quote-opt"><input type="radio" name="appScreens" value="5-8"> 5–8</label>
+              <label class="quote-opt"><input type="radio" name="appScreens" value="9-15"> 9–15</label>
+              <label class="quote-opt"><input type="radio" name="appScreens" value="16-25"> 16–25</label>
+              <label class="quote-opt"><input type="radio" name="appScreens" value="26+"> 26+</label>
+            </div>
+          </div>
+          <div class="quote-q">
+            <p class="quote-q__label">What the app includes</p>
+            <div class="quote-opts">
+              <label class="quote-opt"><input type="checkbox" name="appMod" value="auth"> Auth</label>
+              <label class="quote-opt"><input type="checkbox" name="appMod" value="profiles"> Profiles</label>
+              <label class="quote-opt"><input type="checkbox" name="appMod" value="pay"> Payments</label>
+              <label class="quote-opt"><input type="checkbox" name="appMod" value="admin"> Admin</label>
+              <label class="quote-opt"><input type="checkbox" name="appMod" value="push"> Notifications</label>
+              <label class="quote-opt"><input type="checkbox" name="appMod" value="offline"> Offline</label>
+            </div>
+          </div>
+        </div>
+        <div class="quote-bar" id="quoteBar">
+          <div>
+            <p class="quote-bar__k">Estimated build</p>
+            <p class="quote-bar__build" id="quoteBuild">€0</p>
+            <p class="quote-bar__care" id="quoteCare">Care €0 / mo</p>
+            <p class="quote-bar__note">Estimate only. Final quote after a 30-minute call.</p>
+          </div>
+        </div>
+        <form class="quote-form" id="quoteForm">
+          <div class="quote-form__fields">
+            <label>Your name <input name="name" type="text" required autocomplete="name"></label>
+            <label>Email <input name="email" type="email" required autocomplete="email"></label>
+            <label>Budget <input name="budget" type="text" placeholder="e.g. €3k–€5k"></label>
+            <label class="quote-form__full">About the project <textarea name="notes" placeholder="What should this make people do?"></textarea></label>
+            <input type="hidden" name="estimate" id="quoteEstimateField">
+            <button class="pill pill--dark pill--arrow quote-form__full" type="submit">
+              <span class="pill__inner">Send inquiry<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+            </button>
+          </div>
+          <p class="quote-form__ok">Got it. I’ll read this and we’ll lock the number on the call.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <section class="feedback" id="feedback" aria-label="Client feedback" data-nav-theme="dark">
     <div class="feedback-track">
       <div class="feedback-sticky">
         <h2 class="feedback__title">Client feedback</h2>
       </div>
       <div class="feedback-float">
-        <article class="feedback-card" data-fb style="--t:14%; --x:6%;">
+        <article class="feedback-card" data-fb style="--t:12%; --x:5%;">
           <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
           <h3 class="feedback-card__h">The site explains the offer before the call.</h3>
           <p class="feedback-card__p">“We used to burn twenty minutes on every call just explaining what we do. Now the site does that before the first email — and people show up ready to buy.”</p>
           <div class="feedback-card__who">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop" alt="" width="38" height="38">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop" alt="" width="50" height="50">
             <div>
-              <span class="feedback-card__name">Ana Marković</span>
+              <span class="feedback-card__name">Elena Rossi</span>
               <span class="feedback-card__role">Founder, brand studio</span>
             </div>
           </div>
         </article>
-        <article class="feedback-card" data-fb style="--t:28%; --x:58%;">
+        <article class="feedback-card" data-fb style="--t:24%; --x:56%;">
           <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
           <h3 class="feedback-card__h">I didn’t want pretty. I wanted the cart to move.</h3>
           <p class="feedback-card__p">“Clearer offer and a faster path to checkout calmed me down — and more orders without cranking ad spend.”</p>
           <div class="feedback-card__who">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop" alt="" width="38" height="38">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop" alt="" width="50" height="50">
             <div>
-              <span class="feedback-card__name">Marko Ilić</span>
+              <span class="feedback-card__name">James Whitaker</span>
               <span class="feedback-card__role">E-commerce owner</span>
             </div>
           </div>
         </article>
-        <article class="feedback-card" data-fb style="--t:44%; --x:10%;">
+        <article class="feedback-card feedback-card--wide" data-fb style="--t:38%; --x:8%;">
+          <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
+          <h3 class="feedback-card__h">Pretty doesn’t pay my rent. Paying clients do.</h3>
+          <p class="feedback-card__p">“I don’t get paid because the brand looks expensive. I get paid when busy people buy coaching and actually train. The website sells the outcome before they ever DM me. The app is where they show up, stay, and stop disappearing after week one. Together they plugged the leak — the people who used to ghost after a consult now pay, log in, and do the work. That’s the job. That’s what this did.”</p>
+          <div class="feedback-card__who">
+            <img class="feedback-card__photo--milos" src="assets/feedback/milos-wa.jpeg" alt="Miloš Ilić" width="50" height="50">
+            <div>
+              <span class="feedback-card__name">Miloš Ilić</span>
+              <span class="feedback-card__role">Fitness coach</span>
+            </div>
+          </div>
+        </article>
+        <article class="feedback-card" data-fb style="--t:54%; --x:54%;">
           <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
           <h3 class="feedback-card__h">Fewer “interested.” More real bookings.</h3>
           <p class="feedback-card__p">“My old site looked fine and sold nothing. The new one walks people straight to a booking.”</p>
           <div class="feedback-card__who">
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=160&h=160&fit=crop" alt="" width="38" height="38">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=160&h=160&fit=crop" alt="" width="50" height="50">
             <div>
-              <span class="feedback-card__name">Jelena Petrović</span>
+              <span class="feedback-card__name">Sophie Laurent</span>
               <span class="feedback-card__role">Coach</span>
             </div>
           </div>
         </article>
-        <article class="feedback-card" data-fb style="--t:60%; --x:54%;">
+        <article class="feedback-card" data-fb style="--t:68%; --x:6%;">
           <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
           <h3 class="feedback-card__h">Demo calls got shorter because the value was already clear.</h3>
           <p class="feedback-card__p">“The landing stopped listing features and started selling the time teams get back.”</p>
           <div class="feedback-card__who">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=160&h=160&fit=crop" alt="" width="38" height="38">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=160&h=160&fit=crop" alt="" width="50" height="50">
             <div>
-              <span class="feedback-card__name">Stefan Nikolić</span>
+              <span class="feedback-card__name">Daniel Park</span>
               <span class="feedback-card__role">Product lead</span>
             </div>
           </div>
         </article>
-        <article class="feedback-card" data-fb style="--t:76%; --x:8%;">
+        <article class="feedback-card" data-fb style="--t:82%; --x:52%;">
           <p class="feedback-card__stars" aria-label="5 out of 5">★★★★★</p>
           <h3 class="feedback-card__h">A site that closes while we deliver.</h3>
           <p class="feedback-card__p">“We needed a site that closes while we deliver. That’s what we got — no corporate waffle.”</p>
           <div class="feedback-card__who">
-            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160&h=160&fit=crop" alt="" width="38" height="38">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160&h=160&fit=crop" alt="" width="50" height="50">
             <div>
-              <span class="feedback-card__name">Milica Đorđević</span>
+              <span class="feedback-card__name">Maya Chen</span>
               <span class="feedback-card__role">Agency lead</span>
             </div>
           </div>
@@ -2394,6 +2681,7 @@ html.lenis,html.lenis body{height:auto}
           <a href="#works" data-scroll="works">Work</a>
           <a href="#about" data-scroll="about">About</a>
           <a href="#solutions" data-scroll="solutions">Services</a>
+          <a href="#pricing" data-scroll="pricing">Pricing</a>
           <a href="#feedback" data-scroll="feedback">Feedback</a>
         </div>
         <div class="footer__col">
@@ -3258,12 +3546,145 @@ setReady();
   cards.forEach(c => io.observe(c));
 })();
 
+(function initQuote(){
+  const card = document.getElementById('quoteCard');
+  if (!card) return;
+  const kindBtns = [...card.querySelectorAll('[data-quote-kind]')];
+  const sitePanel = document.getElementById('quoteSite');
+  const appPanel = document.getElementById('quoteApp');
+  const buildEl = document.getElementById('quoteBuild');
+  const careEl = document.getElementById('quoteCare');
+  const bar = document.getElementById('quoteBar');
+  const estimateField = document.getElementById('quoteEstimateField');
+  const form = document.getElementById('quoteForm');
+  let kind = 'site';
+
+  const SITE_PAGES = { '1': 1500, '3-6': 2800, '7-12': 4500, '13+': 6200 };
+  const SITE_CMS = { none: 1, cms: 1.18, shop: 1.42 };
+  const SITE_EXTRA = { ecom: 1.22, member: 1.16, book: 1.14 };
+  const APP_PLAT = { ios: 1800, android: 1800, pwa: 1400 };
+  const APP_SCREENS = { '5-8': 1, '9-15': 1.32, '16-25': 1.65, '26+': 2.05 };
+  const APP_MOD = { auth: 700, profiles: 450, pay: 1100, admin: 800, push: 550, offline: 700 };
+  const SITE_CAP = 7500;
+  const APP_CAP = 15000;
+
+  function checked(name){
+    return [...card.querySelectorAll(`input[name="${name}"]:checked`)].map(i => i.value);
+  }
+  function radio(name){
+    return card.querySelector(`input[name="${name}"]:checked`)?.value || '';
+  }
+  function money(n){
+    return '€' + Math.round(n).toLocaleString('de-DE');
+  }
+
+  function compute(){
+    if (kind === 'site') {
+      const pages = radio('sitePages');
+      const cms = radio('siteCms') || 'none';
+      const extras = checked('siteExtra');
+      let build = SITE_PAGES[pages] || 0;
+      if (build) {
+        build *= SITE_CMS[cms] || 1;
+        extras.forEach(k => { build *= SITE_EXTRA[k] || 1; });
+      }
+      let care = 0;
+      if (build) {
+        care = 19;
+        if (pages === '3-6') care = 39;
+        if (pages === '7-12') care = 59;
+        if (pages === '13+') care = 89;
+        if (cms === 'shop') care += 29;
+        if (extras.includes('ecom')) care += 19;
+        if (extras.includes('member')) care += 15;
+        if (extras.includes('book')) care += 15;
+      }
+      return {
+        build,
+        care,
+        cap: SITE_CAP,
+        summary: `Website · pages ${pages || '—'} · CMS ${cms} · extras ${extras.join(', ') || 'none'}`,
+      };
+    }
+    const plats = checked('appPlat');
+    const screens = radio('appScreens');
+    const mods = checked('appMod');
+    let sum = 0;
+    plats.forEach(k => { sum += APP_PLAT[k] || 0; });
+    if (plats.includes('ios') && plats.includes('android')) sum -= 400;
+    mods.forEach(k => { sum += APP_MOD[k] || 0; });
+    const mult = APP_SCREENS[screens] || 0;
+    const build = (sum && screens) ? sum * mult : 0;
+    let care = 0;
+    if (build) {
+      care = 49;
+      if (plats.includes('ios')) care += 15;
+      if (plats.includes('android')) care += 15;
+      if (plats.includes('pwa')) care += 10;
+      if (mods.includes('pay')) care += 25;
+      if (mods.includes('push')) care += 12;
+    }
+    return {
+      build,
+      care,
+      cap: APP_CAP,
+      summary: `App · ${plats.join(', ') || 'no platform'} · screens ${screens || '—'} · ${mods.join(', ') || 'no modules'}`,
+    };
+  }
+
+  function render(){
+    const { build, care, cap, summary } = compute();
+    const over = build > cap;
+    bar.classList.toggle('quote-bar__over', over);
+    if (!build) {
+      buildEl.textContent = '€0';
+      careEl.textContent = 'Care €0 / mo';
+    } else if (over) {
+      buildEl.textContent = 'Book a call — scoped separately';
+      careEl.textContent = 'This mix is past a clean estimate.';
+    } else {
+      buildEl.textContent = 'From ' + money(build);
+      careEl.textContent = 'Care ' + money(care) + ' / mo';
+    }
+    if (estimateField) estimateField.value = `${summary} · build ${money(build)} · care ${money(care)}/mo${over ? ' · OVER CAP' : ''}`;
+  }
+
+  kindBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      kind = btn.getAttribute('data-quote-kind') || 'site';
+      kindBtns.forEach(b => {
+        const on = b === btn;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      if (sitePanel) sitePanel.hidden = kind !== 'site';
+      if (appPanel) appPanel.hidden = kind !== 'app';
+      render();
+    });
+  });
+  card.addEventListener('change', render);
+  render();
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    render();
+    form.classList.add('is-sent');
+    const url = typeof CALENDLY_URL === 'string' ? CALENDLY_URL : 'https://calendly.com/goransantic/30min';
+    if (window.Calendly?.initPopupWidget) {
+      window.Calendly.initPopupWidget({ url });
+    } else {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  });
+})();
+
 /* Nav menu items */
 const NAV_ITEMS = [
   { label:'Home', scroll:'home' },
   { label:'Work', scroll:'works' },
   { label:'About', scroll:'about' },
   { label:'Services', scroll:'solutions' },
+  { label:'Pricing', scroll:'pricing' },
   { label:'Feedback', scroll:'feedback' },
   { label:'Contact', href: CALENDLY_URL },
 ];
@@ -3279,7 +3700,7 @@ document.getElementById('navMenuList').innerHTML = NAV_ITEMS.map((item,i) => `
 
 /* Keep header + menu active state in sync with visible section */
 (function initNavActive(){
-  const SECTION_IDS = ['home', 'works', 'about', 'solutions', 'industries', 'feedback'];
+  const SECTION_IDS = ['home', 'works', 'about', 'solutions', 'industries', 'pricing', 'feedback'];
   const headerBtns = [...document.querySelectorAll('.header__nav [data-scroll]')];
   function setCurrent(id){
     headerBtns.forEach(btn => {

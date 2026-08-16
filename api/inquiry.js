@@ -84,6 +84,7 @@ module.exports = async (req, res) => {
   const estimate = clean(body.estimate);
   const source = clean(body.source) || 'unknown';
   const page = clean(body.page);
+  const lang = clean(body.lang) === 'sr' ? 'sr' : 'en';
   const notes = multiline(body.notes);
 
   if (!name || !validEmail(email)) {
@@ -107,6 +108,7 @@ module.exports = async (req, res) => {
     ['Estimate', estimate || '—'],
     ['Source', source],
     ['Page', page || '—'],
+    ['Language', lang],
   ];
 
   const html = `

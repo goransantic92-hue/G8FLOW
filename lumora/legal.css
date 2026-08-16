@@ -59,6 +59,17 @@ a:hover{color:#fff}
   text-decoration:none;
 }
 .legal__back{font-size:.875rem;font-weight:500}
+.legal__bar-end{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;justify-content:flex-end}
+.lang-switch{display:inline-flex;align-items:center;gap:.1rem;color:inherit}
+.lang-switch button{
+  min-width:44px;min-height:44px;padding:0 .2rem;
+  font:inherit;font-size:.75rem;font-weight:600;letter-spacing:.08em;
+  color:inherit;opacity:.55;background:none;border:none;cursor:pointer;
+}
+.lang-switch button.is-on{opacity:1}
+.lang-switch__sep{opacity:.35;font-size:.75rem}
+html.i18n-pending body{visibility:hidden}
+html.is-i18n-ready body{visibility:visible}
 
 .legal{
   max-width:52rem;

@@ -7,63 +7,99 @@
 <meta name="description" content="How G8 Flow handles the data you send through the inquiry form, booking link, and site analytics." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://g8flow-kappa.vercel.app/privacy.html" />
+<link rel="alternate" hreflang="en" href="https://g8flow-kappa.vercel.app/privacy.html" />
+<link rel="alternate" hreflang="sr" href="https://g8flow-kappa.vercel.app/privacy.html?lang=sr" />
+<link rel="alternate" hreflang="x-default" href="https://g8flow-kappa.vercel.app/privacy.html" />
 <meta name="theme-color" content="#08163C" />
 <link rel="icon" href="./assets/brand/favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="./assets/brand/favicon.ico" sizes="any" />
 <link rel="apple-touch-icon" href="./assets/brand/apple-touch-icon.png" />
 <link rel="preload" href="./assets/fonts/onest/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="./legal.css" />
+<script>
+(function(){
+  var lang='en';
+  try {
+    var q=new URLSearchParams(location.search).get('lang');
+    if(q==='sr'||q==='en') lang=q;
+    else {
+      var s=localStorage.getItem('g8-lang');
+      if(s==='sr'||s==='en') lang=s;
+      else {
+        var n=(navigator.language||'').toLowerCase();
+        if(n.indexOf('sr')===0||n.indexOf('hr')===0||n.indexOf('bs')===0) lang='sr';
+      }
+    }
+  } catch(e){}
+  window.__g8lang=lang;
+  document.documentElement.lang=lang==='sr'?'sr':'en';
+  document.documentElement.setAttribute('data-lang',lang);
+  if(lang==='sr') document.documentElement.classList.add('i18n-pending');
+  setTimeout(function(){
+    document.documentElement.classList.remove('i18n-pending');
+    document.documentElement.classList.add('is-i18n-ready');
+  }, 2500);
+})();
+</script>
 </head>
-<body>
-<a class="legal__skip" href="#main">Skip to content</a>
+<body data-legal="privacy">
+<a class="legal__skip" href="#main" data-i18n="skip">Skip to content</a>
 <header class="legal__bar">
   <a class="legal__brand" href="./">G8 Flow</a>
-  <a class="legal__back" href="./">← Back to site</a>
+  <div class="legal__bar-end">
+    <div class="lang-switch" role="group" data-i18n-aria="lang.label" aria-label="Language">
+      <button type="button" data-lang="en" lang="en" aria-label="English">EN</button>
+      <span class="lang-switch__sep" aria-hidden="true">|</span>
+      <button type="button" data-lang="sr" lang="sr" aria-label="Srpski">SR</button>
+    </div>
+    <a class="legal__back" href="./" data-i18n="legal.back">← Back to site</a>
+  </div>
 </header>
 <main class="legal" id="main">
-  <p class="legal__eyebrow">Legal</p>
-  <h1>Privacy Policy</h1>
-  <p class="legal__meta">Last updated 16 August 2026</p>
+  <p class="legal__eyebrow" data-i18n="legal.eyebrow">Legal</p>
+  <h1 data-i18n="legal.privacy.h1">Privacy Policy</h1>
+  <p class="legal__meta" data-i18n="legal.privacy.meta">Last updated 16 August 2026</p>
 
-  <p class="legal__lead">Short version: I collect the details you choose to send me so I can reply about a project. I don't sell them, I don't run advertising trackers, and I delete them when they're no longer needed.</p>
+  <p class="legal__lead" data-i18n="legal.privacy.lead">Short version: I collect the details you choose to send me so I can reply about a project. I don't sell them, I don't run advertising trackers, and I delete them when they're no longer needed.</p>
 
-  <h2>Who is responsible</h2>
-  <p>This site is operated by <strong>G8 Flow</strong> (Goran Šantić), a freelance web design and development practice based in Serbia. For any privacy question, write to <a href="mailto:goransantic92@gmail.com">goransantic92@gmail.com</a>.</p>
+  <h2 data-i18n="legal.privacy.h.who">Who is responsible</h2>
+  <p data-i18n="legal.privacy.p.who" data-i18n-html>This site is operated by <strong>G8 Flow</strong> (Goran Šantić), a freelance web design and development practice based in Serbia. For any privacy question, write to <a href="mailto:goransantic92@gmail.com">goransantic92@gmail.com</a>.</p>
 
-  <h2>What I collect and why</h2>
-  <h3>Inquiry form</h3>
-  <p>When you submit the form in the pricing section, I receive the name, email address, budget note, project description, and the estimate the calculator produced. I use it only to answer your inquiry and to prepare a quote. The submission is delivered to my inbox by <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Resend</a>, an email delivery provider acting on my behalf.</p>
-  <h3>Booking a call</h3>
-  <p>The "Book a call" buttons open <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Calendly</a>. When you schedule, Calendly processes the details you enter under its own privacy notice and shares the booking with me.</p>
-  <h3>Analytics</h3>
-  <p>I use Vercel Web Analytics to see which pages and buttons get used. It is cookie-free and does not build a profile of you or follow you across other sites. It records aggregate signals such as page path, referrer, country, device type, and which calls-to-action were clicked. See the <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel Analytics privacy notice</a>.</p>
-  <h3>Server logs</h3>
-  <p>The site is hosted on Vercel, which keeps short-lived technical logs (IP address, user agent, timestamps) for security and abuse prevention. The inquiry endpoint also uses your IP address in memory for a few seconds to throttle spam submissions; it is not stored.</p>
+  <h2 data-i18n="legal.privacy.h.what">What I collect and why</h2>
+  <h3 data-i18n="legal.privacy.h.form">Inquiry form</h3>
+  <p data-i18n="legal.privacy.p.form" data-i18n-html>When you submit the form in the pricing section, I receive the name, email address, budget note, project description, and the estimate the calculator produced. I use it only to answer your inquiry and to prepare a quote. The submission is delivered to my inbox by <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Resend</a>, an email delivery provider acting on my behalf.</p>
+  <h3 data-i18n="legal.privacy.h.book">Booking a call</h3>
+  <p data-i18n="legal.privacy.p.book" data-i18n-html>The "Book a call" buttons open <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Calendly</a>. When you schedule, Calendly processes the details you enter under its own privacy notice and shares the booking with me.</p>
+  <h3 data-i18n="legal.privacy.h.analytics">Analytics</h3>
+  <p data-i18n="legal.privacy.p.analytics" data-i18n-html>I use Vercel Web Analytics to see which pages and buttons get used. It is cookie-free and does not build a profile of you or follow you across other sites. It records aggregate signals such as page path, referrer, country, device type, and which calls-to-action were clicked. See the <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel Analytics privacy notice</a>.</p>
+  <h3 data-i18n="legal.privacy.h.logs">Server logs</h3>
+  <p data-i18n="legal.privacy.p.logs">The site is hosted on Vercel, which keeps short-lived technical logs (IP address, user agent, timestamps) for security and abuse prevention. The inquiry endpoint also uses your IP address in memory for a few seconds to throttle spam submissions; it is not stored.</p>
 
-  <h2>What I don't do</h2>
+  <h2 data-i18n="legal.privacy.h.dont">What I don't do</h2>
   <ul>
-    <li>No advertising or cross-site tracking cookies</li>
-    <li>No selling, renting, or trading your data</li>
-    <li>No newsletter sign-up hidden inside the inquiry form</li>
-    <li>No automated decision-making or profiling</li>
+    <li data-i18n="legal.privacy.li.1">No advertising or cross-site tracking cookies</li>
+    <li data-i18n="legal.privacy.li.2">No selling, renting, or trading your data</li>
+    <li data-i18n="legal.privacy.li.3">No newsletter sign-up hidden inside the inquiry form</li>
+    <li data-i18n="legal.privacy.li.4">No automated decision-making or profiling</li>
   </ul>
 
-  <h2>Legal basis</h2>
-  <p>Where the GDPR applies, I rely on your consent and on my legitimate interest in responding to business inquiries and keeping the site secure and functional (Art. 6(1)(a) and 6(1)(f) GDPR).</p>
+  <h2 data-i18n="legal.privacy.h.basis">Legal basis</h2>
+  <p data-i18n="legal.privacy.p.basis">Where the GDPR applies, I rely on your consent and on my legitimate interest in responding to business inquiries and keeping the site secure and functional (Art. 6(1)(a) and 6(1)(f) GDPR).</p>
 
-  <h2>How long I keep it</h2>
-  <p>Inquiry emails are kept for as long as the conversation is commercially relevant, and up to 24 months after my last contact, then deleted. Records tied to a signed project are kept for as long as accounting rules require. Analytics data is aggregate and retained by Vercel per its own retention schedule.</p>
+  <h2 data-i18n="legal.privacy.h.keep">How long I keep it</h2>
+  <p data-i18n="legal.privacy.p.keep">Inquiry emails are kept for as long as the conversation is commercially relevant, and up to 24 months after my last contact, then deleted. Records tied to a signed project are kept for as long as accounting rules require. Analytics data is aggregate and retained by Vercel per its own retention schedule.</p>
 
-  <h2>Who else sees it</h2>
-  <p>Only the providers needed to run the site and reply to you: Vercel (hosting, analytics), Resend (email delivery), Calendly (scheduling), and my email provider. I don't share your data with anyone else unless the law requires it.</p>
+  <h2 data-i18n="legal.privacy.h.whoelse">Who else sees it</h2>
+  <p data-i18n="legal.privacy.p.whoelse">Only the providers needed to run the site and reply to you: Vercel (hosting, analytics), Resend (email delivery), Calendly (scheduling), and my email provider. I don't share your data with anyone else unless the law requires it.</p>
 
-  <h2>Your rights</h2>
-  <p>You can ask me to show you the data I hold about you, correct it, delete it, restrict how I use it, or send it to you in a portable format. You can also withdraw consent at any time and lodge a complaint with your local data protection authority. Email <a href="mailto:goransantic92@gmail.com">goransantic92@gmail.com</a> and I'll respond within 30 days.</p>
+  <h2 data-i18n="legal.privacy.h.rights">Your rights</h2>
+  <p data-i18n="legal.privacy.p.rights" data-i18n-html>You can ask me to show you the data I hold about you, correct it, delete it, restrict how I use it, or send it to you in a portable format. You can also withdraw consent at any time and lodge a complaint with your local data protection authority. Email <a href="mailto:goransantic92@gmail.com">goransantic92@gmail.com</a> and I'll respond within 30 days.</p>
 
-  <h2>Changes</h2>
-  <p>If this policy changes materially, I'll update the date at the top of this page.</p>
+  <h2 data-i18n="legal.privacy.h.changes">Changes</h2>
+  <p data-i18n="legal.privacy.p.changes">If this policy changes materially, I'll update the date at the top of this page.</p>
 
-  <p class="legal__foot"><a href="./">← Back to G8 Flow</a> · <a href="./terms.html">Terms of Service</a></p>
+  <p class="legal__foot"><a href="./" data-i18n="legal.backBrand">← Back to G8 Flow</a> · <a href="./terms.html" data-i18n="legal.privacy.foot.terms">Terms of Service</a></p>
 </main>
+<script src="./i18n.js"></script>
 </body>
 </html>

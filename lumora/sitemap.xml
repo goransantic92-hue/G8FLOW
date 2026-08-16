@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://g8flow-kappa.vercel.app/</loc>
-    <lastmod>2026-08-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://g8flow-kappa.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://g8flow-kappa.vercel.app/?lang=sr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://g8flow-kappa.vercel.app/" />
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://g8flow-kappa.vercel.app/privacy.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://g8flow-kappa.vercel.app/privacy.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://g8flow-kappa.vercel.app/privacy.html?lang=sr" />
+    <lastmod>2026-08-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://g8flow-kappa.vercel.app/terms.html</loc>
-    <lastmod>2026-08-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://g8flow-kappa.vercel.app/terms.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://g8flow-kappa.vercel.app/terms.html?lang=sr" />
+    <lastmod>2026-08-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

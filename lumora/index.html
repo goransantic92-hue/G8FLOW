@@ -1280,6 +1280,7 @@ html{scroll-padding-top:4.25rem}
   padding:1.85rem 1.85rem 1.55rem;
   background:rgba(8,22,60,.28);
   border:1px solid rgba(244,251,244,.22);
+  border-radius:1.5rem;
   box-shadow:0 22px 56px rgba(0,0,0,.28);
   backdrop-filter:blur(22px) saturate(1.25);
   -webkit-backdrop-filter:blur(22px) saturate(1.25);
@@ -1543,6 +1544,7 @@ html{scroll-padding-top:4.25rem}
 .quote-card{
   background:#fff;
   border:1px solid rgba(8,22,60,.12);
+  border-radius:1.5rem;
   box-shadow:0 18px 50px rgba(8,22,60,.06);
   overflow:hidden;
 }
@@ -1588,6 +1590,7 @@ html{scroll-padding-top:4.25rem}
   gap:.4rem;
   padding:.55rem .8rem;
   border:1px solid rgba(8,22,60,.16);
+  border-radius:.75rem;
   font-size:.875rem;
   font-weight:500;
   cursor:pointer;
@@ -1781,38 +1784,6 @@ html{scroll-padding-top:4.25rem}
   line-height:1.55;
   color:rgba(255,255,255,.88);
   font-weight:400;
-}
-.about__stats{
-  list-style:none;
-  margin:0 0 2rem;
-  padding:0;
-  max-width:28rem;
-}
-.about__stat{
-  display:flex;
-  align-items:baseline;
-  gap:.85rem;
-  padding:1rem 0;
-  border-top:1px solid rgba(255,255,255,.14);
-}
-.about__stat:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
-.about__stat-num{
-  flex-shrink:0;
-  min-width:3.25ch;
-  font-size:clamp(1.75rem, 1.4rem + 1.2vw, 2.35rem);
-  font-weight:700;
-  letter-spacing:-.02em;
-  line-height:1;
-  font-variant-numeric:tabular-nums;
-  color:#6b93ff;
-}
-.about__stat-label{
-  font-size:.7rem;
-  font-weight:600;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.58);
-  line-height:1.35;
 }
 .about__cta{
   display:flex;
@@ -2261,20 +2232,6 @@ html.lenis,html.lenis body{height:auto}
           If you get traffic but not calls, we fix the offer, the path, and the one next step —
           so a stranger gets it in one scroll and knows exactly what to do.
         </p>
-        <ul class="about__stats">
-          <li class="about__stat">
-            <span class="about__stat-num">+3</span>
-            <span class="about__stat-label">Years of experience</span>
-          </li>
-          <li class="about__stat">
-            <span class="about__stat-num">75%</span>
-            <span class="about__stat-label">Judge your business from the site — before they read a word</span>
-          </li>
-          <li class="about__stat">
-            <span class="about__stat-num">0</span>
-            <span class="about__stat-label">Fluff pages that look nice and sell nothing</span>
-          </li>
-        </ul>
         <div class="about__cta">
           <a class="pill pill--dark pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">
             <span class="pill__inner">Book a call<span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>

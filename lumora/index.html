@@ -361,8 +361,7 @@ html{scroll-padding-top:4.25rem}
 }
 #liquidBase{mix-blend-mode:soft-light;opacity:.94}
 @media(min-width:1024px){
-  /* Square JPG + contain = a hard center slab (the 3 panels). Cover fills the field. */
-  .liquid__img,.liquid__canvas,.liquid__clear{object-fit:cover;object-position:center 42%}
+  .liquid__img,.liquid__canvas,.liquid__clear{object-position:center 58%}
 }
 .liquid__canvas{
   pointer-events:none;
@@ -3344,18 +3343,16 @@ setReady();
   afterImg.src = CLEAR_SRC; // trail / reveal image
 
   function drawFit(img, target, tw, th){
-    // Match CSS: contain below 1024px; cover + object-position center 42% from 1024px
+    // Match CSS object-fit: contain + object-position (center / desktop center 58%)
     const tctx = target.getContext('2d');
     const ir = img.naturalWidth / img.naturalHeight;
     const cr = tw / th;
-    const useCover = matchMedia('(min-width: 1024px)').matches;
     let dw, dh, dx, dy;
-    if (useCover) {
-      if (ir > cr){ dh = th; dw = th * ir; dx = (tw - dw) / 2; dy = 0; }
-      else { dw = tw; dh = tw / ir; dx = 0; dy = (th - dh) / 2; }
-      if (dh > th) dy = (th - dh) * 0.42;
-    } else if (ir > cr){ dw = tw; dh = tw / ir; dx = 0; dy = (th - dh) / 2; }
+    if (ir > cr){ dw = tw; dh = tw / ir; dx = 0; dy = (th - dh) / 2; }
     else { dh = th; dw = th * ir; dx = (tw - dw) / 2; dy = 0; }
+    if (matchMedia('(min-width: 1024px)').matches && dh < th) {
+      dy = (th - dh) * 0.58;
+    }
     tctx.clearRect(0, 0, tw, th);
     tctx.drawImage(img, dx, dy, dw, dh);
   }

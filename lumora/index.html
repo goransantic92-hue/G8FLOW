@@ -285,10 +285,26 @@ html{scroll-padding-top:4.25rem}
   overflow:hidden;
   border-radius:0 0 2rem 2rem;
   background-color:var(--hero-to);
-  background-image:var(--g8-vignette),linear-gradient(118deg,#15389B 0%,#1740a8 48%,#15389B 100%);
-  background-repeat:no-repeat;
-  background-attachment:fixed;
+  background-image:linear-gradient(180deg,#15389B 0%,#163ea6 50%,#15389B 100%);
   min-height:100svh;
+}
+.hero::before,
+.hero::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  z-index:2;
+  width:min(34vw, 28rem);
+  pointer-events:none;
+}
+.hero::before{
+  left:0;
+  background:linear-gradient(90deg,#15389B 0%,#15389B 42%,rgba(21,56,155,.55) 72%,transparent 100%);
+}
+.hero::after{
+  right:0;
+  background:linear-gradient(270deg,#15389B 0%,#15389B 42%,rgba(21,56,155,.55) 72%,transparent 100%);
 }
 @media(min-width:1024px){
   .hero{min-height:118lvh}
@@ -302,7 +318,7 @@ html{scroll-padding-top:4.25rem}
   .hero{position:relative;height:auto}
 }
 .liquid{position:absolute;inset:0;z-index:0;background:transparent}
-.liquid__field{position:absolute;inset:0;z-index:0;background-color:var(--hero-to);background-image:var(--g8-vignette),linear-gradient(118deg,#15389B 0%,#1740a8 48%,#15389B 100%);background-repeat:no-repeat;background-attachment:fixed;pointer-events:none}
+.liquid__field{position:absolute;inset:0;z-index:0;background-color:var(--hero-to);background-image:linear-gradient(180deg,#15389B 0%,#163ea6 50%,#15389B 100%);pointer-events:none}
 .liquid__img,.liquid__canvas,.liquid__clear{
   position:absolute;inset:0;z-index:1;width:100%;height:100%;
   object-fit:contain;object-position:center center;
@@ -344,7 +360,7 @@ html{scroll-padding-top:4.25rem}
 }
 .hero__vignette{
   position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:radial-gradient(ellipse 140% 110% at 50% 42%, transparent 50%, rgba(8,22,60,.15) 100%);
+  background:linear-gradient(180deg, rgba(8,22,60,.18) 0%, transparent 28%, transparent 78%, rgba(8,22,60,.22) 100%);
   transition:opacity .65s cubic-bezier(.22,1,.36,1);
 }
 .hero.is-portrait-reveal .hero__vignette{opacity:.45}
@@ -352,7 +368,7 @@ html{scroll-padding-top:4.25rem}
   pointer-events:none;
   position:absolute;
   inset:0;
-  z-index:1;
+  z-index:3;
   display:flex;
   align-items:center;
   justify-content:center;

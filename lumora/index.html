@@ -1691,14 +1691,17 @@ html{scroll-padding-top:4.25rem}
 .quote-card{
   max-width:52rem;
   margin-inline:auto;
-  background:rgba(248,251,248,.42);
+  position:relative;
+  background:rgba(248,251,248,.52);
   color:#08163C;
-  border:1px solid rgba(255,255,255,.28);
+  border:1px solid rgba(255,255,255,.32);
   border-radius:1.5rem;
-  box-shadow:0 18px 50px rgba(8,22,60,.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.5),
+    0 18px 50px rgba(8,22,60,.28);
+  backdrop-filter:blur(24px) saturate(1.35);
+  -webkit-backdrop-filter:blur(24px) saturate(1.35);
   overflow:hidden;
-  backdrop-filter:blur(22px) saturate(1.2);
-  -webkit-backdrop-filter:blur(22px) saturate(1.2);
 }
 .quote-kind{
   display:grid;
@@ -2290,24 +2293,26 @@ html.lenis,html.lenis body{height:auto}
 .plan{
   position:relative;
   padding:1.35rem 1.25rem 1.3rem;
-  border:1px solid rgba(255,255,255,.28);
+  border:1px solid rgba(255,255,255,.32);
   border-radius:1.35rem;
-  background:rgba(248,251,248,.38);
+  background:rgba(248,251,248,.52);
   color:#08163C;
-  box-shadow:0 18px 50px rgba(8,22,60,.22);
-  backdrop-filter:blur(18px) saturate(1.2);
-  -webkit-backdrop-filter:blur(18px) saturate(1.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.5),
+    0 18px 50px rgba(8,22,60,.22);
+  backdrop-filter:blur(22px) saturate(1.35);
+  -webkit-backdrop-filter:blur(22px) saturate(1.35);
 }
 .plan--rec{
   padding:1.7rem 1.35rem 1.6rem;
-  border-color:rgba(107,147,255,.55);
-  background:linear-gradient(165deg, rgba(255,255,255,.52) 0%, rgba(248,251,248,.4) 42%, rgba(220,230,255,.36) 100%);
+  border-color:rgba(107,147,255,.65);
+  background:linear-gradient(165deg, rgba(255,255,255,.62) 0%, rgba(248,251,248,.48) 42%, rgba(220,230,255,.42) 100%);
   box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.65),
     0 24px 56px rgba(8,22,60,.32),
-    0 0 36px rgba(21,56,155,.22),
-    inset 0 1px 0 rgba(255,255,255,.45);
-  backdrop-filter:blur(22px) saturate(1.25);
-  -webkit-backdrop-filter:blur(22px) saturate(1.25);
+    0 0 36px rgba(21,56,155,.22);
+  backdrop-filter:blur(24px) saturate(1.4);
+  -webkit-backdrop-filter:blur(24px) saturate(1.4);
 }
 @media(min-width:800px){
   .plan--rec{

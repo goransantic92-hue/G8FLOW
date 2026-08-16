@@ -3553,14 +3553,14 @@ setReady();
   const form = document.getElementById('quoteForm');
   let kind = 'site';
 
-  const SITE_PAGES = { '1': 1500, '3-6': 2800, '7-12': 4500, '13+': 6200 };
+  const SITE_PAGES = { '1': 750, '3-6': 1441, '7-12': 2250, '13+': 3100 };
   const SITE_CMS = { none: 1, cms: 1.18, shop: 1.42 };
   const SITE_EXTRA = { ecom: 1.22, member: 1.16, book: 1.14 };
-  const APP_PLAT = { ios: 1800, android: 1800, pwa: 1400 };
+  const APP_PLAT = { ios: 900, android: 900, pwa: 700 };
   const APP_SCREENS = { '5-8': 1, '9-15': 1.32, '16-25': 1.65, '26+': 2.05 };
-  const APP_MOD = { auth: 700, profiles: 450, pay: 1100, admin: 800, push: 550, offline: 700 };
-  const SITE_CAP = 7500;
-  const APP_CAP = 15000;
+  const APP_MOD = { auth: 350, profiles: 225, pay: 550, admin: 400, push: 275, offline: 350 };
+  const SITE_CAP = 3500;
+  const APP_CAP = 8000;
 
   function checked(name){
     return [...card.querySelectorAll(`input[name="${name}"]:checked`)].map(i => i.value);
@@ -3570,6 +3570,18 @@ setReady();
   }
   function money(n){
     return '€' + Math.round(n).toLocaleString('de-DE');
+  }
+  function digitSum(n){
+    return String(Math.abs(Math.round(n))).split('').reduce((s, d) => s + Number(d), 0);
+  }
+  function snapEight(n){
+    if (!n) return 0;
+    const x = Math.round(n);
+    for (let d = 0; d < 400; d++) {
+      if (digitSum(x + d) === 8) return x + d;
+      if (d && x - d > 0 && digitSum(x - d) === 8) return x - d;
+    }
+    return x;
   }
 
   function compute(){
@@ -3605,7 +3617,7 @@ setReady();
     const mods = checked('appMod');
     let sum = 0;
     plats.forEach(k => { sum += APP_PLAT[k] || 0; });
-    if (plats.includes('ios') && plats.includes('android')) sum -= 400;
+    if (plats.includes('ios') && plats.includes('android')) sum -= 200;
     mods.forEach(k => { sum += APP_MOD[k] || 0; });
     const mult = APP_SCREENS[screens] || 0;
     const build = (sum && screens) ? sum * mult : 0;
@@ -3627,7 +3639,9 @@ setReady();
   }
 
   function render(){
-    const { build, care, cap, summary } = compute();
+    const raw = compute();
+    const build = snapEight(raw.build);
+    const { care, cap, summary } = raw;
     const over = build > cap;
     bar.classList.toggle('quote-bar__over', over);
     if (!build) {

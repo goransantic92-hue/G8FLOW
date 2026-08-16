@@ -3161,7 +3161,7 @@ setReady();
       copyMobile: 'They couldn’t tell who it was for or where to buy. I rebuilt the path: problem, promise, one purchase step.',
       stats: [
         { num: '4 CW', label: 'Build time' },
-        { num: '€2.042', label: 'Investment' },
+        { num: '€2.150', label: 'Investment' },
         { num: 'Live', label: 'Online sales' },
       ],
     },
@@ -3179,7 +3179,7 @@ setReady();
       copyMobile: 'Kids’ room décor shop. Clear product story, trust up front, short path to checkout.',
       stats: [
         { num: '5 CW', label: 'Build time' },
-        { num: '€3.203', label: 'Investment' },
+        { num: '€3.050', label: 'Investment' },
         { num: 'Live', label: 'Online sales' },
       ],
     },
@@ -3197,7 +3197,7 @@ setReady();
       copyMobile: 'They couldn’t see the offer or book. One scroll: who she is, the work, a 30-minute intro.',
       stats: [
         { num: '3 CW', label: 'Build time' },
-        { num: '€2.006', label: 'Investment' },
+        { num: '€2.150', label: 'Investment' },
         { num: 'Live', label: 'Session booking' },
       ],
     },
@@ -3533,10 +3533,14 @@ setReady();
   }
   function snapEight(n){
     if (!n) return 0;
-    const x = Math.round(n);
-    for (let d = 0; d < 400; d++) {
-      if (digitSum(x + d) === 8) return x + d;
-      if (d && x - d > 0 && digitSum(x - d) === 8) return x - d;
+    const step = 50;
+    let x = Math.round(n / step) * step;
+    if (x < step) x = step;
+    for (let k = 0; k < 80; k++) {
+      const up = x + k * step;
+      const down = x - k * step;
+      if (digitSum(up) === 8) return up;
+      if (k && down > 0 && digitSum(down) === 8) return down;
     }
     return x;
   }

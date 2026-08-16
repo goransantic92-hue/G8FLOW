@@ -1059,15 +1059,22 @@ html{scroll-padding-top:4.25rem}
 .coverflow__card:not(.is-active) .coverflow__dim{opacity:calc(1 - 80 / 100)}
 .phone-mock__island,.phone-mock__home{display:none}
 @media (max-width:899px){
+  .portfolio{padding-top:4.35rem}
+  .portfolio-sticky{
+    top:3.85rem;
+    min-height:calc(100svh - 3.85rem);
+    padding:0 0 1rem;
+    justify-content:flex-start;
+  }
   .coverflow{
-    --cf-w:240px;
-    --cf-h:460px;
-    --cf-radius:2.15rem;
-    min-height:clamp(360px, 52svh, 480px);
+    --cf-w:168px;
+    --cf-h:320px;
+    --cf-radius:1.85rem;
+    min-height:0;
   }
   .coverflow__stage{
-    width:min(var(--cf-w), 62vw);
-    height:calc(min(var(--cf-w), 62vw) * 460 / 240);
+    width:min(var(--cf-w), 46vw);
+    height:calc(min(var(--cf-w), 46vw) * 320 / 168);
     max-width:var(--cf-w);
     max-height:var(--cf-h);
   }
@@ -1184,6 +1191,24 @@ html{scroll-padding-top:4.25rem}
   text-decoration:none;
 }
 .portfolio__case-link:hover{text-decoration:underline}
+@media (max-width:899px){
+  .portfolio__case{margin-top:.7rem}
+  .portfolio__case-meta{margin:0 0 .35rem;font-size:.625rem}
+  .portfolio__case-copy{
+    margin:0 auto .45rem;
+    max-width:34rem;
+    font-size:.8125rem;
+    line-height:1.4;
+  }
+  .portfolio__case-stats{
+    gap:.35rem;
+    margin:0 0 .5rem;
+    padding:.5rem 0;
+  }
+  .portfolio__case-stat-num{font-size:1.05rem}
+  .portfolio__case-stat-label{font-size:.6rem}
+  .portfolio__case-link{font-size:.75rem}
+}
 @media (prefers-reduced-motion:reduce){
   .portfolio-track{height:auto}
   .portfolio-sticky{position:relative;top:auto;min-height:0;padding:0 0 5rem}
@@ -2708,6 +2733,7 @@ setReady();
       client: 'Busy Strong 90',
       services: 'Offer site · sales path',
       copy: 'The program was strong. The site was not — visitors could not tell who it was for, what 90 days looked like, or where to buy. I rebuilt it as a coach-on-a-call: problem, promise, path, then one purchase step. Scope was a full offer site with copy, mobile layout, and a live sales path — not a brochure.',
+      copyMobile: 'They couldn’t tell who it was for or where to buy. I rebuilt the path: problem, promise, one purchase step.',
       stats: [
         { num: '4 wks', label: 'Build time' },
         { num: '€2.4k', label: 'Investment' },
@@ -2725,6 +2751,7 @@ setReady();
       mp4: './assets/works/videos/lenkolino.mp4?v=2',
       mp4Mobile: './assets/works/videos/mobile/lenkolino.mp4?v=2',
       copy: 'Lenkolino is décor for kids’ rooms — handmade balloons, birth cards, personalised gifts — with a site that made buying feel like extra work. I shipped a shop with a clear product story, trust up front, and a short path to checkout. Scope was merchandising + cart, not a pretty catalog with a buried form — priced as a Growth-range build with a fixed launch window.',
+      copyMobile: 'Kids’ room décor shop. Clear product story, trust up front, short path to checkout.',
       stats: [
         { num: '5 wks', label: 'Build time' },
         { num: '€3.2k', label: 'Investment' },
@@ -2742,6 +2769,7 @@ setReady();
       mp4: './assets/works/videos/thrivewithmarina.mp4?v=2',
       mp4Mobile: './assets/works/videos/mobile/thrivewithmarina.mp4?v=2',
       copy: 'Marina had the practice. Strangers landing on the old presence could not see the offer or book a session in one scroll. I built a portrait-led site that answers who she is, what the work is, and the next step — a 30-minute intro on the calendar. Scope was a Launch-range personal brand site: copy, structure, and booking wired before launch.',
+      copyMobile: 'They couldn’t see the offer or book. One scroll: who she is, the work, a 30-minute intro.',
       stats: [
         { num: '3 wks', label: 'Build time' },
         { num: '€1.9k', label: 'Investment' },
@@ -2828,8 +2856,23 @@ setReady();
       if (!video) return;
       video.muted = true;
       video.loop = false;
-      if (i !== active) video.pause();
+      if (i !== active) {
+        video.pause();
+        try { video.currentTime = 0; } catch (_) {}
+      }
     });
+  }
+
+  function playActive({ restart = false } = {}){
+    const video = cards[active]?.querySelector('video');
+    if (!video || reduced || !inView) return;
+    video.muted = true;
+    video.loop = false;
+    if (restart || video.paused || video.ended) {
+      try { video.currentTime = 0; } catch (_) {}
+    }
+    const p = video.play();
+    if (p?.catch) p.catch(() => {});
   }
 
   function scrubActive(local){
@@ -2847,7 +2890,7 @@ setReady();
     else video.addEventListener('loadedmetadata', apply, { once: true });
   }
 
-  function layout(){
+  function layout(opts){
     cards.forEach((card, i) => {
       let rel = i - active;
       if (rel > n / 2) rel -= n;
@@ -2869,6 +2912,7 @@ setReady();
         `translate(-50%, -50%) translateX(${tx}px) translateZ(${tz}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${sc})`;
     });
     pauseInactive();
+    if (desktop.matches) playActive(opts);
     renderCase();
   }
 
@@ -2883,7 +2927,7 @@ setReady();
     `).join('');
     caseRoot.innerHTML = `
       <p class="portfolio__case-meta">${s.client} · ${s.services}</p>
-      <p class="portfolio__case-copy">${s.copy}</p>
+      <p class="portfolio__case-copy">${desktop.matches ? s.copy : (s.copyMobile || s.copy)}</p>
       <div class="portfolio__case-stats">${stats}</div>
       <a class="portfolio__case-link" href="${s.href}" target="_blank" rel="noopener noreferrer">Visit live site →</a>
     `;
@@ -2894,7 +2938,7 @@ setReady();
     if (next === active) return;
     if (!fromScroll) lock();
     active = next;
-    layout();
+    layout({ restart: true });
   }
 
   // After a manual pick, ignore scroll-linked index until the user actually scrolls
@@ -2935,7 +2979,7 @@ setReady();
     const i = Math.min(n - 1, Math.floor(scaled >= n ? n - 1 : scaled));
     const local = Math.min(1, Math.max(0, scaled - i));
     setActive(i, { fromScroll: true });
-    if (inView) scrubActive(local);
+    if (inView && !desktop.matches) scrubActive(local);
   }
 
   function onScroll(){
@@ -2962,8 +3006,10 @@ setReady();
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => {
       inView = en.isIntersecting;
-      if (inView) updateFromScroll();
-      else pauseInactive();
+      if (inView) {
+        if (desktop.matches) playActive({ restart: true });
+        else updateFromScroll();
+      } else pauseInactive();
     });
   }, { threshold: 0.15 });
   io.observe(section);

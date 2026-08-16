@@ -338,30 +338,12 @@ html{scroll-padding-top:4.25rem}
   isolation:isolate;
   overflow:hidden;
   border-radius:0 0 2rem 2rem;
-  background-color:var(--hero-to);
-  background-image:linear-gradient(180deg,#15389B 0%,#163ea6 50%,#15389B 100%);
+  background-color:#15389B;
+  background-image:none;
   min-height:100svh;
 }
 @media(min-width:1024px){
   .hero{min-height:118lvh}
-  .hero::before,
-  .hero::after{
-    content:"";
-    position:absolute;
-    top:0;
-    bottom:0;
-    z-index:2;
-    width:calc((100% - min(100%, 118lvh)) / 2 + 7rem);
-    pointer-events:none;
-  }
-  .hero::before{
-    left:0;
-    background:linear-gradient(90deg,#15389B 0%,#15389B 68%,transparent 100%);
-  }
-  .hero::after{
-    right:0;
-    background:linear-gradient(270deg,#15389B 0%,#15389B 68%,transparent 100%);
-  }
 }
 @media (hover:none),(pointer:coarse){
   .hero-scroll-track{height:175svh}
@@ -372,7 +354,7 @@ html{scroll-padding-top:4.25rem}
   .hero{position:relative;height:auto}
 }
 .liquid{position:absolute;inset:0;z-index:0;background:transparent}
-.liquid__field{position:absolute;inset:0;z-index:0;background-color:var(--hero-to);background-image:linear-gradient(180deg,#15389B 0%,#163ea6 50%,#15389B 100%);pointer-events:none}
+.liquid__field{position:absolute;inset:0;z-index:0;background:transparent;pointer-events:none}
 .liquid__img,.liquid__canvas,.liquid__clear{
   position:absolute;inset:0;z-index:1;width:100%;height:100%;
   object-fit:contain;object-position:center center;

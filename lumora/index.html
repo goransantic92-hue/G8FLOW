@@ -1954,7 +1954,7 @@ html.lenis,html.lenis body{height:auto}
     <div class="shell solutions__inner">
       <header class="solutions__head">
         <p class="solutions__eyebrow">What I do</p>
-        <h2 class="solutions__h2">Our solutions</h2>
+        <h2 class="solutions__h2">What I ship</h2>
         <p class="solutions__lead">Comprehensive digital solutions tailored to your needs</p>
       </header>
       <div class="solutions__rule" aria-hidden="true"></div>
@@ -1964,7 +1964,7 @@ html.lenis,html.lenis body{height:auto}
           <p class="solutions__kicker">01 Websites and platforms</p>
           <h3 class="solutions__title">Fast and responsive websites</h3>
           <div class="solutions__panel">
-            <p class="solutions__text">In our team, developers work alongside designers. This is crucial in creating a fast and responsive website that would excite the audience.</p>
+            <p class="solutions__text">I design and code in the same pass. That’s how you get a fast, responsive site that actually lands with the people who see it.</p>
             <a class="pill pill--light pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">
               <span class="pill__inner">Let's build<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
             </a>
@@ -1975,7 +1975,7 @@ html.lenis,html.lenis body{height:auto}
           <p class="solutions__kicker">02 Mobile applications</p>
           <h3 class="solutions__title">Perfectly suited mobile apps</h3>
           <div class="solutions__panel">
-            <p class="solutions__text">No template solutions. Every mobile app goes through audience research and prototype testing.</p>
+            <p class="solutions__text">I don’t ship template apps. Every build goes through who it’s for, a prototype, then a product people will actually open.</p>
             <a class="pill pill--light pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">
               <span class="pill__inner">Let's build<span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
             </a>
@@ -2770,7 +2770,7 @@ setReady();
           <div class="phone-mock__island"></div>
         </div>
         <div class="browser-mock__screen">
-          <video class="coverflow__media" muted playsinline preload="metadata" poster="${isMobileInit ? s.posterMobile : s.poster}">
+          <video class="coverflow__media" muted playsinline preload="auto" poster="${isMobileInit ? s.posterMobile : s.poster}">
             <source src="${isMobileInit ? s.mp4Mobile : s.mp4}" type="video/mp4" />
           </video>
           <p class="coverflow__title">${s.title}</p>
@@ -2822,28 +2822,32 @@ setReady();
     setTimeout(() => { locked = false; }, Math.max(50, MOVE_DUR * 1000));
   }
 
-  function syncVideos({ restart = false } = {}){
+  function pauseInactive(){
     cards.forEach((card, i) => {
       const video = card.querySelector('video');
       if (!video) return;
       video.muted = true;
       video.loop = false;
-      if (i === active && inView && !reduced) {
-        // Always start from the beginning when this card is shown
-        if (restart || video.paused || video.ended) {
-          try { video.currentTime = 0; } catch (_) {}
-        }
-        const p = video.play();
-        if (p?.catch) p.catch(() => {});
-      } else {
-        video.pause();
-        // Keep inactive clips rewound so the next visit starts clean
-        try { video.currentTime = 0; } catch (_) {}
-      }
+      if (i !== active) video.pause();
     });
   }
 
-  function layout(opts){
+  function scrubActive(local){
+    const video = cards[active]?.querySelector('video');
+    if (!video) return;
+    video.muted = true;
+    video.pause();
+    const apply = () => {
+      const d = video.duration;
+      if (!d || !Number.isFinite(d)) return;
+      const t = Math.min(d, Math.max(0, local * d));
+      if (Math.abs((video.currentTime || 0) - t) > 0.03) video.currentTime = t;
+    };
+    if (video.readyState >= 1) apply();
+    else video.addEventListener('loadedmetadata', apply, { once: true });
+  }
+
+  function layout(){
     cards.forEach((card, i) => {
       let rel = i - active;
       if (rel > n / 2) rel -= n;
@@ -2864,7 +2868,7 @@ setReady();
       card.style.transform =
         `translate(-50%, -50%) translateX(${tx}px) translateZ(${tz}px) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${sc})`;
     });
-    syncVideos(opts);
+    pauseInactive();
     renderCase();
   }
 
@@ -2887,13 +2891,10 @@ setReady();
 
   function setActive(i, { fromScroll = false } = {}){
     const next = Math.max(0, Math.min(n - 1, i));
-    if (next === active) {
-      if (!fromScroll) syncVideos({ restart: true });
-      return;
-    }
+    if (next === active) return;
     if (!fromScroll) lock();
     active = next;
-    layout({ restart: true });
+    layout();
   }
 
   // After a manual pick, ignore scroll-linked index until the user actually scrolls
@@ -2916,26 +2917,6 @@ setReady();
     holdScrollY = window.scrollY || window.pageYOffset || 0;
   }
 
-  // When a clip ends → restart that clip & advance to next card (wrap)
-  function advanceAfterVideo(){
-    if (reduced || !inView) return;
-    const next = (active + 1) % n;
-    active = next;
-    layout({ restart: true });
-    manualHold = true;
-    holdScrollY = window.scrollY || window.pageYOffset || 0;
-  }
-
-  cards.forEach((card, i) => {
-    const video = card.querySelector('video');
-    if (!video) return;
-    video.addEventListener('ended', () => {
-      if (i !== active) return;
-      try { video.currentTime = 0; } catch (_) {}
-      advanceAfterVideo();
-    });
-  });
-
   function updateFromScroll(){
     scrollRaf = 0;
     if (reduced || syncingScroll) return;
@@ -2950,8 +2931,11 @@ setReady();
     const range = Math.max(track.offsetHeight - window.innerHeight, 1);
     const traveled = Math.min(Math.max(-rect.top, 0), range);
     const progress = traveled / range;
-    const i = Math.round(progress * (n - 1));
+    const scaled = progress * n;
+    const i = Math.min(n - 1, Math.floor(scaled >= n ? n - 1 : scaled));
+    const local = Math.min(1, Math.max(0, scaled - i));
     setActive(i, { fromScroll: true });
+    if (inView) scrubActive(local);
   }
 
   function onScroll(){
@@ -2977,12 +2961,11 @@ setReady();
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => {
-      const wasIn = inView;
       inView = en.isIntersecting;
-      // Entering section → start active clip from the beginning
-      syncVideos({ restart: inView && !wasIn });
+      if (inView) updateFromScroll();
+      else pauseInactive();
     });
-  }, { threshold: 0.25 });
+  }, { threshold: 0.15 });
   io.observe(section);
 
   if (reduced) {
@@ -2999,10 +2982,11 @@ setReady();
     removeEventListener('scroll', onScroll);
     addEventListener('scroll', onScroll, { passive: true });
     applyDeviceMedia();
-    updateFromScroll();
     layout();
+    updateFromScroll();
   }
   bindMode();
+  if (typeof lenis?.on === 'function') lenis.on('scroll', onScroll);
   desktop.addEventListener?.('change', bindMode);
   addEventListener('resize', updateFromScroll, { passive: true });
 })();

@@ -4037,9 +4037,10 @@ setReady();
   const form = document.getElementById('quoteForm');
   let kind = 'site';
 
-  const SITE_PAGES = { '1': 440, '3-6': 1441, '7-12': 2250, '13+': 3100 };
-  const SITE_CMS = { none: 1, cms: 1.18, shop: 1.42 };
-  const SITE_EXTRA = { ecom: 1.22, member: 1.16, book: 1.14 };
+  // Flat EUR fees: checking an option only adds, never multiplies or replaces the base.
+  const SITE_PAGES = { '1': 440, '3-6': 1520, '7-12': 2240, '13+': 3050 };
+  const SITE_CMS = { none: 0, cms: 350, shop: 800 };
+  const SITE_EXTRA = { book: 160, member: 350, ecom: 350 };
   const APP_PLAT = { ios: 900, android: 900, pwa: 700 };
   const APP_SCREENS = { '5-8': 1, '9-15': 1.32, '16-25': 1.65, '26+': 2.05 };
   const APP_MOD = { auth: 350, profiles: 225, pay: 550, book: 500, chat: 650, admin: 400, push: 275, offline: 350, maps: 400, video: 700 };
@@ -4055,29 +4056,41 @@ setReady();
   function money(n){
     return '€' + Math.round(n).toLocaleString('de-DE');
   }
-  function digitSum(n){
-    return String(Math.abs(Math.round(n))).split('').reduce((s, d) => s + Number(d), 0);
-  }
-  function snapEight(n){
+  function roundUp(n, step){
     if (!n) return 0;
-    const step = 50;
-    let x = Math.ceil(n / step) * step;
-    if (x < step) x = step;
-    for (let k = 0; k < 80; k++) {
-      const up = x + k * step;
-      if (digitSum(up) === 8) return up;
-    }
-    return x;
+    return Math.ceil(n / step) * step;
+  }
+  function setDisabled(input, off){
+    if (!input) return;
+    input.disabled = off;
+    if (off) input.checked = false;
   }
 
-  function syncOnePageAddons(){
-    const onePage = radio('sitePages') === '1';
-    ['ecom', 'member'].forEach((val) => {
-      const input = card.querySelector(`input[name="siteExtra"][value="${val}"]`);
-      if (!input) return;
-      input.disabled = onePage;
-      if (onePage) input.checked = false;
-    });
+  function syncSiteConstraints(){
+    const pages = radio('sitePages');
+    const cms = radio('siteCms') || 'none';
+    const onePage = pages === '1';
+    const shopOn = cms === 'shop';
+
+    setDisabled(card.querySelector('input[name="siteCms"][value="shop"]'), onePage);
+    if (onePage && shopOn) {
+      const none = card.querySelector('input[name="siteCms"][value="none"]');
+      if (none) none.checked = true;
+    }
+    const cmsNow = radio('siteCms') || 'none';
+    setDisabled(card.querySelector('input[name="siteExtra"][value="ecom"]'), onePage || cmsNow !== 'shop');
+    setDisabled(card.querySelector('input[name="siteExtra"][value="member"]'), onePage || (cmsNow !== 'cms' && cmsNow !== 'shop'));
+
+    const book = card.querySelector('input[name="siteExtra"][value="book"]');
+    if (book) {
+      if (onePage) {
+        book.disabled = true;
+        book.checked = true;
+      } else if (book.disabled) {
+        book.disabled = false;
+        book.checked = false;
+      }
+    }
   }
 
   function compute(){
@@ -4086,15 +4099,12 @@ setReady();
       const cms = radio('siteCms') || 'none';
       const extras = checked('siteExtra');
       let build = SITE_PAGES[pages] || 0;
-      let exact = false;
-      if (pages === '1' && cms === 'none') {
-        build = extras.includes('book') ? 600 : 440;
-        exact = true;
-      } else if (build) {
-        const floor = build;
-        build *= SITE_CMS[cms] || 1;
-        extras.forEach(k => { build *= SITE_EXTRA[k] || 1; });
-        if (build < floor) build = floor;
+      if (build) {
+        build += SITE_CMS[cms] || 0;
+        extras.forEach(k => {
+          if (pages === '1' && k === 'book') return;
+          build += SITE_EXTRA[k] || 0;
+        });
       }
       let care = 0;
       if (build) {
@@ -4102,16 +4112,17 @@ setReady();
         if (pages === '3-6') care = 39;
         if (pages === '7-12') care = 59;
         if (pages === '13+') care = 89;
+        if (cms === 'cms') care += 10;
         if (cms === 'shop') care += 29;
         if (extras.includes('ecom')) care += 19;
         if (extras.includes('member')) care += 15;
-        if (extras.includes('book')) care += 15;
+        if (pages !== '1' && extras.includes('book')) care += 15;
       }
       return {
         build,
         care,
         cap: SITE_CAP,
-        exact,
+        step: 10,
         summary: `${t('price.summary.site')} · ${pages || '—'} · CMS ${cms} · ${extras.join(', ') || '—'}`,
       };
     }
@@ -4123,7 +4134,7 @@ setReady();
     if (plats.includes('ios') && plats.includes('android')) sum -= 200;
     mods.forEach(k => { sum += APP_MOD[k] || 0; });
     const mult = APP_SCREENS[screens] || 0;
-    const build = (sum && screens) ? sum * mult : 0;
+    const build = (plats.length && screens) ? sum * mult : 0;
     let care = 0;
     if (build) {
       care = 49;
@@ -4142,13 +4153,14 @@ setReady();
       build,
       care,
       cap: APP_CAP,
+      step: 50,
       summary: `${t('price.summary.app')} · ${plats.join(', ') || t('price.summary.noPlat')} · ${t('price.summary.screens')} ${screens || '—'} · ${mods.join(', ') || t('price.summary.noMod')}`,
     };
   }
 
   function render(){
     const raw = compute();
-    const build = raw.exact ? Math.round(raw.build) : snapEight(raw.build);
+    const build = roundUp(raw.build, raw.step || 10);
     const { care, cap, summary } = raw;
     const over = build > cap;
     bar.classList.toggle('quote-bar__over', over);
@@ -4175,14 +4187,15 @@ setReady();
       });
       if (sitePanel) sitePanel.hidden = kind !== 'site';
       if (appPanel) appPanel.hidden = kind !== 'app';
+      if (kind === 'site') syncSiteConstraints();
       render();
     });
   });
   card.addEventListener('change', () => {
-    syncOnePageAddons();
+    syncSiteConstraints();
     render();
   });
-  syncOnePageAddons();
+  syncSiteConstraints();
   render();
 
   const submitBtn = document.getElementById('quoteSubmit');

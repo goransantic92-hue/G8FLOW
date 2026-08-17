@@ -795,6 +795,20 @@ html{scroll-padding-top:4.25rem}
   color:rgba(255,255,255,.92);
   line-height:1;
 }
+.process-card__heading{
+  display:grid;
+  gap:.35rem;
+  justify-items:center;
+}
+.process-card__step{
+  margin:0;
+  font-size:.6875rem;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.55);
+  line-height:1;
+}
 .process-card__title{
   margin:0;
   font-size:clamp(1.125rem, 1rem + .6vw, 1.5rem);
@@ -805,7 +819,7 @@ html{scroll-padding-top:4.25rem}
 }
 .process-card__text{
   margin:0;
-  max-width:16rem;
+  max-width:20rem;
   font-size:.9375rem;
   line-height:1.5;
   color:var(--process-card-muted);
@@ -1339,7 +1353,7 @@ html{scroll-padding-top:4.25rem}
 }
 .portfolio__case-stats{
   display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
+  grid-template-columns:repeat(2, minmax(0, 1fr));
   gap:.5rem;
   margin:0 0 .9rem;
   padding:.85rem 0;
@@ -2603,28 +2617,40 @@ html.lenis,html.lenis body{height:auto}
             <li class="process-card" data-process-step>
               <div class="process-card__body">
                 <div class="process-card__icon" aria-hidden="true"><span class="icon" data-icon="bulb"></span></div>
-                <h3 class="process-card__title" data-i18n="process.s1.title">Start</h3>
+                <div class="process-card__heading">
+                  <p class="process-card__step" data-i18n="process.s1.step">Step 01</p>
+                  <h3 class="process-card__title" data-i18n="process.s1.title">Start</h3>
+                </div>
                 <p class="process-card__text" data-i18n="process.s1.text">30 minutes. I find where the site leaks money — and whether I’m the one to plug it.</p>
               </div>
             </li>
             <li class="process-card" data-process-step>
               <div class="process-card__body">
                 <div class="process-card__icon" aria-hidden="true"><span class="icon" data-icon="design"></span></div>
-                <h3 class="process-card__title" data-i18n="process.s2.title">Clarity</h3>
+                <div class="process-card__heading">
+                  <p class="process-card__step" data-i18n="process.s2.step">Step 02</p>
+                  <h3 class="process-card__title" data-i18n="process.s2.title">Clarity</h3>
+                </div>
                 <p class="process-card__text" data-i18n="process.s2.text">Who it’s for, what they buy, the one next step. No pixels until that’s obvious.</p>
               </div>
             </li>
             <li class="process-card" data-process-step>
               <div class="process-card__body">
                 <div class="process-card__icon" aria-hidden="true"><span class="icon" data-icon="code"></span></div>
-                <h3 class="process-card__title" data-i18n="process.s3.title">Build</h3>
+                <div class="process-card__heading">
+                  <p class="process-card__step" data-i18n="process.s3.step">Step 03</p>
+                  <h3 class="process-card__title" data-i18n="process.s3.title">Build</h3>
+                </div>
                 <p class="process-card__text" data-i18n="process.s3.text">I ship the path on a real URL. You review. I don’t decorate a leak.</p>
               </div>
             </li>
             <li class="process-card" data-process-step>
               <div class="process-card__body">
                 <div class="process-card__icon" aria-hidden="true"><span class="icon" data-icon="rocket"></span></div>
-                <h3 class="process-card__title" data-i18n="process.s4.title">Launch</h3>
+                <div class="process-card__heading">
+                  <p class="process-card__step" data-i18n="process.s4.step">Step 04</p>
+                  <h3 class="process-card__title" data-i18n="process.s4.title">Launch</h3>
+                </div>
                 <p class="process-card__text" data-i18n="process.s4.text">Live, wired, taking money. Then care so the path stays open.</p>
               </div>
             </li>
@@ -3623,7 +3649,6 @@ setReady();
       stats: [
         { numKey: 'work.weeks4', labelKey: 'work.stat.build' },
         { num: '€440–2.2k', labelKey: 'work.stat.launchRange' },
-        { numKey: 'work.live', labelKey: 'work.stat.sales' },
       ],
     },
     {
@@ -3637,7 +3662,6 @@ setReady();
       stats: [
         { numKey: 'work.weeks5', labelKey: 'work.stat.build' },
         { num: '€2.2–3.5k', labelKey: 'work.stat.growthRange' },
-        { numKey: 'work.live', labelKey: 'work.stat.sales' },
       ],
       poster: './assets/works/lenkolino.jpg?v=2',
       posterMobile: './assets/works/lenkolino-mobile.jpg?v=2',
@@ -3659,7 +3683,6 @@ setReady();
       stats: [
         { numKey: 'work.weeks3', labelKey: 'work.stat.build' },
         { num: '€440–2.2k', labelKey: 'work.stat.launchRange' },
-        { numKey: 'work.live', labelKey: 'work.stat.booking' },
       ],
     },
   ];

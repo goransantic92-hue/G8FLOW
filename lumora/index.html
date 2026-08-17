@@ -1821,6 +1821,11 @@ html{scroll-padding-top:4.25rem}
   color:#08163C;
 }
 .quote-opt input{accent-color:#15389B}
+.quote-opt:has(input:disabled){
+  opacity:.42;
+  cursor:not-allowed;
+  pointer-events:none;
+}
 .quote-bar{
   display:flex;
   flex-wrap:wrap;
@@ -4056,15 +4061,23 @@ setReady();
   function snapEight(n){
     if (!n) return 0;
     const step = 50;
-    let x = Math.round(n / step) * step;
+    let x = Math.ceil(n / step) * step;
     if (x < step) x = step;
     for (let k = 0; k < 80; k++) {
       const up = x + k * step;
-      const down = x - k * step;
       if (digitSum(up) === 8) return up;
-      if (k && down > 0 && digitSum(down) === 8) return down;
     }
     return x;
+  }
+
+  function syncOnePageAddons(){
+    const onePage = radio('sitePages') === '1';
+    ['ecom', 'member'].forEach((val) => {
+      const input = card.querySelector(`input[name="siteExtra"][value="${val}"]`);
+      if (!input) return;
+      input.disabled = onePage;
+      if (onePage) input.checked = false;
+    });
   }
 
   function compute(){
@@ -4076,14 +4089,12 @@ setReady();
       let exact = false;
       if (pages === '1' && cms === 'none') {
         build = extras.includes('book') ? 600 : 440;
-        extras.forEach(k => {
-          if (k === 'book') return;
-          build *= SITE_EXTRA[k] || 1;
-        });
-        exact = extras.every(k => k === 'book');
+        exact = true;
       } else if (build) {
+        const floor = build;
         build *= SITE_CMS[cms] || 1;
         extras.forEach(k => { build *= SITE_EXTRA[k] || 1; });
+        if (build < floor) build = floor;
       }
       let care = 0;
       if (build) {
@@ -4167,7 +4178,11 @@ setReady();
       render();
     });
   });
-  card.addEventListener('change', render);
+  card.addEventListener('change', () => {
+    syncOnePageAddons();
+    render();
+  });
+  syncOnePageAddons();
   render();
 
   const submitBtn = document.getElementById('quoteSubmit');

@@ -1,6 +1,8 @@
 # Featured work — narrative ideas (no fake metrics)
 
-Each case: left = name + logo; right = idea + what we set out to achieve. Media = autoplay scroll of the live site.
+Each case: left = name + logo; right = idea + outcomes. Media = autoplay scroll video of the live site.
+
+**Live stats UI:** two columns only — build time + Launch/Growth range (no third “Live / sales” stat).
 
 ---
 
@@ -12,28 +14,24 @@ Each case: left = name + logo; right = idea + what we set out to achieve. Media 
 
 **EN blurb:** A program site that talks like a coach on a good call — clear offer, clear path, one next step.
 
-**SR blurb:** Sajt programa koji priča kao coach na dobrom pozivu — jasna ponuda, jasan put, jedan sledeći korak.
+**SR:** live keys `work.bs.*` in `lumora/i18n.js`.
 
 ---
 
 ## 2. Lenkolino — https://lenkolino.shop/
 
-**Idea:** Kids’ room décor shop (handmade balloons, birth cards, personalised gifts) that must feel trustworthy and easy to buy from — product story without friction in the path to cart.
+**Idea:** Kids’ room décor shop that must feel trustworthy and easy to buy from.
 
-**What we built toward:** Clean merchandising hierarchy, confident product storytelling, and a checkout path that doesn’t make people think twice. Brand warmth up front; buying ease underneath.
+**What we built toward:** Clear product story, trust up front, short path to checkout. Growth-range build.
 
-**EN blurb:** A shop that feels warm on the surface and frictionless when it’s time to buy.
-
-**SR blurb:** Prodavnica koja deluje toplo na površini, a bez trenja kad treba kupiti.
+**SR:** `work.lk.*` in `i18n.js`.
 
 ---
 
 ## 3. Thrive with Marina — https://thrivewithmarina.vercel.app/
 
-**Idea:** Personal brand / coaching presence — authority without stiffness; invite people into a relationship and a booking.
+**Idea:** Personal brand / practice — authority + booking.
 
-**What we built toward:** Portrait-led trust, simple offer structure, and a calm path from “who is Marina” to “I’d work with her.” Soft brand, sharp CTA.
+**What we built toward:** Portrait-led trust, offer in one scroll, 30-minute intro on the calendar. Launch-range.
 
-**EN blurb:** A personal brand site that builds trust fast and makes booking feel natural.
-
-**SR blurb:** Lični brend sajt koji brzo gradi poverenje i čini rezervaciju prirodnom.
+**SR:** `work.tm.*` in `i18n.js`.

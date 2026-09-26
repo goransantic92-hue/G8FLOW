@@ -1,29 +1,34 @@
-# Typography substitute for Britti Sans
+# Typography — live site
 
-Flux Academy uses **Britti Sans** (commercial). Without a license we do **not** self-host it.
+## Body & UI: Onest
 
-## Recommended replacement: Satoshi (Fontshare)
+Production uses **Onest** for all marketing and legal text (EN and SR).
 
-**Satoshi** is the closest free/commercial-friendly match: geometric neo-grotesque, clean marketing headings, similar weight range (Regular → Black).
+Self-hosted under `lumora/assets/fonts/onest/`:
 
-- Source: https://www.fontshare.com/fonts/satoshi  
-- Use: self-host WOFF2 or `@fontsource/satoshi`  
-- Pairing: one family only (Flux also uses a single sans) — headings + body in Satoshi, weight for hierarchy
+| File | Subset |
+|------|--------|
+| `onest-latin.woff2` | Basic Latin |
+| `onest-latin-ext.woff2` | Latin Extended (š, č, ć, ž, đ, …) |
+| `onest-cyrillic.woff2` | Cyrillic |
+| `onest-cyrillic-ext.woff2` | Cyrillic Extended |
 
-### Why not others
+Declared in `lumora/index.html` and `lumora/legal.css` with matching `unicode-range`. Preload latin + latin-ext.
 
-| Option | Note |
-|--------|------|
-| General Sans / Switzer | Also strong; Satoshi is slightly closer to Britti’s marketing feel |
-| Plus Jakarta Sans | Easiest via `next/font/google` — good backup if Fontshare setup is slow |
-| Inter / Roboto | Avoid — generic AI-default look |
+**EN and SR must use the same body font.** Do not invent a Serbian-only face.
 
-## CSS tokens (build)
+## Brand / display: Gebuk
 
-```css
---font-sans: "Satoshi", "Helvetica Neue", Helvetica, Arial, sans-serif;
-```
+**Gebuk** only for:
 
-Keep Flux-like scale from brand rules (H1 ~4.5rem desktop, body 1rem / 1.5 lh).
+- Header / footer **G8 Flow** wordmark
+- Hero watermark
+- Footer / CTA watermark
 
-If you later buy Britti Sans, swap the family name only — sizes stay.
+File: `lumora/assets/fonts/gebuk/Gebuk-Regular.ttf` (+ EULA).
+
+## Historical note
+
+Docs once proposed **Satoshi** as a Britti Sans substitute for a Next.js build. That never became the live font. Brand `.mdc` rules may still mention Satoshi — for **lumora**, follow this file.
+
+If Britti Sans is licensed later, swap carefully; keep Gebuk for the logo unless redesigned.

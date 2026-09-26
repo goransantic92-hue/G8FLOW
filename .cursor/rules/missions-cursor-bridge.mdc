@@ -5,14 +5,18 @@ alwaysApply: true
 
 # Missions ↔ Cursor (this portfolio)
 
-This repo includes Claude Missions markdown (`AGENTS.md`, `claude-missions/`). Treat it as the **execution system**; treat `.cursor/rules/g8-flow-*.mdc` as the **product design truth**.
+This repo includes Claude Missions markdown (`AGENTS.md`, `claude-missions/`). Treat it as an **optional execution system**; treat `.cursor/rules/g8-flow-*.mdc` + **`docs/g8-flow/CONTINUE.md`** as the **product / live-site truth**.
+
+## Live site
+
+Production is **`lumora/`** (static), not the Next.js `src/` scaffold. See `CONTINUE.md` and `README.md`.
 
 ## Adaptations for Cursor
 
 - Prefer Cursor Agent + `.cursor/rules` + `.cursor/skills` over Claude Code slash commands when working in Cursor.
 - Orchestrator still must not silently invent credentials; keep secrets in `.env` only.
-- Workers / implementers writing UI **must** follow G8 Flow brand, sections, copy, and QA rules.
-- Version freshness (search before pinning packages) still applies for Next, GSAP, Three, Tailwind.
+- Workers / implementers writing UI **must** follow G8 Flow brand, sections, copy, and QA rules — and edit `lumora/` for what ships.
+- Version freshness (search before pinning packages) still applies if adding new deps.
 - MCP-first for external services; for design use Figma / Webflow MCP when available; for motion use GSAP skills.
 - GetLayers builds: load `.cursor/skills/getlayers/SKILL.md` before any `getlayers_*` tool (Cursor adaptation of the official skill; raw copy also at `.claude/skills/getlayers/SKILL.md`).
 
@@ -21,3 +25,4 @@ This repo includes Claude Missions markdown (`AGENTS.md`, `claude-missions/`). T
 - Let mission scaffolding overwrite G8 section order or brand tokens
 - Ship UI that passes assertions but violates hero / typography / color rules
 - Ask the user to run setup commands you can run yourself in the agent shell
+- Treat outdated “Next.js clean slate” docs as current without reading `CONTINUE.md`

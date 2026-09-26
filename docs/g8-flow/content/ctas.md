@@ -1,33 +1,38 @@
-# CTAs
+# CTAs — live
 
-Primary conversion goal: **book a conversation** via Calendly. Secondary: **see work / plans**.
+Primary conversion: **book a call** via Calendly. Soft secondary: see work / estimate.
 
-**Calendly (live):** https://calendly.com/goransantic/30min
+**Calendly:** https://calendly.com/goransantic/30min  
+**Email:** goransantic92@gmail.com
 
 ## Hero (2 buttons)
 
-| Role | EN label | SR label | Href |
-|------|----------|----------|------|
-| Primary | Book a call / Let's Talk | Zakaži poziv | https://calendly.com/goransantic/30min |
-| Secondary | See the plans / View Work | Pogledaj planove | `#pricing` or `#works` |
-
-## Pricing cards
-
-| Plan | EN | SR | Href |
-|------|----|----|------|
-| Launch | Start with Launch | Kreni sa Launch | https://calendly.com/goransantic/30min?plan=launch |
-| Growth | Choose Growth | Izaberi Growth | https://calendly.com/goransantic/30min?plan=growth |
-| Scale | Talk Scale | Pričajmo o Scale | https://calendly.com/goransantic/30min?plan=scale |
-
-## Final CTA band
-
 | Role | EN | SR | Href |
 |------|----|----|------|
-| Primary | Let's make your site pay for itself | Neka ti sajt počne da zarađuje | https://calendly.com/goransantic/30min |
-| Secondary (optional) | Email me | Piši mi | `mailto:hello@g8flow.example` |
+| Primary | Talk to me / Book a call | Hajde da razgovaramo / Zakažite poziv | Calendly |
+| Secondary | View Work | Pogledajte radove | `#works` |
 
-## Contact stub (footer / form)
+Exact labels live in `lumora/i18n.js` (`cta.*`, `hero.*`).
 
-- Email display: `hello@g8flow.example` (replace)
-- Form action: TBD (Formspree / Resend / custom) — primary path is Calendly
-- Social: hidden or "Coming soon" until provided
+## Pricing / quote
+
+| Action | Href |
+|--------|------|
+| See number / build this | Scroll to calculator / Calendly |
+| Custom | Calendly |
+| Form submit | `POST` → `/api/inquiry` (Resend) |
+
+## Footer / closing
+
+| Role | Href |
+|------|------|
+| Book a call | Calendly |
+| Email | mailto:goransantic92@gmail.com |
+| See work | `#works` |
+| Estimate | `#pricing` |
+
+## Form
+
+- Wired via `api/inquiry.js` + `RESEND_API_KEY` (see `.env.example`)
+- Success copy offers Calendly deep-link
+- Do not invent a new form provider without updating env + API

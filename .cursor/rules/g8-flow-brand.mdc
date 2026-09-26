@@ -17,16 +17,16 @@ Brand name / logo / credentials: **G8 Flow**.
 
 Use a navy→blue gradient (`#08163C` → `#15389B`) as the dominant atmospheric field. Do not invent purple/indigo AI-default themes. Do not use cream+terracotta or newspaper layouts.
 
-## Typography (Flux scale; Satoshi substitute)
+## Typography (live: Onest + Gebuk)
 
-Source site: https://www.flux-academy.com/ — Flux uses **Britti Sans** (commercial). This project uses **Satoshi** unless Britti is licensed later. Details: `docs/g8-flow/content/typography.md`.
+Details: `docs/g8-flow/content/typography.md` and `docs/g8-flow/CONTINUE.md`.
 
-- Family: `Satoshi`, fallbacks `Helvetica Neue, Helvetica, Arial, sans-serif`
-- Body: ~1rem, line-height ~1.5, letter-spacing ~0.03rem
-- H1 desktop ~4.5rem / lh ~4.8rem; large desktop ~5.5rem; tablet ~3.5rem; mobile ~2.75rem
-- H2 desktop ~4rem; H3 ~3.5rem; H4 ~3rem; H5 ~2rem; H6 ~1.5rem
-- Headings: weight 600; sentence case OK when Hormozi clarity needs it
+- Body / UI: **Onest** (self-hosted latin + latin-ext + cyrillic) — same for EN and SR
+- Logo / watermarks only: **Gebuk**
+- Body: ~1rem, line-height ~1.5
+- Scale toward Flux-like marketing sizes where the layout allows; do not force Satoshi/Britti unless the user asks
 - Do not use Inter/Roboto as the brand face
+- Prefer expressive type over system defaults; Onest is the live choice (Satoshi was an unused Next draft)
 
 ## Visual direction
 
@@ -39,9 +39,11 @@ Source site: https://www.flux-academy.com/ — Flux uses **Britti Sans** (commer
 
 ## Assets & content
 
-- Hero portrait: `public/images/goran-hero.png`
-- Copy/pricing/legal/i18n: `docs/g8-flow/content/`
+- Live site root: **`lumora/`** (Vercel `outputDirectory`)
+- Hero portraits: `lumora/assets/hero/portfolio-base.jpg`, `portfolio-clear.jpg`
+- Copy (live): `lumora/i18n.js` · drafts: `docs/g8-flow/content/`
+- Handoff: `docs/g8-flow/CONTINUE.md`
 
-## Stack defaults (when building)
+## Stack defaults (live)
 
-Next.js 15, React, TypeScript, Tailwind CSS, GSAP + ScrollTrigger, Canvas/WebGL for particle hero. Prefer existing Figma / Webflow / GSAP Cursor skills when relevant.
+Static HTML/CSS/JS in `lumora/` + Vercel serverless `api/inquiry.js`. Prefer editing `lumora/` over `src/` Next unless the user requests a rewrite. Prefer Figma / Webflow / GSAP Cursor skills when relevant.

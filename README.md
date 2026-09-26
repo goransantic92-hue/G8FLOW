@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# G8 Flow — Goran Portfolio
 
-## Getting Started
+Freelancer marketing site for **G8 Flow** (Goran Šantić).
 
-First, run the development server:
+## Live
+
+- **Site:** https://g8flow-kappa.vercel.app/
+- **Repo:** `goransantic92-hue/G8FLOW` · branch `main` (Vercel auto-deploy)
+- **Production code:** static files in **`lumora/`** (`vercel.json` → `outputDirectory: "lumora"`)
+
+## Continue on another machine / Cursor account
+
+Start here: **[`docs/g8-flow/CONTINUE.md`](docs/g8-flow/CONTINUE.md)** — full handoff (stack, i18n, calculator, constraints, setup).
+
+## Local preview
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx --yes serve lumora
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the URL it prints. For the inquiry form + Resend, deploy on Vercel or run with serverless and fill `.env` from `.env.example`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project map
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Path | Role |
+|------|------|
+| `lumora/` | **Live site** (HTML/CSS/JS, assets, i18n, legal) |
+| `api/inquiry.js` | Vercel serverless inquiry → Resend |
+| `docs/g8-flow/` | Brief, content drafts, QA, **CONTINUE** handoff |
+| `.cursor/rules/g8-flow-*.mdc` | Brand, sections, copy, QA for agents |
+| `.cursor/skills/g8-flow-portfolio/` | Build/revise skill |
+| `src/` + Next.js | Scaffold only — **not** what Vercel serves |
+| `claude-missions/`, `AGENTS.md` | Optional multi-agent scaffold |
 
-## Learn More
+## Brand quick ref
 
-To learn more about Next.js, take a look at the following resources:
+- Colors: `#08163C` · `#15389B` · `#264238`
+- Text: **Onest** (body) · **Gebuk** (logo/watermarks only)
+- Locales: EN + SR via `lumora/i18n.js`
+- Primary CTA: https://calendly.com/goransantic/30min
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Docs index
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Doc | Purpose |
+|-----|---------|
+| [`docs/g8-flow/CONTINUE.md`](docs/g8-flow/CONTINUE.md) | Handoff for new Cursor account |
+| [`docs/g8-flow/BRIEF.md`](docs/g8-flow/BRIEF.md) | Product brief |
+| [`PORTFOLIO.md`](PORTFOLIO.md) | Agent/context index |
+| [`docs/g8-flow/content/`](docs/g8-flow/content/) | Pricing, cases, CTAs, typography, i18n notes |

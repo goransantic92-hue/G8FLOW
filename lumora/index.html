@@ -758,8 +758,8 @@ html{scroll-padding-top:4.25rem}
   position:relative;
   z-index:2;
   display:grid;
-  grid-template-rows:2.5rem auto 1fr;
-  align-content:stretch;
+  grid-template-rows:2.5rem auto auto;
+  align-content:center;
   justify-items:center;
   gap:1.25rem;
   width:100%;
@@ -842,11 +842,11 @@ html{scroll-padding-top:4.25rem}
 .process-card__text{
   margin:0;
   max-width:20rem;
-  font-size:.9375rem;
-  line-height:1.5;
+  font-size:clamp(1.0625rem, 1rem + .3vw, 1.1875rem);
+  line-height:1.55;
   color:var(--process-card-muted);
   font-weight:400;
-  align-self:start;
+  text-align:center;
 }
 @media (prefers-reduced-motion:reduce){
   .process-track{height:auto}
@@ -2511,7 +2511,6 @@ html.lenis,html.lenis body{height:auto}
         <li><button type="button" data-scroll="about" data-i18n="nav.about">About</button></li>
         <li><button type="button" data-scroll="process" data-i18n="nav.process">Process</button></li>
         <li><button type="button" data-scroll="solutions" data-i18n="nav.services">Services</button></li>
-        <li><button type="button" data-scroll="pricing" data-i18n="nav.pricing">Pricing</button></li>
         <li><button type="button" data-scroll="feedback" data-i18n="nav.feedback">Feedback</button></li>
         <li><a class="header__nav-link" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer" data-i18n="nav.contact">Contact</a></li>
       </ul>
@@ -2840,133 +2839,6 @@ html.lenis,html.lenis body{height:auto}
 
   <div class="g8-band__rule" aria-hidden="true"></div>
 
-  <section class="quote" id="pricing" data-nav-theme="dark">
-    <div class="quote__inner">
-      <p class="quote__eyebrow" data-i18n="price.eyebrow">Packages &amp; pricing</p>
-      <h2 class="quote__h2" data-i18n="price.h2">Pick what you need. See what it costs.</h2>
-      <p class="quote__lead" data-i18n="price.lead">Three ranges. The calculator below is the honest number for what you actually check. Final quote locks on a 30-minute call.</p>
-
-      <div class="plans" data-i18n-aria="price.ranges" aria-label="Build ranges">
-        <article class="plan">
-          <h3 class="plan__name">Launch</h3>
-          <p class="plan__price">€440–2.2k</p>
-          <p class="plan__copy" data-i18n="price.launch.copy">One offer. One path. A site that can sell or book — not a brochure that looks expensive.</p>
-          <button class="pill pill--outline pill--arrow" type="button" data-scroll="quoteCard">
-            <span class="pill__inner"><span data-i18n="cta.seeNumber">See the number</span><span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
-          </button>
-        </article>
-        <article class="plan plan--rec">
-          <p class="plan__badge" data-i18n="price.rec">Recommended</p>
-          <h3 class="plan__name">Growth</h3>
-          <p class="plan__price">€2.2–3.5k</p>
-          <p class="plan__copy" data-i18n="price.growth.copy">Shop, booking, or a longer path. Same job: they get it, then they buy.</p>
-          <button class="pill pill--dark pill--arrow" type="button" data-scroll="quoteCard">
-            <span class="pill__inner"><span data-i18n="cta.buildThis">Build this</span><span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
-          </button>
-        </article>
-        <article class="plan">
-          <h3 class="plan__name">Custom</h3>
-          <p class="plan__price" data-i18n="price.custom.price">Book a call</p>
-          <p class="plan__copy" data-i18n="price.custom.copy">Apps, odd stacks, or a mix the calculator can’t price cleanly. I scope it on the call.</p>
-          <a class="pill pill--outline pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">
-            <span class="pill__inner"><span data-i18n="cta.book">Book a call</span><span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
-          </a>
-        </article>
-      </div>
-
-      <div class="quote-card" id="quoteCard">
-        <div class="quote-kind" data-i18n-aria="price.type" aria-label="Project type">
-          <button class="quote-kind__btn is-on" type="button" aria-pressed="true" data-quote-kind="site" data-i18n="price.kind.site">Website</button>
-          <button class="quote-kind__btn" type="button" aria-pressed="false" data-quote-kind="app" data-i18n="price.kind.app">App</button>
-        </div>
-        <div class="quote-panel" id="quoteSite" data-quote-panel="site">
-          <div class="quote-q">
-            <p class="quote-q__label" data-i18n="price.pages">How many pages</p>
-            <div class="quote-opts">
-              <label class="quote-opt"><input type="radio" name="sitePages" value="1"> <span data-i18n="price.pages.1">1 page</span></label>
-              <label class="quote-opt"><input type="radio" name="sitePages" value="3-6"> 3–6</label>
-              <label class="quote-opt"><input type="radio" name="sitePages" value="7-12"> 7–12</label>
-              <label class="quote-opt"><input type="radio" name="sitePages" value="13+"> 13+</label>
-            </div>
-          </div>
-          <div class="quote-q">
-            <p class="quote-q__label" data-i18n="price.cms">CMS</p>
-            <div class="quote-opts">
-              <label class="quote-opt"><input type="radio" name="siteCms" value="none" checked> <span data-i18n="price.cms.none">No CMS</span></label>
-              <label class="quote-opt"><input type="radio" name="siteCms" value="cms"> <span data-i18n="price.cms.cms">CMS</span></label>
-              <label class="quote-opt"><input type="radio" name="siteCms" value="shop"> <span data-i18n="price.cms.shop">Shop (checkout)</span></label>
-            </div>
-          </div>
-          <div class="quote-q">
-            <p class="quote-q__label" data-i18n="price.addons">Add-ons</p>
-            <div class="quote-opts">
-              <label class="quote-opt"><input type="checkbox" name="siteExtra" value="ecom"> <span data-i18n="price.addon.ecom">E-commerce extras</span></label>
-              <label class="quote-opt"><input type="checkbox" name="siteExtra" value="member"> <span data-i18n="price.addon.member">Membership</span></label>
-              <label class="quote-opt"><input type="checkbox" name="siteExtra" value="book"> <span data-i18n="price.addon.book">Booking</span></label>
-            </div>
-          </div>
-        </div>
-        <div class="quote-panel" id="quoteApp" data-quote-panel="app" hidden>
-          <div class="quote-q">
-            <p class="quote-q__label" data-i18n="price.plats">Platforms</p>
-            <div class="quote-opts">
-              <label class="quote-opt"><input type="checkbox" name="appPlat" value="ios"> iOS</label>
-              <label class="quote-opt"><input type="checkbox" name="appPlat" value="android"> Android</label>
-              <label class="quote-opt"><input type="checkbox" name="appPlat" value="pwa"> <span data-i18n="price.plat.pwa">PWA / web app</span></label>
-            </div>
-          </div>
-          <div class="quote-q">
-            <p class="quote-q__label" data-i18n="price.screens">Screens</p>
-            <div class="quote-opts">
-              <label class="quote-opt"><input type="radio" name="appScreens" value="5-8"> 5–8</label>
-              <label class="quote-opt"><input type="radio" name="appScreens" value="9-15"> 9–15</label>
-              <label class="quote-opt"><input type="radio" name="appScreens" value="16-25"> 16–25</label>
-              <label class="quote-opt"><input type="radio" name="appScreens" value="26+"> 26+</label>
-            </div>
-          </div>
-          <div class="quote-q">
-            <p class="quote-q__label" data-i18n="price.mods">What the app includes</p>
-            <div class="quote-opts">
-              <label class="quote-opt"><input type="checkbox" name="appMod" value="auth"> <span data-i18n="price.mod.auth">Auth</span></label>
-              <label class="quote-opt"><input type="checkbox" name="appMod" value="profiles"> <span data-i18n="price.mod.profiles">Profiles</span></label>
-              <label class="quote-opt"><input type="checkbox" name="appMod" value="pay"> <span data-i18n="price.mod.pay">Payments</span></label>
-              <label class="quote-opt"><input type="checkbox" name="appMod" value="book"> <span data-i18n="price.mod.book">Booking</span></label>
-              <label class="quote-opt"><input type="checkbox" name="appMod" value="chat"> <span data-i18n="price.mod.chat">Chat / bot</span></label>
-              <label class="quote-opt"><input type="checkbox" name="appMod" value="admin"> <span data-i18n="price.mod.admin">Admin</span></label>
-              <label class="quote-opt"><input type="checkbox" name="appMod" value="push"> <span data-i18n="price.mod.push">Push</span></label>
-              <label class="quote-opt"><input type="checkbox" name="appMod" value="maps"> <span data-i18n="price.mod.maps">Maps</span></label>
-              <label class="quote-opt"><input type="checkbox" name="appMod" value="video"> <span data-i18n="price.mod.video">Live video</span></label>
-              <label class="quote-opt"><input type="checkbox" name="appMod" value="offline"> <span data-i18n="price.mod.offline">Offline</span></label>
-            </div>
-          </div>
-        </div>
-        <div class="quote-bar" id="quoteBar">
-          <div>
-            <p class="quote-bar__k" data-i18n="price.est">Estimated build</p>
-            <p class="quote-bar__build" id="quoteBuild">€0</p>
-            <p class="quote-bar__care" id="quoteCare">Care €0 / mo</p>
-            <p class="quote-bar__note" data-i18n="price.note">Estimate only. Final quote after a 30-minute call.</p>
-          </div>
-        </div>
-        <form class="quote-form" id="quoteForm" novalidate>
-          <div class="quote-form__fields">
-            <label><span data-i18n="form.name">Your name</span> <input name="name" type="text" required autocomplete="name"></label>
-            <label><span data-i18n="form.email">Email</span> <input name="email" type="email" required autocomplete="email" inputmode="email"></label>
-            <label><span data-i18n="form.budget">Budget</span> <input name="budget" type="text" data-i18n-placeholder="form.budgetPh" placeholder="e.g. €3k–€5k"></label>
-            <label class="quote-form__full"><span data-i18n="form.notes">About the project</span> <textarea name="notes" data-i18n-placeholder="form.notesPh" placeholder="What should this make people do?"></textarea></label>
-            <input type="hidden" name="estimate" id="quoteEstimateField">
-            <label class="quote-form__hp" aria-hidden="true"><span data-i18n="form.company">Company</span> <input name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true"></label>
-            <button class="pill pill--dark pill--arrow quote-form__full" type="submit" id="quoteSubmit">
-              <span class="pill__inner"><span id="quoteSubmitLabel" data-i18n="form.send">Send inquiry</span><span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
-            </button>
-          </div>
-          <p class="quote-form__ok" id="quoteOk" role="status" aria-live="polite" tabindex="-1" data-i18n="form.ok" data-i18n-html>Got it — the inquiry is in my inbox and I reply within one business day.<br><a href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">Grab a 30-minute slot now</a> if you'd rather lock the number today.</p>
-          <p class="quote-form__error" id="quoteError" role="alert"></p>
-        </form>
-      </div>
-    </div>
-  </section>
-
   <section class="feedback" id="feedback" data-i18n-aria="fb.aria" aria-label="Client feedback" data-nav-theme="dark">
     <div class="feedback-track">
       <div class="feedback-sticky">
@@ -3114,7 +2986,6 @@ html.lenis,html.lenis body{height:auto}
           <a href="#about" data-scroll="about" data-i18n="nav.about">About</a>
           <a href="#process" data-scroll="process" data-i18n="nav.process">Process</a>
           <a href="#solutions" data-scroll="solutions" data-i18n="nav.services">Services</a>
-          <a href="#pricing" data-scroll="pricing" data-i18n="nav.pricing">Pricing</a>
           <a href="#feedback" data-scroll="feedback" data-i18n="nav.feedback">Feedback</a>
         </div>
         <div class="footer__col">
@@ -3122,7 +2993,6 @@ html.lenis,html.lenis body{height:auto}
           <a href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer" class="footer__contact" data-i18n="cta.book">Book a call</a>
           <a href="mailto:goransantic92@gmail.com" class="footer__contact">goransantic92@gmail.com</a>
           <a href="#works" data-scroll="works" data-i18n="cta.seeWork">See the work</a>
-          <a href="#pricing" data-scroll="pricing" data-i18n="cta.estimate">Get an estimate</a>
         </div>
       </div>
       <div class="footer__legal">
@@ -4309,7 +4179,6 @@ const NAV_ITEMS = [
   { key:'nav.about', scroll:'about' },
   { key:'nav.process', scroll:'process' },
   { key:'nav.services', scroll:'solutions' },
-  { key:'nav.pricing', scroll:'pricing' },
   { key:'nav.feedback', scroll:'feedback' },
   { key:'nav.contact', href: CALENDLY_URL },
 ];
@@ -4325,7 +4194,7 @@ document.getElementById('navMenuList').innerHTML = NAV_ITEMS.map((item,i) => `
 
 /* Keep header + menu active state in sync with visible section */
 (function initNavActive(){
-  const SECTION_IDS = ['home', 'works', 'about', 'process', 'solutions', 'industries', 'pricing', 'feedback', 'faq'];
+  const SECTION_IDS = ['home', 'works', 'about', 'process', 'solutions', 'industries', 'feedback', 'faq'];
   const headerBtns = [...document.querySelectorAll('.header__nav [data-scroll]')];
   function setCurrent(id){
     headerBtns.forEach(btn => {

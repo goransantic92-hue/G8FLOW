@@ -89,13 +89,12 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "How long does a site take?", "acceptedAnswer": { "@type": "Answer", "text": "Launch-range sites usually ship in 3–4 weeks. Growth-range (shop, booking, longer path) is about 5 weeks. The clock starts after the call, when the offer and pages are clear — not after a vague “we should do a website.”" } },
-        { "@type": "Question", "name": "What’s included in the build?", "acceptedAnswer": { "@type": "Answer", "text": "Copy structure, design, mobile layout, the one conversion path, and launch. You get a site that can take money or bookings — not a moodboard. Extra systems (CMS, shop, membership) are what you check in the calculator." } },
-        { "@type": "Question", "name": "What is monthly care?", "acceptedAnswer": { "@type": "Answer", "text": "Care is hosting, updates, and keeping the path working after launch. The calculator shows a monthly number next to the build. You can skip it and host it yourself; most people don’t, because a dead plugin costs more than care." } },
-        { "@type": "Question", "name": "Who is this for?", "acceptedAnswer": { "@type": "Answer", "text": "Owners who already sell something — coaching, a shop, a practice — and whose current site looks fine but doesn’t convert. If you need a logo contest or a 40-page brochure, this isn’t it." } },
-        { "@type": "Question", "name": "How does the process work?", "acceptedAnswer": { "@type": "Answer", "text": "Call, then clarity, then build, then launch. I lock who it’s for and the one next step before pixels. You review on a real URL. When it’s live, it can take the sale." } },
-        { "@type": "Question", "name": "Do I have to book a call to get a number?", "acceptedAnswer": { "@type": "Answer", "text": "No. Use the calculator for a range. The call locks scope and the final quote. If you’d rather talk first, grab a 30-minute slot." } },
-        { "@type": "Question", "name": "I already have a site. Can you fix it?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, if the problem is the offer or the path — not “make my blue more blue.” I keep what works, cut what leaks, and ship a page that sells. That’s usually a Launch or Growth rebuild, not a paint job." } }
+        { "@type": "Question", "name": "How long does a site take?", "acceptedAnswer": { "@type": "Answer", "text": "Launch usually takes 3–4 weeks. Growth (a shop, booking, or a longer site) is about 5. Work starts after the call, once we know what you offer and which pages you need — not after “let’s just make a website.”" } },
+        { "@type": "Question", "name": "What’s included in the price?", "acceptedAnswer": { "@type": "Answer", "text": "Design, mobile layout, one path to a purchase or a booking, and launch. You get a site that can take a message, a payment, or a booking." } },
+        { "@type": "Question", "name": "What is monthly maintenance?", "acceptedAnswer": { "@type": "Answer", "text": "Hosting, small changes, and keeping the site running after launch. You can skip it and host it yourself; most people won’t, because something broken later costs more." } },
+        { "@type": "Question", "name": "Who is this for?", "acceptedAnswer": { "@type": "Answer", "text": "People who already sell something — coaching, a shop, a practice — but the site looks fine and brings in nothing. If you need a logo contest or a 40-page brochure, this isn’t it." } },
+        { "@type": "Question", "name": "How does it go from the call to the site?", "acceptedAnswer": { "@type": "Answer", "text": "It starts with a short 30-minute call, free and with no obligation. Then we agree on who the site is for and what the visitor should do, and only then do I start building. You follow the site on a real link as it comes together, and when everything is ready, we launch it." } },
+        { "@type": "Question", "name": "I have a site. Can you fix it?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. If the site isn’t selling and visitors can’t tell what you offer, the fix is usually a full redesign of the site or the app." } }
       ]
     }
   ]
@@ -161,6 +160,9 @@ img{display:block;max-width:100%}
 @media (max-width:1440px){html{font-size:1.111111vw}}
 @media (max-width:1024px){html{font-size:1.5625vw}}
 @media (max-width:640px){html{font-size:4.444444vw}}
+@media (min-width:1024px){
+  :root{--text-md:1.125rem;--text-lg:1.25rem}
+}
 
 :root{
   --background:#f8fbf8;--foreground:#0B0B0D;--ink:#0B0B0D;--muted:#8d8d8d;--subtle:#b6b6b6;
@@ -168,6 +170,26 @@ img{display:block;max-width:100%}
   --hero-from:#08163C;--hero-mid:#091a81;--hero-to:#15389B;
   --hero-bg:linear-gradient(118deg,var(--hero-from) 0%,#0a1d72 28%,var(--hero-to) 58%,#0a1d72 82%,var(--hero-from) 100%);
   --g8-vignette:radial-gradient(ellipse 140% 110% at 50% 42%, transparent 50%, rgba(8,22,60,.0675) 100%);
+  /* Type scale — Ariyana sizes, G8 fonts (Onest/Gebuk), sentence case */
+  --text-xxs:.75rem;
+  --text-xs:.875rem;
+  --text-sm:1rem;
+  --text-md:1rem;
+  --text-lg:1rem;
+  --text-xl:1.25rem;
+  --text-2xl:1.5rem;
+  --text-3xl:clamp(1.75rem, 1.4rem + .9vw, 2.5rem);
+  --text-hero-h1:7.5rem;
+  --text-hero-lead:1.25rem;
+  --text-section-h2:clamp(2.6rem, 1.5rem + 3.4vw, 4.5rem);
+  --text-section-h2-sm:clamp(2.35rem, 1.45rem + 2.8vw, 3.9rem);
+  --text-section-h2-compact:clamp(2.35rem, 1.35rem + 2.4vw, 3.6rem);
+  --text-footer-link:1.125rem;
+  --text-footer-col-title:.875rem;
+  --text-footer-tagline:1rem;
+  --text-footer-legal:.875rem;
+  --lh-body:1.5;
+  --lh-snug:1.4;
   --radius-control:0.875rem;--text-watermark:26rem;--container-shell:88rem;
 }
 
@@ -205,7 +227,7 @@ img{display:block;max-width:100%}
 
 /* Pill button */
 .pill{display:inline-block;text-decoration:none;color:inherit}
-.pill__inner{display:inline-flex;align-items:center;gap:.75rem;border-radius:9999px;font-size:.875rem;font-weight:500;will-change:transform}
+.pill__inner{display:inline-flex;align-items:center;gap:.75rem;border-radius:9999px;font-size:var(--text-sm);font-weight:500;will-change:transform}
 .pill--dark .pill__inner{background:#0B0B0D;color:#fff}
 .pill--light .pill__inner{background:#f1f0ee;color:#0B0B0D}
 .pill--outline .pill__inner{border:1px solid #e6e5e2;background:transparent;color:#0B0B0D}
@@ -215,7 +237,7 @@ img{display:block;max-width:100%}
 .pill--dark .pill__badge{background:#fff;color:#0B0B0D}
 .pill--light .pill__badge,.pill--outline .pill__badge{background:#0B0B0D;color:#fff}
 
-.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:500}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:var(--text-xs);font-weight:500}
 .eyebrow__dot{width:.375rem;height:.375rem;border-radius:9999px;flex-shrink:0}
 .eyebrow--dark{color:rgba(11,11,13,.7)}.eyebrow--dark .eyebrow__dot{background:rgba(11,11,13,.5)}
 .eyebrow--light{color:rgba(255,255,255,.7)}.eyebrow--light .eyebrow__dot{background:rgba(255,255,255,.6)}
@@ -290,7 +312,7 @@ img{display:block;max-width:100%}
 }
 .footer__brand-name .brand__logo{font-size:clamp(1.85rem, 3.4vw, 2.35rem)}
 .nav-menu .brand__logo{font-size:clamp(1.85rem, 5vw, 2.4rem)}
-.header__nav{display:none;gap:2rem;font-size:.875rem;font-weight:500;align-items:center;color:inherit}
+.header__nav{display:none;gap:2rem;font-size:var(--text-sm);font-weight:500;align-items:center;color:inherit}
 @media(min-width:1024px){.header__nav{display:flex}}
 .header__nav > li{position:relative}
 .header__nav button,.header__nav-link{will-change:transform,opacity;color:inherit;text-decoration:none}
@@ -448,6 +470,69 @@ html{scroll-padding-top:4.25rem}
     padding-inline:.75rem;
   }
 }
+.hero__discover-hint{
+  position:absolute;
+  left:50%;
+  top:clamp(14rem, 24vh, 19rem);
+  z-index:12;
+  margin:0;
+  pointer-events:none;
+  transform:translateX(-50%);
+  opacity:0;
+  transition:opacity .65s cubic-bezier(.22,1,.36,1) .55s, transform .45s ease, visibility .45s;
+}
+.hero__discover-hint.is-ready{opacity:1}
+.hero__discover-hint.is-dismissed{
+  opacity:0;
+  visibility:hidden;
+  transform:translate(-50%, -.35rem);
+}
+.hero__discover-hint-inner{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  padding:.38rem .72rem;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.28);
+  background:rgba(8,22,60,.38);
+  backdrop-filter:blur(10px) saturate(1.2);
+  -webkit-backdrop-filter:blur(10px) saturate(1.2);
+  box-shadow:0 8px 24px rgba(8,22,60,.22);
+  color:rgba(255,255,255,.88);
+  font-size:var(--text-xxs);
+  font-weight:500;
+  letter-spacing:.02em;
+  line-height:1.3;
+  white-space:nowrap;
+  animation:hero-hint-float 3.2s ease-in-out infinite;
+}
+.hero__discover-hint-dot{
+  width:.35rem;
+  height:.35rem;
+  border-radius:999px;
+  background:#9bb6ff;
+  box-shadow:0 0 0 3px rgba(155,182,255,.22);
+  flex-shrink:0;
+  animation:hero-hint-pulse 2.4s ease-in-out infinite;
+}
+.hero__discover-hint--touch{display:none}
+@media (hover:none),(pointer:coarse){
+  .hero__discover-hint{top:clamp(11rem, 20vh, 16rem)}
+  .hero__discover-hint--hover{display:none}
+  .hero__discover-hint--touch{display:inline-flex}
+}
+@keyframes hero-hint-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+@keyframes hero-hint-pulse{
+  0%,100%{opacity:.55;transform:scale(.92)}
+  50%{opacity:1;transform:scale(1)}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero__discover-hint-inner,.hero__discover-hint-dot{animation:none}
+  .hero__discover-hint.is-ready{transition:none}
+}
 .hero__content{
   position:relative;
   z-index:20;
@@ -464,56 +549,75 @@ html{scroll-padding-top:4.25rem}
 @media(min-width:1024px){
   .hero__content{
     min-height:118lvh;
-    padding:6rem 2rem 7rem;
+    justify-content:flex-end;
+    align-items:center;
+    padding:6rem clamp(1.25rem, 3vw, 2rem) clamp(5rem, 11vh, 7.5rem);
   }
 }
 .hero__left{
   display:flex;
+  flex:1 1 auto;
   flex-direction:column;
   align-items:center;
-  gap:clamp(1.75rem, 4.5vh, 2.75rem);
+  justify-content:flex-end;
+  gap:clamp(1rem, 2.2vh, 2.75rem);
   width:100%;
-  max-width:min(100%, 48rem);
-  min-height:clamp(18rem, 62vh, 42rem);
+  max-width:min(92vw, 48rem);
   margin-inline:auto;
   box-sizing:border-box;
+  min-height:0;
 }
-@media(min-width:640px){.hero__left{max-width:min(100%, 52rem)}}
-@media(min-width:1024px){.hero__left{max-width:min(100%, 56rem);min-height:clamp(22rem, 68vh, 48rem)}}
+@media(min-width:640px){.hero__left{max-width:min(92vw, 52rem)}}
+@media(min-width:1024px){
+  .hero__left{
+    flex:0 0 auto;
+    justify-content:flex-start;
+    max-width:min(92vw, 80rem);
+    margin-top:0;
+  }
+}
 .hero__h1{
   width:100%;
   max-width:100%;
   box-sizing:border-box;
   margin:0;
-  margin-top:auto; /* Y — bottom of .hero__left */
-  align-self:center; /* X — center of .hero__left */
-  font-size:clamp(2rem, 4vw + 1rem, 6rem);
+  align-self:center;
+  font-size:2.5rem;
   font-weight:600;
   line-height:1.02;
   letter-spacing:-.03em;
   color:#fff;
   text-align:center;
 }
+@media(min-width:640px){
+  .hero__h1{font-size:6.25rem;line-height:1.03}
+}
 @media(min-width:1024px){
   .hero__h1{
-    font-size:6rem;
+    margin-top:0;
+    font-size:var(--text-hero-h1); /* scales with root vw — no extra vw override */
     line-height:1;
+    max-width:100%;
   }
   .hero__h1 .line-clip{white-space:nowrap}
 }
+@media(min-width:1024px) and (max-width:1180px){
+  .hero__h1 .line-clip{white-space:normal;text-wrap:balance}
+}
 .hero__lead{
   margin:0;
-  max-width:38rem;
+  max-width:min(92vw, 38rem);
   align-self:center;
-  font-size:clamp(1rem, .85rem + .45vw, 1.25rem);
+  font-size:1rem;
   font-weight:500;
-  line-height:1.45;
+  line-height:var(--lh-snug);
   letter-spacing:.02em;
   color:rgba(255,255,255,.78);
   text-align:center;
 }
+@media(min-width:640px){.hero__lead{font-size:1.0625rem}}
 @media(min-width:1024px){
-  .hero__lead{font-size:1.25rem;max-width:42rem}
+  .hero__lead{font-size:var(--text-hero-lead);max-width:min(92vw, 42rem)}
 }
 .hero__ctas{
   display:flex;
@@ -533,16 +637,16 @@ html{scroll-padding-top:4.25rem}
   height:clamp(2rem, 1.6rem + 1vw, 2.25rem);
 }
 @media(min-width:1024px){
-  .hero__ctas{gap:1rem}
+  .hero__ctas{gap:clamp(.75rem, 1.5vw, 1rem)}
   .hero__ctas .pill__inner{
-    font-size:1.25rem;
-    gap:1rem;
-    padding:.45rem .45rem .45rem 2rem;
+    font-size:clamp(1rem, 1.25rem, 1.25rem);
+    gap:clamp(.75rem, 1vw, 1rem);
+    padding:.45rem .45rem .45rem clamp(1.5rem, 2vw, 2rem);
   }
   .hero__ctas .pill__badge{
-    width:3rem;
-    height:3rem;
-    font-size:1.2rem;
+    width:clamp(2.5rem, 3rem, 3rem);
+    height:clamp(2.5rem, 3rem, 3rem);
+    font-size:clamp(1rem, 1.2rem, 1.2rem);
   }
 }
 .hero .pill--outline .pill__inner{border-color:rgba(255,255,255,.4);color:#fff}
@@ -608,7 +712,7 @@ html{scroll-padding-top:4.25rem}
 }
 .process__title{
   margin:0;
-  font-size:clamp(1.75rem, 1.2rem + 2.8vw, 3.75rem);
+  font-size:var(--text-section-h2);
   font-weight:700;
   letter-spacing:-.03em;
   line-height:1.05;
@@ -896,35 +1000,28 @@ html{scroll-padding-top:4.25rem}
 }
 .solutions__h2{
   margin:0 0 .6rem;
-  font-size:clamp(2.25rem, 1.4rem + 3vw, 3.75rem);
+  font-size:var(--text-section-h2);
   font-weight:600;
   letter-spacing:-.03em;
   line-height:1.05;
 }
 .solutions__lead{
   margin:0;
-  font-size:clamp(.95rem, .85rem + .3vw, 1.125rem);
-  line-height:1.5;
+  font-size:var(--text-lg);
+  line-height:var(--lh-body);
   color:rgba(8,22,60,.62);
-}
-.solutions__rule{
-  height:14px;
-  margin:0;
-  border-bottom:1px solid rgba(8,22,60,.16);
-  background-image:
-    repeating-linear-gradient(90deg, rgba(8,22,60,.28) 0 1px, transparent 1px 10px),
-    repeating-linear-gradient(90deg, rgba(8,22,60,.12) 0 1px, transparent 1px 5px);
-  background-size:100% 8px, 100% 4px;
-  background-position:left bottom, left bottom;
-  background-repeat:repeat-x;
 }
 .solutions__grid{
   display:grid;
   grid-template-columns:1fr;
+  gap:1rem;
   min-height:clamp(22rem, 52vh, 32rem);
 }
 @media(min-width:900px){
-  .solutions__grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+  .solutions__grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:1.25rem;
+  }
 }
 .solutions__card{
   position:relative;
@@ -935,7 +1032,8 @@ html{scroll-padding-top:4.25rem}
   min-height:22rem;
   padding:1.5rem 1.25rem 1.6rem;
   overflow:hidden;
-  border-bottom:1px solid rgba(8,22,60,.12);
+  border:1px solid rgba(8,22,60,.12);
+  border-radius:1.25rem;
   isolation:isolate;
   color:#08163C;
 }
@@ -943,10 +1041,7 @@ html{scroll-padding-top:4.25rem}
   .solutions__card{
     min-height:30rem;
     padding:2rem 1.75rem 1.85rem;
-    border-bottom:0;
-    border-right:1px solid rgba(8,22,60,.12);
   }
-  .solutions__card:last-child{border-right:0}
 }
 .solutions__media{
   position:absolute;
@@ -980,7 +1075,7 @@ html{scroll-padding-top:4.25rem}
 .solutions__title{
   margin:0;
   max-width:16ch;
-  font-size:clamp(1.45rem, 1.05rem + 1.4vw, 2rem);
+  font-size:var(--text-2xl);
   font-weight:600;
   letter-spacing:-.03em;
   line-height:1.15;
@@ -994,13 +1089,14 @@ html{scroll-padding-top:4.25rem}
 }
 .solutions__text{
   margin:0;
-  font-size:.9375rem;
+  font-size:var(--text-md);
   line-height:1.5;
   color:rgba(8,22,60,.68);
 }
 .solutions .pill--light .pill__inner{background:#fff;color:#08163C}
 .solutions .pill--light .pill__badge{background:#15389B;color:#fff}
 @media (hover:hover) and (pointer:fine){
+  .solutions__media{opacity:.14}
   .solutions__panel{
     opacity:0;
     transform:translateY(10px);
@@ -1102,19 +1198,19 @@ html{scroll-padding-top:4.25rem}
   box-sizing:border-box;
 }
 .portfolio__h2{
-  font-size:2.25rem;
+  font-size:var(--text-section-h2-compact);
   font-weight:600;
   letter-spacing:-.02em;
   margin-top:1rem;
   color:var(--pf-ink);
   width:fit-content;
 }
-@media(min-width:640px){.portfolio__h2{font-size:3rem}}
+@media(min-width:640px){.portfolio__h2{font-size:var(--text-section-h2)}}
 
 .coverflow{
-  /* Stage matches ~2.2:1 screen recordings + browser chrome so cover shows full width */
-  --cf-w:960px;
-  --cf-h:480px;
+  /* Stage matches ~2:1 screen recordings + browser chrome so cover shows full width */
+  --cf-w:clamp(720px, 68vw, 960px);
+  --cf-h:calc(var(--cf-w) * 0.5);
   --cf-radius:18px;
   --cf-ease:cubic-bezier(0.22, 1, 0.36, 1);
   --cf-dur:0.8s;
@@ -1129,16 +1225,22 @@ html{scroll-padding-top:4.25rem}
   outline:none;
   user-select:none;
 }
+@media(min-width:900px){
+  .coverflow:not(.is-stack){overflow:visible}
+}
 .coverflow__stage{
   position:relative;
   width:min(var(--cf-w), 94vw);
-  height:calc(min(var(--cf-w), 94vw) * 480 / 960);
-  max-width:var(--cf-w);
-  max-height:var(--cf-h);
+  height:calc(min(var(--cf-w), 94vw) * 0.5);
+  max-width:960px;
+  max-height:480px;
   transform-style:preserve-3d;
 }
 @media(min-width:900px){
-  .coverflow__stage{width:var(--cf-w);height:var(--cf-h)}
+  .coverflow__stage{
+    width:min(var(--cf-w), 90vw);
+    height:calc(min(var(--cf-w), 90vw) * 0.5);
+  }
 }
 .coverflow__card{
   position:absolute;
@@ -1292,13 +1394,17 @@ html{scroll-padding-top:4.25rem}
     flex:1 1 auto;
     min-height:0;
     width:100%;
+    container-type:size;
   }
+  /* Screen must stay at least as wide as the 720×1506 recordings so cover only trims the bottom */
   .coverflow__stage{
-    aspect-ratio:230 / 440;
+    --pw:min(80vw, 330px);
+    aspect-ratio:auto;
+    width:var(--pw);
+    max-width:none;
     height:100%;
-    width:auto;
+    height:min(100cqh - 1.25rem, calc((var(--pw) - 5px) * 1506 / 720 + 3rem + 5px));
     max-height:100%;
-    max-width:min(var(--cf-w), 62vw);
   }
   .browser-mock{
     border-radius:var(--cf-radius);
@@ -1306,8 +1412,8 @@ html{scroll-padding-top:4.25rem}
     background:#05070f;
     box-shadow:
       0 1px 0 rgba(255,255,255,.1) inset,
-      0 22px 48px rgba(8,22,60,.32),
-      0 6px 16px rgba(8,22,60,.18);
+      0 10px 22px rgba(8,22,60,.22),
+      0 4px 10px rgba(8,22,60,.14);
   }
   .browser-mock__chrome{
     height:1.9rem;
@@ -1369,13 +1475,13 @@ html{scroll-padding-top:4.25rem}
 .portfolio__case-copy{
   margin:0 auto .85rem;
   max-width:40rem;
-  font-size:clamp(.875rem, .8rem + .25vw, 1rem);
-  line-height:1.55;
+  font-size:var(--text-lg);
+  line-height:var(--lh-body);
   color:rgba(8,22,60,.78);
 }
 .portfolio__case-stats{
   display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
+  grid-template-columns:minmax(0, 1fr);
   gap:.5rem;
   margin:0 0 .9rem;
   padding:.85rem 0;
@@ -1425,10 +1531,10 @@ html{scroll-padding-top:4.25rem}
   .portfolio__case-copy{margin-bottom:.6rem}
   .portfolio__case-stats{padding:.6rem 0;margin-bottom:.55rem}
   /* Stage keeps its 2:1 ratio; it just scales down so the copy still fits. */
-  .coverflow{--cf-w:840px;--cf-h:420px}
+  .coverflow{--cf-w:clamp(640px, 62vw, 840px);--cf-h:calc(var(--cf-w) * 0.5)}
 }
 @media (min-width:900px) and (max-height:800px){
-  .coverflow{--cf-w:740px;--cf-h:370px}
+  .coverflow{--cf-w:clamp(560px, 58vw, 740px);--cf-h:calc(var(--cf-w) * 0.5)}
 }
 @media (max-width:899px){
   .portfolio__case{
@@ -1452,6 +1558,15 @@ html{scroll-padding-top:4.25rem}
   .portfolio__case-stat-label{font-size:.6rem}
   .portfolio__case-link{font-size:.75rem}
 }
+.coverflow.is-stack{padding-top:3rem}
+.coverflow.is-stack .coverflow__stage{transform-style:flat}
+.coverflow.is-stack .coverflow__card,
+.coverflow.is-stack .coverflow__dim{transition:none}
+@media (max-width:899px){
+  .coverflow.is-stack{padding-top:1.5rem}
+}
+.portfolio-track.is-static{height:auto}
+.portfolio-track.is-static .portfolio-sticky{position:relative;top:auto;min-height:0;padding:0 0 4rem}
 @media (prefers-reduced-motion:reduce){
   .portfolio-track{height:auto}
   .portfolio-sticky{position:relative;top:auto;min-height:0;padding:0 0 5rem}
@@ -1483,7 +1598,7 @@ html{scroll-padding-top:4.25rem}
   margin:0;
   max-width:12ch;
   text-align:center;
-  font-size:clamp(2.6rem, 6vw, 5.75rem);
+  font-size:clamp(3rem, 6.5vw, 6.6rem);
   font-weight:700;
   letter-spacing:-.04em;
   line-height:.92;
@@ -1531,20 +1646,20 @@ html{scroll-padding-top:4.25rem}
 }
 .feedback-card__h{
   margin:0 0 .7rem;
-  font-size:1.28rem;
+  font-size:var(--text-2xl);
   font-weight:700;
   letter-spacing:-.02em;
-  line-height:1.28;
+  line-height:1.2;
 }
 .feedback-card__p{
   margin:0 0 1.25rem;
-  font-size:1.02rem;
-  line-height:1.55;
+  font-size:var(--text-3xl);
+  line-height:var(--lh-snug);
   color:rgba(244,251,244,.88);
 }
 .feedback-card--wide .feedback-card__p{
-  font-size:1.06rem;
-  line-height:1.58;
+  font-size:var(--text-3xl);
+  line-height:var(--lh-snug);
 }
 .feedback-card__who{
   display:flex;
@@ -1593,7 +1708,7 @@ html{scroll-padding-top:4.25rem}
   /* Percentage offsets can't know how tall a card grows, so on narrow screens
      the cards run in normal flow with a fixed rhythm instead of overlapping. */
   .feedback-track{height:auto}
-  .feedback__title{font-size:clamp(2.1rem, 10vw, 3.25rem)}
+  .feedback__title{font-size:clamp(2.4rem, 10vw, 3.75rem)}
   .feedback-float{
     position:relative;
     inset:auto;
@@ -1665,7 +1780,7 @@ html{scroll-padding-top:4.25rem}
 .industries__h2{
   margin:0;
   max-width:18ch;
-  font-size:clamp(2rem, 1.3rem + 2.4vw, 3.25rem);
+  font-size:var(--text-section-h2-sm);
   font-weight:600;
   letter-spacing:-.03em;
   line-height:1.12;
@@ -1698,7 +1813,7 @@ html{scroll-padding-top:4.25rem}
 }
 .industries__item.is-open .industries__plus{background:rgba(255,255,255,.1)}
 .industries__name{
-  font-size:27px;
+  font-size:clamp(1.5rem, 1.2rem + .6vw, 1.6875rem);
   font-weight:500;
   letter-spacing:-.01em;
   line-height:1.2;
@@ -1719,8 +1834,8 @@ html{scroll-padding-top:4.25rem}
 .industries__points li{
   position:relative;
   padding-left:1rem;
-  font-size:.875rem;
-  line-height:1.45;
+  font-size:var(--text-sm);
+  line-height:var(--lh-body);
   color:rgba(255,255,255,.68);
 }
 .industries__points li::before{
@@ -2021,7 +2136,7 @@ html{scroll-padding-top:4.25rem}
 }
 .about__h2{
   margin:0 0 1.25rem;
-  font-size:clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  font-size:var(--text-section-h2);
   font-weight:700;
   letter-spacing:-.03em;
   line-height:1.05;
@@ -2037,8 +2152,8 @@ html{scroll-padding-top:4.25rem}
 .about__lead{
   margin:0 0 2rem;
   max-width:38rem;
-  font-size:clamp(1rem, .95rem + .35vw, 1.125rem);
-  line-height:1.55;
+  font-size:var(--text-lg);
+  line-height:var(--lh-body);
   color:rgba(255,255,255,.88);
   font-weight:400;
 }
@@ -2094,7 +2209,7 @@ html{scroll-padding-top:4.25rem}
   gap:1.25rem;
   padding-inline:1.25rem;
   white-space:nowrap;
-  font-size:clamp(.95rem, .85rem + .4vw, 1.125rem);
+  font-size:var(--text-lg);
   font-weight:700;
   letter-spacing:-.01em;
   line-height:1.2;
@@ -2248,7 +2363,7 @@ html{scroll-padding-top:4.25rem}
   width:fit-content;
   max-width:100%;
   margin-inline:auto;
-  font-size:2.25rem;
+  font-size:var(--text-section-h2-compact);
   font-weight:600;
   letter-spacing:-.02em;
   text-align:left;
@@ -2256,8 +2371,8 @@ html{scroll-padding-top:4.25rem}
 .footer__h2 .line-clip{
   white-space:nowrap;
 }
-@media(min-width:640px){.footer__h2{font-size:3rem}}
-@media(min-width:768px){.footer__h2{font-size:3.75rem}}
+@media(min-width:640px){.footer__h2{font-size:var(--text-section-h2-sm)}}
+@media(min-width:768px){.footer__h2{font-size:var(--text-section-h2)}}
 .footer__cols{
   position:relative;
   z-index:1;
@@ -2267,12 +2382,12 @@ html{scroll-padding-top:4.25rem}
   padding-block:3.5rem;
 }
 @media(min-width:768px){.footer__cols{grid-template-columns:1.4fr 1fr 1fr;gap:3rem}}
-.footer__brand-name{display:flex;align-items:center;gap:.5rem;font-size:1.125rem;font-weight:600;margin-bottom:.75rem;letter-spacing:-.02em;color:#fff}
+.footer__brand-name{display:flex;align-items:center;gap:.5rem;font-size:var(--text-md);font-weight:600;margin-bottom:.75rem;letter-spacing:-.02em;color:#fff}
 .footer__brand-name .icon{color:#6b93ff}
-.footer__tagline{max-width:22rem;font-size:.875rem;line-height:1.5;color:rgba(255,255,255,.58)}
-.footer__col-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.78);margin-bottom:1rem}
+.footer__tagline{max-width:22rem;font-size:var(--text-footer-tagline);line-height:var(--lh-body);color:rgba(255,255,255,.58)}
+.footer__col-title{font-size:var(--text-footer-col-title);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.78);margin-bottom:1rem}
 .footer__col{display:flex;flex-direction:column;align-items:flex-start;gap:.55rem}
-.footer__col a,.footer__legal a,.footer__contact{display:inline-flex;font-size:.875rem;opacity:.85;will-change:transform,opacity;margin-bottom:0;color:#fff;text-decoration:none}
+.footer__col a,.footer__legal a,.footer__contact{display:inline-flex;font-size:var(--text-footer-link);line-height:var(--lh-body);opacity:.85;will-change:transform,opacity;margin-bottom:0;color:#fff;text-decoration:none}
 .footer__col a:hover,.footer__contact:hover,.footer__legal a:hover{opacity:1}
 .footer__body{
   position:relative;
@@ -2289,7 +2404,8 @@ html{scroll-padding-top:4.25rem}
   gap:1rem;
   border-top:1px solid rgba(255,255,255,.12);
   padding-top:2rem;
-  font-size:.75rem;
+  font-size:var(--text-footer-legal);
+  line-height:var(--lh-body);
   color:rgba(255,255,255,.78);
 }
 @media(min-width:640px){.footer__legal{flex-direction:row}}
@@ -2311,7 +2427,7 @@ html{scroll-padding-top:4.25rem}
   font-weight:700;
   line-height:1;
   letter-spacing:-.05em;
-  font-size:clamp(8rem, 28vw, 22rem);
+  font-size:clamp(8rem, 24vw, 22rem);
   color:rgba(255,255,255,.07);
   white-space:nowrap;
   /* Cap ink on CTA bottom border; horizontally centered */
@@ -2319,7 +2435,7 @@ html{scroll-padding-top:4.25rem}
 }
 @media (max-width:640px){
   .footer__watermark{
-    font-size:19vw;
+    font-size:24vw;
     letter-spacing:-.02em;
     transform:translate(-50%, -0.04em);
   }
@@ -2385,6 +2501,41 @@ html.lenis,html.lenis body{height:auto}
   font-weight:600;
   letter-spacing:.04em;
   text-transform:uppercase;
+}
+.coverflow__nav{
+  position:absolute;
+  top:50%;
+  z-index:5;
+  display:grid;
+  place-items:center;
+  width:2.75rem;
+  height:2.75rem;
+  min-width:44px;
+  min-height:44px;
+  border-radius:999px;
+  border:1px solid rgba(8,22,60,.18);
+  background:rgba(255,255,255,.92);
+  color:#08163C;
+  box-shadow:0 8px 22px rgba(8,22,60,.14);
+  transform:translateY(-50%);
+  transition:opacity .2s ease, transform .2s ease, background .2s ease;
+}
+.coverflow__nav .icon{width:1.125rem;height:1.125rem}
+.coverflow__nav:hover:not(:disabled){background:#fff;transform:translateY(-50%) scale(1.04)}
+.coverflow__nav:disabled{opacity:.32;cursor:default}
+.coverflow__nav--prev{
+  left:max(.35rem, calc(50% - min(var(--cf-w), 90vw) / 2 - 3.25rem));
+}
+.coverflow__nav--next{
+  right:max(.35rem, calc(50% - min(var(--cf-w), 90vw) / 2 - 3.25rem));
+}
+@media (max-width:899px){
+  .coverflow__nav--prev{
+    left:max(.2rem, calc(50% - var(--pw, min(80vw, 330px)) / 2 - 2.75rem));
+  }
+  .coverflow__nav--next{
+    right:max(.2rem, calc(50% - var(--pw, min(80vw, 330px)) / 2 - 2.75rem));
+  }
 }
 .coverflow{position:relative}
 .plans{
@@ -2469,7 +2620,7 @@ html.lenis,html.lenis body{height:auto}
 }
 .faq__h2{
   margin:0 0 1.5rem;
-  font-size:clamp(2rem, 1.2rem + 2vw, 3rem);
+  font-size:var(--text-section-h2-compact);
   font-weight:600;
   letter-spacing:-.03em;
   color:#fff;
@@ -2485,12 +2636,12 @@ html.lenis,html.lenis body{height:auto}
   min-height:44px;
   padding:1rem 0;
   text-align:left;
-  font-size:1.05rem;
+  font-size:var(--text-md);
   font-weight:600;
   color:#fff;
 }
 .faq__icon{flex-shrink:0;color:#a9c2ff}
-.faq__panel{display:none;padding:0 0 1rem;font-size:.98rem;line-height:1.55;color:rgba(255,255,255,.78)}
+.faq__panel{display:none;padding:0 0 1rem;font-size:var(--text-sm);line-height:var(--lh-body);color:rgba(255,255,255,.78)}
 .faq__item.is-open .faq__panel{display:block}
 .nav-menu__close{min-height:44px}
 
@@ -2544,6 +2695,16 @@ html.lenis,html.lenis body{height:auto}
     </div>
     <div class="hero__vignette" aria-hidden="true"></div>
     <div class="hero__watermark" id="heroWatermark">G8FLOW</div>
+    <p class="hero__discover-hint" id="heroDiscoverHint" aria-hidden="true">
+      <span class="hero__discover-hint-inner hero__discover-hint--hover">
+        <span class="hero__discover-hint-dot" aria-hidden="true"></span>
+        <span data-i18n="hero.discover">Hover to discover me</span>
+      </span>
+      <span class="hero__discover-hint-inner hero__discover-hint--touch">
+        <span class="hero__discover-hint-dot" aria-hidden="true"></span>
+        <span data-i18n="hero.discoverTouch">Scroll to discover me</span>
+      </span>
+    </p>
 
     <div class="shell hero__content">
       <div class="hero__left">
@@ -2688,7 +2849,6 @@ html.lenis,html.lenis body{height:auto}
         <h2 class="solutions__h2" data-i18n="sol.h2">What I ship</h2>
         <p class="solutions__lead" data-i18n="sol.lead">Comprehensive digital solutions tailored to your needs</p>
       </header>
-      <div class="solutions__rule" aria-hidden="true"></div>
       <div class="solutions__grid">
         <article class="solutions__card">
           <div class="solutions__media" style="background-image:url('./assets/solutions/site-laptop.png')"></div>
@@ -2713,7 +2873,6 @@ html.lenis,html.lenis body{height:auto}
           </div>
         </article>
       </div>
-      <div class="solutions__rule" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -2724,7 +2883,7 @@ html.lenis,html.lenis body{height:auto}
         <p class="industries__eyebrow" data-i18n="ind.eyebrow">What I can build</p>
         <h2 class="industries__h2" data-i18n="ind.h2">Different industries, different rules. I still ship the same outcome: they get it, then they buy.</h2>
         <a class="pill pill--light pill--arrow" href="https://calendly.com/goransantic/30min">
-          <span class="pill__inner"><span data-i18n="cta.workWithMe">Work with me</span><span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
+          <span class="pill__inner"><span data-i18n="cta.workWithMe">Book a call</span><span class="pill__badge pill__badge--up"><span class="icon" data-icon="arrow-up-right"></span></span></span>
         </a>
       </div>
       <div class="industries__list" id="industriesList">
@@ -2847,8 +3006,8 @@ html.lenis,html.lenis body{height:auto}
       <div class="feedback-float">
         <article class="feedback-card" data-fb style="--t:14%; --x:6%;">
           <p class="feedback-card__stars" data-i18n-aria="fb.stars" aria-label="5 out of 5"><span aria-hidden="true">★★★★★</span></p>
-          <h3 class="feedback-card__h" data-i18n="fb.1.h">The site explains the offer before the call.</h3>
-          <p class="feedback-card__p" data-i18n="fb.1.p">“People used to land on the old page and still ask what the 90 days actually were. Now the site answers that, and the ones who reach out already know what they’re buying.”</p>
+          <h3 class="feedback-card__h" data-i18n="fb.1.h">Goran nailed it on the first try.</h3>
+          <p class="feedback-card__p" data-i18n="fb.1.p">“A big thank you to Goran for his excellent work on the Busy Strong 90 site. He was quick, easy to work with, and the site now explains the 90-day program on its own, so the people who reach out already know what they want.”</p>
           <div class="feedback-card__who">
             <span class="feedback-card__mono" aria-hidden="true">BS</span>
             <div>
@@ -2859,8 +3018,8 @@ html.lenis,html.lenis body{height:auto}
         </article>
         <article class="feedback-card feedback-card--wide" data-fb style="--t:32%; --x:52%;">
           <p class="feedback-card__stars" data-i18n-aria="fb.stars" aria-label="5 out of 5"><span aria-hidden="true">★★★★★</span></p>
-          <h3 class="feedback-card__h" data-i18n="fb.2.h">Pretty doesn’t pay my rent. Paying clients do.</h3>
-          <p class="feedback-card__p" data-i18n="fb.2.p">“I don’t get paid because the brand looks expensive. I get paid when busy people buy coaching and actually train. The website sells the outcome before they ever DM me. The app is where they show up, stay, and stop disappearing after week one. Together they plugged the leak — the people who used to ghost after a consult now pay, log in, and do the work. That’s the job. That’s what this did.”</p>
+          <h3 class="feedback-card__h" data-i18n="fb.2.h">I’d recommend Goran to any coach.</h3>
+          <p class="feedback-card__p" data-i18n="fb.2.p">“I’m truly grateful to Goran for the website and the app. He was easy to work with and fully dedicated from day one to launch. The site explains everything before clients message me, and the app keeps them training past the first week. People who used to disappear after the first conversation now pay and show up. That’s exactly what I needed.”</p>
           <div class="feedback-card__who">
             <img class="feedback-card__photo--milos" src="assets/feedback/milos-wa.jpeg" alt="Miloš Ilić" width="50" height="50" loading="lazy" decoding="async">
             <div>
@@ -2872,7 +3031,7 @@ html.lenis,html.lenis body{height:auto}
         <article class="feedback-card" data-fb style="--t:54%; --x:8%;">
           <p class="feedback-card__stars" data-i18n-aria="fb.stars" aria-label="5 out of 5"><span aria-hidden="true">★★★★★</span></p>
           <h3 class="feedback-card__h" data-i18n="fb.3.h">Buying stopped feeling like extra work.</h3>
-          <p class="feedback-card__p" data-i18n="fb.3.p">“Handmade pieces are hard enough to sell online without the site fighting you. Now the product story is up front and checkout is a short path instead of a maze.”</p>
+          <p class="feedback-card__p" data-i18n="fb.3.p">“A sincere thank you to Goran for my new shop. Handmade things aren’t easy to sell online, and my old site only got in the way. Now customers see right away what I make and order without any hassle. It was a real pleasure working with him.”</p>
           <div class="feedback-card__who">
             <span class="feedback-card__mono" aria-hidden="true">LK</span>
             <div>
@@ -2884,7 +3043,7 @@ html.lenis,html.lenis body{height:auto}
         <article class="feedback-card" data-fb style="--t:74%; --x:50%;">
           <p class="feedback-card__stars" data-i18n-aria="fb.stars" aria-label="5 out of 5"><span aria-hidden="true">★★★★★</span></p>
           <h3 class="feedback-card__h" data-i18n="fb.4.h">Fewer “interested.” More booked sessions.</h3>
-          <p class="feedback-card__p" data-i18n="fb.4.p">“Strangers used to land on my page and leave without knowing what I offer. One scroll now gets them to a 30-minute intro on my calendar.”</p>
+          <p class="feedback-card__p" data-i18n="fb.4.p">“I’d like to thank Goran for his dedication and clear thinking throughout the project. People used to leave my site because it wasn’t clear what I do. Now they understand right away and book a 30-minute intro call on their own.”</p>
           <div class="feedback-card__who">
             <span class="feedback-card__mono" aria-hidden="true">TM</span>
             <div>
@@ -2929,31 +3088,27 @@ html.lenis,html.lenis body{height:auto}
       <div class="faq__list">
         <div class="faq__item is-open">
           <button class="faq__btn" type="button" aria-expanded="true" aria-controls="faq-a1" id="faq-q1"><span data-i18n="faq.q1">How long does a site take?</span> <span class="faq__icon" aria-hidden="true">−</span></button>
-          <div class="faq__panel" id="faq-a1" role="region" aria-labelledby="faq-q1"><p data-i18n="faq.a1">Launch-range sites usually ship in 3–4 weeks. Growth-range (shop, booking, longer path) is about 5 weeks. The clock starts after the call, when the offer and pages are clear — not after a vague “we should do a website.”</p></div>
+          <div class="faq__panel" id="faq-a1" role="region" aria-labelledby="faq-q1"><p data-i18n="faq.a1">Launch usually takes 3–4 weeks. Growth (a shop, booking, or a longer site) is about 5. Work starts after the call, once we know what you offer and which pages you need — not after “let’s just make a website.”</p></div>
         </div>
         <div class="faq__item">
-          <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2"><span data-i18n="faq.q2">What’s included in the build?</span> <span class="faq__icon" aria-hidden="true">+</span></button>
-          <div class="faq__panel" id="faq-a2" role="region" aria-labelledby="faq-q2"><p data-i18n="faq.a2">Copy structure, design, mobile layout, the one conversion path, and launch. You get a site that can take money or bookings — not a moodboard. Extra systems (CMS, shop, membership) are what you check in the calculator.</p></div>
+          <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2"><span data-i18n="faq.q2">What’s included in the price?</span> <span class="faq__icon" aria-hidden="true">+</span></button>
+          <div class="faq__panel" id="faq-a2" role="region" aria-labelledby="faq-q2"><p data-i18n="faq.a2">Design, mobile layout, one path to a purchase or a booking, and launch. You get a site that can take a message, a payment, or a booking.</p></div>
         </div>
         <div class="faq__item">
-          <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3"><span data-i18n="faq.q3">What is monthly care?</span> <span class="faq__icon" aria-hidden="true">+</span></button>
-          <div class="faq__panel" id="faq-a3" role="region" aria-labelledby="faq-q3"><p data-i18n="faq.a3">Care is hosting, updates, and keeping the path working after launch. The calculator shows a monthly number next to the build. You can skip it and host it yourself; most people don’t, because a dead plugin costs more than care.</p></div>
+          <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3"><span data-i18n="faq.q3">What is monthly maintenance?</span> <span class="faq__icon" aria-hidden="true">+</span></button>
+          <div class="faq__panel" id="faq-a3" role="region" aria-labelledby="faq-q3"><p data-i18n="faq.a3">Hosting, small changes, and keeping the site running after launch. You can skip it and host it yourself; most people won’t, because something broken later costs more.</p></div>
         </div>
         <div class="faq__item">
           <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4"><span data-i18n="faq.q4">Who is this for?</span> <span class="faq__icon" aria-hidden="true">+</span></button>
-          <div class="faq__panel" id="faq-a4" role="region" aria-labelledby="faq-q4"><p data-i18n="faq.a4">Owners who already sell something — coaching, a shop, a practice — and whose current site looks fine but doesn’t convert. If you need a logo contest or a 40-page brochure, this isn’t it.</p></div>
+          <div class="faq__panel" id="faq-a4" role="region" aria-labelledby="faq-q4"><p data-i18n="faq.a4">People who already sell something — coaching, a shop, a practice — but the site looks fine and brings in nothing. If you need a logo contest or a 40-page brochure, this isn’t it.</p></div>
         </div>
         <div class="faq__item">
-          <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-a5" id="faq-q5"><span data-i18n="faq.q5">How does the process work?</span> <span class="faq__icon" aria-hidden="true">+</span></button>
-          <div class="faq__panel" id="faq-a5" role="region" aria-labelledby="faq-q5"><p data-i18n="faq.a5">Call, then clarity, then build, then launch. I lock who it’s for and the one next step before pixels. You review on a real URL. When it’s live, it can take the sale.</p></div>
+          <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-a5" id="faq-q5"><span data-i18n="faq.q5">How does it go from the call to the site?</span> <span class="faq__icon" aria-hidden="true">+</span></button>
+          <div class="faq__panel" id="faq-a5" role="region" aria-labelledby="faq-q5"><p data-i18n="faq.a5">It starts with a short 30-minute call, free and with no obligation. Then we agree on who the site is for and what the visitor should do, and only then do I start building. You follow the site on a real link as it comes together, and when everything is ready, we launch it.</p></div>
         </div>
         <div class="faq__item">
-          <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-a6" id="faq-q6"><span data-i18n="faq.q6">Do I have to book a call to get a number?</span> <span class="faq__icon" aria-hidden="true">+</span></button>
-          <div class="faq__panel" id="faq-a6" role="region" aria-labelledby="faq-q6"><p data-i18n="faq.a6">No. Use the calculator for a range. The call locks scope and the final quote. If you’d rather talk first, grab a 30-minute slot.</p></div>
-        </div>
-        <div class="faq__item">
-          <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-a7" id="faq-q7"><span data-i18n="faq.q7">I already have a site. Can you fix it?</span> <span class="faq__icon" aria-hidden="true">+</span></button>
-          <div class="faq__panel" id="faq-a7" role="region" aria-labelledby="faq-q7"><p data-i18n="faq.a7">Yes, if the problem is the offer or the path — not “make my blue more blue.” I keep what works, cut what leaks, and ship a page that sells. That’s usually a Launch or Growth rebuild, not a paint job.</p></div>
+          <button class="faq__btn" type="button" aria-expanded="false" aria-controls="faq-a7" id="faq-q7"><span data-i18n="faq.q7">I have a site. Can you fix it?</span> <span class="faq__icon" aria-hidden="true">+</span></button>
+          <div class="faq__panel" id="faq-a7" role="region" aria-labelledby="faq-q7"><p data-i18n="faq.a7">Yes. If the site isn’t selling and visitors can’t tell what you offer, the fix is usually a full redesign of the site or the app.</p></div>
         </div>
       </div>
     </div>
@@ -3072,6 +3227,7 @@ function mailtoInquiry(data){
 const ICONS = {
   logo: `<svg viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>`,
   'arrow-right': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`,
+  'arrow-left': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>`,
   'arrow-up-right': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>`,
   star: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5z"/></svg>`,
   globe: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><path d="M12 2.75c2.6 2.3 4 5.8 4 9.25s-1.4 6.95-4 9.25c-2.6-2.3-4-5.8-4-9.25s1.4-6.95 4-9.25zM2.75 12h18.5"/></svg>`,
@@ -3231,6 +3387,7 @@ function setReady(){
   ready = true;
   document.getElementById('header').classList.add('is-ready');
   document.getElementById('heroWatermark').classList.add('is-ready');
+  document.getElementById('heroDiscoverHint')?.classList.add('is-ready');
   onReady.splice(0).forEach(fn => fn());
   kickHeroReveals();
 }
@@ -3411,6 +3568,36 @@ setReady();
   requestAnimationFrame(tick);
 })();
 
+(function initDiscoverHint(){
+  const hint = document.getElementById('heroDiscoverHint');
+  const hero = document.getElementById('home');
+  const liquid = document.getElementById('liquid');
+  if (!hint || !hero) return;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const coarse = matchMedia('(hover: none), (pointer: coarse)').matches;
+  if (reduced) { hint.hidden = true; return; }
+  let dismissed = false;
+  function dismiss(){
+    if (dismissed) return;
+    dismissed = true;
+    hint.classList.add('is-dismissed');
+  }
+  setTimeout(dismiss, 12000);
+  if (coarse) {
+    addEventListener('scroll', () => {
+      const track = document.querySelector('.hero-scroll-track');
+      if (track && -track.getBoundingClientRect().top > 48) dismiss();
+    }, { passive: true });
+    hero.addEventListener('touchstart', (e) => {
+      if (e.target.closest('a,button')) return;
+      dismiss();
+    }, { passive: true });
+  } else if (liquid) {
+    liquid.addEventListener('pointerenter', dismiss, { once: true });
+    liquid.addEventListener('pointermove', dismiss, { once: true });
+  }
+})();
+
 /* Let's Talk — full clear portrait reveal (touch mobile + hover/focus desktop) */
 (function initPortraitReveal(){
   const hero = document.getElementById('home');
@@ -3517,6 +3704,27 @@ setReady();
   addEventListener('resize', () => { if (desktop.matches) update(); }, { passive: true });
 })();
 
+/* Process — equal paragraph height so every card's centered block lines up */
+(function equalizeProcessText(){
+  const texts = [...document.querySelectorAll('.process-card__text')];
+  if (!texts.length) return;
+  const desktop = matchMedia('(min-width: 900px)');
+  let raf = 0;
+  function sync(){
+    raf = 0;
+    texts.forEach(el => { el.style.minHeight = ''; });
+    if (!desktop.matches) return;
+    const max = Math.max(...texts.map(el => el.offsetHeight));
+    texts.forEach(el => { el.style.minHeight = `${max}px`; });
+  }
+  const queue = () => { if (!raf) raf = requestAnimationFrame(sync); };
+  sync();
+  document.fonts?.ready?.then(queue);
+  addEventListener('resize', queue, { passive: true });
+  desktop.addEventListener?.('change', queue);
+  document.addEventListener('g8:langchange', queue);
+})();
+
 /* Portfolio — Originkit Coverflow + site scroll videos + scroll-linked cards */
 (function initCoverflow(){
   const section = document.getElementById('works');
@@ -3540,7 +3748,6 @@ setReady();
       copyMobileKey: 'work.bs.copyMobile',
       stats: [
         { numKey: 'work.weeks4', labelKey: 'work.stat.build' },
-        { num: '€440–2.2k', labelKey: 'work.stat.launchRange' },
       ],
     },
     {
@@ -3553,7 +3760,6 @@ setReady();
       copyMobileKey: 'work.lk.copyMobile',
       stats: [
         { numKey: 'work.weeks5', labelKey: 'work.stat.build' },
-        { num: '€2.2–3.5k', labelKey: 'work.stat.growthRange' },
       ],
       poster: './assets/works/lenkolino.jpg?v=2',
       posterMobile: './assets/works/lenkolino-mobile.jpg?v=2',
@@ -3574,7 +3780,6 @@ setReady();
       mp4Mobile: './assets/works/videos/mobile/thrivewithmarina.mp4?v=3',
       stats: [
         { numKey: 'work.weeks3', labelKey: 'work.stat.build' },
-        { num: '€440–2.2k', labelKey: 'work.stat.launchRange' },
       ],
     },
   ];
@@ -3588,6 +3793,7 @@ setReady();
   const MOVE_DUR = 0.8;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const desktop = matchMedia('(min-width: 900px)');
+  const stackMq = matchMedia('(max-width: 1363px)');
   const isMobileInit = !desktop.matches;
 
   stage.innerHTML = SLIDES.map((s, i) => `
@@ -3619,7 +3825,27 @@ setReady();
   pauseBtn.setAttribute('aria-pressed', 'false');
   pauseBtn.textContent = t('work.pause');
   root.appendChild(pauseBtn);
-  if (reduced) pauseBtn.hidden = true;
+  const prevBtn = document.createElement('button');
+  prevBtn.type = 'button';
+  prevBtn.className = 'coverflow__nav coverflow__nav--prev';
+  prevBtn.id = 'coverflowPrev';
+  prevBtn.setAttribute('aria-label', t('work.prev'));
+  prevBtn.innerHTML = '<span class="icon" data-icon="arrow-left"></span>';
+  const nextBtn = document.createElement('button');
+  nextBtn.type = 'button';
+  nextBtn.className = 'coverflow__nav coverflow__nav--next';
+  nextBtn.id = 'coverflowNext';
+  nextBtn.setAttribute('aria-label', t('work.next'));
+  nextBtn.innerHTML = '<span class="icon" data-icon="arrow-right"></span>';
+  root.appendChild(prevBtn);
+  root.appendChild(nextBtn);
+  prevBtn.querySelector('[data-icon]') && (prevBtn.querySelector('[data-icon]').innerHTML = ICONS['arrow-left']);
+  nextBtn.querySelector('[data-icon]') && (nextBtn.querySelector('[data-icon]').innerHTML = ICONS['arrow-right']);
+  if (reduced) {
+    pauseBtn.hidden = true;
+    prevBtn.hidden = true;
+    nextBtn.hidden = true;
+  }
   let userPaused = false;
   function syncPauseLabel(){
     pauseBtn.textContent = userPaused ? t('work.play') : t('work.pause');
@@ -3728,8 +3954,46 @@ setReady();
     else video.addEventListener('loadedmetadata', apply, { once: true });
   }
 
-  function layout(opts){
+  let stackP = 0;
+  function isStack(){ return stackMq.matches; }
+
+  function layoutStack(p){
     cards.forEach((card, i) => {
+      const d = i - p;
+      let ty = 0;
+      let sc = 1;
+      let dim = 0;
+      if (d >= 0) {
+        ty = Math.min(d, 1) * 115;
+      } else {
+        ty = d * 8;
+        sc = Math.max(0.8, 1 + d * 0.06);
+        dim = Math.min(0.45, -d * 0.3);
+      }
+      const isActive = i === active;
+      card.classList.toggle('is-active', isActive);
+      card.style.opacity = d >= 1 ? '0' : '1';
+      card.style.pointerEvents = isActive ? 'auto' : 'none';
+      card.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      card.style.zIndex = String(i + 1);
+      card.style.transform = `translate(-50%, -50%) translateY(${ty}%) scale(${sc})`;
+      const dimEl = card.querySelector('.coverflow__dim');
+      if (dimEl) dimEl.style.opacity = String(dim);
+    });
+  }
+
+  function layout(opts){
+    if (isStack()) {
+      layoutStack(stackP);
+      pauseInactive();
+      playActive(opts);
+      renderCase();
+      return;
+    }
+    cards.forEach((card, i) => {
+      card.style.zIndex = '';
+      const dimEl = card.querySelector('.coverflow__dim');
+      if (dimEl) dimEl.style.opacity = '';
       let rel = i - active;
       if (rel > n / 2) rel -= n;
       if (rel < -n / 2) rel += n;
@@ -3754,6 +4018,12 @@ setReady();
     renderCase();
   }
 
+  function syncNavState(){
+    if (!prevBtn || !nextBtn) return;
+    prevBtn.disabled = active <= 0;
+    nextBtn.disabled = active >= n - 1;
+  }
+
   function renderCase(){
     const s = SLIDES[active];
     if (!caseRoot || !s) return;
@@ -3769,10 +4039,8 @@ setReady();
       <p class="portfolio__case-meta">${s.client} · ${t(s.servicesKey)}</p>
       <p class="portfolio__case-copy">${copy}</p>
       <div class="portfolio__case-stats">${stats}</div>
-      <a class="portfolio__case-link" href="${s.href}" target="_blank" rel="noopener noreferrer" data-live-site="${s.host}">
-        ${t('work.visit', { host: s.host })} <span aria-hidden="true">↗</span>
-      </a>
     `;
+    syncNavState();
   }
 
   function setActive(i, { fromScroll = false } = {}){
@@ -3790,23 +4058,60 @@ setReady();
 
   function goTo(i){
     if (locked || reduced) return;
-    setActive(i);
-    manualHold = true;
-    holdScrollY = window.scrollY || window.pageYOffset || 0;
-  }
-
-  function step(dir){
-    if (locked) return;
-    const next = Math.max(0, Math.min(n - 1, active + dir));
+    const next = Math.max(0, Math.min(n - 1, i));
     if (next === active) return;
+    if (isStack()) {
+      lock();
+      active = next;
+      stackP = next;
+      primeVideo(active);
+      layoutStack(stackP);
+      pauseInactive();
+      playActive({ restart: true });
+      renderCase();
+      manualHold = true;
+      holdScrollY = window.scrollY || window.pageYOffset || 0;
+      return;
+    }
     setActive(next);
     manualHold = true;
     holdScrollY = window.scrollY || window.pageYOffset || 0;
   }
 
+  function step(dir){
+    if (locked || reduced) return;
+    const next = Math.max(0, Math.min(n - 1, active + dir));
+    if (next === active) return;
+    if (isStack()) {
+      lock();
+      active = next;
+      stackP = next;
+      primeVideo(active);
+      layoutStack(stackP);
+      pauseInactive();
+      playActive({ restart: true });
+      renderCase();
+      manualHold = true;
+      holdScrollY = window.scrollY || window.pageYOffset || 0;
+      return;
+    }
+    setActive(next);
+    manualHold = true;
+    holdScrollY = window.scrollY || window.pageYOffset || 0;
+  }
+
+  // Scroll drives the slides only when the side cards are off-screen; otherwise they are clickable.
+  let scrollMode = true;
+  function sideCardsVisible(){
+    const w = root.clientWidth;
+    const cardW = stage.offsetWidth * (1 - SCALE_STEP);
+    const sideLeftEdge = w / 2 + GAP * 30 - cardW / 2;
+    return sideLeftEdge < w - Math.max(48, cardW * 0.3);
+  }
+
   function updateFromScroll(){
     scrollRaf = 0;
-    if (reduced || syncingScroll) return;
+    if (reduced || syncingScroll || !scrollMode) return;
 
     const y = window.scrollY || window.pageYOffset || 0;
     if (manualHold) {
@@ -3818,6 +4123,22 @@ setReady();
     const range = Math.max(track.offsetHeight - window.innerHeight, 1);
     const traveled = Math.min(Math.max(-rect.top, 0), range);
     const progress = traveled / range;
+
+    if (isStack()) {
+      stackP = Math.min(n - 1, Math.max(0, (progress / 0.88) * (n - 1)));
+      const next = Math.min(n - 1, Math.floor(stackP + 0.5));
+      const changed = next !== active;
+      active = next;
+      layoutStack(stackP);
+      if (changed) {
+        primeVideo(active);
+        pauseInactive();
+        playActive({ restart: true });
+        renderCase();
+      }
+      return;
+    }
+
     const scaled = progress * n;
     const i = Math.min(n - 1, Math.floor(scaled >= n ? n - 1 : scaled));
     const local = Math.min(1, Math.max(0, scaled - i));
@@ -3844,6 +4165,20 @@ setReady();
     if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
     else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
   });
+  root.addEventListener('click', (e) => {
+    if (e.target.closest('.coverflow__nav--prev')) {
+      e.preventDefault();
+      e.stopPropagation();
+      step(-1);
+      return;
+    }
+    if (e.target.closest('.coverflow__nav--next')) {
+      e.preventDefault();
+      e.stopPropagation();
+      step(1);
+      return;
+    }
+  });
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach(en => {
@@ -3865,6 +4200,8 @@ setReady();
 
   document.addEventListener('g8:langchange', () => {
     syncPauseLabel();
+    prevBtn.setAttribute('aria-label', t('work.prev'));
+    nextBtn.setAttribute('aria-label', t('work.next'));
     renderCase();
   });
 
@@ -3879,17 +4216,38 @@ setReady();
     return;
   }
 
-  function bindMode(){
+  function wantsScrollMode(){
+    return isStack() || !sideCardsVisible();
+  }
+
+  function syncScrollMode(){
+    root.classList.toggle('is-stack', isStack());
+    const next = wantsScrollMode();
+    if (next === scrollMode && track.classList.contains('is-static') === !next) return;
+    scrollMode = next;
+    track.classList.toggle('is-static', !scrollMode);
     removeEventListener('scroll', onScroll);
-    addEventListener('scroll', onScroll, { passive: true });
+    if (scrollMode) addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  function bindMode(){
     applyDeviceMedia();
+    syncScrollMode();
     layout();
     updateFromScroll();
   }
+  root.classList.toggle('is-stack', isStack());
+  scrollMode = wantsScrollMode();
+  track.classList.toggle('is-static', !scrollMode);
   bindMode();
+  if (scrollMode) addEventListener('scroll', onScroll, { passive: true });
   if (typeof lenis?.on === 'function') lenis.on('scroll', onScroll);
   desktop.addEventListener?.('change', bindMode);
-  addEventListener('resize', updateFromScroll, { passive: true });
+  stackMq.addEventListener?.('change', bindMode);
+  addEventListener('resize', () => {
+    syncScrollMode();
+    updateFromScroll();
+  }, { passive: true });
 })();
 
 (function initIndustries(){

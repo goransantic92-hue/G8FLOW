@@ -595,6 +595,29 @@ html{scroll-padding-top:4.25rem}
   .hero__content{min-height:calc(100svh - 8.5rem)}
   .hero__status{padding:.9rem 1.25rem;margin-bottom:2.25rem}
 }
+@media (max-width:1023px){
+  .hero__content{
+    justify-content:flex-end;
+    padding-bottom:clamp(4rem, 10vh, 5.5rem);
+  }
+  .hero__left{
+    flex:0 1 auto;
+    justify-content:flex-start;
+    gap:clamp(1.75rem, 4.5vh, 2.75rem);
+    max-width:min(100%, 48rem);
+    min-height:0;
+  }
+  .hero__h1{
+    margin-top:0;
+    font-size:clamp(2rem, 4vw + 1rem, 6rem);
+    line-height:1.02;
+  }
+  .hero__lead{
+    max-width:38rem;
+    font-size:clamp(1rem, .85rem + .45vw, 1.25rem);
+    line-height:1.45;
+  }
+}
 
 /* Process — S2 */
 .process{
@@ -1331,17 +1354,13 @@ html{scroll-padding-top:4.25rem}
     flex:1 1 auto;
     min-height:0;
     width:100%;
-    container-type:size;
   }
-  /* Screen must stay at least as wide as the 720×1506 recordings so cover only trims the bottom */
   .coverflow__stage{
-    --pw:min(80vw, 330px);
-    aspect-ratio:auto;
-    width:var(--pw);
-    max-width:none;
+    aspect-ratio:230 / 440;
     height:100%;
-    height:min(100cqh - 1.25rem, calc((var(--pw) - 5px) * 1506 / 720 + 3rem + 5px));
+    width:auto;
     max-height:100%;
+    max-width:min(var(--cf-w), 62vw);
   }
   .browser-mock{
     border-radius:var(--cf-radius);
@@ -1349,8 +1368,8 @@ html{scroll-padding-top:4.25rem}
     background:#05070f;
     box-shadow:
       0 1px 0 rgba(255,255,255,.1) inset,
-      0 10px 22px rgba(8,22,60,.22),
-      0 4px 10px rgba(8,22,60,.14);
+      0 22px 48px rgba(8,22,60,.32),
+      0 6px 16px rgba(8,22,60,.18);
   }
   .browser-mock__chrome{
     height:1.9rem;

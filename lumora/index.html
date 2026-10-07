@@ -514,34 +514,41 @@ html{scroll-padding-top:4.25rem}
   box-sizing:border-box;
   margin:0;
   align-self:center;
-  font-size:clamp(32px, 8vw, 7.5rem);
+  font-size:2.5rem;
   font-weight:600;
-  line-height:1.05;
+  line-height:1.02;
   letter-spacing:-.03em;
   color:#fff;
   text-align:center;
-  text-wrap:balance;
 }
-.hero__h1 .line-clip{
-  white-space:normal;
+@media(min-width:640px){
+  .hero__h1{font-size:6.25rem;line-height:1.03}
 }
-@media(min-width:1200px){
+@media(min-width:1024px){
   .hero__h1{
+    font-size:var(--text-hero-h1);
     line-height:1;
+    max-width:100%;
   }
   .hero__h1 .line-clip{white-space:nowrap}
 }
+@media(min-width:1024px) and (max-width:1180px){
+  .hero__h1 .line-clip{white-space:normal;text-wrap:balance}
+}
 .hero__lead{
   margin:0;
-  max-width:min(42rem, 92vw);
+  max-width:min(92vw, 38rem);
   align-self:center;
-  font-size:clamp(.9375rem, .72rem + .7vw, 1.25rem);
+  font-size:1rem;
   font-weight:500;
-  line-height:1.45;
+  line-height:var(--lh-snug);
   letter-spacing:.02em;
   color:rgba(255,255,255,.78);
   text-align:center;
-  text-wrap:pretty;
+}
+@media(min-width:640px){.hero__lead{font-size:1.0625rem}}
+@media(min-width:1024px){
+  .hero__lead{font-size:var(--text-hero-lead);max-width:min(92vw, 42rem)}
 }
 .hero__ctas{
   display:flex;

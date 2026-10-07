@@ -376,6 +376,8 @@ html{scroll-padding-top:4.25rem}
   position:relative;
   isolation:isolate;
   overflow:hidden;
+  display:flex;
+  flex-direction:column;
   border-radius:0 0 2rem 2rem;
   background-color:#15389B;
   background-image:none;
@@ -475,43 +477,36 @@ html{scroll-padding-top:4.25rem}
   z-index:20;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-end;
   align-items:center;
   text-align:center;
-  min-height:calc(100svh - 3.5rem);
-  padding:5.5rem 1.25rem 6rem;
+  flex:0 0 auto;
+  width:100%;
+  min-height:100svh;
+  max-height:100svh;
+  padding:5.5rem 1.25rem 2.75rem;
   box-sizing:border-box;
 }
-@media(min-width:640px){.hero__content{padding-left:2rem;padding-right:2rem}}
+@media(min-width:640px){
+  .hero__content{padding-left:2rem;padding-right:2rem}
+}
 @media(min-width:1024px){
   .hero__content{
-    min-height:118lvh;
-    justify-content:flex-end;
-    align-items:center;
-    padding:6rem clamp(1.25rem, 3vw, 2rem) clamp(5rem, 11vh, 7.5rem);
+    padding:6rem clamp(1.25rem, 3vw, 2rem) 3rem;
   }
 }
 .hero__left{
   display:flex;
-  flex:1 1 auto;
+  flex:0 1 auto;
   flex-direction:column;
   align-items:center;
   justify-content:flex-end;
-  gap:clamp(1rem, 2.2vh, 2.75rem);
+  gap:clamp(.75rem, 1.6vh + .4vw, 2rem);
   width:100%;
-  max-width:min(92vw, 48rem);
+  max-width:min(92vw, 80rem);
   margin-inline:auto;
   box-sizing:border-box;
   min-height:0;
-}
-@media(min-width:640px){.hero__left{max-width:min(92vw, 52rem)}}
-@media(min-width:1024px){
-  .hero__left{
-    flex:0 0 auto;
-    justify-content:flex-start;
-    max-width:min(92vw, 80rem);
-    margin-top:0;
-  }
 }
 .hero__h1{
   width:100%;
@@ -519,42 +514,34 @@ html{scroll-padding-top:4.25rem}
   box-sizing:border-box;
   margin:0;
   align-self:center;
-  font-size:2.5rem;
+  font-size:clamp(32px, 8vw, 7.5rem);
   font-weight:600;
-  line-height:1.02;
+  line-height:1.05;
   letter-spacing:-.03em;
   color:#fff;
   text-align:center;
+  text-wrap:balance;
 }
-@media(min-width:640px){
-  .hero__h1{font-size:6.25rem;line-height:1.03}
+.hero__h1 .line-clip{
+  white-space:normal;
 }
-@media(min-width:1024px){
+@media(min-width:1200px){
   .hero__h1{
-    margin-top:0;
-    font-size:var(--text-hero-h1); /* scales with root vw — no extra vw override */
     line-height:1;
-    max-width:100%;
   }
   .hero__h1 .line-clip{white-space:nowrap}
 }
-@media(min-width:1024px) and (max-width:1180px){
-  .hero__h1 .line-clip{white-space:normal;text-wrap:balance}
-}
 .hero__lead{
   margin:0;
-  max-width:min(92vw, 38rem);
+  max-width:min(42rem, 92vw);
   align-self:center;
-  font-size:1rem;
+  font-size:clamp(.9375rem, .72rem + .7vw, 1.25rem);
   font-weight:500;
-  line-height:var(--lh-snug);
+  line-height:1.45;
   letter-spacing:.02em;
   color:rgba(255,255,255,.78);
   text-align:center;
-}
-@media(min-width:640px){.hero__lead{font-size:1.0625rem}}
-@media(min-width:1024px){
-  .hero__lead{font-size:var(--text-hero-lead);max-width:min(92vw, 42rem)}
+  text-wrap:pretty;
 }
 .hero__ctas{
   display:flex;
@@ -588,41 +575,6 @@ html{scroll-padding-top:4.25rem}
 }
 .hero .pill--outline .pill__inner{border-color:rgba(255,255,255,.4);color:#fff}
 .hero .pill--outline .pill__badge{background:#fff;color:#0B0B0D}
-.hero__status{display:flex;align-items:center;justify-content:center;gap:.5rem;border-top:1px solid rgba(255,255,255,.15);padding:1.25rem;font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.025em;color:rgba(255,255,255,.65)}
-@media(min-width:640px){.hero__status{padding-left:2rem;padding-right:2rem}}
-.hero__status-scroll{display:inline-flex;align-items:center;gap:.5rem}
-@media (max-width:640px){
-  .hero__content{min-height:calc(100svh - 8.5rem)}
-  .hero__status{padding:.9rem 1.25rem;margin-bottom:2.25rem}
-}
-@media (max-width:1023px){
-  .hero__content{
-    justify-content:flex-end;
-    padding-bottom:clamp(4rem, 10vh, 5.5rem);
-  }
-  .hero__left{
-    flex:0 1 auto;
-    justify-content:flex-start;
-    gap:clamp(1.75rem, 4.5vh, 2.75rem);
-    max-width:min(100%, 48rem);
-    min-height:0;
-    transform:translateY(20vh);
-  }
-  .hero__status{
-    transform:translateY(20vh);
-    margin-bottom:0;
-  }
-  .hero__h1{
-    margin-top:0;
-    font-size:clamp(2rem, 4vw + 1rem, 6rem);
-    line-height:1.02;
-  }
-  .hero__lead{
-    max-width:38rem;
-    font-size:clamp(1rem, .85rem + .45vw, 1.25rem);
-    line-height:1.45;
-  }
-}
 
 /* Process — S2 */
 .process{
@@ -2685,10 +2637,6 @@ html.lenis,html.lenis body{height:auto}
           </button>
         </div>
       </div>
-    </div>
-
-    <div class="shell hero__status reveal" data-reveal data-delay="900">
-      <span class="hero__status-scroll"><span data-i18n="hero.scroll">Scroll to explore</span> <span aria-hidden="true">↓</span></span>
     </div>
   </section>
   </div>

@@ -156,10 +156,6 @@ img{display:block;max-width:100%}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-@media (max-width:1920px){html{font-size:0.833333vw}}
-@media (max-width:1440px){html{font-size:1.111111vw}}
-@media (max-width:1024px){html{font-size:1.5625vw}}
-@media (max-width:640px){html{font-size:4.444444vw}}
 @media (min-width:1024px){
   :root{--text-md:1.125rem;--text-lg:1.25rem}
 }
@@ -179,11 +175,11 @@ img{display:block;max-width:100%}
   --text-xl:1.25rem;
   --text-2xl:1.5rem;
   --text-3xl:clamp(1.75rem, 1.4rem + .9vw, 2.5rem);
-  --text-hero-h1:7.5rem;
-  --text-hero-lead:1.25rem;
-  --text-section-h2:clamp(2.6rem, 1.5rem + 3.4vw, 4.5rem);
-  --text-section-h2-sm:clamp(2.35rem, 1.45rem + 2.8vw, 3.9rem);
-  --text-section-h2-compact:clamp(2.35rem, 1.35rem + 2.4vw, 3.6rem);
+  --text-hero-h1:clamp(2.5rem, 8.33vw, 7.5rem);
+  --text-hero-lead:clamp(1rem, .82rem + .38vw, 1.25rem);
+  --text-section-h2:clamp(2.25rem, 1.4rem + 2.8vw, 4.5rem);
+  --text-section-h2-sm:clamp(2.1rem, 1.35rem + 2.3vw, 3.9rem);
+  --text-section-h2-compact:clamp(2.1rem, 1.3rem + 2vw, 3.6rem);
   --text-footer-link:1.125rem;
   --text-footer-col-title:.875rem;
   --text-footer-tagline:1rem;
@@ -477,14 +473,13 @@ html{scroll-padding-top:4.25rem}
   z-index:20;
   display:flex;
   flex-direction:column;
-  justify-content:flex-end;
+  justify-content:flex-start;
   align-items:center;
   text-align:center;
   flex:0 0 auto;
   width:100%;
   min-height:100svh;
-  max-height:100svh;
-  padding:5.5rem 1.25rem 2.75rem;
+  padding:max(5.5rem, 46vh) 1.25rem 2.5rem;
   box-sizing:border-box;
 }
 @media(min-width:640px){
@@ -492,7 +487,9 @@ html{scroll-padding-top:4.25rem}
 }
 @media(min-width:1024px){
   .hero__content{
-    padding:6rem clamp(1.25rem, 3vw, 2rem) 3rem;
+    padding-left:clamp(1.25rem, 3vw, 2rem);
+    padding-right:clamp(1.25rem, 3vw, 2rem);
+    padding-bottom:3rem;
   }
 }
 .hero__left{
@@ -500,8 +497,8 @@ html{scroll-padding-top:4.25rem}
   flex:0 1 auto;
   flex-direction:column;
   align-items:center;
-  justify-content:flex-end;
-  gap:clamp(.75rem, 1.6vh + .4vw, 2rem);
+  justify-content:flex-start;
+  gap:clamp(.75rem, 1.2vw, 2rem);
   width:100%;
   max-width:min(92vw, 80rem);
   margin-inline:auto;
@@ -514,71 +511,48 @@ html{scroll-padding-top:4.25rem}
   box-sizing:border-box;
   margin:0;
   align-self:center;
-  font-size:2.5rem;
+  font-size:var(--text-hero-h1);
   font-weight:600;
-  line-height:1.02;
+  line-height:1.05;
   letter-spacing:-.03em;
   color:#fff;
   text-align:center;
+  text-wrap:balance;
+  overflow-wrap:break-word;
 }
-@media(min-width:640px){
-  .hero__h1{font-size:6.25rem;line-height:1.03}
-}
-@media(min-width:1024px){
-  .hero__h1{
-    font-size:var(--text-hero-h1);
-    line-height:1;
-    max-width:100%;
-  }
-  .hero__h1 .line-clip{white-space:nowrap}
-}
-@media(min-width:1024px) and (max-width:1180px){
-  .hero__h1 .line-clip{white-space:normal;text-wrap:balance}
+.hero__h1 .line-clip{
+  white-space:normal;
 }
 .hero__lead{
   margin:0;
-  max-width:min(92vw, 38rem);
+  max-width:min(42rem, 92vw);
   align-self:center;
-  font-size:1rem;
+  font-size:var(--text-hero-lead);
   font-weight:500;
-  line-height:var(--lh-snug);
+  line-height:1.45;
   letter-spacing:.02em;
   color:rgba(255,255,255,.78);
   text-align:center;
-}
-@media(min-width:640px){.hero__lead{font-size:1.0625rem}}
-@media(min-width:1024px){
-  .hero__lead{font-size:var(--text-hero-lead);max-width:min(92vw, 42rem)}
+  text-wrap:pretty;
 }
 .hero__ctas{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
   align-items:center;
-  gap:clamp(.5rem, 1.5vw, .75rem);
+  gap:clamp(.5rem, .4rem + .6vw, 1rem);
   width:100%;
-  margin-top:clamp(.35rem, 1.2vh, .75rem);
+  margin-top:clamp(.35rem, .4vw, .75rem);
 }
 .hero__ctas .pill__inner{
-  font-size:clamp(.8125rem, .7rem + .4vw, .9375rem);
-  padding:.35rem .35rem .35rem clamp(1.1rem, 2.5vw, 1.5rem);
+  font-size:clamp(.8125rem, .55rem + .7vw, 1.25rem);
+  gap:clamp(.5rem, .4rem + .5vw, 1rem);
+  padding:.35rem .35rem .35rem clamp(1.1rem, .8rem + 1.2vw, 2rem);
 }
 .hero__ctas .pill__badge{
-  width:clamp(2rem, 1.6rem + 1vw, 2.25rem);
-  height:clamp(2rem, 1.6rem + 1vw, 2.25rem);
-}
-@media(min-width:1024px){
-  .hero__ctas{gap:clamp(.75rem, 1.5vw, 1rem)}
-  .hero__ctas .pill__inner{
-    font-size:clamp(1rem, 1.25rem, 1.25rem);
-    gap:clamp(.75rem, 1vw, 1rem);
-    padding:.45rem .45rem .45rem clamp(1.5rem, 2vw, 2rem);
-  }
-  .hero__ctas .pill__badge{
-    width:clamp(2.5rem, 3rem, 3rem);
-    height:clamp(2.5rem, 3rem, 3rem);
-    font-size:clamp(1rem, 1.2rem, 1.2rem);
-  }
+  width:clamp(2rem, 1.4rem + 1.1vw, 3rem);
+  height:clamp(2rem, 1.4rem + 1.1vw, 3rem);
+  font-size:clamp(.9rem, .7rem + .4vw, 1.2rem);
 }
 .hero .pill--outline .pill__inner{border-color:rgba(255,255,255,.4);color:#fff}
 .hero .pill--outline .pill__badge{background:#fff;color:#0B0B0D}
@@ -1122,14 +1096,13 @@ html{scroll-padding-top:4.25rem}
   box-sizing:border-box;
 }
 .portfolio__h2{
-  font-size:var(--text-section-h2-compact);
+  font-size:var(--text-section-h2);
   font-weight:600;
   letter-spacing:-.02em;
   margin-top:1rem;
   color:var(--pf-ink);
   width:fit-content;
 }
-@media(min-width:640px){.portfolio__h2{font-size:var(--text-section-h2)}}
 
 .coverflow{
   /* Stage matches ~2:1 screen recordings + browser chrome so cover shows full width */
@@ -1518,7 +1491,7 @@ html{scroll-padding-top:4.25rem}
   margin:0;
   max-width:12ch;
   text-align:center;
-  font-size:clamp(3rem, 6.5vw, 6.6rem);
+  font-size:clamp(2.4rem, 6.5vw, 6.6rem);
   font-weight:700;
   letter-spacing:-.04em;
   line-height:.92;
@@ -1628,7 +1601,6 @@ html{scroll-padding-top:4.25rem}
   /* Percentage offsets can't know how tall a card grows, so on narrow screens
      the cards run in normal flow with a fixed rhythm instead of overlapping. */
   .feedback-track{height:auto}
-  .feedback__title{font-size:clamp(2.4rem, 10vw, 3.75rem)}
   .feedback-float{
     position:relative;
     inset:auto;
@@ -2293,16 +2265,14 @@ html{scroll-padding-top:4.25rem}
   width:fit-content;
   max-width:100%;
   margin-inline:auto;
-  font-size:var(--text-section-h2-compact);
+  font-size:var(--text-section-h2);
   font-weight:600;
   letter-spacing:-.02em;
   text-align:left;
 }
 .footer__h2 .line-clip{
-  white-space:nowrap;
+  white-space:normal;
 }
-@media(min-width:640px){.footer__h2{font-size:var(--text-section-h2-sm)}}
-@media(min-width:768px){.footer__h2{font-size:var(--text-section-h2)}}
 .footer__cols{
   position:relative;
   z-index:1;

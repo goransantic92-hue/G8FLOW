@@ -75,9 +75,7 @@
 
     'about.aria': 'About me',
     'about.eyebrow': 'About me',
-    'about.h2': 'Who am <span class="about__h2-accent">I?</span>',
-    'about.lead': 'I’m Goran. I build sites that sell — not sites that only look expensive. If you get traffic but not calls, I fix the offer, the path, and the one next step — so a stranger gets it in one scroll and knows exactly what to do.',
-    'about.photo': 'Goran — G8 Flow',
+    'about.statement': 'From brief to launch. I build clean, revenue-focused digital products — built to move fast, stay simple, and convert in real-world use — driven by clarity, structured systems, and <span class="about__accent">intentional design.</span>',
 
     'process.eyebrow': 'How I work',
     'process.h2': 'Start. Clarify. Build. Launch.',
@@ -408,9 +406,7 @@
 
     'about.aria': 'O meni',
     'about.eyebrow': 'O meni',
-    'about.h2': 'Ko sam <span class="about__h2-accent">ja?</span>',
-    'about.lead': 'Ja sam Goran. Sajt treba da vam donosi posao, ne da lepo izgleda. Ako vam ljudi otvore stranicu i odu — nije im jasno šta nudite, kuda idu ni šta da kliknu. To sređujem. Ko vas vidi prvi put, odmah treba da zna šta da uradi.',
-    'about.photo': 'Goran — G8 Flow',
+    'about.statement': 'Od briefa do lansiranja. Pravim jasne digitalne proizvode fokusirane na prodaju — zato što treba da budu brzi, jednostavni i da rade u praksi — vođeni jasnoćom, struktuiranim sistemima i <span class="about__accent">namernim dizajnom.</span>',
 
     'process.eyebrow': 'Proces',
     'process.h2': 'Od razgovora do sajta koji prodaje.',

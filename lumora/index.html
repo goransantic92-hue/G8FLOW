@@ -2007,101 +2007,89 @@ html{scroll-padding-top:4.25rem}
   color:#fff;
 }
 
-/* About Me */
+/* About Me — scroll-lit statement */
 .about{
   position:relative;
   z-index:2;
   isolation:isolate;
-  overflow:hidden;
   background:var(--hero-bg);
   background-color:var(--hero-mid);
   color:#fff;
 }
-.about__inner{
+.about__track{
   position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:clamp(2rem, 5vw, 3.5rem);
+  height:220vh;
+}
+.about__sticky{
+  position:sticky;
+  top:0;
+  height:100svh;
+  min-height:100vh;
+  display:flex;
   align-items:center;
-  padding:5rem 1.25rem 3.5rem;
+}
+.about__shell{
+  width:100%;
   max-width:88rem;
   margin:0 auto;
+  padding:clamp(5rem, 12vh, 7rem) 1.25rem clamp(2rem, 6vh, 3rem);
   box-sizing:border-box;
 }
-@media(min-width:640px){.about__inner{padding-inline:2rem}}
-@media(min-width:1024px){
-  .about__inner{
-    grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
-    gap:clamp(2.5rem, 5vw, 4.5rem);
-    padding:7rem 2rem 4rem;
-    align-items:stretch;
-  }
-}
-.about__glass{
-  position:relative;
-  height:100%;
-  padding:clamp(1.75rem, 3vw, 2.75rem);
-  border-radius:1.5rem;
-  background:rgba(8,22,60,.28);
-  border:1px solid rgba(255,255,255,.22);
-  backdrop-filter:blur(28px) saturate(1.4);
-  -webkit-backdrop-filter:blur(28px) saturate(1.4);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -1px 0 rgba(8,22,60,.2),
-    0 18px 50px rgba(8,22,60,.28);
-  overflow:hidden;
-  box-sizing:border-box;
-}
-.about__glass::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  pointer-events:none;
-  background:
-    linear-gradient(145deg, rgba(255,255,255,.22) 0%, rgba(255,255,255,.06) 26%, transparent 52%),
-    linear-gradient(180deg, rgba(255,255,255,.1) 0%, transparent 40%);
-}
-.about__glass > *{position:relative;z-index:1}
+@media(min-width:640px){.about__shell{padding-inline:2rem}}
 .about__eyebrow{
-  display:block;
-  margin:0 0 1rem;
+  display:inline-flex;
+  align-items:center;
+  gap:.65rem;
+  margin:0;
   font-size:.75rem;
   font-weight:600;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:rgba(255,255,255,.62);
+  color:rgba(255,255,255,.55);
 }
-.about__h2{
-  margin:0 0 1.25rem;
-  font-size:var(--text-section-h2);
-  font-weight:700;
-  letter-spacing:-.03em;
-  line-height:1.05;
+.about__eyebrow-line{
+  display:inline-block;
+  width:1.75rem;
+  height:1px;
+  background:rgba(255,255,255,.35);
+}
+.about__eyebrow-star{
+  font-size:.65rem;
+  color:rgba(255,255,255,.45);
+  line-height:1;
+}
+.about__statement{
+  margin:clamp(1.5rem, 4vh, 2.5rem) 0 0;
+  max-width:22ch;
+  font-size:clamp(1.625rem, 4.4vw, 3.875rem);
+  font-weight:600;
+  line-height:1.32;
+  letter-spacing:-.015em;
   color:#fff;
+  text-wrap:pretty;
 }
-.about__h2-accent{
-  color:#4d7dff;
-  background:linear-gradient(90deg, #6b93ff, #15389B);
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
+.about__word{
+  display:inline;
+  will-change:opacity;
+  opacity:.14;
 }
-.about__lead{
-  margin:0 0 2rem;
-  max-width:38rem;
-  font-size:var(--text-lg);
-  line-height:var(--lh-body);
-  color:rgba(255,255,255,.88);
-  font-weight:400;
+.about__word.about__accent{
+  font-style:italic;
+  color:#9eb8ff;
 }
 .about__cta{
   display:flex;
   flex-wrap:wrap;
   gap:.75rem;
   align-items:center;
+  margin-top:clamp(2rem, 5vh, 3rem);
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);
+}
+.about__cta.is-in{
+  opacity:1;
+  transform:none;
 }
 .about .pill--outline .pill__inner{
   border-color:rgba(255,255,255,.4);
@@ -2116,6 +2104,12 @@ html{scroll-padding-top:4.25rem}
   background:linear-gradient(118deg, #08163C 0%, #15389B 100%);
   color:#fff;
   border:1px solid rgba(255,255,255,.18);
+}
+@media(prefers-reduced-motion:reduce){
+  .about__track{height:auto}
+  .about__sticky{position:relative;height:auto;min-height:0}
+  .about__word{opacity:1!important}
+  .about__cta{opacity:1;transform:none}
 }
 
 /* Ticker — above FAQ */
@@ -2170,103 +2164,6 @@ html{scroll-padding-top:4.25rem}
 }
 @media (prefers-reduced-motion:reduce){
   .ticker__track{animation:none}
-}
-
-.about__visual{
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:stretch;
-  min-height:clamp(22rem, 70vw, 30rem);
-}
-@media(min-width:1024px){
-  .about__visual{
-    justify-content:stretch;
-    align-self:stretch;
-    min-height:0;
-    height:100%;
-  }
-}
-.about__flip{
-  position:relative;
-  width:min(100%, 24rem);
-  aspect-ratio:3/4;
-  perspective:900px;
-  border-radius:1.5rem;
-}
-@media(min-width:1024px){
-  .about__flip{
-    width:100%;
-    max-width:none;
-    height:100%;
-    min-height:100%;
-    aspect-ratio:auto;
-  }
-}
-.flip-gallery{
-  position:relative;
-  width:100%;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  perspective:900px;
-  cursor:pointer;
-  background:transparent;
-  border-radius:1.5rem;
-}
-.flip-gallery__tilt{
-  position:relative;
-  width:100%;
-  height:100%;
-  transform-style:preserve-3d;
-  transition:transform .2s ease-out;
-  will-change:transform;
-  border-radius:1.5rem;
-  overflow:hidden;
-  background:rgba(8,22,60,.22);
-  border:1px solid rgba(255,255,255,.18);
-  backdrop-filter:blur(24px) saturate(1.2);
-  -webkit-backdrop-filter:blur(24px) saturate(1.2);
-  box-shadow:0 16px 40px rgba(8,22,60,.25);
-}
-.flip-gallery__card{
-  position:relative;
-  z-index:1;
-  width:100%;
-  height:100%;
-  transform-style:preserve-3d;
-  transition:transform .6s ease-in-out;
-  will-change:transform;
-  background:transparent;
-  border-radius:1.5rem;
-}
-.flip-gallery__face{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center 8%;
-  border-radius:1.5rem;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  user-select:none;
-  pointer-events:none;
-  border:none;
-  background:transparent;
-  mix-blend-mode:normal;
-  opacity:1;
-  transform:scale(1.28);
-  transform-origin:center 18%;
-}
-.flip-gallery__face--clear{
-  mix-blend-mode:normal;
-  opacity:1;
-}
-.flip-gallery__face--back{transform:rotateY(180deg) scale(1.28);transform-origin:center 18%}
-@media (prefers-reduced-motion:reduce){
-  .flip-gallery__tilt,.flip-gallery__card{transition:none}
 }
 
 /* Footer */
@@ -2684,26 +2581,26 @@ html.lenis,html.lenis body{height:auto}
   </section>
 
   <section class="about" id="about" data-i18n-aria="about.aria" aria-label="About me" data-nav-theme="dark">
-    <div class="about__inner">
-      <div class="about__glass reveal" data-reveal data-io>
-        <p class="about__eyebrow" data-i18n="about.eyebrow">About me</p>
-        <h2 class="about__h2" data-i18n="about.h2" data-i18n-html>Who am <span class="about__h2-accent">I?</span></h2>
-        <p class="about__lead" data-i18n="about.lead">
-          I’m Goran. I build sites that sell — not sites that only look expensive.
-          If you get traffic but not calls, I fix the offer, the path, and the one next step —
-          so a stranger gets it in one scroll and knows exactly what to do.
-        </p>
-        <div class="about__cta">
-          <a class="pill pill--dark pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">
-            <span class="pill__inner"><span data-i18n="cta.book">Book a call</span><span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
-          </a>
-          <button class="pill pill--outline pill--arrow" type="button" data-scroll="works">
-            <span class="pill__inner"><span data-i18n="cta.seeWork">See the work</span><span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
-          </button>
+    <div class="about__track">
+      <div class="about__sticky">
+        <div class="about__shell">
+          <p class="about__eyebrow">
+            <span class="about__eyebrow-line" aria-hidden="true"></span>
+            <span class="about__eyebrow-star" aria-hidden="true">★</span>
+            <span data-i18n="about.eyebrow">About me</span>
+          </p>
+          <p class="about__statement" id="aboutStatement" data-i18n="about.statement" data-i18n-html>
+            From brief to launch. I build clean, revenue-focused digital products — built to move fast, stay simple, and convert in real-world use — driven by clarity, structured systems, and <span class="about__accent">intentional design.</span>
+          </p>
+          <div class="about__cta" id="aboutCta">
+            <a class="pill pill--dark pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer">
+              <span class="pill__inner"><span data-i18n="cta.book">Book a call</span><span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
+            </a>
+            <button class="pill pill--outline pill--arrow" type="button" data-scroll="works">
+              <span class="pill__inner"><span data-i18n="cta.seeWork">See the work</span><span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="about__visual reveal" data-reveal data-io data-delay="120">
-        <div class="about__flip" id="aboutFlip"></div>
       </div>
     </div>
   </section>
@@ -4604,120 +4501,82 @@ const io = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('[data-io]').forEach(el => io.observe(el));
 
-/* Flip Gallery — Originkit (vanilla port of ImageFlip) */
-(function initAboutFlipGallery(){
-  const mount = document.getElementById('aboutFlip');
-  if (!mount) return;
+/* About — scroll-lit statement (word-by-word reveal) */
+(function initAboutScrollStatement(){
+  const track = document.querySelector('.about__track');
+  const statement = document.getElementById('aboutStatement');
+  const cta = document.getElementById('aboutCta');
+  if (!track || !statement) return;
 
-  const ABOUT_PORTRAIT = './assets/about/goran-portrait.webp';
-  const HALF_TURN = 180;
-  const DEFAULT_ITEMS = [
-    { image: { src: ABOUT_PORTRAIT }, focusY: 8 },
-  ];
-  const DEFAULTS = {
-    fit: 'cover',
-    focusY: 8,
-    rounded: 24,
-    tilt: true,
-    tiltOptions: { effect: 'repel', tiltLimit: 15, scale: 123 },
-  };
+  const DIM = 0.14;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const srcOf = (image) => typeof image === 'string' ? image : (image?.src ?? '');
-  const focusOf = (item) => Math.min(100, Math.max(0, typeof item?.focusY === 'number' ? item.focusY : DEFAULTS.focusY));
-
-  const items = DEFAULT_ITEMS.filter((item) => srcOf(item?.image));
-  const urls = items.map((item) => srcOf(item.image));
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const tiltOn = DEFAULTS.tilt && !reduceMotion;
-  const effect = DEFAULTS.tiltOptions.effect;
-  const tiltLimit = DEFAULTS.tiltOptions.tiltLimit;
-  const scale = DEFAULTS.tiltOptions.scale / 100;
-
-  let angle = 0;
-  let index = 0;
-  let faces = { a: 0, b: 0 };
-
-  const facing = (deg) => Math.abs(Math.round(deg / HALF_TURN)) % 2 === 0 ? 'a' : 'b';
-
-  mount.innerHTML = `
-    <div class="flip-gallery" role="img" data-i18n-aria="about.photo" aria-label="${t('about.photo')}">
-      <div class="flip-gallery__tilt">
-        <div class="flip-gallery__card">
-          <img class="flip-gallery__face flip-gallery__face--a" alt="Goran" draggable="false" />
-          <img class="flip-gallery__face flip-gallery__face--back flip-gallery__face--b" alt="" draggable="false" />
-        </div>
-      </div>
-    </div>
-  `;
-
-  const root = mount.querySelector('.flip-gallery');
-  const tiltEl = mount.querySelector('.flip-gallery__tilt');
-  const cardEl = mount.querySelector('.flip-gallery__card');
-  const faceA = mount.querySelector('.flip-gallery__face--a');
-  const faceB = mount.querySelector('.flip-gallery__face--b');
-
-  if (urls.length < 2) {
-    root.style.cursor = 'default';
-  }
-  faceA.setAttribute('width', '720');
-  faceA.setAttribute('height', '960');
-  faceA.setAttribute('loading', 'lazy');
-  faceA.alt = 'Goran Šantić, founder of G8 Flow';
-  faceB.setAttribute('loading', 'lazy');
-  faceB.setAttribute('aria-hidden', 'true');
-
-  const applyFace = (img, slot) => {
-    const i = slot % items.length;
-    const item = items[i];
-    img.src = urls[i];
-    img.style.objectFit = DEFAULTS.fit;
-    img.style.objectPosition = DEFAULTS.fit === 'cover'
-      ? `center ${focusOf(item)}%`
-      : `center ${focusOf(item)}%`;
-    img.style.borderRadius = '1.5rem';
-    img.style.background = 'transparent';
-  };
-
-  const render = () => {
-    applyFace(faceA, faces.a);
-    applyFace(faceB, faces.b);
-    cardEl.style.transform = `rotateY(${angle}deg)`;
-  };
-
-  const flip = (dir) => {
-    const n = urls.length;
-    if (n < 2) return;
-    const next = (index + dir + n) % n;
-    const nextAngle = angle + dir * HALF_TURN;
-    const incoming = facing(nextAngle);
-    faces = { ...faces, [incoming]: next };
-    index = next;
-    angle = nextAngle;
-    render();
-  };
-
-  if (urls.length >= 2) {
-  root.addEventListener('click', (e) => {
-    const rect = root.getBoundingClientRect();
-    const isLeft = e.clientX - rect.left < rect.width / 2;
-    flip(isLeft ? -1 : 1);
-  });
+  function wrapWords(el){
+    function walk(node, accent){
+      if (node.nodeType === 3){
+        const text = node.textContent;
+        if (!text) return;
+        const frag = document.createDocumentFragment();
+        text.split(/(\s+)/).forEach(tok => {
+          if (!tok) return;
+          if (/^\s+$/.test(tok)) frag.appendChild(document.createTextNode(tok));
+          else {
+            const span = document.createElement('span');
+            span.className = accent ? 'about__word about__accent' : 'about__word';
+            span.textContent = tok;
+            frag.appendChild(span);
+          }
+        });
+        node.replaceWith(frag);
+      } else if (node.nodeType === 1){
+        const isAccent = accent || node.classList.contains('about__accent');
+        [...node.childNodes].forEach(child => walk(child, isAccent));
+        if (node.classList.contains('about__accent')){
+          const parent = node.parentNode;
+          while (node.firstChild) parent.insertBefore(node.firstChild, node);
+          parent.removeChild(node);
+        }
+      }
+    }
+    [...el.childNodes].forEach(child => walk(child, false));
   }
 
-  root.addEventListener('mousemove', (e) => {
-    if (!tiltOn || urls.length < 2) return;
-    const { width, height, top, left } = tiltEl.getBoundingClientRect();
-    const mult = effect === 'repel' ? -1 : 1;
-    const tiltX = ((e.clientY - top) / height - 0.5) * (tiltLimit * 2) * mult;
-    const tiltY = ((e.clientX - left) / width - 0.5) * -(tiltLimit * 2) * mult;
-    tiltEl.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(${scale}, ${scale}, ${scale})`;
-  });
+  function update(){
+    const words = statement.querySelectorAll('.about__word');
+    if (!words.length) return;
+    if (reduced){
+      words.forEach(w => { w.style.opacity = '1'; });
+      cta?.classList.add('is-in');
+      return;
+    }
+    const range = Math.max(track.offsetHeight - window.innerHeight, 1);
+    const scrolled = Math.min(Math.max(-track.getBoundingClientRect().top, 0), range);
+    const progress = scrolled / range;
+    const n = words.length;
+    words.forEach((word, i) => {
+      const t = Math.min(1, Math.max(0, progress * n - i));
+      word.style.opacity = String(DIM + t * (1 - DIM));
+    });
+    if (progress > 0.82) cta?.classList.add('is-in');
+    else cta?.classList.remove('is-in');
+  }
 
-  root.addEventListener('mouseleave', () => {
-    tiltEl.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-  });
+  let raf = 0;
+  function schedule(){
+    if (raf) return;
+    raf = requestAnimationFrame(() => { raf = 0; update(); });
+  }
 
-  render();
+  function boot(){
+    wrapWords(statement);
+    update();
+  }
+
+  boot();
+  document.addEventListener('g8:langchange', boot);
+  if (typeof lenis?.on === 'function') lenis.on('scroll', schedule);
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule);
 })();
 
 /* ——— Nav ——— */

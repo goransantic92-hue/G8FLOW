@@ -544,6 +544,44 @@ html{scroll-padding-top:4.25rem}
   width:100%;
   margin-top:clamp(.35rem, .4vw, .75rem);
 }
+.hero__hint{
+  display:flex;
+  justify-content:center;
+  width:100%;
+  margin-top:16px;
+  pointer-events:none;
+}
+.hero__cursor-hint__pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:.45rem 1.15rem;
+  border-radius:9999px;
+  border:1px solid rgba(255,255,255,.32);
+  background:rgba(11,11,13,.38);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  color:rgba(255,255,255,.82);
+  font-size:clamp(.6875rem, .58rem + .35vw, .875rem);
+  font-weight:500;
+  letter-spacing:.06em;
+  line-height:1.2;
+  text-transform:uppercase;
+  white-space:nowrap;
+  animation:hero-cursor-float 2.8s ease-in-out infinite;
+}
+.hero__cursor-hint__touch{display:none}
+@media(hover:none),(pointer:coarse){
+  .hero__cursor-hint__desktop{display:none}
+  .hero__cursor-hint__touch{display:inline}
+}
+@keyframes hero-cursor-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-7px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero__cursor-hint__pill{animation:none}
+}
 .hero__ctas .pill__inner{
   font-size:clamp(.8125rem, .55rem + .7vw, 1.25rem);
   gap:clamp(.5rem, .4rem + .5vw, 1rem);
@@ -2606,12 +2644,18 @@ html.lenis,html.lenis body{height:auto}
           Most sites look expensive and sell nothing. I make the offer obvious, the path clear, and the next step impossible to miss.
         </p>
         <div class="hero__ctas reveal" data-reveal data-delay="450">
-          <a class="pill pill--dark pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer" data-reveal-portrait>
+          <a class="pill pill--outline pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer" data-reveal-portrait>
             <span class="pill__inner"><span data-i18n="cta.talk">Talk to me</span><span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
           </a>
-          <button class="pill pill--outline pill--arrow" type="button" data-scroll="works">
+          <button class="pill pill--dark pill--arrow" type="button" data-scroll="works">
             <span class="pill__inner"><span data-i18n="cta.viewWork">View Work</span><span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
           </button>
+        </div>
+        <div class="hero__hint reveal" data-reveal data-delay="520" aria-hidden="true">
+          <span class="hero__cursor-hint__pill">
+            <span class="hero__cursor-hint__desktop" data-i18n="hero.cursorHint">Move your cursor</span>
+            <span class="hero__cursor-hint__touch" data-i18n="hero.cursorHintTouch">Scroll to reveal</span>
+          </span>
         </div>
       </div>
     </div>

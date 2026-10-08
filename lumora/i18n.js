@@ -1,7 +1,7 @@
 /* G8 Flow — EN / SR. Brand, plan names, URLs stay shared. */
 (function (global) {
   const STORAGE = 'g8-lang';
-  const SITE = 'https://g8flow-kappa.vercel.app/';
+  const SITE = 'https://g8flow.online/';
 
   const en = {
     'meta.title': 'G8 Flow — Sites that grow revenue',

@@ -10,7 +10,7 @@ This file is the handoff. Read it before changing code. Product rules still live
 
 | Item | Value |
 |------|--------|
-| Live site | https://g8flow-kappa.vercel.app/ |
+| Live site | https://g8flow.online/ |
 | GitHub | `goransantic92-hue/G8FLOW` · branch **`main`** (auto-deploy) |
 | Deploy root | **`lumora/`** (static HTML) — see `vercel.json` `outputDirectory` |
 | API | `api/inquiry.js` (Vercel serverless) + Resend |

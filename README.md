@@ -4,7 +4,7 @@ Freelancer marketing site for **G8 Flow** (Goran Šantić).
 
 ## Live
 
-- **Site:** https://g8flow-kappa.vercel.app/
+- **Site:** https://g8flow.online/
 - **Repo:** `goransantic92-hue/G8FLOW` · branch `main` (Vercel auto-deploy)
 - **Production code:** static files in **`lumora/`** (`vercel.json` → `outputDirectory: "lumora"`)
 

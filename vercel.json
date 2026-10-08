@@ -4,6 +4,20 @@
   "installCommand": "",
   "buildCommand": "",
   "outputDirectory": "lumora",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "g8flow-kappa.vercel.app" }],
+      "destination": "https://g8flow.online/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.g8flow.online" }],
+      "destination": "https://g8flow.online/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/:path*",

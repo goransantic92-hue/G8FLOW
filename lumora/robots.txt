@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://g8flow-kappa.vercel.app/sitemap.xml
+Sitemap: https://g8flow.online/sitemap.xml

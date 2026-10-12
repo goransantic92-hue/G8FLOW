@@ -1,0 +1,64 @@
+{
+  "bs": {
+    "desktop": [
+      "./assets/works/shots/bs/desktop-01.jpg?v=6",
+      "./assets/works/shots/bs/desktop-02.jpg?v=6",
+      "./assets/works/shots/bs/desktop-03.jpg?v=6",
+      "./assets/works/shots/bs/desktop-04.jpg?v=6",
+      "./assets/works/shots/bs/desktop-05.jpg?v=6"
+    ],
+    "mobile": [
+      "./assets/works/shots/bs/mobile-01.jpg?v=6",
+      "./assets/works/shots/bs/mobile-02.jpg?v=6",
+      "./assets/works/shots/bs/mobile-03.jpg?v=6",
+      "./assets/works/shots/bs/mobile-04.jpg?v=6",
+      "./assets/works/shots/bs/mobile-05.jpg?v=6",
+      "./assets/works/shots/bs/mobile-06.jpg?v=6",
+      "./assets/works/shots/bs/mobile-07.jpg?v=6",
+      "./assets/works/shots/bs/mobile-08.jpg?v=6",
+      "./assets/works/shots/bs/mobile-09.jpg?v=6",
+      "./assets/works/shots/bs/mobile-10.jpg?v=6"
+    ]
+  },
+  "lk": {
+    "desktop": [
+      "./assets/works/shots/lk/desktop-01.jpg?v=6",
+      "./assets/works/shots/lk/desktop-02.jpg?v=6",
+      "./assets/works/shots/lk/desktop-03.jpg?v=6",
+      "./assets/works/shots/lk/desktop-04.jpg?v=6"
+    ],
+    "mobile": [
+      "./assets/works/shots/lk/mobile-01.jpg?v=6",
+      "./assets/works/shots/lk/mobile-02.jpg?v=6",
+      "./assets/works/shots/lk/mobile-03.jpg?v=6",
+      "./assets/works/shots/lk/mobile-04.jpg?v=6",
+      "./assets/works/shots/lk/mobile-05.jpg?v=6",
+      "./assets/works/shots/lk/mobile-06.jpg?v=6"
+    ]
+  },
+  "tm": {
+    "desktop": [
+      "./assets/works/shots/tm/desktop-01.jpg?v=7",
+      "./assets/works/shots/tm/desktop-02.jpg?v=7",
+      "./assets/works/shots/tm/desktop-03.jpg?v=7",
+      "./assets/works/shots/tm/desktop-04.jpg?v=7",
+      "./assets/works/shots/tm/desktop-05.jpg?v=7",
+      "./assets/works/shots/tm/desktop-06.jpg?v=7",
+      "./assets/works/shots/tm/desktop-07.jpg?v=7",
+      "./assets/works/shots/tm/desktop-08.jpg?v=7",
+      "./assets/works/shots/tm/desktop-09.jpg?v=7"
+    ],
+    "mobile": [
+      "./assets/works/shots/tm/mobile-01.jpg?v=7",
+      "./assets/works/shots/tm/mobile-02.jpg?v=7",
+      "./assets/works/shots/tm/mobile-03.jpg?v=7",
+      "./assets/works/shots/tm/mobile-04.jpg?v=7",
+      "./assets/works/shots/tm/mobile-05.jpg?v=7",
+      "./assets/works/shots/tm/mobile-06.jpg?v=7",
+      "./assets/works/shots/tm/mobile-07.jpg?v=7",
+      "./assets/works/shots/tm/mobile-08.jpg?v=7",
+      "./assets/works/shots/tm/mobile-09.jpg?v=7",
+      "./assets/works/shots/tm/mobile-10.jpg?v=7"
+    ]
+  }
+}

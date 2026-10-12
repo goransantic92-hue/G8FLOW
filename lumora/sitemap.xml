@@ -19,6 +19,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://g8flow.online/work.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://g8flow.online/terms.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://g8flow.online/terms.html" />
     <xhtml:link rel="alternate" hreflang="sr" href="https://g8flow.online/terms.html?lang=sr" />

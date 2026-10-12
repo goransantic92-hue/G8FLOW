@@ -18,6 +18,9 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    { "source": "/work", "destination": "/work.html" }
+  ],
   "headers": [
     {
       "source": "/assets/:path*",

@@ -222,11 +222,17 @@ img{display:block;max-width:100%}
 .icon svg{width:100%;height:100%;display:block}
 
 /* Pill button */
-.pill{display:inline-block;text-decoration:none;color:inherit}
-.pill__inner{display:inline-flex;align-items:center;gap:.75rem;border-radius:9999px;font-size:var(--text-sm);font-weight:500;will-change:transform}
+.pill{display:inline-flex;text-decoration:none;color:inherit;align-self:stretch}
+.pill__inner{display:inline-flex;align-items:center;gap:.75rem;border-radius:9999px;font-size:var(--text-sm);font-weight:500;will-change:transform;box-sizing:border-box;border:1px solid transparent;height:100%}
 .pill--dark .pill__inner{background:#0B0B0D;color:#fff}
 .pill--light .pill__inner{background:#f1f0ee;color:#0B0B0D}
-.pill--outline .pill__inner{border:1px solid #e6e5e2;background:transparent;color:#0B0B0D}
+.pill--outline .pill__inner{border-color:#e6e5e2;background:transparent;color:#0B0B0D}
+/* Dual-CTA rows — equal pill height */
+.hero__ctas,
+.about__cta,
+[class*="__ctas"]:has(> .pill:nth-child(2)){
+  align-items:stretch;
+}
 .pill--arrow .pill__inner{padding:.375rem .375rem .375rem 1.5rem}
 .pill--plain .pill__inner{padding:.875rem 1.75rem}
 .pill__badge{width:2.25rem;height:2.25rem;display:grid;place-items:center;border-radius:9999px;font-size:1rem;will-change:transform}
@@ -539,7 +545,6 @@ html{scroll-padding-top:4.25rem}
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
-  align-items:center;
   gap:clamp(.5rem, .4rem + .6vw, 1rem);
   width:100%;
   margin-top:clamp(.35rem, .4vw, .75rem);
@@ -2027,6 +2032,7 @@ html{scroll-padding-top:4.25rem}
   min-height:100vh;
   display:flex;
   align-items:center;
+  justify-content:center;
 }
 .about__shell{
   width:100%;
@@ -2034,6 +2040,10 @@ html{scroll-padding-top:4.25rem}
   margin:0 auto;
   padding:clamp(5rem, 12vh, 7rem) 1.25rem clamp(2rem, 6vh, 3rem);
   box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
 }
 @media(min-width:640px){.about__shell{padding-inline:2rem}}
 .about__eyebrow{
@@ -2059,13 +2069,14 @@ html{scroll-padding-top:4.25rem}
   line-height:1;
 }
 .about__statement{
-  margin:clamp(1.5rem, 4vh, 2.5rem) 0 0;
-  max-width:22ch;
+  margin:clamp(1.5rem, 4vh, 2.5rem) auto 0;
+  max-width:min(22ch, 92vw);
   font-size:clamp(1.625rem, 4.4vw, 3.875rem);
   font-weight:600;
   line-height:1.32;
   letter-spacing:-.015em;
   color:#fff;
+  text-align:center;
   text-wrap:pretty;
 }
 .about__word{
@@ -2081,7 +2092,7 @@ html{scroll-padding-top:4.25rem}
   display:flex;
   flex-wrap:wrap;
   gap:.75rem;
-  align-items:center;
+  justify-content:center;
   margin-top:clamp(2rem, 5vh, 3rem);
   opacity:0;
   transform:translateY(12px);
@@ -2103,7 +2114,7 @@ html{scroll-padding-top:4.25rem}
 .about .pill--dark .pill__inner{
   background:linear-gradient(118deg, #08163C 0%, #15389B 100%);
   color:#fff;
-  border:1px solid rgba(255,255,255,.18);
+  border-color:rgba(255,255,255,.18);
 }
 @media(prefers-reduced-motion:reduce){
   .about__track{height:auto}
@@ -2196,6 +2207,7 @@ html{scroll-padding-top:4.25rem}
   border-bottom:1px solid rgba(255,255,255,.12);
   padding-bottom:4rem;
 }
+.footer__cta .pill{align-self:center;width:auto}
 .footer__h2{
   width:fit-content;
   max-width:100%;
@@ -2541,10 +2553,10 @@ html.lenis,html.lenis body{height:auto}
           Most sites look expensive and sell nothing. I make the offer obvious, the path clear, and the next step impossible to miss.
         </p>
         <div class="hero__ctas reveal" data-reveal data-delay="450">
-          <a class="pill pill--outline pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer" data-reveal-portrait>
+          <a class="pill pill--dark pill--arrow" href="https://calendly.com/goransantic/30min" target="_blank" rel="noopener noreferrer" data-reveal-portrait>
             <span class="pill__inner"><span data-i18n="cta.talk">Talk to me</span><span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
           </a>
-          <button class="pill pill--dark pill--arrow" type="button" data-scroll="works">
+          <button class="pill pill--outline pill--arrow" type="button" data-scroll="works">
             <span class="pill__inner"><span data-i18n="cta.viewWork">View Work</span><span class="pill__badge pill__badge--right"><span class="icon" data-icon="arrow-right"></span></span></span>
           </button>
         </div>

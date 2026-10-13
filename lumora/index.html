@@ -3216,7 +3216,7 @@ setReady();
       if (!card || !cardFullyShown(card, index) || video.dataset.done === '1') return;
       arm(video);
       if (video.getAttribute('src')) video.play().catch(() => {});
-    }, 300);
+    }, 100);
     playTimers.set(video, timer);
   }
 

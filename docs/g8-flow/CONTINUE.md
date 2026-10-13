@@ -89,7 +89,7 @@ Plans on page: Launch / Growth (recommended) / Custom — ranges shown; exact qu
 
 1. Hero — 16:9 liquid hover portraits, solid `#15389B` field, 2 CTAs  
 2. Selected work — 3 cases, **2 stats** each (build time + price range; no Live/sales third stat)  
-3. About  
+3. About — hidden draft (`docs/g8-flow/content/about-draft.md`). Do not put it back until asked.  
 4. Process — 4 cards (Korak 01–04 / Step 01–04), aligned title baselines  
 5. What I do (websites + apps)  
 6. Industries  

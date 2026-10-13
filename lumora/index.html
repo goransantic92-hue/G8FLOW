@@ -1689,7 +1689,8 @@ html{scroll-padding-top:4.25rem}
   color:#fff;
 }
 
-/* About Me — scroll-lit statement */
+/* About Me — scroll-lit statement. Hidden until restored from docs/g8-flow/content/about-draft.md */
+.about[hidden]{display:none !important}
 .about{
   position:relative;
   z-index:2;
@@ -2130,7 +2131,6 @@ html.lenis,html.lenis body{height:auto}
       <ul class="header__nav">
         <li><button type="button" data-scroll="home" aria-current="page" data-i18n="nav.home">Home</button></li>
         <li><button type="button" data-scroll="works" data-i18n="nav.work">Work</button></li>
-        <li><button type="button" data-scroll="about" data-i18n="nav.about">About</button></li>
         <li><button type="button" data-scroll="process" data-i18n="nav.process">Process</button></li>
         <li><button type="button" data-scroll="solutions" data-i18n="nav.services">Services</button></li>
         <li><button type="button" data-scroll="feedback" data-i18n="nav.feedback">Feedback</button></li>
@@ -2199,7 +2199,7 @@ html.lenis,html.lenis body{height:auto}
     <div class="work-stack" id="workStack"></div>
   </section>
 
-<section class="about" id="about" data-i18n-aria="about.aria" aria-label="About me" data-nav-theme="dark">
+<section class="about" id="about" hidden data-i18n-aria="about.aria" aria-label="About me" data-nav-theme="dark">
     <div class="about__track">
       <div class="about__sticky">
         <div class="about__shell">
@@ -2297,7 +2297,7 @@ html.lenis,html.lenis body{height:auto}
       </header>
       <div class="solutions__grid">
         <article class="solutions__card">
-          <div class="solutions__media" style="background-image:url('./assets/solutions/site-laptop.png')"></div>
+          <div class="solutions__media" style="background-image:url('./assets/solutions/site-laptop.png?v=2')"></div>
           <p class="solutions__kicker" data-i18n="sol.web.kicker">01 Websites and platforms</p>
           <h3 class="solutions__title" data-i18n="sol.web.title">Fast and responsive websites</h3>
           <div class="solutions__panel">
@@ -2584,7 +2584,6 @@ html.lenis,html.lenis body{height:auto}
         <div class="footer__col">
           <div class="footer__col-title" data-i18n="foot.explore">Explore</div>
           <a href="#works" data-scroll="works" data-i18n="nav.work">Work</a>
-          <a href="#about" data-scroll="about" data-i18n="nav.about">About</a>
           <a href="#process" data-scroll="process" data-i18n="nav.process">Process</a>
           <a href="#solutions" data-scroll="solutions" data-i18n="nav.services">Services</a>
           <a href="#feedback" data-scroll="feedback" data-i18n="nav.feedback">Feedback</a>
@@ -3610,7 +3609,6 @@ setReady();
 const NAV_ITEMS = [
   { key:'nav.home', scroll:'home' },
   { key:'nav.work', scroll:'works' },
-  { key:'nav.about', scroll:'about' },
   { key:'nav.process', scroll:'process' },
   { key:'nav.services', scroll:'solutions' },
   { key:'nav.feedback', scroll:'feedback' },
@@ -3628,7 +3626,7 @@ document.getElementById('navMenuList').innerHTML = NAV_ITEMS.map((item,i) => `
 
 /* Keep header + menu active state in sync with visible section */
 (function initNavActive(){
-  const SECTION_IDS = ['home', 'works', 'about', 'process', 'solutions', 'industries', 'feedback', 'faq'];
+  const SECTION_IDS = ['home', 'works', 'process', 'solutions', 'industries', 'feedback', 'faq'];
   const headerBtns = [...document.querySelectorAll('.header__nav [data-scroll]')];
   function setCurrent(id){
     headerBtns.forEach(btn => {
@@ -3744,10 +3742,11 @@ document.querySelectorAll('[data-io]').forEach(el => io.observe(el));
 
 /* About — scroll-lit statement (word-by-word reveal) */
 (function initAboutScrollStatement(){
+  const section = document.getElementById('about');
   const track = document.querySelector('.about__track');
   const statement = document.getElementById('aboutStatement');
   const cta = document.getElementById('aboutCta');
-  if (!track || !statement) return;
+  if (!section || section.hidden || !track || !statement) return;
 
   const DIM = 0.14;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
